@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <!--[if IE]>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <![endif]-->
+      <!-- Mobile Specific -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Pixxett API Docs Theme</title>
+      <meta name="description" content="Pixxett API Docs Theme">
+      <meta name="author" content="Pixxett">
+      <meta name="copyright" content="Pixxett">
+      <meta name="date" content="2014-12-02">
+      <!-- Google Fonts -->
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900">
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900">
+      <!-- CSS Style -->
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="css/jquery.mobile-menu.css">
+      <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
+      <link rel="stylesheet" type="text/css" href="css/responsive.css">
+      <link rel="stylesheet" type="text/css" href="https://unpkg.com/highlightjs@9.10.0/styles/androidstudio.css">
+   </head>
+   <body id="pixxett-api">
+      <div id="page">
+         <!-- Header -->
+         <header class="header" id="header">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-lg-1 col-sm-2">
+                     <div class="mm-toggle-wrap">
+                        <div class="mm-toggle"><i class="fa fa-align-justify"></i><span class="mm-label">Menu</span> </div>
+                     </div>
+                     <!-- Header Logo -->
+                     <a class="header__block header__brand" href="#">
+                        <h1> <img src="images/logo.png" alt="API UI logo"></h1>
+                     </a>
+                     <!-- End Header Logo -->
+                  </div>
+                  <div class="col-lg-11 col-sm-10 hidden-xs">
+                     <div class="header__nav">
+                        <div class="header__nav--left">
+                        </div>
+                        <div class="header__nav--right">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </header>
+         <!-- end header -->
+         <!-- header service -->
+         <div class="header-section-wrapper">
+            <div class="header-section header-section-example">
+               <div id="language">
+                  <ul class="language-toggle">
+                     
+                     <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-curl" data-language="curl" checked="checked">
+                        <label for="toggle-lang-curl" class="language-toggle-button language-toggle-button--curl">curl</label>
+                     </li>
+                    
+                     <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-c" data-language="c" >
+                        <label for="toggle-lang-c" class="language-toggle-button language-toggle-button--c">C#</label>
+                     </li>
+                    
+                     <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-ruby" data-language="ruby" >
+                        <label for="toggle-lang-ruby" class="language-toggle-button language-toggle-button--ruby">Ruby</label>
+                     </li>
+                    
+                     <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-python" data-language="python" >
+                        <label for="toggle-lang-python" class="language-toggle-button language-toggle-button--python">Python</label>
+                     </li>
+                    
+                     <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-php" data-language="php" >
+                        <label for="toggle-lang-php" class="language-toggle-button language-toggle-button--php">PHP</label>
+                     </li>
+                    
+                     <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-java" data-language="java" >
+                        <label for="toggle-lang-java" class="language-toggle-button language-toggle-button--java">Java</label>
+                     </li>
+                    
+                     <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-node" data-language="node" >
+                        <label for="toggle-lang-node" class="language-toggle-button language-toggle-button--node">Node</label>
+                     </li>
+                    
+                     <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-go" data-language="go" >
+                        <label for="toggle-lang-go" class="language-toggle-button language-toggle-button--go">Go</label>
+                     </li>
+                    
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <!-- End header service -->
+         <!-- Sidebar -->
+         <div id="documenter_sidebar">
+            <div id="scrollholder" class="scrollholder">
+               <div id="scroll" class="scroll">
+                  <ol id="documenter_nav">
+                     
+                        <li>
+                           <a class="current" href="#documenter-api-reference">API Reference</a>
+                           
+                              <ol>
+                                 
+                              </ol>
+                           
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-authentication">Authentication</a>
+                           
+                              <ol>
+                                 
+                              </ol>
+                           
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-errors">Errors</a>
+                           
+                              <ol>
+                                 
+                                    <li><a href="#documenter-errors-handling-errors">Handling Errors</a></li>
+                                 
+                              </ol>
+                           
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-ben-tester">Ben&#39;s Test</a>
+                           
+                              <ol>
+                                 
+                              </ol>
+                           
+                        </li>
+                     
+                  </ol>
+               </div>
+            </div>
+         </div>
+         <!-- end sidebar -->
+         <!-- Section Background -->
+         <div id="background">
+            <div class="background-actual"></div>
+         </div>
+         <!-- End Section Background -->
+         <!-- main Content -->
+         <div id="documenter_content" class="method-area-wrapper">
+           
+              
+<section id="documenter-api-reference" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3 id="lorem-ipsum">Lorem Ipsum</h3>
+<p>Lorem ipsum dolor sit amet, consectetur <a href="#">ELIT</a>. Nam in nisi eros. Proin quis ultricies neque. Proin imperdiet leo a leo euismod ultrices. Cras et tempor elit. Duis aliquet volutpat sapien, eget porta tellus laoreet in. Donec sem velit, tincidunt eu sodales vel, varius non libero. Sed nisl mauris, <a href="#">facilisis sit amet hendrerit at</a>, hendrerit vel tortor. Aliquam id massa euismod, ultricies metus nec, convallis urna. In laoreet dapibus ante vitae placerat. Pellentesque mollis nec sapien elementum eu tincidunt. <a href="#">SAPIEN</a> elit placerat Phasellus laoreet vitae, Cras in massa ac mi sodales <a href="#">Ligula Fermentum</a> vestibulum et rutrum odio tincidunt. Nunc id maximus orci.</p>
+<p>Vestibulum mollis eros nunc, pretium porta dolor gravida vel. Nullam arcu diam, semper a varius sit amet, interdum vel enim. Duis orci nunc, eleifend vel tellus ut, finibus fermentum erat. Curabitur sagittis justo augue. Phasellus fermentum semper nisi, in consequat lectus tincidunt quis. Maecenas sit amet semper.</p>
+<p><img src="images/place-holder.png" alt="Image"></p>
+
+         </div>
+      </div>
+      <div class="method-example">
+         
+            
+               <div class="method-example-part">
+                 <h5 id="lorem-ipsum">Lorem Ipsum</h5>
+<p>Curabitur lacinia convallis nibh, <a href="#">non cursus augue</a>. Quisque id sem id lorem porttitor efficitur in quis libero. Nullam turpis ante auctor <a href="#">purus sed</a>.</p>
+
+               </div>
+            
+         
+            
+               <div class="method-example-part">
+                 <p>API Endpoint</p>
+<pre class="language-none"><code class="language-none">https://examples.com</code></pre>
+               </div>
+            
+         
+      </div>
+   </div>
+</section>           
+
+           
+              
+<section id="documenter-authentication" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3 id="lorem-ipsum">Lorem Ipsum</h3>
+<p>In laoreet dapibus ante vitae placerat. Pellentesque mollis sapien nec sapien elementum, eu tincidunt elit placerat. Phasellus laoreet <a href="#">VITAE</a> mi at hendrerit. Cras in massa ac mi sodales vestibulum. Etiam convallis lectus vitae ligula fermentum, et rutrum odio tincidunt. Nunc id maximus orci. Sed id sapien massa.</p>
+<p>Pellentesque nunc eros, vulputac <code>example.Key</code>. Phasellus urna dui, sollicitudin nec rutrum sollicitudin nec rutrum eros.</p>
+<p>In laoreet dapibus ante vitae <a href="#">PALL</a>. Pellentesque mollis sapien nec sapien elementum, eu tincidunt elit placerat Phasellus laoreet vitae.</p>
+
+         </div>
+      </div>
+      <div class="method-example">
+         
+            <div class="code-curl code-div active-code">
+               <div class="method-example-part">
+                 <pre class="language-bash"><code class="language-bash">curl https://examples.com/v1/charges \
+-u example_test_DTbaf9757982a9e738f05d249b:</code></pre><p>Aliquam sed risus <code>-u</code> vitae tellus venenatis vulputate non id ante. Nullam facilisis placerat ligula non pulvinar. Donec nec purus.</p>
+<p>Donec congue pharetra ligula, a porta nulla semper vel. Donec egestas fermentum augue ac ultricies. Aliquam sed risus vitae tellus venenatis vulputate non id ante. Nullam facilisis placerat ligula non pulvinar.</p>
+
+               </div>
+            </div>
+         
+            <div class="code-ruby code-div ">
+               <div class="method-example-part">
+                 <pre class="language-ruby"><code class="language-ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">"example"</span>
+example.api_key = <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span></code></pre><p>You can also set a per-request key like in the example below. This is often useful for Connect applications that use multiple API keys during the lifetime of a process.</p>
+<p>Authentication is transparently handled for you in subsequent method calls on the returned object.</p>
+<pre class="language-ruby"><code class="language-ruby">example::Charge.retrieve(
+  <span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>,
+  <span class="hljs-symbol">:api_key</span> =&gt; <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
+)</code></pre><p>A sample test API key is included in all the examples on this page, so you can test any example right away. To test requests using your account, replace the sample API key with your actual API key.</p>
+
+               </div>
+            </div>
+         
+            <div class="code-python code-div ">
+               <div class="method-example-part">
+                 <pre class="language-python"><code class="language-python"><span class="hljs-keyword">import</span> example
+example.api_key = <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span></code></pre><p>You can also set a per-request key like in the example below. This is often useful for Connect applications that use multiple API keys during the lifetime of a process.</p>
+<p>Authentication is transparently handled for you in subsequent method calls on the returned object.</p>
+<pre class="language-python"><code class="language-python">example.Charge.retrieve(
+   <span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>,
+   api_key=<span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
+)</code></pre><p>A sample test API key is included in all the examples on this page, so you can test any example right away. To test requests using your account, replace the sample API key with your actual API key.</p>
+
+               </div>
+            </div>
+         
+            <div class="code-php code-div ">
+               <div class="method-example-part">
+                 <pre class="language-php"><code class="language-php">\example\example::setApiKey(<span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>);</code></pre><p>You can also set a per-request key like in the example below. This is often useful for Connect applications that use multiple API keys during the lifetime of a process.</p>
+<p>Authentication is transparently handled for you in subsequent method calls on the returned object.</p>
+<pre class="language-php"><code class="language-php">\example\Charge::retrieve(
+   <span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>,
+   <span class="hljs-keyword">array</span>(<span class="hljs-string">'api_key'</span> =&gt; <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>)
+)</code></pre><p>A sample test API key is included in all the examples on this page, so you can test any example right away. To test requests using your account, replace the sample API key with your actual API key.</p>
+
+               </div>
+            </div>
+         
+            <div class="code-java code-div ">
+               <div class="method-example-part">
+                 <pre class="language-java"><code class="language-java">example.apiKey = <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>;</code></pre><p>You can also set a per-request key like in the example below. This is often useful for Connect applications that use multiple API keys during the lifetime of a process.</p>
+<pre class="language-java"><code class="language-java">RequestOptions requestOptions = RequestOptions.builder().setApiKey(<span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>).build();
+Charge.retrieve(<span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>, requestOptions)</code></pre><p>A sample test API key is included in all the examples on this page, so you can test any example right away. To test requests using your account, replace the sample API key with your actual API key.</p>
+
+               </div>
+            </div>
+         
+            <div class="code-node code-div ">
+               <div class="method-example-part">
+                 <pre class="language-javascript"><code class="language-javascript"><span class="hljs-keyword">var</span> example = <span class="hljs-built_in">require</span>(<span class="hljs-string">"example"</span>)(
+   <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
+);</code></pre><p>You can also set a per-request key like in the example below. This is often useful for Connect applications that use multiple API keys during the lifetime of a process.</p>
+<p>Authentication is transparently handled for you in subsequent method calls on the returned object.</p>
+<pre class="language-javascript"><code class="language-javascript">example.charges.retrieve(<span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>, {
+   <span class="hljs-attr">api_key</span>: <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
+});</code></pre><p>A sample test API key is included in all the examples on this page, so you can test any example right away. To test requests using your account, replace the sample API key with your actual API key.</p>
+
+               </div>
+            </div>
+         
+            <div class="code-go code-div ">
+               <div class="method-example-part">
+                 <pre class="language-go"><code class="language-go">example.Key = <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span></code></pre><p>You can also set a per-request key like in the example below. This is often useful for Connect applications that use multiple API keys during the lifetime of a process.</p>
+<pre class="language-go"><code class="language-go">sc := &amp;client.API{}
+sc.Init(<span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>, <span class="hljs-literal">nil</span>)
+sc.Charges.Get(<span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>, params)</code></pre><p>A sample test API key is included in all the examples on this page, so you can test any example right away. To test requests using your account, replace the sample API key with your actual API key.</p>
+
+               </div>
+            </div>
+         
+      </div>
+   </div>
+</section>           
+
+           
+              
+<section id="documenter-errors" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3 id="lorem">Lorem</h3>
+<p>In laoreet dapibus ante vitae placerat. Pellentesque mollis sapien nec sapien elementum, eu tincidunt elit placerat. Phasellus <code>2xx</code>laoreet vitae mi at hendrerit. Cras in jni <code>4xx</code>lectus vitae ligula fermentum, et rutrum odio sit amet, interdum vel enim. Duis orci nunc, eleifend vel tellus ut, finibus fermentum erat. Curabitur <code>5xx</code> in consequat lectus tincidunt quis. Maecenas sit amet semper nisl.</p>
+<p>In laoreet dapibus ante vitae placerat. Pellentesque mollis sapien nec sapien elementum, eu tincidunt elit placerat. Phasellus laoreet vitae mi at hendrerit. Cras in massa ac mi sodales vestibulum. Etiam convallis lectus vitae <a href="/docs/declines#decline-codes">ligula fermentum</a> maximus orci.</p>
+<h5 id="attributes">Attributes</h5>
+<ul>
+<li><h6 id="-errors-type-type"><a href="#errors-type"></a>type</h6>
+<p>The type of error returned. Can be: <code>api_connection_error</code>, <code>api_error</code>, <code>authentication_error</code>, <code>card_error</code>, <code>invalid_request_error</code>, or <code>rate_limit_error</code>.</p>
+</li>
+<li><h6 id="-errors-charge-charge"><a href="#errors-charge"></a>charge</h6>
+<p>Nunc suscipit justo ac odio.</p>
+</li>
+<li><h6 id="-errors-message-message-span-class-method-list-item-label-details-optional-span-"><a href="#errors-message"></a>message <span class="method-list-item-label-details">optional</span></h6>
+<p>Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo ac odio.</p>
+</li>
+<li><h6 id="-errors-code-code-span-class-method-list-item-label-details-optional-span-"><a href="#errors-code"></a>code <span class="method-list-item-label-details">optional</span></h6>
+<p>Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo ac odio.</p>
+</li>
+<li><h6 id="-errors-decline-code-decline_code-span-class-method-list-item-label-details-optional-span-"><a href="#errors-decline-code"></a>decline_code <span class="method-list-item-label-details">optional</span></h6>
+<p>Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo ac odio <a href="/docs/declines#bank-declines">condimentum malesuada Nunc</a> suscipit justo ac odio.</p>
+</li>
+<li><h6 id="-errors-param-param-span-class-method-list-item-label-details-optional-span-"><a href="#errors-param"></a>param <span class="method-list-item-label-details">optional</span></h6>
+<p>Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo. ac odio Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo.</p>
+</li>
+</ul>
+
+         </div>
+      </div>
+      <div class="method-example">
+         
+            
+               <div class="method-example-part">
+                 <h5 id="lorem-ipsum-psum-quia">Lorem Ipsum psum quia</h5>
+
+<div class='table-responsive'>
+  <div class='table'>
+    <table class='table-container'>
+      <thead>
+        <tr>
+<th>200 - OK</th>
+<th>Pellentesque mollis sapien nec sapien.</th>
+</tr>
+
+      </thead>
+      <tbody>
+        <tr>
+<td>400 - Bad Request</td>
+<td>Pellentesque mollis sapien nec sapien.</td>
+</tr>
+<tr>
+<td>401 - Unauthorized</td>
+<td>Pellentesque mollis sapien nec sapien.</td>
+</tr>
+<tr>
+<td>402 - Request Failed</td>
+<td>Pellentesque mollis sapien nec sapien.</td>
+</tr>
+<tr>
+<td>404 - Not Found</td>
+<td>Pellentesque mollis sapien nec sapien.</td>
+</tr>
+<tr>
+<td>409 - Conflict</td>
+<td>Pellentesque mollis sapien nec sapien (mollis sapien nec sapien).</td>
+</tr>
+<tr>
+<td>429 - Too Many Requests</td>
+<td>Pellentesque mollis sapien nec sapien.</td>
+</tr>
+<tr>
+<td>500, 502, 503, 504 - Server Errors</td>
+<td>Pellentesque mollis sapien nec sapien.</td>
+</tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+               </div>
+            
+         
+            
+               <div class="method-example-part">
+                 <h5 id="errors">Errors</h5>
+<h6 id="types">Types</h6>
+
+<div class='table-responsive'>
+  <div class='table'>
+    <table class='table-container'>
+      <thead>
+        <tr>
+<th>api_connection_error</th>
+<th>Pellentesque mollis sapien nec sapien.</th>
+</tr>
+
+      </thead>
+      <tbody>
+        <tr>
+<td>api_error</td>
+<td>Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien.</td>
+</tr>
+<tr>
+<td>authentication_error</td>
+<td>Pellentesque mollis sapien nec sapien Pellentesque mollis.</td>
+</tr>
+<tr>
+<td>card_error</td>
+<td>Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien.</td>
+</tr>
+<tr>
+<td>invalid_request_error</td>
+<td>Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien.</td>
+</tr>
+<tr>
+<td>rate_limit_error</td>
+<td>Pellentesque mollis sapien nec sapien.</td>
+</tr>
+<tr>
+<td>validation_error</td>
+<td>Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien (Pellentesque mollis).</td>
+</tr>
+
+      </tbody>
+    </table>
+  </div>
+</div><h6 id="codes">Codes</h6>
+
+<div class='table-responsive'>
+  <div class='table'>
+    <table class='table-container'>
+      <thead>
+        <tr>
+<th>invalid_number</th>
+<th>Curabitur lacinia convallis nibh, non cursus augue.</th>
+</tr>
+
+      </thead>
+      <tbody>
+        <tr>
+<td>invalid_expiry_month</td>
+<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
+</tr>
+<tr>
+<td>invalid_expiry_year</td>
+<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
+</tr>
+<tr>
+<td>invalid_cvc</td>
+<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
+</tr>
+<tr>
+<td>invalid_swipe_data</td>
+<td>Curabitur lacinia convallis nibh.</td>
+</tr>
+<tr>
+<td>incorrect_number</td>
+<td>Curabitur lacinia convallis nibh.</td>
+</tr>
+<tr>
+<td>expired_card</td>
+<td>Curabitur lacinia convallis.</td>
+</tr>
+<tr>
+<td>incorrect_cvc</td>
+<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
+</tr>
+<tr>
+<td>incorrect_zip</td>
+<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
+</tr>
+<tr>
+<td>card_declined</td>
+<td>Curabitur lacinia convallis.</td>
+</tr>
+<tr>
+<td>missing</td>
+<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
+</tr>
+<tr>
+<td>processing_error</td>
+<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
+</tr>
+
+      </tbody>
+    </table>
+  </div>
+</div><p>  Curabitur lacinia convallis nibh, non cursus augue <a href="#">convallis</a>.</p>
+
+               </div>
+            
+         
+      </div>
+   </div>
+</section>           
+
+   
+<section id="documenter-errors-handling-errors" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3 id="lorem-ipsum">Lorem Ipsum</h3>
+<p>In laoreet dapibus ante vitae placerat. Pellentesque, mollis sapien nec sapien elementum, eu tincidunt elit placerat. Phasellus, laoreet vitae mi at hendrerit. Cras in massa ac mi sodales vestibulum. Etiam convallis lectus vitae ligula.</p>
+
+         </div>
+      </div>
+      <div class="method-example">
+         
+            <div class="code-curl code-div active-code">
+               <div class="method-example-part">
+                 <pre class="language-bash"><code class="language-bash">No data</code></pre>
+               </div>
+            </div>
+         
+            <div class="code-ruby code-div ">
+               <div class="method-example-part">
+                 <pre class="language-ruby"><code class="language-ruby"><span class="hljs-keyword">begin</span>
+<span class="hljs-comment"># Use example's library to make requests...</span>
+<span class="hljs-keyword">rescue</span> example::CardError =&gt; e
+<span class="hljs-comment"># Since it's a decline, example::CardError will be caught</span>
+body = e.json_body
+err  = body[<span class="hljs-symbol">:error</span>]
+
+puts <span class="hljs-string">"Status is: <span class="hljs-subst">#{e.http_status}</span>"</span>
+puts <span class="hljs-string">"Type is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:type</span>]}</span>"</span>
+puts <span class="hljs-string">"Charge ID is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:charge</span>]}</span>"</span>
+<span class="hljs-comment"># The following fields are optional</span>
+puts <span class="hljs-string">"Code is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:code</span>]}</span>"</span> <span class="hljs-keyword">if</span> err[<span class="hljs-symbol">:code</span>]
+puts <span class="hljs-string">"Decline code is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:decline_code</span>]}</span>"</span> <span class="hljs-keyword">if</span> err[<span class="hljs-symbol">:decline_code</span>]
+puts <span class="hljs-string">"Param is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:param</span>]}</span>"</span> <span class="hljs-keyword">if</span> err[<span class="hljs-symbol">:param</span>]
+puts <span class="hljs-string">"Message is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:message</span>]}</span>"</span> <span class="hljs-keyword">if</span> err[<span class="hljs-symbol">:message</span>]
+<span class="hljs-keyword">rescue</span> example::RateLimitError =&gt; e
+<span class="hljs-comment"># Too many requests made to the API too quickly</span>
+<span class="hljs-keyword">rescue</span> example::InvalidRequestError =&gt; e
+<span class="hljs-comment"># Invalid parameters were supplied to example's API</span>
+<span class="hljs-keyword">rescue</span> example::AuthenticationError =&gt; e
+<span class="hljs-comment"># Authentication with example's API failed</span>
+<span class="hljs-comment"># (maybe you changed API keys recently)</span>
+<span class="hljs-keyword">rescue</span> example::APIConnectionError =&gt; e
+<span class="hljs-comment"># Network communication with example failed</span>
+<span class="hljs-keyword">rescue</span> example::exampleError =&gt; e
+<span class="hljs-comment"># Display a very generic error to the user, and maybe send</span>
+<span class="hljs-comment"># yourself an email</span>
+<span class="hljs-keyword">rescue</span> =&gt; e
+<span class="hljs-comment"># Something else happened, completely unrelated to example</span>
+<span class="hljs-keyword">end</span></code></pre>
+               </div>
+            </div>
+         
+            <div class="code-python code-div ">
+               <div class="method-example-part">
+                 <pre class="language-python"><code class="language-python"><span class="hljs-keyword">try</span>:
+<span class="hljs-comment"># Use example's library to make requests...</span>
+<span class="hljs-keyword">pass</span>
+<span class="hljs-keyword">except</span> example.error.CardError <span class="hljs-keyword">as</span> e:
+<span class="hljs-comment"># Since it's a decline, example.error.CardError will be caught</span>
+body = e.json_body
+err  = body[<span class="hljs-string">'error'</span>]
+
+<span class="hljs-keyword">print</span> <span class="hljs-string">"Status is: %s"</span> % e.http_status
+<span class="hljs-keyword">print</span> <span class="hljs-string">"Type is: %s"</span> % err[<span class="hljs-string">'type'</span>]
+<span class="hljs-keyword">print</span> <span class="hljs-string">"Code is: %s"</span> % err[<span class="hljs-string">'code'</span>]
+<span class="hljs-comment"># param is '' in this case</span>
+<span class="hljs-keyword">print</span> <span class="hljs-string">"Param is: %s"</span> % err[<span class="hljs-string">'param'</span>]
+<span class="hljs-keyword">print</span> <span class="hljs-string">"Message is: %s"</span> % err[<span class="hljs-string">'message'</span>]
+<span class="hljs-keyword">except</span> example.error.RateLimitError <span class="hljs-keyword">as</span> e:
+<span class="hljs-comment"># Too many requests made to the API too quickly</span>
+<span class="hljs-keyword">pass</span>
+<span class="hljs-keyword">except</span> example.error.InvalidRequestError <span class="hljs-keyword">as</span> e:
+<span class="hljs-comment"># Invalid parameters were supplied to example's API</span>
+<span class="hljs-keyword">pass</span>
+<span class="hljs-keyword">except</span> example.error.AuthenticationError <span class="hljs-keyword">as</span> e:
+<span class="hljs-comment"># Authentication with example's API failed</span>
+<span class="hljs-comment"># (maybe you changed API keys recently)</span>
+<span class="hljs-keyword">pass</span>
+<span class="hljs-keyword">except</span> example.error.APIConnectionError <span class="hljs-keyword">as</span> e:
+<span class="hljs-comment"># Network communication with example failed</span>
+<span class="hljs-keyword">pass</span>
+<span class="hljs-keyword">except</span> example.error.exampleError <span class="hljs-keyword">as</span> e:
+<span class="hljs-comment"># Display a very generic error to the user, and maybe send</span>
+<span class="hljs-comment"># yourself an email</span>
+<span class="hljs-keyword">pass</span>
+<span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
+<span class="hljs-comment"># Something else happened, completely unrelated to example</span>
+<span class="hljs-keyword">pass</span></code></pre>
+               </div>
+            </div>
+         
+            <div class="code-php code-div ">
+               <div class="method-example-part">
+                 <pre class="language-php"><code class="language-php"><span class="hljs-keyword">try</span> {
+  <span class="hljs-comment">// Use example's library to make requests...</span>
+} <span class="hljs-keyword">catch</span>(\example\Error\Card $e) {
+  <span class="hljs-comment">// Since it's a decline, \example\Error\Card will be caught</span>
+  $body = $e-&gt;getJsonBody();
+  $err  = $body[<span class="hljs-string">'error'</span>];
+
+  <span class="hljs-keyword">print</span>(<span class="hljs-string">'Status is:'</span> . $e-&gt;getHttpStatus() . <span class="hljs-string">"\n"</span>);
+  <span class="hljs-keyword">print</span>(<span class="hljs-string">'Type is:'</span> . $err[<span class="hljs-string">'type'</span>] . <span class="hljs-string">"\n"</span>);
+  <span class="hljs-keyword">print</span>(<span class="hljs-string">'Code is:'</span> . $err[<span class="hljs-string">'code'</span>] . <span class="hljs-string">"\n"</span>);
+  <span class="hljs-comment">// param is '' in this case</span>
+  <span class="hljs-keyword">print</span>(<span class="hljs-string">'Param is:'</span> . $err[<span class="hljs-string">'param'</span>] . <span class="hljs-string">"\n"</span>);
+  <span class="hljs-keyword">print</span>(<span class="hljs-string">'Message is:'</span> . $err[<span class="hljs-string">'message'</span>] . <span class="hljs-string">"\n"</span>);
+} <span class="hljs-keyword">catch</span> (\example\Error\RateLimit $e) {
+  <span class="hljs-comment">// Too many requests made to the API too quickly</span>
+} <span class="hljs-keyword">catch</span> (\example\Error\InvalidRequest $e) {
+  <span class="hljs-comment">// Invalid parameters were supplied to example's API</span>
+} <span class="hljs-keyword">catch</span> (\example\Error\Authentication $e) {
+  <span class="hljs-comment">// Authentication with example's API failed</span>
+  <span class="hljs-comment">// (maybe you changed API keys recently)</span>
+} <span class="hljs-keyword">catch</span> (\example\Error\ApiConnection $e) {
+  <span class="hljs-comment">// Network communication with example failed</span>
+} <span class="hljs-keyword">catch</span> (\example\Error\Base $e) {
+  <span class="hljs-comment">// Display a very generic error to the user, and maybe send</span>
+  <span class="hljs-comment">// yourself an email</span>
+} <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
+  <span class="hljs-comment">// Something else happened, completely unrelated to example</span>
+}</code></pre>
+               </div>
+            </div>
+         
+            <div class="code-java code-div ">
+               <div class="method-example-part">
+                 <pre class="language-java"><code class="language-java"><span class="hljs-keyword">try</span> {
+<span class="hljs-comment">// Use example's library to make requests...</span>
+} <span class="hljs-keyword">catch</span> (CardException e) {
+<span class="hljs-comment">// Since it's a decline, CardException will be caught</span>
+System.out.println(<span class="hljs-string">"Status is: "</span> + e.getCode());
+System.out.println(<span class="hljs-string">"Message is: "</span> + e.getMessage());
+} <span class="hljs-keyword">catch</span> (RateLimitException e) {
+<span class="hljs-comment">// Too many requests made to the API too quickly</span>
+} <span class="hljs-keyword">catch</span> (InvalidRequestException e) {
+<span class="hljs-comment">// Invalid parameters were supplied to example's API</span>
+} <span class="hljs-keyword">catch</span> (AuthenticationException e) {
+<span class="hljs-comment">// Authentication with example's API failed</span>
+<span class="hljs-comment">// (maybe you changed API keys recently)</span>
+} <span class="hljs-keyword">catch</span> (APIConnectionException e) {
+<span class="hljs-comment">// Network communication with example failed</span>
+} <span class="hljs-keyword">catch</span> (exampleException e) {
+<span class="hljs-comment">// Display a very generic error to the user, and maybe send</span>
+<span class="hljs-comment">// yourself an email</span>
+} <span class="hljs-keyword">catch</span> (Exception e) {
+<span class="hljs-comment">// Something else happened, completely unrelated to example</span>
+}</code></pre>
+               </div>
+            </div>
+         
+            <div class="code-node code-div ">
+               <div class="method-example-part">
+                 <pre class="language-javascript"><code class="language-javascript"><span class="hljs-comment">// Note: Node.js API does not throw exceptions, and instead prefers the</span>
+<span class="hljs-comment">// asynchronous style of error handling described below.</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// An error from the example API or an otheriwse asynchronous error</span>
+<span class="hljs-comment">// will be available as the first argument of any example method's callback:</span>
+<span class="hljs-comment">// E.g. example.customers.create({...}, function(err, result) {});</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// Or in the form of a rejected promise.</span>
+<span class="hljs-comment">// E.g. example.customers.create({...}).then(</span>
+<span class="hljs-comment">//        function(result) {},</span>
+<span class="hljs-comment">//        function(err) {}</span>
+<span class="hljs-comment">//      );</span>
+
+<span class="hljs-keyword">switch</span> (err.type) {
+<span class="hljs-keyword">case</span> <span class="hljs-string">'exampleCardError'</span>:
+<span class="hljs-comment">// A declined card error</span>
+err.message; <span class="hljs-comment">// =&gt; e.g. "Your card's expiration year is invalid."</span>
+<span class="hljs-keyword">break</span>;
+<span class="hljs-keyword">case</span> <span class="hljs-string">'RateLimitError'</span>:
+<span class="hljs-comment">// Too many requests made to the API too quickly</span>
+<span class="hljs-keyword">break</span>;
+<span class="hljs-keyword">case</span> <span class="hljs-string">'exampleInvalidRequestError'</span>:
+<span class="hljs-comment">// Invalid parameters were supplied to example's API</span>
+<span class="hljs-keyword">break</span>;
+<span class="hljs-keyword">case</span> <span class="hljs-string">'exampleAPIError'</span>:
+<span class="hljs-comment">// An error occurred internally with example's API</span>
+<span class="hljs-keyword">break</span>;
+<span class="hljs-keyword">case</span> <span class="hljs-string">'exampleConnectionError'</span>:
+<span class="hljs-comment">// Some kind of error occurred during the HTTPS communication</span>
+<span class="hljs-keyword">break</span>;
+<span class="hljs-keyword">case</span> <span class="hljs-string">'exampleAuthenticationError'</span>:
+<span class="hljs-comment">// You probably used an incorrect API key</span>
+<span class="hljs-keyword">break</span>;
+<span class="hljs-keyword">default</span>:
+<span class="hljs-comment">// Handle any other types of unexpected errors</span>
+<span class="hljs-keyword">break</span>;
+}</code></pre>
+               </div>
+            </div>
+         
+      </div>
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-ben-tester" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1 id="this-is-ben-s-big-content-test">This is Ben&#39;s big content test</h1>
+
+         </div>
+      </div>
+      <div class="method-example">
+         
+      </div>
+   </div>
+</section>           
+
+           
+         </div>
+      </div>
+      <!-- Blockquotes mobile menu -->
+      <div id="mobile-menu">
+         <div class="mobile-menu-inner">
+            <div class="top-links">
+               <ul class="links">
+                  
+                     <li>
+                        <a class="current" href="#documenter-api-reference">API Reference</a>
+                        
+                           <ol>
+                              
+                           </ol>
+                        
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-authentication">Authentication</a>
+                        
+                           <ol>
+                              
+                           </ol>
+                        
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-errors">Errors</a>
+                        
+                           <ol>
+                              
+                                 <li><a href="#documenter-errors-handling-errors">Handling Errors</a></li>
+                              
+                           </ol>
+                        
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-ben-tester">Ben&#39;s Test</a>
+                        
+                           <ol>
+                              
+                           </ol>
+                        
+                     </li>
+                  
+               </ul>
+            </div>
+
+         </div>
+      </div>
+      <script type="text/javascript" src="js/jquery.1.6.4.js"></script>
+      <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+      <script type="text/javascript" src="js/jquery.scrollTo-1.4.2-min.js"></script>
+      <script type="text/javascript" src="js/jquery.easing.js"></script>
+      <script type="text/javascript">document.createElement('section');
+         var duration = 500, easing = 'swing';
+      </script>
+      <script type="text/javascript" src="js/slides.min.jquery.js"></script>
+      <script type="text/javascript" src="js/script.js"></script>
+      <script type="text/javascript" src="js/scroll.js"></script>
+      <script type="text/javascript" src="js/common.js"></script>
+      <script type="text/javascript" src="js/jquery.mobile-menu.min.js"></script>
+      <script type="text/javascript">
+         ScrollLoad("scrollholder", "scroll", false);
+      </script>
+   </body>
+</html>
