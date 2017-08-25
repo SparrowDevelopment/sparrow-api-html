@@ -110,41 +110,49 @@
                   <ol id="documenter_nav">
                      
                         <li>
-                           <a class="current" href="#documenter-api-reference">API Reference</a>
+                           <a class="current" href="#documenter-getting-started">Getting Started</a>
                            
-                              <ol>
-                                 
-                              </ol>
-                           
+
+
                         </li>
                      
                         <li>
-                           <a  href="#documenter-authentication">Authentication</a>
+                           <a  href="#documenter-configuration">Configuration</a>
                            
-                              <ol>
-                                 
-                              </ol>
-                           
+
+
                         </li>
                      
                         <li>
-                           <a  href="#documenter-errors">Errors</a>
+                           <a  href="#documenter-integration-details">Integration Details</a>
                            
-                              <ol>
-                                 
-                                    <li><a href="#documenter-errors-handling-errors">Handling Errors</a></li>
-                                 
-                              </ol>
-                           
+
+
                         </li>
                      
                         <li>
-                           <a  href="#documenter-ben-tester">Ben&#39;s Test</a>
+                           <a  href="#documenter-creating-a-sale">Creating a Sale</a>
                            
-                              <ol>
-                                 
-                              </ol>
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-creating-a-sale-simple-sale">Simple Sale</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-code-samples">Code Samples</a>
                            
+
+
                         </li>
                      
                   </ol>
@@ -161,33 +169,23 @@
          <div id="documenter_content" class="method-area-wrapper">
            
               
-<section id="documenter-api-reference" class="method">
+<section id="documenter-getting-started" class="method">
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
-            <h3 id="lorem-ipsum">Lorem Ipsum</h3>
-<p>Lorem ipsum dolor sit amet, consectetur <a href="#">ELIT</a>. Nam in nisi eros. Proin quis ultricies neque. Proin imperdiet leo a leo euismod ultrices. Cras et tempor elit. Duis aliquet volutpat sapien, eget porta tellus laoreet in. Donec sem velit, tincidunt eu sodales vel, varius non libero. Sed nisl mauris, <a href="#">facilisis sit amet hendrerit at</a>, hendrerit vel tortor. Aliquam id massa euismod, ultricies metus nec, convallis urna. In laoreet dapibus ante vitae placerat. Pellentesque mollis nec sapien elementum eu tincidunt. <a href="#">SAPIEN</a> elit placerat Phasellus laoreet vitae, Cras in massa ac mi sodales <a href="#">Ligula Fermentum</a> vestibulum et rutrum odio tincidunt. Nunc id maximus orci.</p>
-<p>Vestibulum mollis eros nunc, pretium porta dolor gravida vel. Nullam arcu diam, semper a varius sit amet, interdum vel enim. Duis orci nunc, eleifend vel tellus ut, finibus fermentum erat. Curabitur sagittis justo augue. Phasellus fermentum semper nisi, in consequat lectus tincidunt quis. Maecenas sit amet semper.</p>
-<p><img src="images/place-holder.png" alt="Image"></p>
+            <h1 id="getting-started">Getting Started</h1>
+<p>The site describes the direct method for payments and value added
+features in the Sparrow gateway and is referred to as the Services API.</p>
+<p>The Services API URL is:</p>
+<p><a href="https://secure.sparrowone.com/Payments/Services_api.aspx"><em>https://secure.sparrowone.com/Payments/Services
+api.aspx</em></a></p>
+<p><code>Services_api.aspx</code> is an API implementation of secure payments. In this
+fashion, merchants can seamlessly integrate gateway payment functions
+into their checkout process using a direct post via HTTP.</p>
 
          </div>
       </div>
       <div class="method-example">
-         
-            
-               <div class="method-example-part">
-                 <h5 id="lorem-ipsum">Lorem Ipsum</h5>
-<p>Curabitur lacinia convallis nibh, <a href="#">non cursus augue</a>. Quisque id sem id lorem porttitor efficitur in quis libero. Nullam turpis ante auctor <a href="#">purus sed</a>.</p>
-
-               </div>
-            
-         
-            
-               <div class="method-example-part">
-                 <p>API Endpoint</p>
-<pre class="language-none"><code class="language-none">https://examples.com</code></pre>
-               </div>
-            
          
       </div>
    </div>
@@ -195,14 +193,162 @@
 
            
               
-<section id="documenter-authentication" class="method">
+<section id="documenter-configuration" class="method">
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
-            <h3 id="lorem-ipsum">Lorem Ipsum</h3>
-<p>In laoreet dapibus ante vitae placerat. Pellentesque mollis sapien nec sapien elementum, eu tincidunt elit placerat. Phasellus laoreet <a href="#">VITAE</a> mi at hendrerit. Cras in massa ac mi sodales vestibulum. Etiam convallis lectus vitae ligula fermentum, et rutrum odio tincidunt. Nunc id maximus orci. Sed id sapien massa.</p>
-<p>Pellentesque nunc eros, vulputac <code>example.Key</code>. Phasellus urna dui, sollicitudin nec rutrum sollicitudin nec rutrum eros.</p>
-<p>In laoreet dapibus ante vitae <a href="#">PALL</a>. Pellentesque mollis sapien nec sapien elementum, eu tincidunt elit placerat Phasellus laoreet vitae.</p>
+            <h1 id="configure-the-merchant-account">Configure the Merchant Account</h1>
+<h2 id="merchant-key-mkey-">Merchant Key (mKey)</h2>
+<p>When sending a payment transaction request to Sparrow a Merchant Key is
+required. A sample Merchant Key follows:</p>
+<pre class="language-none"><code class="language-none">  MTA6MzM6NTYgUE0tLVBheVRhY3RpeA==</code></pre><p>Further, each Merchant Key represents the payment type (credit card,
+ACH, etc…) and merchant account targeted for processing the transaction.
+This methodology allows merchants to have multiple merchant accounts and
+payment types for processing transactions. The transactions can be sent
+to a particular account based on the merchant’s business rules.</p>
+<p>For example, to process transaction send the Merchant key associated
+with a Visa and MasterCard merchant account. (Discover and American
+Express cards are also tied to the Visa/MasterCard Merchant Key.)</p>
+<p>The <code>mKey</code> can be found inside the gateway under <code>Admin &gt; System
+Configuration &gt; Transaction Routing</code>.</p>
+
+         </div>
+      </div>
+      <div class="method-example">
+         
+      </div>
+   </div>
+</section>           
+
+           
+              
+<section id="documenter-integration-details" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1 id="integration-details">Integration Details</h1>
+<h2 id="services-api">Services API</h2>
+<p>To process payment through Services API send an HTTP POST request
+containing payment fields to the Services API page.</p>
+<p>Request should be formatted as HTML form post, i.e. content type should
+be <code>application/x- www-form-urlencoded</code> and request body should be
+formatted accordingly:</p>
+<ol>
+<li><p>The form field names and values are escaped: space characters are replaced by <code>+</code>, and then reserved characters are escaped as per URL; that is, non-alphanumeric characters are replaced by <code>%HH</code>, a percent sign and two hexadecimal digits representing the ASCII code of the character. Line breaks, as in multi-line text field values, are represented as CR LF pairs, i.e. <code>%0D%0A</code>.</p>
+</li>
+<li><p>The fields are listed in the order they appear in the document with the name separated from the value by <code>=</code> and the pairs separated from each other by <code>&amp;</code>. Fields with null values may be omitted.</p>
+</li>
+</ol>
+
+         </div>
+      </div>
+      <div class="method-example">
+         
+      </div>
+   </div>
+</section>           
+
+           
+              
+<section id="documenter-creating-a-sale" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1 id="creating-a-sale">Creating a Sale</h1>
+<p>By sending the appropriate Merchant Key, API Name and API Key, the merchant can direct a transaction to the appropriate merchant account.</p>
+
+         </div>
+      </div>
+      <div class="method-example">
+         
+      </div>
+   </div>
+</section>           
+
+   
+<section id="documenter-creating-a-sale-simple-sale" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h2 id="simple-sale">Simple Sale</h2>
+
+<div class='table-responsive'>
+  <div class='table'>
+    <table class='table-container  table-bordered'>
+      <thead>
+        <tr>
+<th>Sparrow Variable Name</th>
+<th>Required</th>
+<th>Format</th>
+<th>Description  </th>
+</tr>
+
+      </thead>
+      <tbody>
+        <tr>
+<td>transtype</td>
+<td>Required</td>
+<td>sale</td>
+<td>sale = Transaction Sale</td>
+</tr>
+<tr>
+<td>mkey</td>
+<td>Required</td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td>cardnum</td>
+<td>Required</td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td>cardexp</td>
+<td>Required</td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0711 = 7/2011)</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>Optional</td>
+<td>CCC (ISO 4217 alphabetic code)</td>
+<td>Code of the payment currency. If the currency is not specified, the default currency (USD) is assumed</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Required</td>
+<td>d.dd</td>
+<td>Total amount to be charged (i.e. 10.00)</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td>Recommended</td>
+<td></td>
+<td>Card security code</td>
+</tr>
+
+      </tbody>
+    </table>
+  </div>
+</div><pre class="language-none"><code class="language-none">transtype=sale&mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amount=9.95&cardnum=4111111111111111&cardexp=1010&cvv=999</code></pre>
+         </div>
+      </div>
+      <div class="method-example">
+         
+      </div>
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-code-samples" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1 id="code-samples">Code Samples</h1>
+<p>Here are all the code samples we support.</p>
 
          </div>
       </div>
@@ -292,420 +438,6 @@ sc.Charges.Get(<span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>,
 </section>           
 
            
-              
-<section id="documenter-errors" class="method">
-   <div class="method-area">
-      <div class="method-copy">
-         <div class="method-copy-padding">
-            <h3 id="lorem">Lorem</h3>
-<p>In laoreet dapibus ante vitae placerat. Pellentesque mollis sapien nec sapien elementum, eu tincidunt elit placerat. Phasellus <code>2xx</code>laoreet vitae mi at hendrerit. Cras in jni <code>4xx</code>lectus vitae ligula fermentum, et rutrum odio sit amet, interdum vel enim. Duis orci nunc, eleifend vel tellus ut, finibus fermentum erat. Curabitur <code>5xx</code> in consequat lectus tincidunt quis. Maecenas sit amet semper nisl.</p>
-<p>In laoreet dapibus ante vitae placerat. Pellentesque mollis sapien nec sapien elementum, eu tincidunt elit placerat. Phasellus laoreet vitae mi at hendrerit. Cras in massa ac mi sodales vestibulum. Etiam convallis lectus vitae <a href="/docs/declines#decline-codes">ligula fermentum</a> maximus orci.</p>
-<h5 id="attributes">Attributes</h5>
-<ul>
-<li><h6 id="-errors-type-type"><a href="#errors-type"></a>type</h6>
-<p>The type of error returned. Can be: <code>api_connection_error</code>, <code>api_error</code>, <code>authentication_error</code>, <code>card_error</code>, <code>invalid_request_error</code>, or <code>rate_limit_error</code>.</p>
-</li>
-<li><h6 id="-errors-charge-charge"><a href="#errors-charge"></a>charge</h6>
-<p>Nunc suscipit justo ac odio.</p>
-</li>
-<li><h6 id="-errors-message-message-span-class-method-list-item-label-details-optional-span-"><a href="#errors-message"></a>message <span class="method-list-item-label-details">optional</span></h6>
-<p>Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo ac odio.</p>
-</li>
-<li><h6 id="-errors-code-code-span-class-method-list-item-label-details-optional-span-"><a href="#errors-code"></a>code <span class="method-list-item-label-details">optional</span></h6>
-<p>Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo ac odio.</p>
-</li>
-<li><h6 id="-errors-decline-code-decline_code-span-class-method-list-item-label-details-optional-span-"><a href="#errors-decline-code"></a>decline_code <span class="method-list-item-label-details">optional</span></h6>
-<p>Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo ac odio <a href="/docs/declines#bank-declines">condimentum malesuada Nunc</a> suscipit justo ac odio.</p>
-</li>
-<li><h6 id="-errors-param-param-span-class-method-list-item-label-details-optional-span-"><a href="#errors-param"></a>param <span class="method-list-item-label-details">optional</span></h6>
-<p>Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo. ac odio Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo.</p>
-</li>
-</ul>
-
-         </div>
-      </div>
-      <div class="method-example">
-         
-            
-               <div class="method-example-part">
-                 <h5 id="lorem-ipsum-psum-quia">Lorem Ipsum psum quia</h5>
-
-<div class='table-responsive'>
-  <div class='table'>
-    <table class='table-container'>
-      <thead>
-        <tr>
-<th>200 - OK</th>
-<th>Pellentesque mollis sapien nec sapien.</th>
-</tr>
-
-      </thead>
-      <tbody>
-        <tr>
-<td>400 - Bad Request</td>
-<td>Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>401 - Unauthorized</td>
-<td>Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>402 - Request Failed</td>
-<td>Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>404 - Not Found</td>
-<td>Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>409 - Conflict</td>
-<td>Pellentesque mollis sapien nec sapien (mollis sapien nec sapien).</td>
-</tr>
-<tr>
-<td>429 - Too Many Requests</td>
-<td>Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>500, 502, 503, 504 - Server Errors</td>
-<td>Pellentesque mollis sapien nec sapien.</td>
-</tr>
-
-      </tbody>
-    </table>
-  </div>
-</div>
-               </div>
-            
-         
-            
-               <div class="method-example-part">
-                 <h5 id="errors">Errors</h5>
-<h6 id="types">Types</h6>
-
-<div class='table-responsive'>
-  <div class='table'>
-    <table class='table-container'>
-      <thead>
-        <tr>
-<th>api_connection_error</th>
-<th>Pellentesque mollis sapien nec sapien.</th>
-</tr>
-
-      </thead>
-      <tbody>
-        <tr>
-<td>api_error</td>
-<td>Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>authentication_error</td>
-<td>Pellentesque mollis sapien nec sapien Pellentesque mollis.</td>
-</tr>
-<tr>
-<td>card_error</td>
-<td>Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>invalid_request_error</td>
-<td>Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>rate_limit_error</td>
-<td>Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>validation_error</td>
-<td>Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien (Pellentesque mollis).</td>
-</tr>
-
-      </tbody>
-    </table>
-  </div>
-</div><h6 id="codes">Codes</h6>
-
-<div class='table-responsive'>
-  <div class='table'>
-    <table class='table-container'>
-      <thead>
-        <tr>
-<th>invalid_number</th>
-<th>Curabitur lacinia convallis nibh, non cursus augue.</th>
-</tr>
-
-      </thead>
-      <tbody>
-        <tr>
-<td>invalid_expiry_month</td>
-<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
-</tr>
-<tr>
-<td>invalid_expiry_year</td>
-<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
-</tr>
-<tr>
-<td>invalid_cvc</td>
-<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
-</tr>
-<tr>
-<td>invalid_swipe_data</td>
-<td>Curabitur lacinia convallis nibh.</td>
-</tr>
-<tr>
-<td>incorrect_number</td>
-<td>Curabitur lacinia convallis nibh.</td>
-</tr>
-<tr>
-<td>expired_card</td>
-<td>Curabitur lacinia convallis.</td>
-</tr>
-<tr>
-<td>incorrect_cvc</td>
-<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
-</tr>
-<tr>
-<td>incorrect_zip</td>
-<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
-</tr>
-<tr>
-<td>card_declined</td>
-<td>Curabitur lacinia convallis.</td>
-</tr>
-<tr>
-<td>missing</td>
-<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
-</tr>
-<tr>
-<td>processing_error</td>
-<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
-</tr>
-
-      </tbody>
-    </table>
-  </div>
-</div><p>  Curabitur lacinia convallis nibh, non cursus augue <a href="#">convallis</a>.</p>
-
-               </div>
-            
-         
-      </div>
-   </div>
-</section>           
-
-   
-<section id="documenter-errors-handling-errors" class="method">
-   <div class="method-area">
-      <div class="method-copy">
-         <div class="method-copy-padding">
-            <h3 id="lorem-ipsum">Lorem Ipsum</h3>
-<p>In laoreet dapibus ante vitae placerat. Pellentesque, mollis sapien nec sapien elementum, eu tincidunt elit placerat. Phasellus, laoreet vitae mi at hendrerit. Cras in massa ac mi sodales vestibulum. Etiam convallis lectus vitae ligula.</p>
-
-         </div>
-      </div>
-      <div class="method-example">
-         
-            <div class="code-curl code-div active-code">
-               <div class="method-example-part">
-                 <pre class="language-bash"><code class="language-bash">No data</code></pre>
-               </div>
-            </div>
-         
-            <div class="code-ruby code-div ">
-               <div class="method-example-part">
-                 <pre class="language-ruby"><code class="language-ruby"><span class="hljs-keyword">begin</span>
-<span class="hljs-comment"># Use example's library to make requests...</span>
-<span class="hljs-keyword">rescue</span> example::CardError =&gt; e
-<span class="hljs-comment"># Since it's a decline, example::CardError will be caught</span>
-body = e.json_body
-err  = body[<span class="hljs-symbol">:error</span>]
-
-puts <span class="hljs-string">"Status is: <span class="hljs-subst">#{e.http_status}</span>"</span>
-puts <span class="hljs-string">"Type is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:type</span>]}</span>"</span>
-puts <span class="hljs-string">"Charge ID is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:charge</span>]}</span>"</span>
-<span class="hljs-comment"># The following fields are optional</span>
-puts <span class="hljs-string">"Code is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:code</span>]}</span>"</span> <span class="hljs-keyword">if</span> err[<span class="hljs-symbol">:code</span>]
-puts <span class="hljs-string">"Decline code is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:decline_code</span>]}</span>"</span> <span class="hljs-keyword">if</span> err[<span class="hljs-symbol">:decline_code</span>]
-puts <span class="hljs-string">"Param is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:param</span>]}</span>"</span> <span class="hljs-keyword">if</span> err[<span class="hljs-symbol">:param</span>]
-puts <span class="hljs-string">"Message is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:message</span>]}</span>"</span> <span class="hljs-keyword">if</span> err[<span class="hljs-symbol">:message</span>]
-<span class="hljs-keyword">rescue</span> example::RateLimitError =&gt; e
-<span class="hljs-comment"># Too many requests made to the API too quickly</span>
-<span class="hljs-keyword">rescue</span> example::InvalidRequestError =&gt; e
-<span class="hljs-comment"># Invalid parameters were supplied to example's API</span>
-<span class="hljs-keyword">rescue</span> example::AuthenticationError =&gt; e
-<span class="hljs-comment"># Authentication with example's API failed</span>
-<span class="hljs-comment"># (maybe you changed API keys recently)</span>
-<span class="hljs-keyword">rescue</span> example::APIConnectionError =&gt; e
-<span class="hljs-comment"># Network communication with example failed</span>
-<span class="hljs-keyword">rescue</span> example::exampleError =&gt; e
-<span class="hljs-comment"># Display a very generic error to the user, and maybe send</span>
-<span class="hljs-comment"># yourself an email</span>
-<span class="hljs-keyword">rescue</span> =&gt; e
-<span class="hljs-comment"># Something else happened, completely unrelated to example</span>
-<span class="hljs-keyword">end</span></code></pre>
-               </div>
-            </div>
-         
-            <div class="code-python code-div ">
-               <div class="method-example-part">
-                 <pre class="language-python"><code class="language-python"><span class="hljs-keyword">try</span>:
-<span class="hljs-comment"># Use example's library to make requests...</span>
-<span class="hljs-keyword">pass</span>
-<span class="hljs-keyword">except</span> example.error.CardError <span class="hljs-keyword">as</span> e:
-<span class="hljs-comment"># Since it's a decline, example.error.CardError will be caught</span>
-body = e.json_body
-err  = body[<span class="hljs-string">'error'</span>]
-
-<span class="hljs-keyword">print</span> <span class="hljs-string">"Status is: %s"</span> % e.http_status
-<span class="hljs-keyword">print</span> <span class="hljs-string">"Type is: %s"</span> % err[<span class="hljs-string">'type'</span>]
-<span class="hljs-keyword">print</span> <span class="hljs-string">"Code is: %s"</span> % err[<span class="hljs-string">'code'</span>]
-<span class="hljs-comment"># param is '' in this case</span>
-<span class="hljs-keyword">print</span> <span class="hljs-string">"Param is: %s"</span> % err[<span class="hljs-string">'param'</span>]
-<span class="hljs-keyword">print</span> <span class="hljs-string">"Message is: %s"</span> % err[<span class="hljs-string">'message'</span>]
-<span class="hljs-keyword">except</span> example.error.RateLimitError <span class="hljs-keyword">as</span> e:
-<span class="hljs-comment"># Too many requests made to the API too quickly</span>
-<span class="hljs-keyword">pass</span>
-<span class="hljs-keyword">except</span> example.error.InvalidRequestError <span class="hljs-keyword">as</span> e:
-<span class="hljs-comment"># Invalid parameters were supplied to example's API</span>
-<span class="hljs-keyword">pass</span>
-<span class="hljs-keyword">except</span> example.error.AuthenticationError <span class="hljs-keyword">as</span> e:
-<span class="hljs-comment"># Authentication with example's API failed</span>
-<span class="hljs-comment"># (maybe you changed API keys recently)</span>
-<span class="hljs-keyword">pass</span>
-<span class="hljs-keyword">except</span> example.error.APIConnectionError <span class="hljs-keyword">as</span> e:
-<span class="hljs-comment"># Network communication with example failed</span>
-<span class="hljs-keyword">pass</span>
-<span class="hljs-keyword">except</span> example.error.exampleError <span class="hljs-keyword">as</span> e:
-<span class="hljs-comment"># Display a very generic error to the user, and maybe send</span>
-<span class="hljs-comment"># yourself an email</span>
-<span class="hljs-keyword">pass</span>
-<span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
-<span class="hljs-comment"># Something else happened, completely unrelated to example</span>
-<span class="hljs-keyword">pass</span></code></pre>
-               </div>
-            </div>
-         
-            <div class="code-php code-div ">
-               <div class="method-example-part">
-                 <pre class="language-php"><code class="language-php"><span class="hljs-keyword">try</span> {
-  <span class="hljs-comment">// Use example's library to make requests...</span>
-} <span class="hljs-keyword">catch</span>(\example\Error\Card $e) {
-  <span class="hljs-comment">// Since it's a decline, \example\Error\Card will be caught</span>
-  $body = $e-&gt;getJsonBody();
-  $err  = $body[<span class="hljs-string">'error'</span>];
-
-  <span class="hljs-keyword">print</span>(<span class="hljs-string">'Status is:'</span> . $e-&gt;getHttpStatus() . <span class="hljs-string">"\n"</span>);
-  <span class="hljs-keyword">print</span>(<span class="hljs-string">'Type is:'</span> . $err[<span class="hljs-string">'type'</span>] . <span class="hljs-string">"\n"</span>);
-  <span class="hljs-keyword">print</span>(<span class="hljs-string">'Code is:'</span> . $err[<span class="hljs-string">'code'</span>] . <span class="hljs-string">"\n"</span>);
-  <span class="hljs-comment">// param is '' in this case</span>
-  <span class="hljs-keyword">print</span>(<span class="hljs-string">'Param is:'</span> . $err[<span class="hljs-string">'param'</span>] . <span class="hljs-string">"\n"</span>);
-  <span class="hljs-keyword">print</span>(<span class="hljs-string">'Message is:'</span> . $err[<span class="hljs-string">'message'</span>] . <span class="hljs-string">"\n"</span>);
-} <span class="hljs-keyword">catch</span> (\example\Error\RateLimit $e) {
-  <span class="hljs-comment">// Too many requests made to the API too quickly</span>
-} <span class="hljs-keyword">catch</span> (\example\Error\InvalidRequest $e) {
-  <span class="hljs-comment">// Invalid parameters were supplied to example's API</span>
-} <span class="hljs-keyword">catch</span> (\example\Error\Authentication $e) {
-  <span class="hljs-comment">// Authentication with example's API failed</span>
-  <span class="hljs-comment">// (maybe you changed API keys recently)</span>
-} <span class="hljs-keyword">catch</span> (\example\Error\ApiConnection $e) {
-  <span class="hljs-comment">// Network communication with example failed</span>
-} <span class="hljs-keyword">catch</span> (\example\Error\Base $e) {
-  <span class="hljs-comment">// Display a very generic error to the user, and maybe send</span>
-  <span class="hljs-comment">// yourself an email</span>
-} <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
-  <span class="hljs-comment">// Something else happened, completely unrelated to example</span>
-}</code></pre>
-               </div>
-            </div>
-         
-            <div class="code-java code-div ">
-               <div class="method-example-part">
-                 <pre class="language-java"><code class="language-java"><span class="hljs-keyword">try</span> {
-<span class="hljs-comment">// Use example's library to make requests...</span>
-} <span class="hljs-keyword">catch</span> (CardException e) {
-<span class="hljs-comment">// Since it's a decline, CardException will be caught</span>
-System.out.println(<span class="hljs-string">"Status is: "</span> + e.getCode());
-System.out.println(<span class="hljs-string">"Message is: "</span> + e.getMessage());
-} <span class="hljs-keyword">catch</span> (RateLimitException e) {
-<span class="hljs-comment">// Too many requests made to the API too quickly</span>
-} <span class="hljs-keyword">catch</span> (InvalidRequestException e) {
-<span class="hljs-comment">// Invalid parameters were supplied to example's API</span>
-} <span class="hljs-keyword">catch</span> (AuthenticationException e) {
-<span class="hljs-comment">// Authentication with example's API failed</span>
-<span class="hljs-comment">// (maybe you changed API keys recently)</span>
-} <span class="hljs-keyword">catch</span> (APIConnectionException e) {
-<span class="hljs-comment">// Network communication with example failed</span>
-} <span class="hljs-keyword">catch</span> (exampleException e) {
-<span class="hljs-comment">// Display a very generic error to the user, and maybe send</span>
-<span class="hljs-comment">// yourself an email</span>
-} <span class="hljs-keyword">catch</span> (Exception e) {
-<span class="hljs-comment">// Something else happened, completely unrelated to example</span>
-}</code></pre>
-               </div>
-            </div>
-         
-            <div class="code-node code-div ">
-               <div class="method-example-part">
-                 <pre class="language-javascript"><code class="language-javascript"><span class="hljs-comment">// Note: Node.js API does not throw exceptions, and instead prefers the</span>
-<span class="hljs-comment">// asynchronous style of error handling described below.</span>
-<span class="hljs-comment">//</span>
-<span class="hljs-comment">// An error from the example API or an otheriwse asynchronous error</span>
-<span class="hljs-comment">// will be available as the first argument of any example method's callback:</span>
-<span class="hljs-comment">// E.g. example.customers.create({...}, function(err, result) {});</span>
-<span class="hljs-comment">//</span>
-<span class="hljs-comment">// Or in the form of a rejected promise.</span>
-<span class="hljs-comment">// E.g. example.customers.create({...}).then(</span>
-<span class="hljs-comment">//        function(result) {},</span>
-<span class="hljs-comment">//        function(err) {}</span>
-<span class="hljs-comment">//      );</span>
-
-<span class="hljs-keyword">switch</span> (err.type) {
-<span class="hljs-keyword">case</span> <span class="hljs-string">'exampleCardError'</span>:
-<span class="hljs-comment">// A declined card error</span>
-err.message; <span class="hljs-comment">// =&gt; e.g. "Your card's expiration year is invalid."</span>
-<span class="hljs-keyword">break</span>;
-<span class="hljs-keyword">case</span> <span class="hljs-string">'RateLimitError'</span>:
-<span class="hljs-comment">// Too many requests made to the API too quickly</span>
-<span class="hljs-keyword">break</span>;
-<span class="hljs-keyword">case</span> <span class="hljs-string">'exampleInvalidRequestError'</span>:
-<span class="hljs-comment">// Invalid parameters were supplied to example's API</span>
-<span class="hljs-keyword">break</span>;
-<span class="hljs-keyword">case</span> <span class="hljs-string">'exampleAPIError'</span>:
-<span class="hljs-comment">// An error occurred internally with example's API</span>
-<span class="hljs-keyword">break</span>;
-<span class="hljs-keyword">case</span> <span class="hljs-string">'exampleConnectionError'</span>:
-<span class="hljs-comment">// Some kind of error occurred during the HTTPS communication</span>
-<span class="hljs-keyword">break</span>;
-<span class="hljs-keyword">case</span> <span class="hljs-string">'exampleAuthenticationError'</span>:
-<span class="hljs-comment">// You probably used an incorrect API key</span>
-<span class="hljs-keyword">break</span>;
-<span class="hljs-keyword">default</span>:
-<span class="hljs-comment">// Handle any other types of unexpected errors</span>
-<span class="hljs-keyword">break</span>;
-}</code></pre>
-               </div>
-            </div>
-         
-      </div>
-   </div>
-</section>           
-
-
-           
-              
-<section id="documenter-ben-tester" class="method">
-   <div class="method-area">
-      <div class="method-copy">
-         <div class="method-copy-padding">
-            <h1 id="this-is-ben-s-big-content-test">This is Ben&#39;s big content test</h1>
-
-         </div>
-      </div>
-      <div class="method-example">
-         
-      </div>
-   </div>
-</section>           
-
-           
          </div>
       </div>
       <!-- Blockquotes mobile menu -->
@@ -715,41 +447,49 @@ err.message; <span class="hljs-comment">// =&gt; e.g. "Your card's expiration ye
                <ul class="links">
                   
                      <li>
-                        <a class="current" href="#documenter-api-reference">API Reference</a>
+                        <a class="current" href="#documenter-getting-started">Getting Started</a>
                         
-                           <ol>
-                              
-                           </ol>
-                        
+
+
                      </li>
                   
                      <li>
-                        <a  href="#documenter-authentication">Authentication</a>
+                        <a  href="#documenter-configuration">Configuration</a>
                         
-                           <ol>
-                              
-                           </ol>
-                        
+
+
                      </li>
                   
                      <li>
-                        <a  href="#documenter-errors">Errors</a>
+                        <a  href="#documenter-integration-details">Integration Details</a>
                         
-                           <ol>
-                              
-                                 <li><a href="#documenter-errors-handling-errors">Handling Errors</a></li>
-                              
-                           </ol>
-                        
+
+
                      </li>
                   
                      <li>
-                        <a  href="#documenter-ben-tester">Ben&#39;s Test</a>
+                        <a  href="#documenter-creating-a-sale">Creating a Sale</a>
                         
-                           <ol>
-                              
-                           </ol>
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-creating-a-sale-creating-a-sale-simple-sale">Simple Sale</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-code-samples">Code Samples</a>
                         
+
+
                      </li>
                   
                </ul>
