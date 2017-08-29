@@ -57,12 +57,47 @@
             <div class="header-section header-section-example">
                <div id="language">
                   <ul class="language-toggle">
-                     <% _.forEach(languages, function(language,idx) {  %>
+                     
                      <li>
-                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-<%- slugify(language) %>" data-language="<%- slugify(language) %>" <% if(idx==0) { %>checked="checked"<% } %>>
-                        <label for="toggle-lang-<%- slugify(language) %>" class="language-toggle-button language-toggle-button--<%- slugify(language) %>"><%- language %></label>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-curl" data-language="curl" checked="checked">
+                        <label for="toggle-lang-curl" class="language-toggle-button language-toggle-button--curl">curl</label>
                      </li>
-                    <% }); %>
+                    
+                     <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-c" data-language="c" >
+                        <label for="toggle-lang-c" class="language-toggle-button language-toggle-button--c">C#</label>
+                     </li>
+                    
+                     <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-ruby" data-language="ruby" >
+                        <label for="toggle-lang-ruby" class="language-toggle-button language-toggle-button--ruby">Ruby</label>
+                     </li>
+                    
+                     <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-python" data-language="python" >
+                        <label for="toggle-lang-python" class="language-toggle-button language-toggle-button--python">Python</label>
+                     </li>
+                    
+                     <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-php" data-language="php" >
+                        <label for="toggle-lang-php" class="language-toggle-button language-toggle-button--php">PHP</label>
+                     </li>
+                    
+                     <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-java" data-language="java" >
+                        <label for="toggle-lang-java" class="language-toggle-button language-toggle-button--java">Java</label>
+                     </li>
+                    
+                     <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-node" data-language="node" >
+                        <label for="toggle-lang-node" class="language-toggle-button language-toggle-button--node">Node</label>
+                     </li>
+                    
+                     <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-go" data-language="go" >
+                        <label for="toggle-lang-go" class="language-toggle-button language-toggle-button--go">Go</label>
+                     </li>
+                    
                   </ul>
                </div>
             </div>
@@ -73,12 +108,53 @@
             <div id="scrollholder" class="scrollholder">
                <div id="scroll" class="scroll">
                   <ol id="documenter_nav">
-                     <% _.forEach(sections, function(section, idx) { %>
+                     
                         <li>
-                           <a <% if(idx==0) { %>class="current"<% } %> href="#documenter-<%- section.slug%>"><%- section.meta.title %></a>
-                           <%= partial('src/templates/subsectionLinks.html', {partial: partial, section: section}) %>
+                           <a class="current" href="#documenter-getting-started">Getting Started</a>
+                           
+
+
                         </li>
-                     <% }) %>
+                     
+                        <li>
+                           <a  href="#documenter-configuration">Configuration</a>
+                           
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-integration-details">Integration Details</a>
+                           
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-creating-a-sale">Creating a Sale</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-creating-a-sale-simple-sale">Simple Sale</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-code-samples">Code Samples</a>
+                           
+
+
+                        </li>
+                     
                   </ol>
                </div>
             </div>
@@ -91,9 +167,340 @@
          <!-- End Section Background -->
          <!-- main Content -->
          <div id="documenter_content" class="method-area-wrapper">
-           <% _.forEach(sections, function(section) { %>
-              <%= partial('src/templates/section.html', {partial: partial, section: section}) %>
-           <% })%>
+           
+              
+<section id="documenter-getting-started" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1>Getting Started</h1>
+<p>The site describes the direct method for payments and value added features in
+the Sparrow gateway and is referred to as the Services API.</p>
+<p>The Services API URL is:</p>
+<p><a href="https://secure.sparrowone.com/Payments/Services_api.aspx">https://secure.sparrowone.com/Payments/Services
+api.aspx</a></p>
+<p><code>Services_api.aspx</code> is an API implementation of secure payments. In this
+fashion, merchants can seamlessly integrate gateway payment functions into their
+checkout process using a direct post via HTTP.</p>
+
+         </div>
+      </div>
+      <div class="method-example">
+         
+      </div>
+   </div>
+</section>           
+
+           
+              
+<section id="documenter-configuration" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1>Configure the Merchant Account</h1>
+<h2>Merchant Key (mKey)</h2>
+<p>When sending a payment transaction request to Sparrow a Merchant Key is
+required. A sample Merchant Key follows:</p>
+<pre class="language-none"><code class="language-none">MTA6MzM6NTYgUE0tLVBheVRhY3RpeA==
+</code></pre>
+<p>Further, each Merchant Key represents the payment type (credit card, ACH, etc…)
+and merchant account targeted for processing the transaction. This methodology
+allows merchants to have multiple merchant accounts and payment types for
+processing transactions. The transactions can be sent to a particular account
+based on the merchant’s business rules.</p>
+<p>For example, to process transaction send the Merchant key associated with a Visa
+and MasterCard merchant account. (Discover and American Express cards are also
+tied to the Visa/MasterCard Merchant Key.)</p>
+<p>The <code>mKey</code> can be found inside the gateway under <code>Admin &gt; System Configuration &gt; Transaction Routing</code>.</p>
+
+         </div>
+      </div>
+      <div class="method-example">
+         
+      </div>
+   </div>
+</section>           
+
+           
+              
+<section id="documenter-integration-details" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1>Integration Details</h1>
+<h2>Services API</h2>
+<p>To process payment through Services API send an HTTP POST request containing
+payment fields to the Services API page.</p>
+<p>Request should be formatted as HTML form post, i.e. content type should be
+<code>application/x- www-form-urlencoded</code> and request body should be formatted
+accordingly:</p>
+<ol>
+<li>
+<p>The form field names and values are escaped: space characters are replaced
+by <code>+</code>, and then reserved characters are escaped as per URL; that is,
+non-alphanumeric characters are replaced by <code>%HH</code>, a percent sign and two
+hexadecimal digits representing the ASCII code of the character. Line
+breaks, as in multi-line text field values, are represented as CR LF pairs,
+i.e. <code>%0D%0A</code>.</p>
+</li>
+<li>
+<p>The fields are listed in the order they appear in the document with the name
+separated from the value by <code>=</code> and the pairs separated from each other by
+<code>&amp;</code>. Fields with null values may be omitted.</p>
+</li>
+</ol>
+
+         </div>
+      </div>
+      <div class="method-example">
+         
+      </div>
+   </div>
+</section>           
+
+           
+              
+<section id="documenter-creating-a-sale" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1>Creating a Sale</h1>
+<p>By sending the appropriate Merchant Key, API Name and API Key, the merchant can
+direct a transaction to the appropriate merchant account.</p>
+
+         </div>
+      </div>
+      <div class="method-example">
+         
+      </div>
+   </div>
+</section>           
+
+   
+<section id="documenter-creating-a-sale-simple-sale" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h2>Simple Sale</h2>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>sale</td>
+<td>sale = Transaction Sale</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0711 = 7/2011)</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td>d.dd</td>
+<td>Total amount to be charged (i.e. 10.00)</td>
+</tr>
+<tr>
+<td>cvv<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></td>
+<td></td>
+<td>Card security code</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>CCC (ISO 4217 alphabetic code)</td>
+<td>Code of the payment currency. If the currency is not specified, the default currency (USD) is assumed</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;cardnum=4111111111111111&amp;cardexp=1010&amp;cvv=999
+</code></pre>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Recommended <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+         </div>
+      </div>
+      <div class="method-example">
+         
+      </div>
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-code-samples" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1>Code Samples</h1>
+<p>Here are all the code samples we support.</p>
+
+         </div>
+      </div>
+      <div class="method-example">
+         
+            <div class="code-curl code-div active-code">
+               <div class="method-example-part">
+                 <pre class="language-bash"><code class="language-bash">curl https://examples.com/v1/charges \
+-u example_test_DTbaf9757982a9e738f05d249b:
+</code></pre>
+<p>Aliquam sed risus <code>-u</code> vitae tellus venenatis vulputate non id ante. Nullam
+facilisis placerat ligula non pulvinar. Donec nec purus.</p>
+<p>Donec congue pharetra ligula, a porta nulla semper vel. Donec egestas fermentum
+augue ac ultricies. Aliquam sed risus vitae tellus venenatis vulputate non id
+ante. Nullam facilisis placerat ligula non pulvinar.</p>
+
+               </div>
+            </div>
+         
+            <div class="code-ruby code-div ">
+               <div class="method-example-part">
+                 <pre class="language-ruby"><code class="language-ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">"example"</span>
+example.api_key = <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
+</code></pre>
+<p>You can also set a per-request key like in the example below. This is often
+useful for Connect applications that use multiple API keys during the lifetime
+of a process.</p>
+<p>Authentication is transparently handled for you in subsequent method calls on
+the returned object.</p>
+<pre class="language-ruby"><code class="language-ruby">example::Charge.retrieve(
+  <span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>,
+  <span class="hljs-symbol">:api_key</span> =&gt; <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
+)
+</code></pre>
+<p>A sample test API key is included in all the examples on this page, so you can
+test any example right away. To test requests using your account, replace the
+sample API key with your actual API key.</p>
+
+               </div>
+            </div>
+         
+            <div class="code-python code-div ">
+               <div class="method-example-part">
+                 <pre class="language-python"><code class="language-python"><span class="hljs-keyword">import</span> example
+example.api_key = <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
+</code></pre>
+<p>You can also set a per-request key like in the example below. This is often
+useful for Connect applications that use multiple API keys during the lifetime
+of a process.</p>
+<p>Authentication is transparently handled for you in subsequent method calls on
+the returned object.</p>
+<pre class="language-python"><code class="language-python">example.Charge.retrieve(
+   <span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>,
+   api_key=<span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
+)
+</code></pre>
+<p>A sample test API key is included in all the examples on this page, so you can
+test any example right away. To test requests using your account, replace the
+sample API key with your actual API key.</p>
+
+               </div>
+            </div>
+         
+            <div class="code-php code-div ">
+               <div class="method-example-part">
+                 <pre class="language-php"><code class="language-php">\example\example::setApiKey(<span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>);
+</code></pre>
+<p>You can also set a per-request key like in the example below. This is often
+useful for Connect applications that use multiple API keys during the lifetime
+of a process.</p>
+<p>Authentication is transparently handled for you in subsequent method calls on
+the returned object.</p>
+<pre class="language-php"><code class="language-php">\example\Charge::retrieve(
+   <span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>,
+   <span class="hljs-keyword">array</span>(<span class="hljs-string">'api_key'</span> =&gt; <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>)
+)
+</code></pre>
+<p>A sample test API key is included in all the examples on this page, so you can
+test any example right away. To test requests using your account, replace the
+sample API key with your actual API key.</p>
+
+               </div>
+            </div>
+         
+            <div class="code-java code-div ">
+               <div class="method-example-part">
+                 <pre class="language-java"><code class="language-java">example.apiKey = <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>;
+</code></pre>
+<p>You can also set a per-request key like in the example below. This is often
+useful for Connect applications that use multiple API keys during the lifetime
+of a process.</p>
+<pre class="language-java"><code class="language-java">RequestOptions requestOptions = RequestOptions.builder().setApiKey(<span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>).build();
+Charge.retrieve(<span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>, requestOptions)
+</code></pre>
+<p>A sample test API key is included in all the examples on this page, so you can
+test any example right away. To test requests using your account, replace the
+sample API key with your actual API key.</p>
+
+               </div>
+            </div>
+         
+            <div class="code-node code-div ">
+               <div class="method-example-part">
+                 <pre class="language-javascript"><code class="language-javascript"><span class="hljs-keyword">var</span> example = <span class="hljs-built_in">require</span>(<span class="hljs-string">"example"</span>)(
+   <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
+);
+</code></pre>
+<p>You can also set a per-request key like in the example below. This is often
+useful for Connect applications that use multiple API keys during the lifetime
+of a process.</p>
+<p>Authentication is transparently handled for you in subsequent method calls on
+the returned object.</p>
+<pre class="language-javascript"><code class="language-javascript">example.charges.retrieve(<span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>, {
+   <span class="hljs-attr">api_key</span>: <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
+});
+</code></pre>
+<p>A sample test API key is included in all the examples on this page, so you can
+test any example right away. To test requests using your account, replace the
+sample API key with your actual API key.</p>
+
+               </div>
+            </div>
+         
+            <div class="code-go code-div ">
+               <div class="method-example-part">
+                 <pre class="language-go"><code class="language-go">example.Key = <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
+</code></pre>
+<p>You can also set a per-request key like in the example below. This is often
+useful for Connect applications that use multiple API keys during the lifetime
+of a process.</p>
+<pre class="language-go"><code class="language-go">sc := &amp;client.API{}
+sc.Init(<span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>, <span class="hljs-literal">nil</span>)
+sc.Charges.Get(<span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>, params)
+</code></pre>
+<p>A sample test API key is included in all the examples on this page, so you can
+test any example right away. To test requests using your account, replace the
+sample API key with your actual API key.</p>
+
+               </div>
+            </div>
+         
+      </div>
+   </div>
+</section>           
+
+           
          </div>
       </div>
       <!-- Blockquotes mobile menu -->
@@ -101,12 +508,53 @@
          <div class="mobile-menu-inner">
             <div class="top-links">
                <ul class="links">
-                  <% _.forEach(sections, function(section, idx) { %>
+                  
                      <li>
-                        <a <% if(idx==0) { %>class="current"<% } %> href="#documenter-<%- section.slug%>"><%- section.meta.title %></a>
-                        <%= partial('src/templates/subsectionLinks.html', {partial: partial, section: section, prefix: section.slug}) %>
+                        <a class="current" href="#documenter-getting-started">Getting Started</a>
+                        
+
+
                      </li>
-                  <% }) %>
+                  
+                     <li>
+                        <a  href="#documenter-configuration">Configuration</a>
+                        
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-integration-details">Integration Details</a>
+                        
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-creating-a-sale">Creating a Sale</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-creating-a-sale-creating-a-sale-simple-sale">Simple Sale</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-code-samples">Code Samples</a>
+                        
+
+
+                     </li>
+                  
                </ul>
             </div>
 
