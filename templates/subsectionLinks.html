@@ -1,0 +1,19 @@
+<%
+slug = section.slug;
+if(typeof(prefix)!='undefined')
+{
+   slug = prefix + '-' + slug;
+}
+%>
+<% if(section.sections && section.sections.length>0) { %>
+  <ol>
+     <% _.forEach(section.sections, function(subSection, idx) {
+       var thisSlug = slug + '-' + subSection.slug
+     %>
+        <li>
+          <a href="#documenter-<%- thisSlug %>"><%- subSection.meta.title %></a>
+          <%= partial('src/templates/subsectionLinks.html', {partial: partial, section: subSection, prefix: slug}) %>
+        </li>
+     <% }) %>
+  </ol>
+<% } %>
