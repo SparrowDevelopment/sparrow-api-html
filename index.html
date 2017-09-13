@@ -141,7 +141,7 @@
                         </li>
                      
                         <li>
-                           <a  href="#documenter-separate-auth-capture">Separate Authorization and Capture</a>
+                           <a  href="#documenter-separate-auth-capture">Creating an Authorization and Capture</a>
                            
 
   <ol>
@@ -255,6 +255,81 @@
                         </li>
                      
                         <li>
+                           <a  href="#documenter-starcard">Military Star Card</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-starcard-simple-starcard">Simple Star Card</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-starcard-simple-starcard-advanced-starcard">Advanced Star Card</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-ach">Automated Clearing House (ACH)/ eCheck</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-ach-simple-ach">Simple ACH</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-ach-simple-ach-advanced-sale">Advanced ACH</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-fiserv">Fiserv</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-fiserv-fiserv-simple">Fiserv Simple Sale</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-fiserv-fiserv-simple-fiserv-advanced">Advanced Fiserv Sale</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
                            <a  href="#documenter-chargeback">Chargeback Entry</a>
                            
 
@@ -298,6 +373,24 @@
      
         <li>
           <a href="#documenter-decrypt-custom-field-decrypt">Decrypt Data</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-cc-verification">Credit Card Verification</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-cc-verification-card-verification">Account Verification</a>
           
 
 
@@ -814,7 +907,7 @@ $res = $c-&gt;simpleSale(<span class="hljs-number">9.95</span>, $ci);
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
-            <h1>Separate Authorization and Capture</h1>
+            <h1>Creating an Authorization and Capture</h1>
 <p>A typical Sale has two parts, an Authorization and a Capture. Through the API,
 merchants have the option to either run a complete sale or break the transaction
 into two separate parts. Merchants who do not ship/deliver products on the same
@@ -1563,6 +1656,981 @@ settlement operation.</p>
 
            
               
+<section id="documenter-starcard" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Military Star Card</h3>
+<p></p>
+<p>The Military Star Card is a private-label line of credit offered by the Military
+Exchange Credit Service and managed by the Army and Air Force Exchange Service.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-starcard-simple-starcard" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Simple Star Card</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>sale</td>
+<td>Transaction sale</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum​</strong></td>
+<td></td>
+<td>Card number</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td>d.dd</td>
+<td>Total amount to be refunded</td>
+</tr>
+<tr>
+<td><strong>CID</strong></td>
+<td>Custom Field</td>
+<td>11 digit numerical code</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td>Card security code</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;cardnum=6019440000011111&amp;amount=20.00&amp;CID=52347800001
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-starcard-simple-starcard-advanced-starcard" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Advanced Star Card</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>sale</td>
+<td>Transaction Sale</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0719 = 7/2019</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td>d.dd</td>
+<td>Total amount to be charged (ie. 10.00)</td>
+</tr>
+<tr>
+<td>CID</td>
+<td>custom field</td>
+<td>11 digit numerical code</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td>card security code</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>CCC (ISO 4217 alphabetic code)</td>
+<td>Code of the payment currency. If currency is not specified, the default currency (USD) is assumed.</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>skunumber_#</td>
+<td>skunumber_1, skunumber_2, etc</td>
+<td>SKU number of the product being purchased</td>
+</tr>
+<tr>
+<td>description_#</td>
+<td></td>
+<td>Description of the product being purchased</td>
+</tr>
+<tr>
+<td>amount_#</td>
+<td></td>
+<td>Price of the single unit of a product being purchased</td>
+</tr>
+<tr>
+<td>quantity_#</td>
+<td></td>
+<td>Number of units of a product being purchased</td>
+</tr>
+<tr>
+<td>orderdesc</td>
+<td></td>
+<td>Order Description</td>
+</tr>
+<tr>
+<td>orderid</td>
+<td></td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>cardipaddress</td>
+<td>ddd.ddd.ddd.ddd</td>
+<td>IP address of the customer, can be used for fraud prevention in FBI Tools</td>
+</tr>
+<tr>
+<td>tax</td>
+<td>d.dd</td>
+<td>Total tax amount</td>
+</tr>
+<tr>
+<td>shipamount</td>
+<td>d.dd</td>
+<td>Total shipping amount</td>
+</tr>
+<tr>
+<td>ponumber</td>
+<td></td>
+<td>Original Purchase Order</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td>Billing company</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>Billing address2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td>state</td>
+<td>2 character abbreviation</td>
+<td>Billing state</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+</tr>
+<tr>
+<td>country</td>
+<td>CC (ISO-3166)</td>
+<td>Billing Country (ie. US)</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>Billing Email Address</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td>Shipping company</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>Shipping Address</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>Shipping Address - line 2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>Shipping City</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td>2 character abbreviation</td>
+<td>Shipping State</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td>Shipping Zip Code</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td>CC (ISO - 3166)</td>
+<td>Shipping Country, ie US</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>Shipping Phone Number</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>Shipping Email</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=57.85&amp;cardnum=6019440000011111&amp;CID=12345678911&amp;cardexp=1010&amp;cvv=999&amp;skunumber_1=5558779&amp;description_1=menssweaterblue&amp;amount_1=50.00&amp;quantity_1=1&amp;tax=2.85&amp;shipamount=5.00&amp;firstname=John&amp;lastname=Smith&amp;address1=888+test+address&amp;city=Los+Angeles&amp;country=US&amp;state=CA&amp;phone=222-444-2938&amp;shipfirstname=John&amp;shiplastname=Smith&amp;shipaddress1=888+test+address&amp;shipcity=Los+Angeles&amp;shipstate=CA&amp;shipphone=2224442938
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-ach" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>ACH and eCheck</h3>
+<p></p>
+<p>Automated Clearing House (ACH) is an electronic network for financial
+transactions in the United States. ACH allows merchants to debit and credit
+funds directly to and from client’s banks accounts.</p>
+<p></p>
+<p>ACH/ eCheck Test Transaction Information</p>
+<p>Bank name: <code>First Test Bank</code></p>
+<p>Routing number: <code>110000000</code></p>
+<p>Account number: <code>1234567890123 / 3210987654321</code></p>
+<p>Account type: <code>P / B</code></p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-ach-simple-ach" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Simple ACH</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>sale/ refund/ credit</td>
+<td>sale- transaction sale, refund- transaction refund, credit- transaction credit</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>bankname​</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank name</td>
+</tr>
+<tr>
+<td><strong>routing</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank routing number</td>
+</tr>
+<tr>
+<td><strong>account</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank account number</td>
+</tr>
+<tr>
+<td><strong>achaccounttype</strong></td>
+<td></td>
+<td>checking/savings</td>
+<td>Customers type of bank account</td>
+</tr>
+<tr>
+<td><strong>achaccountsubtype</strong></td>
+<td></td>
+<td>business/personal</td>
+<td>Customers type of bank account</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=business9
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-ach-simple-ach-advanced-sale" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Advanced ACH</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>sale/ refund/ credit</td>
+<td>sale- transaction sale, refund- transaction refund, credit- transaction credit</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>bankname​</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank name</td>
+</tr>
+<tr>
+<td><strong>routing</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank routing number</td>
+</tr>
+<tr>
+<td><strong>account</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank account number</td>
+</tr>
+<tr>
+<td><strong>achaccounttype</strong></td>
+<td></td>
+<td>checking/savings</td>
+<td>Customers type of bank account</td>
+</tr>
+<tr>
+<td><strong>achaccountsubtype</strong></td>
+<td></td>
+<td>business/personal</td>
+<td>Customers type of bank account</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged</td>
+</tr>
+<tr>
+<td>orderdesc</td>
+<td></td>
+<td></td>
+<td>Order Description</td>
+</tr>
+<tr>
+<td>orderid</td>
+<td></td>
+<td></td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td></td>
+<td></td>
+<td>Billing first name, should be from 1-100 characters</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td></td>
+<td>Billing last name, should be from 1-100 characters</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td></td>
+<td>Billing Company</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td></td>
+<td>Billing address. Should be from 1-200 alpha-numeric characters and can include # - : ;</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td></td>
+<td>Billing address - line 2. Should be from 1-200 alpha-numeric characters and can include # - : ;</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td></td>
+<td>Billing city, should be 1-50 alpha characters</td>
+</tr>
+<tr>
+<td>state</td>
+<td></td>
+<td></td>
+<td>Billing state (2 character abbreviation)</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td></td>
+<td>Billing postal code. If the country is US the zip code format must be: [5 digits: XXXXX] or [9 digits XXXXX-XXXX]</td>
+</tr>
+<tr>
+<td>country</td>
+<td></td>
+<td>cc</td>
+<td>Billing country (ie. US)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td></td>
+<td>Billing phone number, 10 digits</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td></td>
+<td>Billing email address</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td></td>
+<td>Shipping address. Should be from 1-200 alpha-numeric characters and can include # - : ;</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td></td>
+<td>Shipping address - line 2. Should be from 1-200 alpha-numeric characters and can include # - : ;</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td></td>
+<td>Shipping city, should be 1-50 alpha characters</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td></td>
+<td></td>
+<td>Shipping state, 2 character abbreviation</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td></td>
+<td>Shipping postal code. If the country is US the zip code format must be: [5 digits: XXXXX] or [9 digits XXXXX-XXXX]</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td></td>
+<td>cc</td>
+<td>Shipping country (ie. US)</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td></td>
+<td>Shipping phone number, 10 digits</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td></td>
+<td>Shipping email</td>
+</tr>
+<tr>
+<td>saveclient</td>
+<td></td>
+<td>true/false</td>
+<td>If parameter 'saveclient' = true and the customer is identified as new, then a new Data Vault client will be created with payment/contact info from the transaction data and DV token will be generated. The payment transaction will be assigned to this new DV client.</td>
+</tr>
+<tr>
+<td>updateclient</td>
+<td></td>
+<td></td>
+<td>If the parameter 'updateclient' = true and the DataVault finds the client according to customer identification rules, then the payment transaction will be assigned to the DataVault client and the DataVault client payment/contact info will be updated according to the transaction's data.</td>
+</tr>
+<tr>
+<td>opt_amount_type_#</td>
+<td></td>
+<td></td>
+<td>Type of additional amount (Tip)</td>
+</tr>
+<tr>
+<td>opt_amount_value_#</td>
+<td></td>
+<td>d.dd</td>
+<td>Value of the additional amount (10.00)</td>
+</tr>
+<tr>
+<td>opt_amount_percentage_#</td>
+<td></td>
+<td></td>
+<td>Percentage of additional amount (20)</td>
+</tr>
+<tr>
+<td>birthdate</td>
+<td></td>
+<td>MM/DD/YYYY</td>
+<td>Birthdate of the customer</td>
+</tr>
+<tr>
+<td>checknumber</td>
+<td></td>
+<td></td>
+<td>Check number. 1-15 alphanumeric characters</td>
+</tr>
+<tr>
+<td>driverlicensenumber</td>
+<td></td>
+<td></td>
+<td>Drivers license number, 1-50 alphanumeric characters</td>
+</tr>
+<tr>
+<td>driverlicensecountry</td>
+<td></td>
+<td>cc</td>
+<td>Drivers license country</td>
+</tr>
+<tr>
+<td>driverlicensestate</td>
+<td></td>
+<td>cc</td>
+<td>Drivers license state</td>
+</tr>
+<tr>
+<td>sendtransreceipttobillemail</td>
+<td></td>
+<td>true/false</td>
+<td>If true, this will send a transaction receipt to the billing email if present</td>
+</tr>
+<tr>
+<td>sendtransreceipttoshipemail</td>
+<td></td>
+<td>true/false</td>
+<td>If true, this will send a transaction receipt to the shipping email if present</td>
+</tr>
+<tr>
+<td>paymentdescriptor</td>
+<td></td>
+<td></td>
+<td>Overrides the dynamic payment descriptor</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=business&amp;firstname=Henry&amp;lastname=Johnson&amp;phone=8526547896&amp;email=hjohnson@test.com
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-fiserv" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Fiserv</h3>
+<p></p>
+<p>Fiserv provides a private label, closed loop line of credit for its partners.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-fiserv-fiserv-simple" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Fiserv Simple Sale</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>sale</td>
+<td>sale = Transaction Sale</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0711 = 7/2011)</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged (i.e. 10.00)</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;amount=9.95&amp;cardnum=000123456789002&amp;cardexp=1010&amp;
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-fiserv-fiserv-simple-fiserv-advanced" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Advanced Fiserv Sale</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>sale</td>
+<td>Transaction Sale</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0719 = 7/2019</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td>d.dd</td>
+<td>Total amount to be charged (ie. 10.00)</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td>card security code</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>CCC (ISO 4217 alphabetic code)</td>
+<td>Code of the payment currency. If currency is not specified, the default currency (USD) is assumed.</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>skunumber_#</td>
+<td>skunumber_1, skunumber_2, etc</td>
+<td>SKU number of the product being purchased</td>
+</tr>
+<tr>
+<td>description_#</td>
+<td></td>
+<td>Description of the product being purchased</td>
+</tr>
+<tr>
+<td>amount_#</td>
+<td></td>
+<td>Price of the single unit of a product being purchased</td>
+</tr>
+<tr>
+<td>quantity_#</td>
+<td></td>
+<td>Number of units of a product being purchased</td>
+</tr>
+<tr>
+<td>orderdesc</td>
+<td></td>
+<td>Order Description</td>
+</tr>
+<tr>
+<td>orderid</td>
+<td></td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>cardipaddress</td>
+<td>ddd.ddd.ddd.ddd</td>
+<td>IP address of the customer, can be used for fraud prevention in FBI Tools</td>
+</tr>
+<tr>
+<td>tax</td>
+<td>d.dd</td>
+<td>Total tax amount</td>
+</tr>
+<tr>
+<td>shipamount</td>
+<td>d.dd</td>
+<td>Total shipping amount</td>
+</tr>
+<tr>
+<td>ponumber</td>
+<td></td>
+<td>Original Purchase Order</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td>Billing company</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>Billing address2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td>state</td>
+<td>2 character abbreviation</td>
+<td>Billing state</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+</tr>
+<tr>
+<td>country</td>
+<td>CC (ISO-3166)</td>
+<td>Billing Country (ie. US)</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>Billing Email Address</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td>Shipping company</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>Shipping Address</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>Shipping Address - line 2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>Shipping City</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td>2 character abbreviation</td>
+<td>Shipping State</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td>Shipping Zip Code</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td>CC (ISO - 3166)</td>
+<td>Shipping Country, ie US</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>Shipping Phone Number</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>Shipping Email</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=57.85&amp;cardnum=4000123456789002&amp;cardexp=1010&amp;skunumber_1=5558779&amp;description_1=menssweaterblue&amp;amount_1=50.00&amp;quantity_1=1&amp;tax=2.85&amp;shipamount=5.00&amp;firstname=John&amp;lastname=Smith&amp;address1=888+test+address&amp;city=Los+Angeles&amp;country=US&amp;state=CA&amp;phone=222-444-2938&amp;shipfirstname=John&amp;shiplastname=Smith&amp;shipaddress1=888+test+address&amp;shipcity=Los+Angeles&amp;shipstate=CA&amp;shipphone=2224442938
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
 <section id="documenter-chargeback" class="method">
    <div class="method-area">
       <div class="method-copy">
@@ -1779,6 +2847,101 @@ Vault client and the name of the custom field. Commonly encrypted fields may be:
 
            
               
+<section id="documenter-cc-verification" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Credit Card Verification</h3>
+<p>An Account Verification transaction is used when certain aspects of the credit
+card are needed prior to a purchase. An Account Verification transaction would
+be sent in as a normal Authorization request (not a Sale) with the amount of
+$0, and the following can be checked by the Issuer:</p>
+<ul>
+<li>
+<p>Credit Card number-Checks to see if the card number is on file with the
+Issuer, and if in good standing</p>
+<ul>
+<li>
+<p>AVS-Checks the address of the cardholder</p>
+</li>
+<li>
+<p>CVN-Checks the Card verification Number of the credit card</p>
+</li>
+</ul>
+</li>
+</ul>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-cc-verification-card-verification" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Account Verification</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>auth</td>
+<td>auth</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie 0719 = 07/2019)</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td>d.dd</td>
+<td>Total amount to be charged should be 0.00</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td>Card security code</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Billing postal code. If the country is US the zip code format must be: [5 digits: XXXXX] or [9 digits XXXXX-XXXX]</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">transtype=auth&amp;mkey=HNJ45D23MKLO85J2D00LOP&amp;cardnum=4111111111111111&amp;amount=0.00&amp;zip=85254
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
 <section id="documenter-code-samples" class="method">
    <div class="method-area">
       <div class="method-copy">
@@ -1951,7 +3114,7 @@ sample API key with your actual API key.</p>
                      </li>
                   
                      <li>
-                        <a  href="#documenter-separate-auth-capture">Separate Authorization and Capture</a>
+                        <a  href="#documenter-separate-auth-capture">Creating an Authorization and Capture</a>
                         
 
   <ol>
@@ -2065,6 +3228,81 @@ sample API key with your actual API key.</p>
                      </li>
                   
                      <li>
+                        <a  href="#documenter-starcard">Military Star Card</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-starcard-starcard-simple-starcard">Simple Star Card</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-starcard-starcard-simple-starcard-advanced-starcard">Advanced Star Card</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-ach">Automated Clearing House (ACH)/ eCheck</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-ach-ach-simple-ach">Simple ACH</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-ach-ach-simple-ach-advanced-sale">Advanced ACH</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-fiserv">Fiserv</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-fiserv-fiserv-fiserv-simple">Fiserv Simple Sale</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-fiserv-fiserv-fiserv-simple-fiserv-advanced">Advanced Fiserv Sale</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
                         <a  href="#documenter-chargeback">Chargeback Entry</a>
                         
 
@@ -2108,6 +3346,24 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-decrypt-custom-field-decrypt-custom-field-decrypt">Decrypt Data</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-cc-verification">Credit Card Verification</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-cc-verification-cc-verification-card-verification">Account Verification</a>
           
 
 
