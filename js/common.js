@@ -7,7 +7,7 @@ jQuery(document).ready(function() {
 
     /*  Language changer  */
 
-    //jQuery('.language-toggle-source').on('click', function () {
+    //jQuery('.language-toggle-source').bind('click', function () {
 
     jQuery('.language-toggle-source').click(function(e){
 
@@ -34,7 +34,7 @@ jQuery(document).ready(function() {
 
     /* side nav categories */
     if (jQuery('.subDropdown')[0]) {
-        jQuery('.subDropdown').on("click", function() {
+        jQuery('.subDropdown').bind("click", function() {
             jQuery(this).toggleClass('plus');
             jQuery(this).toggleClass('minus');
             jQuery(this).parent().find('ul').slideToggle();
@@ -76,7 +76,7 @@ jQuery(document).ready(function() {
 var isTouchDevice = ('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0);
 jQuery(window).load(function() {
     if (isTouchDevice) {
-        jQuery('#nav a.level-top').on("click", function(e) {
+        jQuery('#nav a.level-top').bind("click", function(e) {
             jQueryt = jQuery(this);
             jQueryparent = jQueryt.parent();
             if (jQueryparent.hasClass('parent')) {
