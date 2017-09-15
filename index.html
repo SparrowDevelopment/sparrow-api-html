@@ -305,6 +305,24 @@
                         </li>
                      
                         <li>
+                           <a  href="#documenter-ewallet">eWallet</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-ewallet-ewallet-credit">eWallet Simple Credit</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
                            <a  href="#documenter-fiserv">Fiserv</a>
                            
 
@@ -391,6 +409,84 @@
      
         <li>
           <a href="#documenter-cc-verification-card-verification">Account Verification</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-datavault">Data Vault</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-datavault-simple-add-customer">Simple Add Customer</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-simple-add-customer-advanced-add-customer">Advanced Add Customer</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-simple-add-customer-advanced-add-customer-update-payment-type">Update Payment Type</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-simple-add-customer-advanced-add-customer-update-payment-type-delete-payment-type">Delete Payment Type</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-simple-add-customer-advanced-add-customer-update-payment-type-delete-payment-type-delete-customer">Delete Data Vault Customer</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-payment-plans">Creating Payment Plans</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description">Plan Description</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences">Building a Sequence</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications">Notification Settings</a>
           
 
 
@@ -2337,6 +2433,101 @@ funds directly to and from client’s banks accounts.</p>
 
            
               
+<section id="documenter-ewallet" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>eWallet</h3>
+<p>An eWallet is a device, website, software system or database which facilitates
+transactions securely by storing a consumers credit card or bank account within
+a password protected system.</p>
+<p>SPARROW currently supports the PayPal eWallet. eWallet operations can be
+processed via both the Services API and Checkout API.</p>
+<ul>
+<li>
+<p>The Services API can be used to process credit operations only</p>
+</li>
+<li>
+<p>The Checkout API must be used for Sale transactions. The customer must be
+directed to the PayPal Express Checkout page where they will login to their
+PayPal account to pay securely</p>
+</li>
+</ul>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-ewallet-ewallet-credit" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Fiserv Simple Sale</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>credit</td>
+<td>credit- funds being pushed to the customer</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>ewalletaccount​</strong></td>
+<td></td>
+<td></td>
+<td>eWallet account credentials (ie email address associated with the customers paypal account)</td>
+</tr>
+<tr>
+<td>ewallet type​</td>
+<td></td>
+<td>PayPal</td>
+<td>Currently PayPal is the only eWallet type supported</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged (i.e. 10.00)</td>
+</tr>
+<tr>
+<td>currency</td>
+<td></td>
+<td>ccc</td>
+<td>Code of the payment currency. If not currency is specified, the default is USD</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;amount=9.95&amp;ewalletaccount=user@example.com&amp;ewallettype=paypal&amp;currency=USD
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
 <section id="documenter-fiserv" class="method">
    <div class="method-area">
       <div class="method-copy">
@@ -2942,6 +3133,1073 @@ Issuer, and if in good standing</p>
 
            
               
+<section id="documenter-datavault" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Data Vault</h3>
+<p>The Data Vault is designed to store and recall client’s payment information for
+efficient, repeatable transactions. Through using tokenization, all necessary
+consumer information is stored adhering to PCI Level 1 compliance.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-datavault-simple-add-customer" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Simple Add Customer by Payment Type:</h3>
+<p>Below are the minimum fields required to add a new Data Vault customer for each
+supported payment type.</p>
+<p></p>
+<h3>Credit Card</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>addcustomer</td>
+<td>Add a new Data Vault Customer</td>
+</tr>
+<tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td>Customer’s first name</td>
+</tr>
+<tr>
+<td><strong>lastname</strong></td>
+<td></td>
+<td>Customer’s last name</td>
+</tr>
+<tr>
+<td><strong>cardnum_#</strong></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp_#</strong></td>
+<td>MMYY</td>
+<td>Credit card expiration</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addcustomer&amp;firstname=John&amp;lastname=Doe&amp;customerid=26B122&amp;cardnum=4111111111111111&amp;cardexp=0220
+
+</code></pre>
+<h3>ACH</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>addcustomer</td>
+<td>Add a new Data Vault Customer</td>
+</tr>
+<tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td>Customer’s first name</td>
+</tr>
+<tr>
+<td><strong>lastname</strong></td>
+<td></td>
+<td>Customer’s last name</td>
+</tr>
+<tr>
+<td><strong>bankname_#</strong></td>
+<td></td>
+<td>Bank name</td>
+</tr>
+<tr>
+<td><strong>routing_#</strong></td>
+<td></td>
+<td>Bank routing number</td>
+</tr>
+<tr>
+<td><strong>account_#</strong></td>
+<td></td>
+<td>Bank account number</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addcustomer&amp;firstname=John&amp;lastname=Doe&amp;customerid=26B122&amp;bankname=wellsfargo&amp;routing=67890453&amp;account=123456789
+</code></pre>
+<p></p>
+<h3>Star Card</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>addcustomer</td>
+<td>Add a new Data Vault Customer</td>
+</tr>
+<tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td>Customer’s first name</td>
+</tr>
+<tr>
+<td><strong>lastname</strong></td>
+<td></td>
+<td>Customer’s last name</td>
+</tr>
+<tr>
+<td><strong>cardnum_#</strong></td>
+<td></td>
+<td>Credit Card number</td>
+</tr>
+<tr>
+<td><strong>CID</strong></td>
+<td>custom field</td>
+<td>11 digit numerical</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=John&amp;lastname=Doe&amp;cardnum=6019440000011111&amp;CID=52347800001
+</code></pre>
+<p></p>
+<h3>eWallet</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>addcustomer</td>
+<td>Add a new Data Vault Customer</td>
+</tr>
+<tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td>Customer’s first name</td>
+</tr>
+<tr>
+<td><strong>lastname</strong></td>
+<td></td>
+<td>Customer’s last name</td>
+</tr>
+<tr>
+<td><strong>ewalletaccount_#</strong></td>
+<td>email</td>
+<td>eWallet credentials (email)</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-datavault-simple-add-customer-advanced-add-customer" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Advanced Add Customer</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>addcustomer</td>
+<td>Add customer will create a new Data Vault entry</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td>Customer’s first name</td>
+</tr>
+<tr>
+<td><strong>lastname</strong></td>
+<td></td>
+<td>Customer’s last name</td>
+</tr>
+<tr>
+<td>note</td>
+<td></td>
+<td>Customer note</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>Default address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>Default address2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>Default city</td>
+</tr>
+<tr>
+<td>state</td>
+<td>2 character abbreviation</td>
+<td>Default state</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Default postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+</tr>
+<tr>
+<td>country</td>
+<td>CC (ISO-3166)</td>
+<td>Default Country (ie. US)</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>Default Email Address</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>Default Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>Default Shipping last name</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td>Default Shipping company</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>Default Shipping Address</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>Default Shipping Address - line 2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>Default Shipping City</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td>2 character abbreviation</td>
+<td>Default Shipping State</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td>Default Shipping Zip Code</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td>CC (ISO - 3166)</td>
+<td>Default Shipping Country, ie US</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>Default Shipping Phone Number</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>Default Shipping Email</td>
+</tr>
+<tr>
+<td>username</td>
+<td></td>
+<td>Client user name. This field is required if the Client Service Portal is enabled and ‘password’ or ‘clientuseremail’ is specified</td>
+</tr>
+<tr>
+<td>password</td>
+<td></td>
+<td>Client user password. This field is required if the Client Service Portal is enabled and ‘username’ or ‘clientuseremail’ is specified</td>
+</tr>
+<tr>
+<td>clientuseremail</td>
+<td></td>
+<td>Client user email. This field is required if the Client Service Portal is enabled and ‘password’ or ‘username’ is specified</td>
+</tr>
+<tr>
+<td>paytype_#</td>
+<td>creditcard/check/ach/starcard/wallet</td>
+<td>Type of payment info</td>
+</tr>
+<tr>
+<td>firstname_#</td>
+<td></td>
+<td>Billing first name, specific to the payment type</td>
+</tr>
+<tr>
+<td>lastname_#</td>
+<td></td>
+<td>Billing last name, specific to the payment type</td>
+</tr>
+<tr>
+<td>address1_#</td>
+<td></td>
+<td>Billing address, specific to the payment type</td>
+</tr>
+<tr>
+<td>address2_#</td>
+<td></td>
+<td>Billing address-line 2, specific to the payment type</td>
+</tr>
+<tr>
+<td>city_#</td>
+<td></td>
+<td>Billing city, specific to the payment type</td>
+</tr>
+<tr>
+<td>state_#</td>
+<td></td>
+<td>Billing state, 2 character abbreviation, specific to the payment type</td>
+</tr>
+<tr>
+<td>zip_#</td>
+<td></td>
+<td>Billing zip, specific to payment type</td>
+</tr>
+<tr>
+<td>country_#</td>
+<td></td>
+<td>Billing Country, specific to payment type</td>
+</tr>
+<tr>
+<td>phone_#</td>
+<td></td>
+<td>Billing phone, specific to payment type</td>
+</tr>
+<tr>
+<td>email_#</td>
+<td></td>
+<td>Billing email, specific to payment type</td>
+</tr>
+<tr>
+<td>cardnum_#</td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td>cardexp_#</td>
+<td>MMYY</td>
+<td>Credit card expiration</td>
+</tr>
+<tr>
+<td>bankname_#</td>
+<td></td>
+<td>ACH bank name</td>
+</tr>
+<tr>
+<td>routing_#</td>
+<td></td>
+<td>ACH routing number</td>
+</tr>
+<tr>
+<td>account_#</td>
+<td></td>
+<td>ACH account number</td>
+</tr>
+<tr>
+<td>achaccounttype_#</td>
+<td>checking/savings</td>
+<td>ACH account type</td>
+</tr>
+<tr>
+<td>achaccountsubtype</td>
+<td>business/personal</td>
+<td>ACH account sub type</td>
+</tr>
+<tr>
+<td>payno_#</td>
+<td>positive integer</td>
+<td>Priority of the payment type among others when sending payment using the customertoken</td>
+</tr>
+<tr>
+<td>ewalletaccount_#</td>
+<td></td>
+<td>eWallet account credentials, ie; email</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=Samantha&amp;lastname=Simmons&amp;address1=1234+N+Wells+street&amp;city=Phoenix&amp;state=AZ&amp;zip=85254&amp;email@sam@test.com&amp;phone=4801234567&amp;cardnum_1=4111111111111111&amp;cardexp_1=0220
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-datavault-simple-add-customer-advanced-add-customer-update-payment-type" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Update Payment Type</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>updatecustomer</td>
+<td>This transaction type will update the current client information with any new data fields provided</td>
+</tr>
+<tr>
+<td><strong>token</strong></td>
+<td>alphanumericstring</td>
+<td>Unique customer or payment info identifier</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>Billing address, line 2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td>state</td>
+<td>2 character abbreviation</td>
+<td>Billing state</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Billing zip</td>
+</tr>
+<tr>
+<td>country</td>
+<td>CC (ISO-3166)</td>
+<td>Billing country</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td>Billing phone</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>Billing email</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>Shipping address1</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>Shipping address2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>Shipping city</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td></td>
+<td>Shipping state</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td>Shipping zip</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td></td>
+<td>Shipping country</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>Shipping phone</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>Shipping email</td>
+</tr>
+<tr>
+<td>username</td>
+<td></td>
+<td>Client Service Portal username</td>
+</tr>
+<tr>
+<td>password</td>
+<td></td>
+<td>Client Service Portal password</td>
+</tr>
+<tr>
+<td>clientuseremail</td>
+<td></td>
+<td>Client Service Portal email</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=updatecustomer&amp;token=B31388EA20ABF2776C93&amp;address1=939+St.+Winnie’s+st.&amp;city=Forest+City
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-datavault-simple-add-customer-advanced-add-customer-update-payment-type-delete-payment-type" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Delete Payment Type</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>updatecustomer</td>
+<td>This transaction type will update the current client information with any new data fields provided</td>
+</tr>
+<tr>
+<td><strong>token_#</strong></td>
+<td>alphanumericstring</td>
+<td>Unique customer or payment info identifier</td>
+</tr>
+<tr>
+<td><strong>operationtype_#</strong></td>
+<td>deletepaymenttype</td>
+<td>Delete a specific payment type</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-datavault-simple-add-customer-advanced-add-customer-update-payment-type-delete-payment-type-delete-customer" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Delete Data Vault Customer</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>deletecustomer</td>
+<td>This transaction type will update the current client information with any new data fields provided</td>
+</tr>
+<tr>
+<td><strong>token</strong></td>
+<td>alphanumericstring</td>
+<td>Unique customer or payment info identifier</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=deletecustomer&amp;token= B31388EA20ABF2776C93
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-payment-plans" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h6>Creating Custom Payment Plans</h6>
+<p></p>
+<p>Unique payment plans can be created to automatically bill customer using custom
+amounts and frequencies</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-payment-plans-plan-description" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h6>General Plan Data</h6>
+<p>First we must describe our plan</p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>addplan</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>planname</strong></td>
+<td>string</td>
+<td>Payment plan name</td>
+</tr>
+<tr>
+<td><strong>plandesc</strong></td>
+<td>string</td>
+<td>Payment plan description</td>
+</tr>
+<tr>
+<td><strong>startdate</strong></td>
+<td>MM/DD/YYYY</td>
+<td>Starting day of the plan</td>
+</tr>
+<tr>
+<td>defaultachmkey</td>
+<td></td>
+<td>Merchant key of ACH account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultcreditcardmkey</td>
+<td></td>
+<td>Merchant key of Credit Card account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultecheckmkey</td>
+<td></td>
+<td>Merchant key of eCheck account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultstartcardmkey</td>
+<td></td>
+<td>Merchant key of Star Card account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultewalletmkey</td>
+<td></td>
+<td>Merchant key of eWallet account with which plan payments should be processed by default</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h6>Building a Sequence</h6>
+<p>Now we define the sequences within the plan which determine how much the
+customer will be charged and when</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sequence_#<strong>​</strong></td>
+<td>positive integer</td>
+<td>The sequence number defines which set of payments should occur first, second third, etc; if multiple sequences are present</td>
+</tr>
+<tr>
+<td><strong>amount_#​</strong></td>
+<td>d.dd</td>
+<td>Amount to be paid</td>
+</tr>
+<tr>
+<td><strong>scheduletype_#</strong></td>
+<td>monthly/ custom/ annual</td>
+<td>Specifies the type of payment schedule. Supported types are: every month of a specified date, every N days, every year on a specified date</td>
+</tr>
+<tr>
+<td><strong>scheduleday_#​</strong></td>
+<td>positive integer</td>
+<td>Day of the month for processing payments (scheduletype=monthly) or number of days between payments (scheduletype=custom)</td>
+</tr>
+<tr>
+<td><strong>duration</strong></td>
+<td>integer</td>
+<td>Positive number of charges or -1 if no limit</td>
+</tr>
+<tr>
+<td>productid_#</td>
+<td>string</td>
+<td>External ID for the product</td>
+</tr>
+<tr>
+<td>description_#</td>
+<td>string</td>
+<td>Description of the sequence</td>
+</tr>
+<tr>
+<td>notifyfailures</td>
+<td>true/false</td>
+<td>Sends notification emails to the client if failed payments occur</td>
+</tr>
+<tr>
+<td>userecycling</td>
+<td>true/false</td>
+<td>Specifies whether to reprocess failed transactions for this plan</td>
+</tr>
+<tr>
+<td>defaultewalletmkey</td>
+<td></td>
+<td>Merchant key of eWallet account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>retrycount</td>
+<td>positive integer</td>
+<td>Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise</td>
+</tr>
+<tr>
+<td>retrytype</td>
+<td>daily/ weekly/ monthly</td>
+<td>Specifies the type of retry schedule. Supported types are: every month of a specified date, every N days, every year on a specified date</td>
+</tr>
+<tr>
+<td>retryperiod</td>
+<td>positive integer</td>
+<td>Number of days between retry attempts. This field is required if retrytype=daily</td>
+</tr>
+<tr>
+<td>retrydayofweek</td>
+<td>string</td>
+<td>This field is required if retrytype=weekly (monday, tuesday etc.)</td>
+</tr>
+<tr>
+<td>retryfirstdayofmonth</td>
+<td>positive integer</td>
+<td>First date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>retryseconddayofmonth</td>
+<td>positive integer</td>
+<td>Second date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>autocreateclientaccounts</td>
+<td>true/false</td>
+<td>Creates username and password for Client Portal automatically when plan is assigned to the client</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h6>Notification Settings</h6>
+<p>We must also set notification settings to alert customers of successful
+payments, passed due payment, plan changes, etc.</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reviewonassignment<strong>​</strong></td>
+<td>true/false</td>
+<td>If “true” this will set the payment plan to pending until it is reviewed by the merchant admin</td>
+</tr>
+<tr>
+<td>processimmediately<strong>​</strong></td>
+<td>true/false</td>
+<td>Specifies if new payments should be processed immediately or end of day</td>
+</tr>
+<tr>
+<td>overridesender</td>
+<td>true/false</td>
+<td>Specifies whether to override sender email for customers notifications</td>
+</tr>
+<tr>
+<td>senderemail</td>
+<td>email</td>
+<td>Sender email. This field is required if overridesender = true</td>
+</tr>
+<tr>
+<td>notifyupcomingpayment</td>
+<td>true/false</td>
+<td>Specifies whether to notify customer about upcoming payment</td>
+</tr>
+<tr>
+<td>notifydaysbeforeupcomingpayment</td>
+<td>positive integer</td>
+<td>Number of days before notification about upcoming payment should be sent to the client. This field is required if notifyupcomingpayment = true</td>
+</tr>
+<tr>
+<td>notifyplansummary</td>
+<td>true/false</td>
+<td>Specifies whether to send merchant a Summarized Plan Report</td>
+</tr>
+<tr>
+<td>notifyplansummaryinterval</td>
+<td>daily / weekly / monthly / quaterly</td>
+<td>Interval of plan summary notifications. This field is required if notifyplansummary = true</td>
+</tr>
+<tr>
+<td>notifyplansummaryemails</td>
+<td></td>
+<td>Multiple addresses are separated by comma. This field is required if notifyplansummary = true</td>
+</tr>
+<tr>
+<td>notifydailystats</td>
+<td>true/false</td>
+<td>Specifies whether to send merchant a Daily Plan Processing Statistics Report</td>
+</tr>
+<tr>
+<td>notifydailystatsemails</td>
+<td></td>
+<td>Multiple addresses are separated by comma. This field is required if notifydailystats = true</td>
+</tr>
+<tr>
+<td>notifyplancomplete</td>
+<td>true/false</td>
+<td>Specifies whether to notify merchant about plan completion</td>
+</tr>
+<tr>
+<td>notifyplancompleteemails</td>
+<td></td>
+<td>Multiple addresses are separated by comma. This field is required if notifyplancomplete = true</td>
+</tr>
+<tr>
+<td>notifydecline</td>
+<td>true/false</td>
+<td>Specifies whether to notify merchant about failed payments</td>
+</tr>
+<tr>
+<td>notifydeclineemails</td>
+<td></td>
+<td>Multiple addresses are separated by comma. This field is required if notifydecline = true</td>
+</tr>
+<tr>
+<td>notifyviaftp</td>
+<td>true/false</td>
+<td>Specifies whether to transfer transaction file via ftp</td>
+</tr>
+<tr>
+<td>notifyviaftpurl</td>
+<td>true/false</td>
+<td>FTP address on which transaction file is transferred. This field is required if notifyviaftp = true</td>
+</tr>
+<tr>
+<td>notifyviaftpusername</td>
+<td></td>
+<td>Username to access FTP address. This field is required if notifyviaftp = true</td>
+</tr>
+<tr>
+<td>notifyviaftppassword</td>
+<td></td>
+<td>Password to access FTP address. This field is required if notifyviaftp = true</td>
+</tr>
+<tr>
+<td>notifyflagged</td>
+<td>true/false</td>
+<td>Specifies whether to notify merchant about flagged for review payments</td>
+</tr>
+<tr>
+<td>notifyflaggedemails</td>
+<td></td>
+<td>Multiple addresses are separated by comma. This field is required if notifyflagged = true</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addplan&amp;planname=Monthly+fees
+&amp;plandesc=Some+long+description.&amp;startdate=4/13/2017&amp;sequence_1=1&amp;amount_1=12.4
+5&amp;scheduletype_1=monthly&amp;scheduleday_1=5&amp;duration_1=10
+</code></pre>
+<p>***This request will create a new payment plan starting on April 13, 2012
+with one sequence, defining 10 payments, each on 5th day of the month (i.e.
+payments will be made on May 5, June 5, July 5, and so on).</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
 <section id="documenter-code-samples" class="method">
    <div class="method-area">
       <div class="method-copy">
@@ -3278,6 +4536,24 @@ sample API key with your actual API key.</p>
                      </li>
                   
                      <li>
+                        <a  href="#documenter-ewallet">eWallet</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-ewallet-ewallet-ewallet-credit">eWallet Simple Credit</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
                         <a  href="#documenter-fiserv">Fiserv</a>
                         
 
@@ -3364,6 +4640,84 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-cc-verification-cc-verification-card-verification">Account Verification</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-datavault">Data Vault</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-datavault-datavault-simple-add-customer">Simple Add Customer</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-datavault-simple-add-customer-advanced-add-customer">Advanced Add Customer</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-datavault-simple-add-customer-advanced-add-customer-update-payment-type">Update Payment Type</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-datavault-simple-add-customer-advanced-add-customer-update-payment-type-delete-payment-type">Delete Payment Type</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-datavault-simple-add-customer-advanced-add-customer-update-payment-type-delete-payment-type-delete-customer">Delete Data Vault Customer</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-payment-plans">Creating Payment Plans</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description">Plan Description</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences">Building a Sequence</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications">Notification Settings</a>
           
 
 
