@@ -492,6 +492,55 @@
 
         </li>
      
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications-update-plan">Updating a Payment Plan</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence">Add or Update a Sequence</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence">Delete a Sequence</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan">Delete a Plan</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan">Assign Payment Plan</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan-update-plan-assignment">Update Payment Plan Assignment</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan-update-plan-assignment-cancel-plan-assignment">Cancel Payment Plan Assignment</a>
+          
+
+
+        </li>
+     
   </ol>
 
 
@@ -767,6 +816,46 @@ $res = $c-&gt;simpleSale(<span class="hljs-number">9.95</span>, $ci);
   string(<span class="hljs-number">24</span>) <span class="hljs-string">"Transaction was Approved"</span>
   [<span class="hljs-string">"status"</span>]=&gt;
   string(<span class="hljs-number">3</span>) <span class="hljs-string">"200"</span>
+}
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>Sample request:</p>
+<pre class="language-ruby"><code class="language-ruby">c = Connection.new(<span class="hljs-symbol">mkey:</span> <span class="hljs-string">"&lt;Your machine key&gt;"</span>)
+ci = CardInfo.new({
+  <span class="hljs-symbol">:number=&gt;<span class="hljs-string">'4111111111111111'</span></span>,
+  <span class="hljs-symbol">:expiration=&gt;DateTime</span>.new(<span class="hljs-number">2010</span>, <span class="hljs-number">10</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>),
+  <span class="hljs-symbol">:cvv=&gt;<span class="hljs-string">'999'</span></span>,
+})
+res = c.simple_sale(<span class="hljs-number">9.95</span>, ci)
+assert_equal <span class="hljs-number">1</span>, res[<span class="hljs-symbol">:response</span>]
+assert res[<span class="hljs-symbol">:transid</span>].is_a? String
+assert_equal <span class="hljs-string">'sale'</span>, res[<span class="hljs-symbol">:type</span>]
+
+puts res[<span class="hljs-symbol">:response</span>] /<span class="hljs-regexp">/ 1
+puts res[:transid]  /</span><span class="hljs-regexp">/ 12345
+puts res[:type]     /</span><span class="hljs-regexp">/ sale
+</span></code></pre>
+<p></p>
+<p>Sample API response:</p>
+<p></p>
+<pre class="language-ruby"><code class="language-ruby">{
+ <span class="hljs-symbol">:response=&gt;</span><span class="hljs-number">1</span>,
+ <span class="hljs-symbol">:textresponse=&gt;<span class="hljs-string">"SUCCESS"</span></span>,
+ <span class="hljs-symbol">:transid=&gt;<span class="hljs-string">"10583912"</span></span>,
+ <span class="hljs-symbol">:xref=&gt;<span class="hljs-string">"3793946346"</span></span>,
+ <span class="hljs-symbol">:authcode=&gt;<span class="hljs-string">"123456"</span></span>,
+ <span class="hljs-symbol">:orderid=&gt;<span class="hljs-string">""</span></span>,
+ <span class="hljs-symbol">:type=&gt;<span class="hljs-string">"sale"</span></span>,
+ <span class="hljs-symbol">:avsresponse=&gt;<span class="hljs-string">""</span></span>,
+ <span class="hljs-symbol">:cvvresponse=&gt;<span class="hljs-string">"M"</span></span>,
+ <span class="hljs-symbol">:coderesponse=&gt;<span class="hljs-string">"100"</span></span>,
+ <span class="hljs-symbol">:codedescription=&gt;<span class="hljs-string">"Transaction was Approved"</span></span>,
+ <span class="hljs-symbol">:status=&gt;<span class="hljs-string">"200"</span></span>
 }
 </code></pre>
 
@@ -3857,7 +3946,7 @@ supported payment type.</p>
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
-            <h6>Creating Custom Payment Plans</h6>
+            <h2>Creating Custom Payment Plans</h2>
 <p></p>
 <p>Unique payment plans can be created to automatically bill customer using custom
 amounts and frequencies</p>
@@ -3873,7 +3962,7 @@ amounts and frequencies</p>
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
-            <h6>General Plan Data</h6>
+            <h3>General Plan Data</h3>
 <p>First we must describe our plan</p>
 <table>
 <thead>
@@ -3949,7 +4038,7 @@ amounts and frequencies</p>
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
-            <h6>Building a Sequence</h6>
+            <h3>Building a Sequence</h3>
 <p>Now we define the sequences within the plan which determine how much the
 customer will be charged and when</p>
 <p></p>
@@ -4062,7 +4151,7 @@ customer will be charged and when</p>
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
-            <h6>Notification Settings</h6>
+            <h3>Notification Settings</h3>
 <p>We must also set notification settings to alert customers of successful
 payments, passed due payment, plan changes, etc.</p>
 <p></p>
@@ -4183,13 +4272,635 @@ payments, passed due payment, plan changes, etc.</p>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addplan&amp;planname=Monthly+fees
-&amp;plandesc=Some+long+description.&amp;startdate=4/13/2017&amp;sequence_1=1&amp;amount_1=12.4
-5&amp;scheduletype_1=monthly&amp;scheduleday_1=5&amp;duration_1=10
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addplan&amp;planname=Monthly+fees&amp;plandesc=Some+long+description.&amp;startdate=4/13/2017&amp;sequence_1=1&amp;amount_1=12.45&amp;scheduletype_1=monthly&amp;scheduleday_1=5&amp;duration_1=10
 </code></pre>
 <p>***This request will create a new payment plan starting on April 13, 2012
 with one sequence, defining 10 payments, each on 5th day of the month (i.e.
 payments will be made on May 5, June 5, July 5, and so on).</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications-update-plan" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Updating a Payment Plan</h3>
+<p>Payment Plans can be updated by using the transaction type “updateplan”.</p>
+<p></p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>updateplan</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>token</strong></td>
+<td></td>
+<td>Unique payment plan identifier</td>
+</tr>
+<tr>
+<td>planname</td>
+<td>string</td>
+<td>Payment plan name</td>
+</tr>
+<tr>
+<td>plandesc</td>
+<td>string</td>
+<td>Payment plan description</td>
+</tr>
+<tr>
+<td>startdate</td>
+<td>MM/DD/YYYY</td>
+<td>Starting day of the plan</td>
+</tr>
+<tr>
+<td>defaultachmkey</td>
+<td></td>
+<td>Merchant key of ACH account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultcreditcardmkey</td>
+<td></td>
+<td>Merchant key of Credit Card account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultecheckmkey</td>
+<td></td>
+<td>Merchant key of eCheck account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultstartcardmkey</td>
+<td></td>
+<td>Merchant key of Star Card account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultewalletmkey</td>
+<td></td>
+<td>Merchant key of eWallet account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>userrecycling</td>
+<td>true/false</td>
+<td>Specifies whether to reprocess failed transactions in this plan</td>
+</tr>
+<tr>
+<td>notifyfailures</td>
+<td>true/false</td>
+<td>Sends notification emails to the client in case of failed payments</td>
+</tr>
+<tr>
+<td>retrycount</td>
+<td>positive integer</td>
+<td>Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise</td>
+</tr>
+<tr>
+<td>retrytype</td>
+<td>daily / weekly / monthly</td>
+<td>Specifies the type of retry schedule</td>
+</tr>
+<tr>
+<td>retryperiod</td>
+<td>positive integer</td>
+<td>Number of days between retry attempts. This field is required if retrytype=daily</td>
+</tr>
+<tr>
+<td>retrydayofweek</td>
+<td>string</td>
+<td>This field is required if retrytype=weekly (monday, tuesday etc.)</td>
+</tr>
+<tr>
+<td>retryfirstdayofmonth</td>
+<td>positive integer</td>
+<td>First date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>retryseconddayofmonth</td>
+<td>positive integer</td>
+<td>Second date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>autocreateclientaccounts</td>
+<td>true / false</td>
+<td>Creates username and password for Client Portal automatically when plan is assigned to the client</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">
+mkey=HMNK8687DVJHG45D4D3KL90&amp;transtype=updateplan&amp;token=HJFK87G5JBN0&amp;userrecycling=false&amp;senderemail=accounting@test.com&amp;reviewonassignment=false
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Adding or Updating a Sequence</h3>
+<p>We can also add a new sequence or update an existing plan sequence.</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>operationtype_#</strong></td>
+<td>addsequence/updatesequence</td>
+<td>Addsequence will add a new sequence, whereas Updatesequence will update an existing sequence</td>
+</tr>
+<tr>
+<td><strong>sequence_#​</strong></td>
+<td>positive integer</td>
+<td>The sequence number defines which set of payments should occur first, second third, etc; if multiple sequences are present</td>
+</tr>
+<tr>
+<td><strong>amount_#​</strong></td>
+<td>d.dd</td>
+<td>Amount to be paid</td>
+</tr>
+<tr>
+<td><strong>scheduletype_#</strong></td>
+<td>monthly/ custom/ annual</td>
+<td>Specifies the type of payment schedule. Supported types are: every month of a specified date, every N days, every year on a specified date</td>
+</tr>
+<tr>
+<td><strong>scheduleday_#​</strong></td>
+<td>positive integer</td>
+<td>Day of the month for processing payments (scheduletype=monthly) or number of days between payments (scheduletype=custom)</td>
+</tr>
+<tr>
+<td><strong>duration</strong></td>
+<td>integer</td>
+<td>Positive number of charges or -1 if no limit</td>
+</tr>
+<tr>
+<td>productid_#</td>
+<td>string</td>
+<td>External ID for the product</td>
+</tr>
+<tr>
+<td>description_#</td>
+<td>string</td>
+<td>Description of the sequence</td>
+</tr>
+<tr>
+<td>notifyfailures</td>
+<td>true/false</td>
+<td>Sends notification emails to the client if failed payments occur</td>
+</tr>
+<tr>
+<td>userecycling</td>
+<td>true/false</td>
+<td>Specifies whether to reprocess failed transactions for this plan</td>
+</tr>
+<tr>
+<td>defaultewalletmkey</td>
+<td></td>
+<td>Merchant key of eWallet account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>retrycount</td>
+<td>positive integer</td>
+<td>Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise</td>
+</tr>
+<tr>
+<td>retrytype</td>
+<td>daily/ weekly/ monthly</td>
+<td>Specifies the type of retry schedule. Supported types are: every month of a specified date, every N days, every year on a specified date</td>
+</tr>
+<tr>
+<td>retryperiod</td>
+<td>positive integer</td>
+<td>Number of days between retry attempts. This field is required if retrytype=daily</td>
+</tr>
+<tr>
+<td>retrydayofweek</td>
+<td>string</td>
+<td>This field is required if retrytype=weekly (monday, tuesday etc.)</td>
+</tr>
+<tr>
+<td>retryfirstdayofmonth</td>
+<td>positive integer</td>
+<td>First date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>retryseconddayofmonth</td>
+<td>positive integer</td>
+<td>Second date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>autocreateclientaccounts</td>
+<td>true/false</td>
+<td>Creates username and password for Client Portal automatically when plan is assigned to the client</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>Add Sequence</p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addsequence&amp;sequence_2=2&amp;amount_2=9.99&amp;scheduletype_2=monthly&amp;scheduleday_2=5&amp;duration_2=12
+</code></pre>
+<p>Update Sequence</p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=updatesequence&amp;sequence_2=2&amp;amount_2=10.99&amp;scheduletype_2=monthly&amp;scheduleday_2=5&amp;duration_2=12
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Deleting a Sequence</h3>
+<p>We can also delete a sequence.</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>operationtype_#</td>
+<td>deletesequence</td>
+<td>This will delete a sequence</td>
+</tr>
+<tr>
+<td>sequence_#<strong>​</strong></td>
+<td>positive integer</td>
+<td>The sequence number defines which set of payments should occur first, second third, etc; if multiple sequences are present</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;operationtype=deletesequence&amp;sequence_2=2
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Deleting a Plan</h3>
+<p>We can also delete an entire plan.</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>deleteplan</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>token</strong></td>
+<td>alphanumeric string</td>
+<td>Payment plan unique identifier</td>
+</tr>
+<tr>
+<td>cancelpayments</td>
+<td>true/false</td>
+<td>Specifies whether to cancel pending payments caused by assignments of this plan. Default value is false</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">mkey=HMNK8687DVJHG45D4D3KL90&amp;transtype=deleteplan&amp;token=HJFK87G5JBN0&amp;cancelpayments=true
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Assigning a Payment Plan to a Customer</h3>
+<p>Payment plans can be assigned to multiple Data Vault customers</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secure merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>assignplan</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>customertoken</strong></td>
+<td>alphanumeric string</td>
+<td>Customer unique identifier</td>
+</tr>
+<tr>
+<td><strong>plantoken</strong></td>
+<td>alphanumeric string</td>
+<td>Recurring payment plan unique identifier; used when assigning existing plan to the customer</td>
+</tr>
+<tr>
+<td>paymenttoken</td>
+<td>alphanumeric string</td>
+<td>Token of the customer’s payment type, if they have multiple</td>
+</tr>
+<tr>
+<td>startdate</td>
+<td>MM/DD/YYYY</td>
+<td>Day of the first payment of the plan; if not present the plan’s start date (if it exists) is used.</td>
+</tr>
+<tr>
+<td>productid</td>
+<td>string</td>
+<td>External ID for the product</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Description of plan assignment</td>
+</tr>
+<tr>
+<td>notifyfailures</td>
+<td>true/false</td>
+<td>Sends notification emails to the client if failed payments occur</td>
+</tr>
+<tr>
+<td>userecycling</td>
+<td>true/false</td>
+<td>Specifies whether to reprocess failed transactions for this plan</td>
+</tr>
+<tr>
+<td>retrycount</td>
+<td>positive integer</td>
+<td>Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise</td>
+</tr>
+<tr>
+<td>retrytype</td>
+<td>daily/ weekly/ monthly</td>
+<td>Specifies the type of retry schedule. Supported types are: every month of a specified date, every N days, every year on a specified date</td>
+</tr>
+<tr>
+<td>retryperiod</td>
+<td>positive integer</td>
+<td>Number of days between retry attempts. This field is required if retrytype=daily</td>
+</tr>
+<tr>
+<td>retrydayofweek</td>
+<td>string</td>
+<td>This field is required if retrytype=weekly (monday, tuesday etc.)</td>
+</tr>
+<tr>
+<td>retryfirstdayofmonth</td>
+<td>positive integer</td>
+<td>First date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>retryseconddayofmonth</td>
+<td>positive integer</td>
+<td>Second date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>proratedpayment</td>
+<td>true / false</td>
+<td>Specifies whether to add prorated payment in this plan</td>
+</tr>
+<tr>
+<td>routingkey</td>
+<td></td>
+<td>Merchant key of account with which plan payments should be processed by default. This account must be of the same type as selected customer’s payment type</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=JHG48D3V6N8HKFF3W221AA&amp;transtype=assignplan&amp;customertoken=HJG543D321HJK&amp;plantoken=JHG78HJGF55&amp;startdate=10/01/2017&amp;notifyfailures=true
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan-update-plan-assignment" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Update Payment Plan Assignment</h3>
+<p>Payment Plan assignments may be updated</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secure merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>updateassignment</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>assignmenttoken</strong></td>
+<td>alphanumeric string</td>
+<td>Unique identifier of payment plan assignment</td>
+</tr>
+<tr>
+<td>paymenttoken</td>
+<td>alphanumeric string</td>
+<td>Token of the customer’s payment type, if they have multiple</td>
+</tr>
+<tr>
+<td>startdate</td>
+<td>MM/DD/YYYY</td>
+<td>Day of the first payment of the plan; if not present the plan’s start date (if it exists) is used.</td>
+</tr>
+<tr>
+<td>productid</td>
+<td>string</td>
+<td>External ID for the product</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Description of plan assignment</td>
+</tr>
+<tr>
+<td>notifyfailures</td>
+<td>true/false</td>
+<td>Sends notification emails to the client if failed payments occur</td>
+</tr>
+<tr>
+<td>userecycling</td>
+<td>true/false</td>
+<td>Specifies whether to reprocess failed transactions for this plan</td>
+</tr>
+<tr>
+<td>retrycount</td>
+<td>positive integer</td>
+<td>Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise</td>
+</tr>
+<tr>
+<td>retrytype</td>
+<td>daily/ weekly/ monthly</td>
+<td>Specifies the type of retry schedule. Supported types are: every month of a specified date, every N days, every year on a specified date</td>
+</tr>
+<tr>
+<td>retryperiod</td>
+<td>positive integer</td>
+<td>Number of days between retry attempts. This field is required if retrytype=daily</td>
+</tr>
+<tr>
+<td>retrydayofweek</td>
+<td>string</td>
+<td>This field is required if retrytype=weekly (monday, tuesday etc.)</td>
+</tr>
+<tr>
+<td>retryfirstdayofmonth</td>
+<td>positive integer</td>
+<td>First date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>retryseconddayofmonth</td>
+<td>positive integer</td>
+<td>Second date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>proratedpayment</td>
+<td>true / false</td>
+<td>Specifies whether to add prorated payment in this plan</td>
+</tr>
+<tr>
+<td>routingkey</td>
+<td></td>
+<td>Merchant key of account with which plan payments should be processed by default. This account must be of the same type as selected customer’s payment type</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=JHG48D3V6N8HKFF3W221AA&amp;transtype=updateassignment&amp;assignmenttoken=HJG54VKJ888&amp;startdate=11/01/2017&amp;proratedpayment=true
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan-update-plan-assignment-cancel-plan-assignment" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Cancel Plan Assignment</h3>
+<p>Payment Plan assignments may be cancelled both before and after the plan has
+begun.</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secure merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>cancelassignment</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>assignment​token</strong></td>
+<td>alphanumeric string</td>
+<td>Unique identifier of payment plan assignment</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">
+mkey=JHG48D3V6N8HKFF3W221AA&amp;transtype=cancelassignment&amp;assignmenttoken=HJG54VKJ888
+</code></pre>
 
          </div>
       </div>
@@ -4718,6 +5429,55 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications">Notification Settings</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications-update-plan">Updating a Payment Plan</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence">Add or Update a Sequence</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence">Delete a Sequence</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan">Delete a Plan</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan">Assign Payment Plan</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan-update-plan-assignment">Update Payment Plan Assignment</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan-update-plan-assignment-cancel-plan-assignment">Cancel Payment Plan Assignment</a>
           
 
 
