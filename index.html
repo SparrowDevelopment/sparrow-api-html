@@ -8,10 +8,10 @@
       <![endif]-->
       <!-- Mobile Specific -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Sparrow API Documents</title>
-      <meta name="description" content="Pixxett API Docs Theme">
-      <meta name="author" content="Pixxett">
-      <meta name="copyright" content="Pixxett">
+      <title>Sparrow API Documentation</title>
+      <meta name="description" content="Sparrow API Documentation">
+      <meta name="author" content="Sparrow">
+      <meta name="copyright" content="Sparrow">
       <meta name="date" content="2014-12-02">
       <!-- Google Fonts -->
       <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900">
@@ -64,8 +64,8 @@
                      </li>
                     
                      <li>
-                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-c" data-language="c" >
-                        <label for="toggle-lang-c" class="language-toggle-button language-toggle-button--c">C#</label>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-php" data-language="php" >
+                        <label for="toggle-lang-php" class="language-toggle-button language-toggle-button--php">PHP</label>
                      </li>
                     
                      <li>
@@ -74,28 +74,13 @@
                      </li>
                     
                      <li>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-c" data-language="c" >
+                        <label for="toggle-lang-c" class="language-toggle-button language-toggle-button--c">C#</label>
+                     </li>
+                    
+                     <li>
                         <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-python" data-language="python" >
                         <label for="toggle-lang-python" class="language-toggle-button language-toggle-button--python">Python</label>
-                     </li>
-                    
-                     <li>
-                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-php" data-language="php" >
-                        <label for="toggle-lang-php" class="language-toggle-button language-toggle-button--php">PHP</label>
-                     </li>
-                    
-                     <li>
-                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-java" data-language="java" >
-                        <label for="toggle-lang-java" class="language-toggle-button language-toggle-button--java">Java</label>
-                     </li>
-                    
-                     <li>
-                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-node" data-language="node" >
-                        <label for="toggle-lang-node" class="language-toggle-button language-toggle-button--node">Node</label>
-                     </li>
-                    
-                     <li>
-                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-go" data-language="go" >
-                        <label for="toggle-lang-go" class="language-toggle-button language-toggle-button--go">Go</label>
                      </li>
                     
                   </ul>
@@ -110,41 +95,522 @@
                   <ol id="documenter_nav">
                      
                         <li>
-                           <a class="current" href="#documenter-api-reference">API Reference</a>
+                           <a class="current" href="#documenter-getting-started">Getting Started</a>
                            
-                              <ol>
-                                 
-                              </ol>
-                           
+
+
                         </li>
                      
                         <li>
-                           <a  href="#documenter-authentication">Authentication</a>
+                           <a  href="#documenter-configuration">Configuration</a>
                            
-                              <ol>
-                                 
-                              </ol>
-                           
+
+
                         </li>
                      
                         <li>
-                           <a  href="#documenter-errors">Errors</a>
+                           <a  href="#documenter-integration-details">Integration Details</a>
                            
-                              <ol>
-                                 
-                                    <li><a href="#documenter-errors-handling-errors">Handling Errors</a></li>
-                                 
-                              </ol>
-                           
+
+
                         </li>
                      
                         <li>
-                           <a  href="#documenter-ben-tester">Ben&#39;s Test</a>
+                           <a  href="#documenter-creating-a-sale">Creating a Sale</a>
                            
-                              <ol>
-                                 
-                              </ol>
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-creating-a-sale-simple-sale">Simple Sale</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-creating-a-sale-simple-sale-advanced-sale">Advanced Sale</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-separate-auth-capture">Creating an Authorization and Capture</a>
                            
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-separate-auth-capture-simple-auth">Simple Authorization</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-separate-auth-capture-simple-auth-simple-capture">Simple Capture</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-separate-auth-capture-simple-auth-simple-capture-Offline-Capture">Simple Offline Capture</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture">Voice Capture</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-issuing-a-refund">Issuing a Refund</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-issuing-a-refund-Simple-refund">Simple Refund</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-issuing-a-refund-Simple-refund-advanced-refund">Advanced Refund</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-issuing-a-void">Issuing a Void</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-issuing-a-void-simple-void">Simple Void</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-issuing-a-void-simple-void-advanced-void">Advanced Void</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-Creating-a-credit">Creating a Credit</a>
+                           
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-airline-passenger-sale">Airline Passenger Sale</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-airline-passenger-sale-passenger-sale">Passenger Sale</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-starcard">Military Star Card</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-starcard-simple-starcard">Simple Star Card</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-starcard-simple-starcard-advanced-starcard">Advanced Star Card</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-ach">Automated Clearing House (ACH)/ eCheck</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-ach-simple-ach">Simple ACH</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-ach-simple-ach-advanced-sale">Advanced ACH</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-ewallet">eWallet</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-ewallet-ewallet-credit">eWallet Simple Credit</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-fiserv">Fiserv</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-fiserv-fiserv-simple">Fiserv Simple Sale</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-fiserv-fiserv-simple-fiserv-advanced">Advanced Fiserv Sale</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-chargeback">Chargeback Entry</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-chargeback-mark-chargeback">Mark as Chargeback</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-balance-inquiry">Balance Inquiry</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-balance-inquiry-check-balance">Retrieve Card Balance</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-decrypt-custom-field">Decrypt Custom Fields</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-decrypt-custom-field-decrypt">Decrypt Data</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-cc-verification">Credit Card Verification</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-cc-verification-card-verification">Account Verification</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-datavault">Data Vault</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-datavault-simple-add-customer">Simple Add Customer</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-simple-add-customer-advanced-add-customer">Advanced Add Customer</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-simple-add-customer-advanced-add-customer-update-payment-type">Update Payment Type</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-simple-add-customer-advanced-add-customer-update-payment-type-delete-payment-type">Delete Payment Type</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-simple-add-customer-advanced-add-customer-update-payment-type-delete-payment-type-delete-customer">Delete Data Vault Customer</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-payment-plans">Creating Payment Plans</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description">Plan Description</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences">Building a Sequence</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications">Notification Settings</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications-update-plan">Updating a Payment Plan</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence">Add or Update a Sequence</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence">Delete a Sequence</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan">Delete a Plan</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan">Assign Payment Plan</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan-update-plan-assignment">Update Payment Plan Assignment</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan-update-plan-assignment-cancel-plan-assignment">Cancel Payment Plan Assignment</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-invoicing">Invoicing</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-invoicing-create-merchant-invoice">Creating an Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-create-merchant-invoice-get-invoice">Retrieve Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice">Update Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice">Cancel Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer">Cancel Invoice by Customer</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer-pay-inv-cc">Pay Invoice with a Credit Card</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer-pay-inv-cc-pay-inv-ach">Pay Invoice with a Bank Account</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
+                           <a  href="#documenter-code-samples">Code Samples</a>
+                           
+
+
                         </li>
                      
                   </ol>
@@ -161,547 +627,5163 @@
          <div id="documenter_content" class="method-area-wrapper">
            
               
-<section id="documenter-api-reference" class="method">
+<section id="documenter-getting-started" class="method">
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
-            <h3 id="lorem-ipsum">Lorem Ipsum</h3>
-<p>Lorem ipsum dolor sit amet, consectetur <a href="#">ELIT</a>. Nam in nisi eros. Proin quis ultricies neque. Proin imperdiet leo a leo euismod ultrices. Cras et tempor elit. Duis aliquet volutpat sapien, eget porta tellus laoreet in. Donec sem velit, tincidunt eu sodales vel, varius non libero. Sed nisl mauris, <a href="#">facilisis sit amet hendrerit at</a>, hendrerit vel tortor. Aliquam id massa euismod, ultricies metus nec, convallis urna. In laoreet dapibus ante vitae placerat. Pellentesque mollis nec sapien elementum eu tincidunt. <a href="#">SAPIEN</a> elit placerat Phasellus laoreet vitae, Cras in massa ac mi sodales <a href="#">Ligula Fermentum</a> vestibulum et rutrum odio tincidunt. Nunc id maximus orci.</p>
-<p>Vestibulum mollis eros nunc, pretium porta dolor gravida vel. Nullam arcu diam, semper a varius sit amet, interdum vel enim. Duis orci nunc, eleifend vel tellus ut, finibus fermentum erat. Curabitur sagittis justo augue. Phasellus fermentum semper nisi, in consequat lectus tincidunt quis. Maecenas sit amet semper.</p>
-<p><img src="images/place-holder.png" alt="Image"></p>
+            <h1>Getting Started</h1>
+<p>The site describes the direct method for payments and value added features in
+the Sparrow gateway and is referred to as the Services API.</p>
+<p>The Services API URL is:</p>
+<p><a href="https://secure.sparrowone.com/Payments/Services_api.aspx">https://secure.sparrowone.com/Payments/Services
+api.aspx</a></p>
+<p><code>Services_api.aspx</code> is an API implementation of secure payments. In this
+fashion, merchants can seamlessly integrate gateway payment functions into their
+checkout process using a direct post via HTTP.</p>
 
          </div>
       </div>
-      <div class="method-example">
-         
-            
-               <div class="method-example-part">
-                 <h5 id="lorem-ipsum">Lorem Ipsum</h5>
-<p>Curabitur lacinia convallis nibh, <a href="#">non cursus augue</a>. Quisque id sem id lorem porttitor efficitur in quis libero. Nullam turpis ante auctor <a href="#">purus sed</a>.</p>
-
-               </div>
-            
-         
-            
-               <div class="method-example-part">
-                 <p>API Endpoint</p>
-<pre class="language-none"><code class="language-none">https://examples.com</code></pre>
-               </div>
-            
-         
-      </div>
+      
    </div>
 </section>           
 
            
               
-<section id="documenter-authentication" class="method">
+<section id="documenter-configuration" class="method">
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
-            <h3 id="lorem-ipsum">Lorem Ipsum</h3>
-<p>In laoreet dapibus ante vitae placerat. Pellentesque mollis sapien nec sapien elementum, eu tincidunt elit placerat. Phasellus laoreet <a href="#">VITAE</a> mi at hendrerit. Cras in massa ac mi sodales vestibulum. Etiam convallis lectus vitae ligula fermentum, et rutrum odio tincidunt. Nunc id maximus orci. Sed id sapien massa.</p>
-<p>Pellentesque nunc eros, vulputac <code>example.Key</code>. Phasellus urna dui, sollicitudin nec rutrum sollicitudin nec rutrum eros.</p>
-<p>In laoreet dapibus ante vitae <a href="#">PALL</a>. Pellentesque mollis sapien nec sapien elementum, eu tincidunt elit placerat Phasellus laoreet vitae.</p>
+            <h1>Configure the Merchant Account</h1>
+<h2>Merchant Key (mKey)</h2>
+<p>When sending a payment transaction request to Sparrow a Merchant Key is
+required. A sample Merchant Key follows:</p>
+<pre class="language-none"><code class="language-none">MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO
+</code></pre>
+<p>Each Merchant Key represents the payment type (credit card, ACH, etc…) and
+merchant account targeted for processing the transaction. This methodology
+allows merchants to have multiple merchant accounts and payment types for
+processing transactions. The transactions can be sent to a particular account
+based on the merchant’s business rules.</p>
+<p>For example, to process transaction send the Merchant key associated with a Visa
+and MasterCard merchant account. (Discover and American Express cards are also
+tied to the Visa/MasterCard Merchant Key.)</p>
+<p>The <code>mKey</code> can be found inside the gateway under <code>Admin &gt; System Configuration &gt; Transaction Routing</code>.</p>
 
          </div>
       </div>
-      <div class="method-example">
-         
-            <div class="code-curl code-div active-code">
-               <div class="method-example-part">
-                 <pre class="language-bash"><code class="language-bash">curl https://examples.com/v1/charges \
--u example_test_DTbaf9757982a9e738f05d249b:</code></pre><p>Aliquam sed risus <code>-u</code> vitae tellus venenatis vulputate non id ante. Nullam facilisis placerat ligula non pulvinar. Donec nec purus.</p>
-<p>Donec congue pharetra ligula, a porta nulla semper vel. Donec egestas fermentum augue ac ultricies. Aliquam sed risus vitae tellus venenatis vulputate non id ante. Nullam facilisis placerat ligula non pulvinar.</p>
-
-               </div>
-            </div>
-         
-            <div class="code-ruby code-div ">
-               <div class="method-example-part">
-                 <pre class="language-ruby"><code class="language-ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">"example"</span>
-example.api_key = <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span></code></pre><p>You can also set a per-request key like in the example below. This is often useful for Connect applications that use multiple API keys during the lifetime of a process.</p>
-<p>Authentication is transparently handled for you in subsequent method calls on the returned object.</p>
-<pre class="language-ruby"><code class="language-ruby">example::Charge.retrieve(
-  <span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>,
-  <span class="hljs-symbol">:api_key</span> =&gt; <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
-)</code></pre><p>A sample test API key is included in all the examples on this page, so you can test any example right away. To test requests using your account, replace the sample API key with your actual API key.</p>
-
-               </div>
-            </div>
-         
-            <div class="code-python code-div ">
-               <div class="method-example-part">
-                 <pre class="language-python"><code class="language-python"><span class="hljs-keyword">import</span> example
-example.api_key = <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span></code></pre><p>You can also set a per-request key like in the example below. This is often useful for Connect applications that use multiple API keys during the lifetime of a process.</p>
-<p>Authentication is transparently handled for you in subsequent method calls on the returned object.</p>
-<pre class="language-python"><code class="language-python">example.Charge.retrieve(
-   <span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>,
-   api_key=<span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
-)</code></pre><p>A sample test API key is included in all the examples on this page, so you can test any example right away. To test requests using your account, replace the sample API key with your actual API key.</p>
-
-               </div>
-            </div>
-         
-            <div class="code-php code-div ">
-               <div class="method-example-part">
-                 <pre class="language-php"><code class="language-php">\example\example::setApiKey(<span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>);</code></pre><p>You can also set a per-request key like in the example below. This is often useful for Connect applications that use multiple API keys during the lifetime of a process.</p>
-<p>Authentication is transparently handled for you in subsequent method calls on the returned object.</p>
-<pre class="language-php"><code class="language-php">\example\Charge::retrieve(
-   <span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>,
-   <span class="hljs-keyword">array</span>(<span class="hljs-string">'api_key'</span> =&gt; <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>)
-)</code></pre><p>A sample test API key is included in all the examples on this page, so you can test any example right away. To test requests using your account, replace the sample API key with your actual API key.</p>
-
-               </div>
-            </div>
-         
-            <div class="code-java code-div ">
-               <div class="method-example-part">
-                 <pre class="language-java"><code class="language-java">example.apiKey = <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>;</code></pre><p>You can also set a per-request key like in the example below. This is often useful for Connect applications that use multiple API keys during the lifetime of a process.</p>
-<pre class="language-java"><code class="language-java">RequestOptions requestOptions = RequestOptions.builder().setApiKey(<span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>).build();
-Charge.retrieve(<span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>, requestOptions)</code></pre><p>A sample test API key is included in all the examples on this page, so you can test any example right away. To test requests using your account, replace the sample API key with your actual API key.</p>
-
-               </div>
-            </div>
-         
-            <div class="code-node code-div ">
-               <div class="method-example-part">
-                 <pre class="language-javascript"><code class="language-javascript"><span class="hljs-keyword">var</span> example = <span class="hljs-built_in">require</span>(<span class="hljs-string">"example"</span>)(
-   <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
-);</code></pre><p>You can also set a per-request key like in the example below. This is often useful for Connect applications that use multiple API keys during the lifetime of a process.</p>
-<p>Authentication is transparently handled for you in subsequent method calls on the returned object.</p>
-<pre class="language-javascript"><code class="language-javascript">example.charges.retrieve(<span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>, {
-   <span class="hljs-attr">api_key</span>: <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
-});</code></pre><p>A sample test API key is included in all the examples on this page, so you can test any example right away. To test requests using your account, replace the sample API key with your actual API key.</p>
-
-               </div>
-            </div>
-         
-            <div class="code-go code-div ">
-               <div class="method-example-part">
-                 <pre class="language-go"><code class="language-go">example.Key = <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span></code></pre><p>You can also set a per-request key like in the example below. This is often useful for Connect applications that use multiple API keys during the lifetime of a process.</p>
-<pre class="language-go"><code class="language-go">sc := &amp;client.API{}
-sc.Init(<span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>, <span class="hljs-literal">nil</span>)
-sc.Charges.Get(<span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>, params)</code></pre><p>A sample test API key is included in all the examples on this page, so you can test any example right away. To test requests using your account, replace the sample API key with your actual API key.</p>
-
-               </div>
-            </div>
-         
-      </div>
+      
    </div>
 </section>           
 
            
               
-<section id="documenter-errors" class="method">
+<section id="documenter-integration-details" class="method">
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
-            <h3 id="lorem">Lorem</h3>
-<p>In laoreet dapibus ante vitae placerat. Pellentesque mollis sapien nec sapien elementum, eu tincidunt elit placerat. Phasellus <code>2xx</code>laoreet vitae mi at hendrerit. Cras in jni <code>4xx</code>lectus vitae ligula fermentum, et rutrum odio sit amet, interdum vel enim. Duis orci nunc, eleifend vel tellus ut, finibus fermentum erat. Curabitur <code>5xx</code> in consequat lectus tincidunt quis. Maecenas sit amet semper nisl.</p>
-<p>In laoreet dapibus ante vitae placerat. Pellentesque mollis sapien nec sapien elementum, eu tincidunt elit placerat. Phasellus laoreet vitae mi at hendrerit. Cras in massa ac mi sodales vestibulum. Etiam convallis lectus vitae <a href="/docs/declines#decline-codes">ligula fermentum</a> maximus orci.</p>
-<h5 id="attributes">Attributes</h5>
+            <h1>Integration Details</h1>
+<h2>Services API</h2>
+<p>To process payment through Services API send an HTTP POST request containing
+payment fields to the Services API page.</p>
+<p>Request should be formatted as HTML form post, i.e. content type should be
+<code>application/x- www-form-urlencoded</code> and request body should be formatted
+accordingly:</p>
+<ol>
+<li>
+<p>The form field names and values are escaped: space characters are replaced
+by <code>+</code>, and then reserved characters are escaped as per URL; that is,
+non-alphanumeric characters are replaced by <code>%HH</code>, a percent sign and two
+hexadecimal digits representing the ASCII code of the character. Line
+breaks, as in multi-line text field values, are represented as CR LF pairs,
+i.e. <code>%0D%0A</code>.</p>
+</li>
+<li>
+<p>The fields are listed in the order they appear in the document with the name
+separated from the value by <code>=</code> and the pairs separated from each other by
+<code>&amp;</code>. Fields with null values may be omitted.</p>
+</li>
+</ol>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+           
+              
+<section id="documenter-creating-a-sale" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1>Creating a Sale</h1>
+<p>By sending the appropriate Merchant Key, along with the appropriate API fields
+the merchant can direct a transaction to the appropriate merchant account for
+transaction processing.</p>
+<p></p>
+<h3>Test and Validate a Sale</h3>
+<p>Credit Card test transactions can be submitted with the following information:</p>
+<pre class="language-none"><code class="language-none">Cardnum: 4111111111111111
+</code></pre>
+<pre class="language-none"><code class="language-none">Cardexp: 10/19
+</code></pre>
+<pre class="language-none"><code class="language-none">Amount: &gt; 1.00
+</code></pre>
+<pre class="language-none"><code class="language-none">CVV Match: 999
+</code></pre>
+<p>Forcing errors in test mode:</p>
 <ul>
-<li><h6 id="-errors-type-type"><a href="#errors-type"></a>type</h6>
-<p>The type of error returned. Can be: <code>api_connection_error</code>, <code>api_error</code>, <code>authentication_error</code>, <code>card_error</code>, <code>invalid_request_error</code>, or <code>rate_limit_error</code>.</p>
+<li>
+<p>To cause a decline pass an amount less than 1.00</p>
 </li>
-<li><h6 id="-errors-charge-charge"><a href="#errors-charge"></a>charge</h6>
-<p>Nunc suscipit justo ac odio.</p>
+<li>
+<p>To trigger an error message, pass an invalid card number</p>
 </li>
-<li><h6 id="-errors-message-message-span-class-method-list-item-label-details-optional-span-"><a href="#errors-message"></a>message <span class="method-list-item-label-details">optional</span></h6>
-<p>Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo ac odio.</p>
-</li>
-<li><h6 id="-errors-code-code-span-class-method-list-item-label-details-optional-span-"><a href="#errors-code"></a>code <span class="method-list-item-label-details">optional</span></h6>
-<p>Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo ac odio.</p>
-</li>
-<li><h6 id="-errors-decline-code-decline_code-span-class-method-list-item-label-details-optional-span-"><a href="#errors-decline-code"></a>decline_code <span class="method-list-item-label-details">optional</span></h6>
-<p>Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo ac odio <a href="/docs/declines#bank-declines">condimentum malesuada Nunc</a> suscipit justo ac odio.</p>
-</li>
-<li><h6 id="-errors-param-param-span-class-method-list-item-label-details-optional-span-"><a href="#errors-param"></a>param <span class="method-list-item-label-details">optional</span></h6>
-<p>Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo. ac odio Nunc suscipit justo ac odio condimentum malesuada Nunc suscipit justo.</p>
+<li>
+<p>To simulate an AVS mismatch, pass 888 in the address1 field, and 77777 for
+the zip</p>
 </li>
 </ul>
 
          </div>
       </div>
-      <div class="method-example">
-         
-            
-               <div class="method-example-part">
-                 <h5 id="lorem-ipsum-psum-quia">Lorem Ipsum psum quia</h5>
-
-<div class='table-responsive'>
-  <div class='table'>
-    <table class='table-container'>
-      <thead>
-        <tr>
-<th>200 - OK</th>
-<th>Pellentesque mollis sapien nec sapien.</th>
-</tr>
-
-      </thead>
-      <tbody>
-        <tr>
-<td>400 - Bad Request</td>
-<td>Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>401 - Unauthorized</td>
-<td>Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>402 - Request Failed</td>
-<td>Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>404 - Not Found</td>
-<td>Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>409 - Conflict</td>
-<td>Pellentesque mollis sapien nec sapien (mollis sapien nec sapien).</td>
-</tr>
-<tr>
-<td>429 - Too Many Requests</td>
-<td>Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>500, 502, 503, 504 - Server Errors</td>
-<td>Pellentesque mollis sapien nec sapien.</td>
-</tr>
-
-      </tbody>
-    </table>
-  </div>
-</div>
-               </div>
-            
-         
-            
-               <div class="method-example-part">
-                 <h5 id="errors">Errors</h5>
-<h6 id="types">Types</h6>
-
-<div class='table-responsive'>
-  <div class='table'>
-    <table class='table-container'>
-      <thead>
-        <tr>
-<th>api_connection_error</th>
-<th>Pellentesque mollis sapien nec sapien.</th>
-</tr>
-
-      </thead>
-      <tbody>
-        <tr>
-<td>api_error</td>
-<td>Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>authentication_error</td>
-<td>Pellentesque mollis sapien nec sapien Pellentesque mollis.</td>
-</tr>
-<tr>
-<td>card_error</td>
-<td>Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>invalid_request_error</td>
-<td>Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>rate_limit_error</td>
-<td>Pellentesque mollis sapien nec sapien.</td>
-</tr>
-<tr>
-<td>validation_error</td>
-<td>Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien Pellentesque mollis sapien nec sapien (Pellentesque mollis).</td>
-</tr>
-
-      </tbody>
-    </table>
-  </div>
-</div><h6 id="codes">Codes</h6>
-
-<div class='table-responsive'>
-  <div class='table'>
-    <table class='table-container'>
-      <thead>
-        <tr>
-<th>invalid_number</th>
-<th>Curabitur lacinia convallis nibh, non cursus augue.</th>
-</tr>
-
-      </thead>
-      <tbody>
-        <tr>
-<td>invalid_expiry_month</td>
-<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
-</tr>
-<tr>
-<td>invalid_expiry_year</td>
-<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
-</tr>
-<tr>
-<td>invalid_cvc</td>
-<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
-</tr>
-<tr>
-<td>invalid_swipe_data</td>
-<td>Curabitur lacinia convallis nibh.</td>
-</tr>
-<tr>
-<td>incorrect_number</td>
-<td>Curabitur lacinia convallis nibh.</td>
-</tr>
-<tr>
-<td>expired_card</td>
-<td>Curabitur lacinia convallis.</td>
-</tr>
-<tr>
-<td>incorrect_cvc</td>
-<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
-</tr>
-<tr>
-<td>incorrect_zip</td>
-<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
-</tr>
-<tr>
-<td>card_declined</td>
-<td>Curabitur lacinia convallis.</td>
-</tr>
-<tr>
-<td>missing</td>
-<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
-</tr>
-<tr>
-<td>processing_error</td>
-<td>Curabitur lacinia convallis nibh, non cursus augue.</td>
-</tr>
-
-      </tbody>
-    </table>
-  </div>
-</div><p>  Curabitur lacinia convallis nibh, non cursus augue <a href="#">convallis</a>.</p>
-
-               </div>
-            
-         
-      </div>
+      
    </div>
 </section>           
 
    
-<section id="documenter-errors-handling-errors" class="method">
+<section id="documenter-creating-a-sale-simple-sale" class="method">
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
-            <h3 id="lorem-ipsum">Lorem Ipsum</h3>
-<p>In laoreet dapibus ante vitae placerat. Pellentesque, mollis sapien nec sapien elementum, eu tincidunt elit placerat. Phasellus, laoreet vitae mi at hendrerit. Cras in massa ac mi sodales vestibulum. Etiam convallis lectus vitae ligula.</p>
+            <h3>Simple Sale</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>sale</td>
+<td>sale = Transaction Sale</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0711 = 7/2011)</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged (i.e. 10.00)</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td></td>
+<td>Card security code</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;amount=9.95&amp;cardnum=4111111111111111&amp;cardexp=1010&amp;cvv=999
+</code></pre>
 
          </div>
       </div>
-      <div class="method-example">
-         
-            <div class="code-curl code-div active-code">
-               <div class="method-example-part">
-                 <pre class="language-bash"><code class="language-bash">No data</code></pre>
-               </div>
-            </div>
-         
-            <div class="code-ruby code-div ">
-               <div class="method-example-part">
-                 <pre class="language-ruby"><code class="language-ruby"><span class="hljs-keyword">begin</span>
-<span class="hljs-comment"># Use example's library to make requests...</span>
-<span class="hljs-keyword">rescue</span> example::CardError =&gt; e
-<span class="hljs-comment"># Since it's a decline, example::CardError will be caught</span>
-body = e.json_body
-err  = body[<span class="hljs-symbol">:error</span>]
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command line:</p>
+<pre class="language-bash"><code class="language-bash">curl -v -d <span class="hljs-string">"mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;transtype=sale&amp;amount=9.95&amp;cardnum=4111111111111111&amp;cardexp=1019&amp;cvv=999"</span> -X POST  https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p></p>
+<p>Success Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;textresponse=SUCCESS&amp;transid=10497689&amp;xref=3779249270&amp;authcode=123456&amp;orderid=&amp;<span class="hljs-built_in">type</span>=sale&amp;avsresponse=&amp;cvvresponse=M&amp;coderesponse=100&amp;codedescription=Transaction+was+Approved&amp;status=200
+</code></pre>
+<p></p>
+<p>Failure Response:</p>
+<pre class="language-bash"><code class="language-bash">response=3&amp;textresponse=Cannot+find+transaction+routing+info.+Check+the+value+of+payment+field+mkey&amp;errorcode=
+</code></pre>
 
-puts <span class="hljs-string">"Status is: <span class="hljs-subst">#{e.http_status}</span>"</span>
-puts <span class="hljs-string">"Type is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:type</span>]}</span>"</span>
-puts <span class="hljs-string">"Charge ID is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:charge</span>]}</span>"</span>
-<span class="hljs-comment"># The following fields are optional</span>
-puts <span class="hljs-string">"Code is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:code</span>]}</span>"</span> <span class="hljs-keyword">if</span> err[<span class="hljs-symbol">:code</span>]
-puts <span class="hljs-string">"Decline code is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:decline_code</span>]}</span>"</span> <span class="hljs-keyword">if</span> err[<span class="hljs-symbol">:decline_code</span>]
-puts <span class="hljs-string">"Param is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:param</span>]}</span>"</span> <span class="hljs-keyword">if</span> err[<span class="hljs-symbol">:param</span>]
-puts <span class="hljs-string">"Message is: <span class="hljs-subst">#{err[<span class="hljs-symbol">:message</span>]}</span>"</span> <span class="hljs-keyword">if</span> err[<span class="hljs-symbol">:message</span>]
-<span class="hljs-keyword">rescue</span> example::RateLimitError =&gt; e
-<span class="hljs-comment"># Too many requests made to the API too quickly</span>
-<span class="hljs-keyword">rescue</span> example::InvalidRequestError =&gt; e
-<span class="hljs-comment"># Invalid parameters were supplied to example's API</span>
-<span class="hljs-keyword">rescue</span> example::AuthenticationError =&gt; e
-<span class="hljs-comment"># Authentication with example's API failed</span>
-<span class="hljs-comment"># (maybe you changed API keys recently)</span>
-<span class="hljs-keyword">rescue</span> example::APIConnectionError =&gt; e
-<span class="hljs-comment"># Network communication with example failed</span>
-<span class="hljs-keyword">rescue</span> example::exampleError =&gt; e
-<span class="hljs-comment"># Display a very generic error to the user, and maybe send</span>
-<span class="hljs-comment"># yourself an email</span>
-<span class="hljs-keyword">rescue</span> =&gt; e
-<span class="hljs-comment"># Something else happened, completely unrelated to example</span>
-<span class="hljs-keyword">end</span></code></pre>
-               </div>
-            </div>
-         
-            <div class="code-python code-div ">
-               <div class="method-example-part">
-                 <pre class="language-python"><code class="language-python"><span class="hljs-keyword">try</span>:
-<span class="hljs-comment"># Use example's library to make requests...</span>
-<span class="hljs-keyword">pass</span>
-<span class="hljs-keyword">except</span> example.error.CardError <span class="hljs-keyword">as</span> e:
-<span class="hljs-comment"># Since it's a decline, example.error.CardError will be caught</span>
-body = e.json_body
-err  = body[<span class="hljs-string">'error'</span>]
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>Sample request:</p>
+<pre class="language-php"><code class="language-php">$c = <span class="hljs-keyword">new</span> Connection(<span class="hljs-string">'&lt;your Sparrow API key&gt;'</span>);
 
-<span class="hljs-keyword">print</span> <span class="hljs-string">"Status is: %s"</span> % e.http_status
-<span class="hljs-keyword">print</span> <span class="hljs-string">"Type is: %s"</span> % err[<span class="hljs-string">'type'</span>]
-<span class="hljs-keyword">print</span> <span class="hljs-string">"Code is: %s"</span> % err[<span class="hljs-string">'code'</span>]
-<span class="hljs-comment"># param is '' in this case</span>
-<span class="hljs-keyword">print</span> <span class="hljs-string">"Param is: %s"</span> % err[<span class="hljs-string">'param'</span>]
-<span class="hljs-keyword">print</span> <span class="hljs-string">"Message is: %s"</span> % err[<span class="hljs-string">'message'</span>]
-<span class="hljs-keyword">except</span> example.error.RateLimitError <span class="hljs-keyword">as</span> e:
-<span class="hljs-comment"># Too many requests made to the API too quickly</span>
-<span class="hljs-keyword">pass</span>
-<span class="hljs-keyword">except</span> example.error.InvalidRequestError <span class="hljs-keyword">as</span> e:
-<span class="hljs-comment"># Invalid parameters were supplied to example's API</span>
-<span class="hljs-keyword">pass</span>
-<span class="hljs-keyword">except</span> example.error.AuthenticationError <span class="hljs-keyword">as</span> e:
-<span class="hljs-comment"># Authentication with example's API failed</span>
-<span class="hljs-comment"># (maybe you changed API keys recently)</span>
-<span class="hljs-keyword">pass</span>
-<span class="hljs-keyword">except</span> example.error.APIConnectionError <span class="hljs-keyword">as</span> e:
-<span class="hljs-comment"># Network communication with example failed</span>
-<span class="hljs-keyword">pass</span>
-<span class="hljs-keyword">except</span> example.error.exampleError <span class="hljs-keyword">as</span> e:
-<span class="hljs-comment"># Display a very generic error to the user, and maybe send</span>
-<span class="hljs-comment"># yourself an email</span>
-<span class="hljs-keyword">pass</span>
-<span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
-<span class="hljs-comment"># Something else happened, completely unrelated to example</span>
-<span class="hljs-keyword">pass</span></code></pre>
-               </div>
-            </div>
-         
-            <div class="code-php code-div ">
-               <div class="method-example-part">
-                 <pre class="language-php"><code class="language-php"><span class="hljs-keyword">try</span> {
-  <span class="hljs-comment">// Use example's library to make requests...</span>
-} <span class="hljs-keyword">catch</span>(\example\Error\Card $e) {
-  <span class="hljs-comment">// Since it's a decline, \example\Error\Card will be caught</span>
-  $body = $e-&gt;getJsonBody();
-  $err  = $body[<span class="hljs-string">'error'</span>];
+$ci = <span class="hljs-keyword">new</span> CardInfo([
+  <span class="hljs-string">'number'</span>=&gt;<span class="hljs-string">'4111111111111111'</span>,
+  <span class="hljs-string">'expiration'</span>=&gt;<span class="hljs-string">'1013'</span>,
+  <span class="hljs-string">'cvv'</span>=&gt;<span class="hljs-string">'999'</span>,
+]);
+$res = $c-&gt;simpleSale(<span class="hljs-number">9.95</span>, $ci);
 
-  <span class="hljs-keyword">print</span>(<span class="hljs-string">'Status is:'</span> . $e-&gt;getHttpStatus() . <span class="hljs-string">"\n"</span>);
-  <span class="hljs-keyword">print</span>(<span class="hljs-string">'Type is:'</span> . $err[<span class="hljs-string">'type'</span>] . <span class="hljs-string">"\n"</span>);
-  <span class="hljs-keyword">print</span>(<span class="hljs-string">'Code is:'</span> . $err[<span class="hljs-string">'code'</span>] . <span class="hljs-string">"\n"</span>);
-  <span class="hljs-comment">// param is '' in this case</span>
-  <span class="hljs-keyword">print</span>(<span class="hljs-string">'Param is:'</span> . $err[<span class="hljs-string">'param'</span>] . <span class="hljs-string">"\n"</span>);
-  <span class="hljs-keyword">print</span>(<span class="hljs-string">'Message is:'</span> . $err[<span class="hljs-string">'message'</span>] . <span class="hljs-string">"\n"</span>);
-} <span class="hljs-keyword">catch</span> (\example\Error\RateLimit $e) {
-  <span class="hljs-comment">// Too many requests made to the API too quickly</span>
-} <span class="hljs-keyword">catch</span> (\example\Error\InvalidRequest $e) {
-  <span class="hljs-comment">// Invalid parameters were supplied to example's API</span>
-} <span class="hljs-keyword">catch</span> (\example\Error\Authentication $e) {
-  <span class="hljs-comment">// Authentication with example's API failed</span>
-  <span class="hljs-comment">// (maybe you changed API keys recently)</span>
-} <span class="hljs-keyword">catch</span> (\example\Error\ApiConnection $e) {
-  <span class="hljs-comment">// Network communication with example failed</span>
-} <span class="hljs-keyword">catch</span> (\example\Error\Base $e) {
-  <span class="hljs-comment">// Display a very generic error to the user, and maybe send</span>
-  <span class="hljs-comment">// yourself an email</span>
-} <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
-  <span class="hljs-comment">// Something else happened, completely unrelated to example</span>
-}</code></pre>
-               </div>
-            </div>
-         
-            <div class="code-java code-div ">
-               <div class="method-example-part">
-                 <pre class="language-java"><code class="language-java"><span class="hljs-keyword">try</span> {
-<span class="hljs-comment">// Use example's library to make requests...</span>
-} <span class="hljs-keyword">catch</span> (CardException e) {
-<span class="hljs-comment">// Since it's a decline, CardException will be caught</span>
-System.out.println(<span class="hljs-string">"Status is: "</span> + e.getCode());
-System.out.println(<span class="hljs-string">"Message is: "</span> + e.getMessage());
-} <span class="hljs-keyword">catch</span> (RateLimitException e) {
-<span class="hljs-comment">// Too many requests made to the API too quickly</span>
-} <span class="hljs-keyword">catch</span> (InvalidRequestException e) {
-<span class="hljs-comment">// Invalid parameters were supplied to example's API</span>
-} <span class="hljs-keyword">catch</span> (AuthenticationException e) {
-<span class="hljs-comment">// Authentication with example's API failed</span>
-<span class="hljs-comment">// (maybe you changed API keys recently)</span>
-} <span class="hljs-keyword">catch</span> (APIConnectionException e) {
-<span class="hljs-comment">// Network communication with example failed</span>
-} <span class="hljs-keyword">catch</span> (exampleException e) {
-<span class="hljs-comment">// Display a very generic error to the user, and maybe send</span>
-<span class="hljs-comment">// yourself an email</span>
-} <span class="hljs-keyword">catch</span> (Exception e) {
-<span class="hljs-comment">// Something else happened, completely unrelated to example</span>
-}</code></pre>
-               </div>
-            </div>
-         
-            <div class="code-node code-div ">
-               <div class="method-example-part">
-                 <pre class="language-javascript"><code class="language-javascript"><span class="hljs-comment">// Note: Node.js API does not throw exceptions, and instead prefers the</span>
-<span class="hljs-comment">// asynchronous style of error handling described below.</span>
-<span class="hljs-comment">//</span>
-<span class="hljs-comment">// An error from the example API or an otheriwse asynchronous error</span>
-<span class="hljs-comment">// will be available as the first argument of any example method's callback:</span>
-<span class="hljs-comment">// E.g. example.customers.create({...}, function(err, result) {});</span>
-<span class="hljs-comment">//</span>
-<span class="hljs-comment">// Or in the form of a rejected promise.</span>
-<span class="hljs-comment">// E.g. example.customers.create({...}).then(</span>
-<span class="hljs-comment">//        function(result) {},</span>
-<span class="hljs-comment">//        function(err) {}</span>
-<span class="hljs-comment">//      );</span>
+<span class="hljs-keyword">echo</span> $res-&gt;response; <span class="hljs-comment">// 1</span>
+<span class="hljs-keyword">echo</span> $res-&gt;transid; <span class="hljs-comment">// 12345</span>
+<span class="hljs-keyword">echo</span> $res-&gt;type; <span class="hljs-comment">// sale</span>
+</code></pre>
+<p></p>
+<p>Sample API response:</p>
+<p></p>
+<pre class="language-php"><code class="language-php">object(Sparrow\Response)<span class="hljs-comment">#51 (12) {</span>
+  [<span class="hljs-string">"response"</span>]=&gt;
+  int(<span class="hljs-number">1</span>)
+  [<span class="hljs-string">"textresponse"</span>]=&gt;
+  string(<span class="hljs-number">7</span>) <span class="hljs-string">"SUCCESS"</span>
+  [<span class="hljs-string">"transid"</span>]=&gt;
+  string(<span class="hljs-number">8</span>) <span class="hljs-string">"10497840"</span>
+  [<span class="hljs-string">"xref"</span>]=&gt;
+  string(<span class="hljs-number">10</span>) <span class="hljs-string">"3779305439"</span>
+  [<span class="hljs-string">"authcode"</span>]=&gt;
+  string(<span class="hljs-number">6</span>) <span class="hljs-string">"123456"</span>
+  [<span class="hljs-string">"orderid"</span>]=&gt;
+  string(<span class="hljs-number">0</span>) <span class="hljs-string">""</span>
+  [<span class="hljs-string">"type"</span>]=&gt;
+  string(<span class="hljs-number">4</span>) <span class="hljs-string">"sale"</span>
+  [<span class="hljs-string">"avsresponse"</span>]=&gt;
+  string(<span class="hljs-number">0</span>) <span class="hljs-string">""</span>
+  [<span class="hljs-string">"cvvresponse"</span>]=&gt;
+  string(<span class="hljs-number">1</span>) <span class="hljs-string">"M"</span>
+  [<span class="hljs-string">"coderesponse"</span>]=&gt;
+  string(<span class="hljs-number">3</span>) <span class="hljs-string">"100"</span>
+  [<span class="hljs-string">"codedescription"</span>]=&gt;
+  string(<span class="hljs-number">24</span>) <span class="hljs-string">"Transaction was Approved"</span>
+  [<span class="hljs-string">"status"</span>]=&gt;
+  string(<span class="hljs-number">3</span>) <span class="hljs-string">"200"</span>
+}
+</code></pre>
 
-<span class="hljs-keyword">switch</span> (err.type) {
-<span class="hljs-keyword">case</span> <span class="hljs-string">'exampleCardError'</span>:
-<span class="hljs-comment">// A declined card error</span>
-err.message; <span class="hljs-comment">// =&gt; e.g. "Your card's expiration year is invalid."</span>
-<span class="hljs-keyword">break</span>;
-<span class="hljs-keyword">case</span> <span class="hljs-string">'RateLimitError'</span>:
-<span class="hljs-comment">// Too many requests made to the API too quickly</span>
-<span class="hljs-keyword">break</span>;
-<span class="hljs-keyword">case</span> <span class="hljs-string">'exampleInvalidRequestError'</span>:
-<span class="hljs-comment">// Invalid parameters were supplied to example's API</span>
-<span class="hljs-keyword">break</span>;
-<span class="hljs-keyword">case</span> <span class="hljs-string">'exampleAPIError'</span>:
-<span class="hljs-comment">// An error occurred internally with example's API</span>
-<span class="hljs-keyword">break</span>;
-<span class="hljs-keyword">case</span> <span class="hljs-string">'exampleConnectionError'</span>:
-<span class="hljs-comment">// Some kind of error occurred during the HTTPS communication</span>
-<span class="hljs-keyword">break</span>;
-<span class="hljs-keyword">case</span> <span class="hljs-string">'exampleAuthenticationError'</span>:
-<span class="hljs-comment">// You probably used an incorrect API key</span>
-<span class="hljs-keyword">break</span>;
-<span class="hljs-keyword">default</span>:
-<span class="hljs-comment">// Handle any other types of unexpected errors</span>
-<span class="hljs-keyword">break</span>;
-}</code></pre>
-               </div>
-            </div>
-         
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>Sample request:</p>
+<pre class="language-ruby"><code class="language-ruby">c = Connection.new(<span class="hljs-symbol">mkey:</span> <span class="hljs-string">"&lt;Your machine key&gt;"</span>)
+ci = CardInfo.new({
+  <span class="hljs-symbol">:number=&gt;<span class="hljs-string">'4111111111111111'</span></span>,
+  <span class="hljs-symbol">:expiration=&gt;DateTime</span>.new(<span class="hljs-number">2010</span>, <span class="hljs-number">10</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>),
+  <span class="hljs-symbol">:cvv=&gt;<span class="hljs-string">'999'</span></span>,
+})
+res = c.simple_sale(<span class="hljs-number">9.95</span>, ci)
+assert_equal <span class="hljs-number">1</span>, res[<span class="hljs-symbol">:response</span>]
+assert res[<span class="hljs-symbol">:transid</span>].is_a? String
+assert_equal <span class="hljs-string">'sale'</span>, res[<span class="hljs-symbol">:type</span>]
+
+puts res[<span class="hljs-symbol">:response</span>] /<span class="hljs-regexp">/ 1
+puts res[:transid]  /</span><span class="hljs-regexp">/ 12345
+puts res[:type]     /</span><span class="hljs-regexp">/ sale
+</span></code></pre>
+<p></p>
+<p>Sample API response:</p>
+<p></p>
+<pre class="language-ruby"><code class="language-ruby">{
+ <span class="hljs-symbol">:response=&gt;</span><span class="hljs-number">1</span>,
+ <span class="hljs-symbol">:textresponse=&gt;<span class="hljs-string">"SUCCESS"</span></span>,
+ <span class="hljs-symbol">:transid=&gt;<span class="hljs-string">"10583912"</span></span>,
+ <span class="hljs-symbol">:xref=&gt;<span class="hljs-string">"3793946346"</span></span>,
+ <span class="hljs-symbol">:authcode=&gt;<span class="hljs-string">"123456"</span></span>,
+ <span class="hljs-symbol">:orderid=&gt;<span class="hljs-string">""</span></span>,
+ <span class="hljs-symbol">:type=&gt;<span class="hljs-string">"sale"</span></span>,
+ <span class="hljs-symbol">:avsresponse=&gt;<span class="hljs-string">""</span></span>,
+ <span class="hljs-symbol">:cvvresponse=&gt;<span class="hljs-string">"M"</span></span>,
+ <span class="hljs-symbol">:coderesponse=&gt;<span class="hljs-string">"100"</span></span>,
+ <span class="hljs-symbol">:codedescription=&gt;<span class="hljs-string">"Transaction was Approved"</span></span>,
+ <span class="hljs-symbol">:status=&gt;<span class="hljs-string">"200"</span></span>
+}
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-creating-a-sale-simple-sale-advanced-sale" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Advanced Sale</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>sale</td>
+<td>Transaction Sale</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0719 = 7/2019</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td>d.dd</td>
+<td>Total amount to be charged (ie. 10.00)</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td>card security code</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>CCC (ISO 4217 alphabetic code)</td>
+<td>Code of the payment currency. If currency is not specified, the default currency (USD) is assumed.</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>skunumber_#</td>
+<td>skunumber_1, skunumber_2, etc</td>
+<td>SKU number of the product being purchased</td>
+</tr>
+<tr>
+<td>description_#</td>
+<td></td>
+<td>Description of the product being purchased</td>
+</tr>
+<tr>
+<td>amount_#</td>
+<td></td>
+<td>Price of the single unit of a product being purchased</td>
+</tr>
+<tr>
+<td>quantity_#</td>
+<td></td>
+<td>Number of units of a product being purchased</td>
+</tr>
+<tr>
+<td>orderdesc</td>
+<td></td>
+<td>Order Description</td>
+</tr>
+<tr>
+<td>orderid</td>
+<td></td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>cardipaddress</td>
+<td>ddd.ddd.ddd.ddd</td>
+<td>IP address of the customer, can be used for fraud prevention in FBI Tools</td>
+</tr>
+<tr>
+<td>tax</td>
+<td>d.dd</td>
+<td>Total tax amount</td>
+</tr>
+<tr>
+<td>shipamount</td>
+<td>d.dd</td>
+<td>Total shipping amount</td>
+</tr>
+<tr>
+<td>ponumber</td>
+<td></td>
+<td>Original Purchase Order</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td>Billing company</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>Billing address2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td>state</td>
+<td>2 character abbreviation</td>
+<td>Billing state</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+</tr>
+<tr>
+<td>country</td>
+<td>CC (ISO-3166)</td>
+<td>Billing Country (ie. US)</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>Billing Email Address</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td>Shipping company</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>Shipping Address</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>Shipping Address - line 2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>Shipping City</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td>2 character abbreviation</td>
+<td>Shipping State</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td>Shipping Zip Code</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td>CC (ISO - 3166)</td>
+<td>Shipping Country, ie US</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>Shipping Phone Number</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>Shipping Email</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=57.85&amp;cardnum=4111111111111111&amp;cardexp=1010&amp;cvv=999&amp;skunumber_1=5558779&amp;description_1=menssweaterblue&amp;amount_1=50.00&amp;quantity_1=1&amp;tax=2.85&amp;shipamount=5.00&amp;firstname=John&amp;lastname=Smith&amp;address1=888+test+address&amp;city=Los+Angeles&amp;country=US&amp;state=CA&amp;phone=222-444-2938&amp;shipfirstname=John&amp;shiplastname=Smith&amp;shipaddress1=888+test+address&amp;shipcity=Los+Angeles&amp;shipstate=CA&amp;shipphone=2224442938
+</code></pre>
+
+         </div>
       </div>
+      
    </div>
 </section>           
 
 
            
               
-<section id="documenter-ben-tester" class="method">
+<section id="documenter-separate-auth-capture" class="method">
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
-            <h1 id="this-is-ben-s-big-content-test">This is Ben&#39;s big content test</h1>
+            <h1>Creating an Authorization and Capture</h1>
+<p>A typical Sale has two parts, an Authorization and a Capture. Through the API,
+merchants have the option to either run a complete sale or break the transaction
+into two separate parts. Merchants who do not ship/deliver products on the same
+day, offer future delivery of services or accept tips may want to use the auth
+and capture method. Examples of these merchant types would be:</p>
+<ul>
+<li>
+<p>Car Rentals</p>
+</li>
+<li>
+<p>Hotels</p>
+</li>
+<li>
+<p>Restaurants</p>
+</li>
+</ul>
 
          </div>
       </div>
-      <div class="method-example">
-         
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-separate-auth-capture-simple-auth" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Simple Authorization</h3>
+<p>Authorization transactions are processed immediately but are not flagged for
+settlement. This process will verify funds availability and hold them until
+capture (3-7 days). In order to settle an open auth, a subsequent capture must
+be made.</p>
+<p>An authorization may have all of the same fields as a Sale transaction, but with
+<code>transtype=auth</code></p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>auth</td>
+<td>Authorization = Transaction Auth</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0711 = 7/2011)</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged (i.e. 10.00)</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td></td>
+<td>Card security code</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=auth&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;cardnum=4111111111111111&amp;cardexp=1010&amp;cvv=999
+</code></pre>
+
+         </div>
       </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-separate-auth-capture-simple-auth-simple-capture" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Simple Capture</h3>
+<p>Capture transactions flag existing authorizations for settlement. Only
+authorizations can be captured. Captures can be submitted for an amount equal to
+or less than the original authorization amount.</p>
+<p></p>
+<p>*In order to capture an amount that is higher than the original auth, please
+contact support to make sure that the correct settings have been enabled for
+your account.</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>capture</td>
+<td>Capture = Transaction Capture</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transid</strong></td>
+<td></td>
+<td></td>
+<td>Original Payment Gateway Transaction ID</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0711 = 7/2011)</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged (i.e. 10.00)</td>
+</tr>
+<tr>
+<td>sendtransreceipttobillemail</td>
+<td></td>
+<td>true/false</td>
+<td>If true receipt will be sent to email from Billing Information if email is specified</td>
+</tr>
+<tr>
+<td>sendtransreceipttoshipemail</td>
+<td></td>
+<td>true/false</td>
+<td>If true receipt will be sent to email from Shipping Information if email is specified</td>
+</tr>
+<tr>
+<td>sendtransreceipttoemails</td>
+<td></td>
+<td>email@email.com</td>
+<td>Additional list of emails to receive receipts</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=capture&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;transid=123456&amp;sendtransreceipttobillemail=true
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-separate-auth-capture-simple-auth-simple-capture-Offline-Capture" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Simple Offline Capture</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>offline</td>
+<td>Offline Capture closes an open authorization which was manually obtained from the card issuer</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0711 = 7/2011)</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged (i.e. 10.00)</td>
+</tr>
+<tr>
+<td><strong>authcode</strong></td>
+<td></td>
+<td>string</td>
+<td>Auth code received from the issuer</td>
+</tr>
+<tr>
+<td><strong>authdate</strong></td>
+<td></td>
+<td>MM/DD/YYYY</td>
+<td>Date that auth code was obtained, required for Chase only</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td></td>
+<td>Card security code</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=offline&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;cardnum=4111111111111111&amp;cardexp=1010&amp;cvv=999&amp;authcode=987654&amp;authdate=03/25/2016
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Voice Capture (for Visa Only)</h3>
+<p>When you request an authorization through the system, the issuer might ask that
+you call the acquirer to answer questions about the transaction. These
+transaction types are sometimes known as <strong>Referrals.</strong> To capture verbally
+authorized transactions, send the verbal authorization code in the capture
+request.</p>
+<p>You can use verbal authorization to capture an authorization that was declined
+for any of these reasons:</p>
+<p></p>
+<p>•      Verbal authorization required</p>
+<p>•      Card expired</p>
+<p>•      Card refused</p>
+<p>•      Invalid card</p>
+<p></p>
+<p>A verbal authorization works as follows:</p>
+<p>1.    The authorization reply includes reason code 201, which indicates that the
+issuing bank is requiring a verbal authorization.</p>
+<p>2.    The merchant calls the acquirer to answer questions about the transaction.</p>
+<p>3.    If the acquirer verbally authorizes the transaction, the merchant is given
+a verbal authorization code.</p>
+<p>4.    The merchant would include the verbal authorization code in the capture
+request.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-issuing-a-refund" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1>Issuing a Refund</h1>
+<p>Transaction refunds will perform either a full or partial refund of an already
+settled transaction. If the transaction has not need settled, it must be
+<strong>voided</strong> instead.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-issuing-a-refund-Simple-refund" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Simple Refund</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>refund</td>
+<td>Refund</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transid</strong></td>
+<td></td>
+<td>Original payment gateway transaction ID</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>d.dd</td>
+<td>Total amount to be refunded</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=refund&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transid=12345678
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-issuing-a-refund-Simple-refund-advanced-refund" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Advanced Refund</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>refund</td>
+<td>Refund</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transid</strong></td>
+<td></td>
+<td>Original payment gateway transaction ID</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>d.dd</td>
+<td>Total amount to be refunded</td>
+</tr>
+<tr>
+<td>opt_amount_type_#</td>
+<td></td>
+<td>Type of additional amount (surcharge, etc)</td>
+</tr>
+<tr>
+<td>opt_amount_value_#</td>
+<td></td>
+<td>Value of additional amount (1.00)</td>
+</tr>
+<tr>
+<td>sendtransreceipttobillemail</td>
+<td>true/false</td>
+<td>If true a receipt will be sent to the email provided in the billing information if email is specified</td>
+</tr>
+<tr>
+<td>sendtransreceipttoshipemail</td>
+<td>true/false</td>
+<td>If true a receipt will be sent to the email provided in the shipping information if email is specified</td>
+</tr>
+<tr>
+<td>sendtransreceipttoemails</td>
+<td>email@email.com</td>
+<td>Add additional emails which will receive the refund receipt</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">transtype=refund&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transid=12345678&amp;amount=12.00&amp;sendtransreceipttoemails=John.Smith@email.com
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-issuing-a-void" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1>Issuing a Void</h1>
+<p>Transaction voids will cancel an existing sale, authorization or capture on the
+same day that the original transaction was processed. Voids can only occur if
+the transaction has not been settled.</p>
+<p>If the transaction has been settled, a refund must be issued.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-issuing-a-void-simple-void" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Simple Void</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>void</td>
+<td>Void</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transid</strong></td>
+<td></td>
+<td>Original payment gateway transaction ID</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>d.dd</td>
+<td>Total amount to be refunded</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">transtype=void&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transid=12345678
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-issuing-a-void-simple-void-advanced-void" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Advanced Void</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>void</td>
+<td>Void</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transid</strong></td>
+<td></td>
+<td>Original payment gateway transaction ID</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>d.dd</td>
+<td>Total amount to be refunded</td>
+</tr>
+<tr>
+<td>opt_amount_type_#</td>
+<td></td>
+<td>Type of additional amount (surcharge, etc)</td>
+</tr>
+<tr>
+<td>opt_amount_value_#</td>
+<td></td>
+<td>Value of additional amount (1.00)</td>
+</tr>
+<tr>
+<td>sendtransreceipttobillemail</td>
+<td>true/false</td>
+<td>If true a receipt will be sent to the email provided in the billing information if email is specified</td>
+</tr>
+<tr>
+<td>sendtransreceipttoshipemail</td>
+<td>true/false</td>
+<td>If true a receipt will be sent to the email provided in the shipping information if email is specified</td>
+</tr>
+<tr>
+<td>sendtransreceipttoemails</td>
+<td>email@email.com</td>
+<td>Add additional emails which will receive the refund receipt</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">transtype=void&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transid=12345678&amp;amount=12.00&amp;sendtransreceipttoemails=John.Smith@email.com
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-Creating-a-credit" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1>Creating a Credit</h1>
+<p>Transaction credits apply a positive amount to a cardholder’s card. Unlike a
+refund, a credit is not associated with an original sale transaction.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+           
+              
+<section id="documenter-airline-passenger-sale" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1>Airline Passenger Sale</h1>
+<p>Through our integration with the Airline Reporting Corporation
+(<a href="https://www2.arccorp.com/">ARC</a>) we have the ability to offer
+Airline Passenger Sales.</p>
+<p>Passenger sales run similarly to traditional sale, auth and capture but all
+passenger transactions are batched and executed each night via a separate
+settlement operation.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-airline-passenger-sale-passenger-sale" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Passenger Sale</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>sale</td>
+<td>Transaction Sale</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0719 = 7/2019</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td>d.dd</td>
+<td>Total amount to be charged (ie. 10.00)</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td>Card security code</td>
+</tr>
+<tr>
+<td>passengername</td>
+<td>[a-z, A-Z, 0-9, ‘]</td>
+<td>First and last name of the passenger, 1-2 characters</td>
+</tr>
+<tr>
+<td>stopovercode1 stopovercode2 stopovercode3 stopovercode4 etc</td>
+<td>‘ ‘, ‘O’, ‘X’</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>airportcode1</strong></td>
+<td>[a-z, A-Z, 0-9]</td>
+<td>Origination Airport Code, 3 characters</td>
+</tr>
+<tr>
+<td>airportcode2 airportcode3 airportcode4</td>
+<td>[a-z, A-Z, 0-9]</td>
+<td>Codes for different trip legs, 3 characters</td>
+</tr>
+<tr>
+<td>carriercoupon1 carriercoupon2 carriercoupon3 carriercoupon4</td>
+<td>[a-z, A-Z, 0-9]</td>
+<td>2 characters</td>
+</tr>
+<tr>
+<td><strong>airlinecodenumber</strong></td>
+<td>[a-z, A-Z, 0-9]</td>
+<td>3 characters</td>
+</tr>
+<tr>
+<td><strong>ticketnumber</strong></td>
+<td>[0-9]</td>
+<td>10 characters</td>
+</tr>
+<tr>
+<td>classofservicecoupon1 classofservicecoupon2 classofservicecoupon3 classofservicecoupon4</td>
+<td>[a-z, A-Z, 0-9]</td>
+<td>2 characters</td>
+</tr>
+<tr>
+<td><strong>flightdatecoupon1</strong></td>
+<td>MM/DD/YYYY</td>
+<td>Departure date</td>
+</tr>
+<tr>
+<td><strong>flightdeparturetimecoupon1</strong></td>
+<td>HH;mm (military)</td>
+<td>Departure time</td>
+</tr>
+<tr>
+<td>addressverificationcode</td>
+<td>[a-z, A-Z, 0-9]</td>
+<td>1 character</td>
+</tr>
+<tr>
+<td><strong>approvalcode</strong></td>
+<td>[a-z, A-Z, 0-9]</td>
+<td>6 characters</td>
+</tr>
+<tr>
+<td>transactionid</td>
+<td>[a-z, A-Z, 0-9]</td>
+<td>The field must be forwarded when sent from TSYS, or manually filled. 15 characters</td>
+</tr>
+<tr>
+<td><strong>authcharindicator</strong></td>
+<td>supported values: ' ', 'A', 'E', 'F', 'I', 'C', 'K', 'M', 'N', 'P', 'R',</td>
+<td>Used as Returned Authorization Characteristics Indicator. Must contain the value returned in authorization response (ic case of online auth)</td>
+</tr>
+<tr>
+<td>referencenumber</td>
+<td>[a-z, A-Z, 0-9]</td>
+<td>12 characters</td>
+</tr>
+<tr>
+<td><strong>validationcode</strong></td>
+<td>[a-z, A-Z, 0-9]</td>
+<td>4 characters</td>
+</tr>
+<tr>
+<td><strong>authresponsecode</strong></td>
+<td>[a-zA-Z0-9 ] or two spaces</td>
+<td>2 characters</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">Example
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-starcard" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Military Star Card</h3>
+<p></p>
+<p>The Military Star Card is a private-label line of credit offered by the Military
+Exchange Credit Service and managed by the Army and Air Force Exchange Service.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-starcard-simple-starcard" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Simple Star Card</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>sale</td>
+<td>Transaction sale</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum​</strong></td>
+<td></td>
+<td>Card number</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td>d.dd</td>
+<td>Total amount to be refunded</td>
+</tr>
+<tr>
+<td><strong>CID</strong></td>
+<td>Custom Field</td>
+<td>11 digit numerical code</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td>Card security code</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;cardnum=6019440000011111&amp;amount=20.00&amp;CID=52347800001
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-starcard-simple-starcard-advanced-starcard" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Advanced Star Card</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>sale</td>
+<td>Transaction Sale</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0719 = 7/2019</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td>d.dd</td>
+<td>Total amount to be charged (ie. 10.00)</td>
+</tr>
+<tr>
+<td>CID</td>
+<td>custom field</td>
+<td>11 digit numerical code</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td>card security code</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>CCC (ISO 4217 alphabetic code)</td>
+<td>Code of the payment currency. If currency is not specified, the default currency (USD) is assumed.</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>skunumber_#</td>
+<td>skunumber_1, skunumber_2, etc</td>
+<td>SKU number of the product being purchased</td>
+</tr>
+<tr>
+<td>description_#</td>
+<td></td>
+<td>Description of the product being purchased</td>
+</tr>
+<tr>
+<td>amount_#</td>
+<td></td>
+<td>Price of the single unit of a product being purchased</td>
+</tr>
+<tr>
+<td>quantity_#</td>
+<td></td>
+<td>Number of units of a product being purchased</td>
+</tr>
+<tr>
+<td>orderdesc</td>
+<td></td>
+<td>Order Description</td>
+</tr>
+<tr>
+<td>orderid</td>
+<td></td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>cardipaddress</td>
+<td>ddd.ddd.ddd.ddd</td>
+<td>IP address of the customer, can be used for fraud prevention in FBI Tools</td>
+</tr>
+<tr>
+<td>tax</td>
+<td>d.dd</td>
+<td>Total tax amount</td>
+</tr>
+<tr>
+<td>shipamount</td>
+<td>d.dd</td>
+<td>Total shipping amount</td>
+</tr>
+<tr>
+<td>ponumber</td>
+<td></td>
+<td>Original Purchase Order</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td>Billing company</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>Billing address2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td>state</td>
+<td>2 character abbreviation</td>
+<td>Billing state</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+</tr>
+<tr>
+<td>country</td>
+<td>CC (ISO-3166)</td>
+<td>Billing Country (ie. US)</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>Billing Email Address</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td>Shipping company</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>Shipping Address</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>Shipping Address - line 2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>Shipping City</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td>2 character abbreviation</td>
+<td>Shipping State</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td>Shipping Zip Code</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td>CC (ISO - 3166)</td>
+<td>Shipping Country, ie US</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>Shipping Phone Number</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>Shipping Email</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=57.85&amp;cardnum=6019440000011111&amp;CID=12345678911&amp;cardexp=1010&amp;cvv=999&amp;skunumber_1=5558779&amp;description_1=menssweaterblue&amp;amount_1=50.00&amp;quantity_1=1&amp;tax=2.85&amp;shipamount=5.00&amp;firstname=John&amp;lastname=Smith&amp;address1=888+test+address&amp;city=Los+Angeles&amp;country=US&amp;state=CA&amp;phone=222-444-2938&amp;shipfirstname=John&amp;shiplastname=Smith&amp;shipaddress1=888+test+address&amp;shipcity=Los+Angeles&amp;shipstate=CA&amp;shipphone=2224442938
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-ach" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>ACH and eCheck</h3>
+<p></p>
+<p>Automated Clearing House (ACH) is an electronic network for financial
+transactions in the United States. ACH allows merchants to debit and credit
+funds directly to and from client’s banks accounts.</p>
+<p></p>
+<p>ACH/ eCheck Test Transaction Information</p>
+<p>Bank name: <code>First Test Bank</code></p>
+<p>Routing number: <code>110000000</code></p>
+<p>Account number: <code>1234567890123 / 3210987654321</code></p>
+<p>Account type: <code>P / B</code></p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-ach-simple-ach" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Simple ACH</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>sale/ refund/ credit</td>
+<td>sale- transaction sale, refund- transaction refund, credit- transaction credit</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>bankname​</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank name</td>
+</tr>
+<tr>
+<td><strong>routing</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank routing number</td>
+</tr>
+<tr>
+<td><strong>account</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank account number</td>
+</tr>
+<tr>
+<td><strong>achaccounttype</strong></td>
+<td></td>
+<td>checking/savings</td>
+<td>Customers type of bank account</td>
+</tr>
+<tr>
+<td><strong>achaccountsubtype</strong></td>
+<td></td>
+<td>business/personal</td>
+<td>Customers type of bank account</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=business9
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-ach-simple-ach-advanced-sale" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Advanced ACH</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>sale/ refund/ credit</td>
+<td>sale- transaction sale, refund- transaction refund, credit- transaction credit</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>bankname​</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank name</td>
+</tr>
+<tr>
+<td><strong>routing</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank routing number</td>
+</tr>
+<tr>
+<td><strong>account</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank account number</td>
+</tr>
+<tr>
+<td><strong>achaccounttype</strong></td>
+<td></td>
+<td>checking/savings</td>
+<td>Customers type of bank account</td>
+</tr>
+<tr>
+<td><strong>achaccountsubtype</strong></td>
+<td></td>
+<td>business/personal</td>
+<td>Customers type of bank account</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged</td>
+</tr>
+<tr>
+<td>orderdesc</td>
+<td></td>
+<td></td>
+<td>Order Description</td>
+</tr>
+<tr>
+<td>orderid</td>
+<td></td>
+<td></td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td></td>
+<td></td>
+<td>Billing first name, should be from 1-100 characters</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td></td>
+<td>Billing last name, should be from 1-100 characters</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td></td>
+<td>Billing Company</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td></td>
+<td>Billing address. Should be from 1-200 alpha-numeric characters and can include # - : ;</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td></td>
+<td>Billing address - line 2. Should be from 1-200 alpha-numeric characters and can include # - : ;</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td></td>
+<td>Billing city, should be 1-50 alpha characters</td>
+</tr>
+<tr>
+<td>state</td>
+<td></td>
+<td></td>
+<td>Billing state (2 character abbreviation)</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td></td>
+<td>Billing postal code. If the country is US the zip code format must be: [5 digits: XXXXX] or [9 digits XXXXX-XXXX]</td>
+</tr>
+<tr>
+<td>country</td>
+<td></td>
+<td>cc</td>
+<td>Billing country (ie. US)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td></td>
+<td>Billing phone number, 10 digits</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td></td>
+<td>Billing email address</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td></td>
+<td>Shipping address. Should be from 1-200 alpha-numeric characters and can include # - : ;</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td></td>
+<td>Shipping address - line 2. Should be from 1-200 alpha-numeric characters and can include # - : ;</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td></td>
+<td>Shipping city, should be 1-50 alpha characters</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td></td>
+<td></td>
+<td>Shipping state, 2 character abbreviation</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td></td>
+<td>Shipping postal code. If the country is US the zip code format must be: [5 digits: XXXXX] or [9 digits XXXXX-XXXX]</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td></td>
+<td>cc</td>
+<td>Shipping country (ie. US)</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td></td>
+<td>Shipping phone number, 10 digits</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td></td>
+<td>Shipping email</td>
+</tr>
+<tr>
+<td>saveclient</td>
+<td></td>
+<td>true/false</td>
+<td>If parameter 'saveclient' = true and the customer is identified as new, then a new Data Vault client will be created with payment/contact info from the transaction data and DV token will be generated. The payment transaction will be assigned to this new DV client.</td>
+</tr>
+<tr>
+<td>updateclient</td>
+<td></td>
+<td></td>
+<td>If the parameter 'updateclient' = true and the DataVault finds the client according to customer identification rules, then the payment transaction will be assigned to the DataVault client and the DataVault client payment/contact info will be updated according to the transaction's data.</td>
+</tr>
+<tr>
+<td>opt_amount_type_#</td>
+<td></td>
+<td></td>
+<td>Type of additional amount (Tip)</td>
+</tr>
+<tr>
+<td>opt_amount_value_#</td>
+<td></td>
+<td>d.dd</td>
+<td>Value of the additional amount (10.00)</td>
+</tr>
+<tr>
+<td>opt_amount_percentage_#</td>
+<td></td>
+<td></td>
+<td>Percentage of additional amount (20)</td>
+</tr>
+<tr>
+<td>birthdate</td>
+<td></td>
+<td>MM/DD/YYYY</td>
+<td>Birthdate of the customer</td>
+</tr>
+<tr>
+<td>checknumber</td>
+<td></td>
+<td></td>
+<td>Check number. 1-15 alphanumeric characters</td>
+</tr>
+<tr>
+<td>driverlicensenumber</td>
+<td></td>
+<td></td>
+<td>Drivers license number, 1-50 alphanumeric characters</td>
+</tr>
+<tr>
+<td>driverlicensecountry</td>
+<td></td>
+<td>cc</td>
+<td>Drivers license country</td>
+</tr>
+<tr>
+<td>driverlicensestate</td>
+<td></td>
+<td>cc</td>
+<td>Drivers license state</td>
+</tr>
+<tr>
+<td>sendtransreceipttobillemail</td>
+<td></td>
+<td>true/false</td>
+<td>If true, this will send a transaction receipt to the billing email if present</td>
+</tr>
+<tr>
+<td>sendtransreceipttoshipemail</td>
+<td></td>
+<td>true/false</td>
+<td>If true, this will send a transaction receipt to the shipping email if present</td>
+</tr>
+<tr>
+<td>paymentdescriptor</td>
+<td></td>
+<td></td>
+<td>Overrides the dynamic payment descriptor</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=business&amp;firstname=Henry&amp;lastname=Johnson&amp;phone=8526547896&amp;email=hjohnson@test.com
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-ewallet" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>eWallet</h3>
+<p>An eWallet is a device, website, software system or database which facilitates
+transactions securely by storing a consumers credit card or bank account within
+a password protected system.</p>
+<p>SPARROW currently supports the PayPal eWallet. eWallet operations can be
+processed via both the Services API and Checkout API.</p>
+<ul>
+<li>
+<p>The Services API can be used to process credit operations only</p>
+</li>
+<li>
+<p>The Checkout API must be used for Sale transactions. The customer must be
+directed to the PayPal Express Checkout page where they will login to their
+PayPal account to pay securely</p>
+</li>
+</ul>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-ewallet-ewallet-credit" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Fiserv Simple Sale</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>credit</td>
+<td>credit- funds being pushed to the customer</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>ewalletaccount​</strong></td>
+<td></td>
+<td></td>
+<td>eWallet account credentials (ie email address associated with the customers paypal account)</td>
+</tr>
+<tr>
+<td>ewallet type​</td>
+<td></td>
+<td>PayPal</td>
+<td>Currently PayPal is the only eWallet type supported</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged (i.e. 10.00)</td>
+</tr>
+<tr>
+<td>currency</td>
+<td></td>
+<td>ccc</td>
+<td>Code of the payment currency. If not currency is specified, the default is USD</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;amount=9.95&amp;ewalletaccount=user@example.com&amp;ewallettype=paypal&amp;currency=USD
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-fiserv" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Fiserv</h3>
+<p></p>
+<p>Fiserv provides a private label, closed loop line of credit for its partners.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-fiserv-fiserv-simple" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Fiserv Simple Sale</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>sale</td>
+<td>sale = Transaction Sale</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0711 = 7/2011)</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged (i.e. 10.00)</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;amount=9.95&amp;cardnum=000123456789002&amp;cardexp=1010&amp;
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-fiserv-fiserv-simple-fiserv-advanced" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Advanced Fiserv Sale</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>sale</td>
+<td>Transaction Sale</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0719 = 7/2019</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td>d.dd</td>
+<td>Total amount to be charged (ie. 10.00)</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td>card security code</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>CCC (ISO 4217 alphabetic code)</td>
+<td>Code of the payment currency. If currency is not specified, the default currency (USD) is assumed.</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>skunumber_#</td>
+<td>skunumber_1, skunumber_2, etc</td>
+<td>SKU number of the product being purchased</td>
+</tr>
+<tr>
+<td>description_#</td>
+<td></td>
+<td>Description of the product being purchased</td>
+</tr>
+<tr>
+<td>amount_#</td>
+<td></td>
+<td>Price of the single unit of a product being purchased</td>
+</tr>
+<tr>
+<td>quantity_#</td>
+<td></td>
+<td>Number of units of a product being purchased</td>
+</tr>
+<tr>
+<td>orderdesc</td>
+<td></td>
+<td>Order Description</td>
+</tr>
+<tr>
+<td>orderid</td>
+<td></td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>cardipaddress</td>
+<td>ddd.ddd.ddd.ddd</td>
+<td>IP address of the customer, can be used for fraud prevention in FBI Tools</td>
+</tr>
+<tr>
+<td>tax</td>
+<td>d.dd</td>
+<td>Total tax amount</td>
+</tr>
+<tr>
+<td>shipamount</td>
+<td>d.dd</td>
+<td>Total shipping amount</td>
+</tr>
+<tr>
+<td>ponumber</td>
+<td></td>
+<td>Original Purchase Order</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td>Billing company</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>Billing address2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td>state</td>
+<td>2 character abbreviation</td>
+<td>Billing state</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+</tr>
+<tr>
+<td>country</td>
+<td>CC (ISO-3166)</td>
+<td>Billing Country (ie. US)</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>Billing Email Address</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td>Shipping company</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>Shipping Address</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>Shipping Address - line 2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>Shipping City</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td>2 character abbreviation</td>
+<td>Shipping State</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td>Shipping Zip Code</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td>CC (ISO - 3166)</td>
+<td>Shipping Country, ie US</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>Shipping Phone Number</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>Shipping Email</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=57.85&amp;cardnum=4000123456789002&amp;cardexp=1010&amp;skunumber_1=5558779&amp;description_1=menssweaterblue&amp;amount_1=50.00&amp;quantity_1=1&amp;tax=2.85&amp;shipamount=5.00&amp;firstname=John&amp;lastname=Smith&amp;address1=888+test+address&amp;city=Los+Angeles&amp;country=US&amp;state=CA&amp;phone=222-444-2938&amp;shipfirstname=John&amp;shiplastname=Smith&amp;shipaddress1=888+test+address&amp;shipcity=Los+Angeles&amp;shipstate=CA&amp;shipphone=2224442938
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-chargeback" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1>Chargeback Entry</h1>
+<p>The Chargeback operation changes the transaction status from **successful **to
+**dispute. **This operation also updates the Customer Scoring system and removes
+the transaction amount from the successful transactions total within the Reports
+module.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-chargeback-mark-chargeback" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Marking a successful transaction as a Chargeback</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>chargeback</td>
+<td>Chargeback will mark the transaction as “disputed”</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transid</strong></td>
+<td></td>
+<td>Original payment gateway transaction ID</td>
+</tr>
+<tr>
+<td><strong>reason</strong></td>
+<td>alphanumeric</td>
+<td>Description of the reason for the chargeback</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=chargeback&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transid=12345678&amp;reason=fraudulent+transaction
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-balance-inquiry" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Balance Inquiry</h3>
+<p>The Balance Inquiry operation returns the available card balance</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-balance-inquiry-check-balance" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Balance Inquiry</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>balanceincuire</td>
+<td>Balanceincuire returns the available card balance</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">transtype=balanceincuire&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;cardnum=4111111111111111
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-decrypt-custom-field" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Decrypting Custom Fields</h3>
+<p>The merchant has the ability to decrypt custom fields via the API using the Data
+Vault client and the name of the custom field. Commonly encrypted fields may be:</p>
+<ul>
+<li>
+<p>Social Security Number</p>
+<ul>
+<li>
+<p>Drivers License Number</p>
+</li>
+<li>
+<p>Custom Identifier</p>
+</li>
+</ul>
+</li>
+</ul>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-decrypt-custom-field-decrypt" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Decrypting Custom Fields</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>decrypt</td>
+<td>The decrypt operation returns the value of the custom field</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>fieldname</strong></td>
+<td></td>
+<td></td>
+<td>Custom field name</td>
+</tr>
+<tr>
+<td>customertoken</td>
+<td></td>
+<td>alphanumeric string</td>
+<td>The field is required if the paymenttoken field is not specified. This is a unique Data Vault customer identifier</td>
+</tr>
+<tr>
+<td>paymenttoken</td>
+<td></td>
+<td>alphanumeric string</td>
+<td>The field is required if the customertoken field is not specified. This is a unique Data Vault payment type identifier</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">transtype=decrypt&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;fieldname=socialsecurity&amp;customertoken=H6FV89KL156
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-cc-verification" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Credit Card Verification</h3>
+<p>An Account Verification transaction is used when certain aspects of the credit
+card are needed prior to a purchase. An Account Verification transaction would
+be sent in as a normal Authorization request (not a Sale) with the amount of
+$0, and the following can be checked by the Issuer:</p>
+<ul>
+<li>
+<p>Credit Card number-Checks to see if the card number is on file with the
+Issuer, and if in good standing</p>
+<ul>
+<li>
+<p>AVS-Checks the address of the cardholder</p>
+</li>
+<li>
+<p>CVN-Checks the Card verification Number of the credit card</p>
+</li>
+</ul>
+</li>
+</ul>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-cc-verification-card-verification" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Account Verification</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>auth</td>
+<td>auth</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie 0719 = 07/2019)</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td>d.dd</td>
+<td>Total amount to be charged should be 0.00</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td>Card security code</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Billing postal code. If the country is US the zip code format must be: [5 digits: XXXXX] or [9 digits XXXXX-XXXX]</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">transtype=auth&amp;mkey=HNJ45D23MKLO85J2D00LOP&amp;cardnum=4111111111111111&amp;amount=0.00&amp;zip=85254
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-datavault" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Data Vault</h3>
+<p>The Data Vault is designed to store and recall client’s payment information for
+efficient, repeatable transactions. Through using tokenization, all necessary
+consumer information is stored adhering to PCI Level 1 compliance.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-datavault-simple-add-customer" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Simple Add Customer by Payment Type:</h3>
+<p>Below are the minimum fields required to add a new Data Vault customer for each
+supported payment type.</p>
+<p></p>
+<h3>Credit Card</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>addcustomer</td>
+<td>Add a new Data Vault Customer</td>
+</tr>
+<tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td>Customer’s first name</td>
+</tr>
+<tr>
+<td><strong>lastname</strong></td>
+<td></td>
+<td>Customer’s last name</td>
+</tr>
+<tr>
+<td><strong>cardnum_#</strong></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp_#</strong></td>
+<td>MMYY</td>
+<td>Credit card expiration</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addcustomer&amp;firstname=John&amp;lastname=Doe&amp;customerid=26B122&amp;cardnum=4111111111111111&amp;cardexp=0220
+
+</code></pre>
+<h3>ACH</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>addcustomer</td>
+<td>Add a new Data Vault Customer</td>
+</tr>
+<tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td>Customer’s first name</td>
+</tr>
+<tr>
+<td><strong>lastname</strong></td>
+<td></td>
+<td>Customer’s last name</td>
+</tr>
+<tr>
+<td><strong>bankname_#</strong></td>
+<td></td>
+<td>Bank name</td>
+</tr>
+<tr>
+<td><strong>routing_#</strong></td>
+<td></td>
+<td>Bank routing number</td>
+</tr>
+<tr>
+<td><strong>account_#</strong></td>
+<td></td>
+<td>Bank account number</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addcustomer&amp;firstname=John&amp;lastname=Doe&amp;customerid=26B122&amp;bankname=wellsfargo&amp;routing=67890453&amp;account=123456789
+</code></pre>
+<p></p>
+<h3>Star Card</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>addcustomer</td>
+<td>Add a new Data Vault Customer</td>
+</tr>
+<tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td>Customer’s first name</td>
+</tr>
+<tr>
+<td><strong>lastname</strong></td>
+<td></td>
+<td>Customer’s last name</td>
+</tr>
+<tr>
+<td><strong>cardnum_#</strong></td>
+<td></td>
+<td>Credit Card number</td>
+</tr>
+<tr>
+<td><strong>CID</strong></td>
+<td>custom field</td>
+<td>11 digit numerical</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=John&amp;lastname=Doe&amp;cardnum=6019440000011111&amp;CID=52347800001
+</code></pre>
+<p></p>
+<h3>eWallet</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>addcustomer</td>
+<td>Add a new Data Vault Customer</td>
+</tr>
+<tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td>Customer’s first name</td>
+</tr>
+<tr>
+<td><strong>lastname</strong></td>
+<td></td>
+<td>Customer’s last name</td>
+</tr>
+<tr>
+<td><strong>ewalletaccount_#</strong></td>
+<td>email</td>
+<td>eWallet credentials (email)</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-datavault-simple-add-customer-advanced-add-customer" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Advanced Add Customer</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>addcustomer</td>
+<td>Add customer will create a new Data Vault entry</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td>Customer’s first name</td>
+</tr>
+<tr>
+<td><strong>lastname</strong></td>
+<td></td>
+<td>Customer’s last name</td>
+</tr>
+<tr>
+<td>note</td>
+<td></td>
+<td>Customer note</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>Default address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>Default address2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>Default city</td>
+</tr>
+<tr>
+<td>state</td>
+<td>2 character abbreviation</td>
+<td>Default state</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Default postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+</tr>
+<tr>
+<td>country</td>
+<td>CC (ISO-3166)</td>
+<td>Default Country (ie. US)</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>Default Email Address</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>Default Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>Default Shipping last name</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td>Default Shipping company</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>Default Shipping Address</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>Default Shipping Address - line 2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>Default Shipping City</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td>2 character abbreviation</td>
+<td>Default Shipping State</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td>Default Shipping Zip Code</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td>CC (ISO - 3166)</td>
+<td>Default Shipping Country, ie US</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>Default Shipping Phone Number</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>Default Shipping Email</td>
+</tr>
+<tr>
+<td>username</td>
+<td></td>
+<td>Client user name. This field is required if the Client Service Portal is enabled and ‘password’ or ‘clientuseremail’ is specified</td>
+</tr>
+<tr>
+<td>password</td>
+<td></td>
+<td>Client user password. This field is required if the Client Service Portal is enabled and ‘username’ or ‘clientuseremail’ is specified</td>
+</tr>
+<tr>
+<td>clientuseremail</td>
+<td></td>
+<td>Client user email. This field is required if the Client Service Portal is enabled and ‘password’ or ‘username’ is specified</td>
+</tr>
+<tr>
+<td>paytype_#</td>
+<td>creditcard/check/ach/starcard/wallet</td>
+<td>Type of payment info</td>
+</tr>
+<tr>
+<td>firstname_#</td>
+<td></td>
+<td>Billing first name, specific to the payment type</td>
+</tr>
+<tr>
+<td>lastname_#</td>
+<td></td>
+<td>Billing last name, specific to the payment type</td>
+</tr>
+<tr>
+<td>address1_#</td>
+<td></td>
+<td>Billing address, specific to the payment type</td>
+</tr>
+<tr>
+<td>address2_#</td>
+<td></td>
+<td>Billing address-line 2, specific to the payment type</td>
+</tr>
+<tr>
+<td>city_#</td>
+<td></td>
+<td>Billing city, specific to the payment type</td>
+</tr>
+<tr>
+<td>state_#</td>
+<td></td>
+<td>Billing state, 2 character abbreviation, specific to the payment type</td>
+</tr>
+<tr>
+<td>zip_#</td>
+<td></td>
+<td>Billing zip, specific to payment type</td>
+</tr>
+<tr>
+<td>country_#</td>
+<td></td>
+<td>Billing Country, specific to payment type</td>
+</tr>
+<tr>
+<td>phone_#</td>
+<td></td>
+<td>Billing phone, specific to payment type</td>
+</tr>
+<tr>
+<td>email_#</td>
+<td></td>
+<td>Billing email, specific to payment type</td>
+</tr>
+<tr>
+<td>cardnum_#</td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td>cardexp_#</td>
+<td>MMYY</td>
+<td>Credit card expiration</td>
+</tr>
+<tr>
+<td>bankname_#</td>
+<td></td>
+<td>ACH bank name</td>
+</tr>
+<tr>
+<td>routing_#</td>
+<td></td>
+<td>ACH routing number</td>
+</tr>
+<tr>
+<td>account_#</td>
+<td></td>
+<td>ACH account number</td>
+</tr>
+<tr>
+<td>achaccounttype_#</td>
+<td>checking/savings</td>
+<td>ACH account type</td>
+</tr>
+<tr>
+<td>achaccountsubtype</td>
+<td>business/personal</td>
+<td>ACH account sub type</td>
+</tr>
+<tr>
+<td>payno_#</td>
+<td>positive integer</td>
+<td>Priority of the payment type among others when sending payment using the customertoken</td>
+</tr>
+<tr>
+<td>ewalletaccount_#</td>
+<td></td>
+<td>eWallet account credentials, ie; email</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=Samantha&amp;lastname=Simmons&amp;address1=1234+N+Wells+street&amp;city=Phoenix&amp;state=AZ&amp;zip=85254&amp;email@sam@test.com&amp;phone=4801234567&amp;cardnum_1=4111111111111111&amp;cardexp_1=0220
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-datavault-simple-add-customer-advanced-add-customer-update-payment-type" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Update Payment Type</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>updatecustomer</td>
+<td>This transaction type will update the current client information with any new data fields provided</td>
+</tr>
+<tr>
+<td><strong>token</strong></td>
+<td>alphanumericstring</td>
+<td>Unique customer or payment info identifier</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>Billing address, line 2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td>state</td>
+<td>2 character abbreviation</td>
+<td>Billing state</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Billing zip</td>
+</tr>
+<tr>
+<td>country</td>
+<td>CC (ISO-3166)</td>
+<td>Billing country</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td>Billing phone</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>Billing email</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>Shipping address1</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>Shipping address2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>Shipping city</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td></td>
+<td>Shipping state</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td>Shipping zip</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td></td>
+<td>Shipping country</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>Shipping phone</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>Shipping email</td>
+</tr>
+<tr>
+<td>username</td>
+<td></td>
+<td>Client Service Portal username</td>
+</tr>
+<tr>
+<td>password</td>
+<td></td>
+<td>Client Service Portal password</td>
+</tr>
+<tr>
+<td>clientuseremail</td>
+<td></td>
+<td>Client Service Portal email</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=updatecustomer&amp;token=B31388EA20ABF2776C93&amp;address1=939+St.+Winnie’s+st.&amp;city=Forest+City
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-datavault-simple-add-customer-advanced-add-customer-update-payment-type-delete-payment-type" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Delete Payment Type</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>updatecustomer</td>
+<td>This transaction type will update the current client information with any new data fields provided</td>
+</tr>
+<tr>
+<td><strong>token_#</strong></td>
+<td>alphanumericstring</td>
+<td>Unique customer or payment info identifier</td>
+</tr>
+<tr>
+<td><strong>operationtype_#</strong></td>
+<td>deletepaymenttype</td>
+<td>Delete a specific payment type</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-datavault-simple-add-customer-advanced-add-customer-update-payment-type-delete-payment-type-delete-customer" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Delete Data Vault Customer</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>deletecustomer</td>
+<td>This transaction type will update the current client information with any new data fields provided</td>
+</tr>
+<tr>
+<td><strong>token</strong></td>
+<td>alphanumericstring</td>
+<td>Unique customer or payment info identifier</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=deletecustomer&amp;token= B31388EA20ABF2776C93
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-payment-plans" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h2>Creating Custom Payment Plans</h2>
+<p></p>
+<p>Unique payment plans can be created to automatically bill customer using custom
+amounts and frequencies</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-payment-plans-plan-description" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>General Plan Data</h3>
+<p>First we must describe our plan</p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>addplan</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>planname</strong></td>
+<td>string</td>
+<td>Payment plan name</td>
+</tr>
+<tr>
+<td><strong>plandesc</strong></td>
+<td>string</td>
+<td>Payment plan description</td>
+</tr>
+<tr>
+<td><strong>startdate</strong></td>
+<td>MM/DD/YYYY</td>
+<td>Starting day of the plan</td>
+</tr>
+<tr>
+<td>defaultachmkey</td>
+<td></td>
+<td>Merchant key of ACH account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultcreditcardmkey</td>
+<td></td>
+<td>Merchant key of Credit Card account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultecheckmkey</td>
+<td></td>
+<td>Merchant key of eCheck account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultstartcardmkey</td>
+<td></td>
+<td>Merchant key of Star Card account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultewalletmkey</td>
+<td></td>
+<td>Merchant key of eWallet account with which plan payments should be processed by default</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Building a Sequence</h3>
+<p>Now we define the sequences within the plan which determine how much the
+customer will be charged and when</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sequence_#<strong>​</strong></td>
+<td>positive integer</td>
+<td>The sequence number defines which set of payments should occur first, second third, etc; if multiple sequences are present</td>
+</tr>
+<tr>
+<td><strong>amount_#​</strong></td>
+<td>d.dd</td>
+<td>Amount to be paid</td>
+</tr>
+<tr>
+<td><strong>scheduletype_#</strong></td>
+<td>monthly/ custom/ annual</td>
+<td>Specifies the type of payment schedule. Supported types are: every month of a specified date, every N days, every year on a specified date</td>
+</tr>
+<tr>
+<td><strong>scheduleday_#​</strong></td>
+<td>positive integer</td>
+<td>Day of the month for processing payments (scheduletype=monthly) or number of days between payments (scheduletype=custom)</td>
+</tr>
+<tr>
+<td><strong>duration</strong></td>
+<td>integer</td>
+<td>Positive number of charges or -1 if no limit</td>
+</tr>
+<tr>
+<td>productid_#</td>
+<td>string</td>
+<td>External ID for the product</td>
+</tr>
+<tr>
+<td>description_#</td>
+<td>string</td>
+<td>Description of the sequence</td>
+</tr>
+<tr>
+<td>notifyfailures</td>
+<td>true/false</td>
+<td>Sends notification emails to the client if failed payments occur</td>
+</tr>
+<tr>
+<td>userecycling</td>
+<td>true/false</td>
+<td>Specifies whether to reprocess failed transactions for this plan</td>
+</tr>
+<tr>
+<td>defaultewalletmkey</td>
+<td></td>
+<td>Merchant key of eWallet account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>retrycount</td>
+<td>positive integer</td>
+<td>Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise</td>
+</tr>
+<tr>
+<td>retrytype</td>
+<td>daily/ weekly/ monthly</td>
+<td>Specifies the type of retry schedule. Supported types are: every month of a specified date, every N days, every year on a specified date</td>
+</tr>
+<tr>
+<td>retryperiod</td>
+<td>positive integer</td>
+<td>Number of days between retry attempts. This field is required if retrytype=daily</td>
+</tr>
+<tr>
+<td>retrydayofweek</td>
+<td>string</td>
+<td>This field is required if retrytype=weekly (monday, tuesday etc.)</td>
+</tr>
+<tr>
+<td>retryfirstdayofmonth</td>
+<td>positive integer</td>
+<td>First date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>retryseconddayofmonth</td>
+<td>positive integer</td>
+<td>Second date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>autocreateclientaccounts</td>
+<td>true/false</td>
+<td>Creates username and password for Client Portal automatically when plan is assigned to the client</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Notification Settings</h3>
+<p>We must also set notification settings to alert customers of successful
+payments, passed due payment, plan changes, etc.</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reviewonassignment<strong>​</strong></td>
+<td>true/false</td>
+<td>If “true” this will set the payment plan to pending until it is reviewed by the merchant admin</td>
+</tr>
+<tr>
+<td>processimmediately<strong>​</strong></td>
+<td>true/false</td>
+<td>Specifies if new payments should be processed immediately or end of day</td>
+</tr>
+<tr>
+<td>overridesender</td>
+<td>true/false</td>
+<td>Specifies whether to override sender email for customers notifications</td>
+</tr>
+<tr>
+<td>senderemail</td>
+<td>email</td>
+<td>Sender email. This field is required if overridesender = true</td>
+</tr>
+<tr>
+<td>notifyupcomingpayment</td>
+<td>true/false</td>
+<td>Specifies whether to notify customer about upcoming payment</td>
+</tr>
+<tr>
+<td>notifydaysbeforeupcomingpayment</td>
+<td>positive integer</td>
+<td>Number of days before notification about upcoming payment should be sent to the client. This field is required if notifyupcomingpayment = true</td>
+</tr>
+<tr>
+<td>notifyplansummary</td>
+<td>true/false</td>
+<td>Specifies whether to send merchant a Summarized Plan Report</td>
+</tr>
+<tr>
+<td>notifyplansummaryinterval</td>
+<td>daily / weekly / monthly / quaterly</td>
+<td>Interval of plan summary notifications. This field is required if notifyplansummary = true</td>
+</tr>
+<tr>
+<td>notifyplansummaryemails</td>
+<td></td>
+<td>Multiple addresses are separated by comma. This field is required if notifyplansummary = true</td>
+</tr>
+<tr>
+<td>notifydailystats</td>
+<td>true/false</td>
+<td>Specifies whether to send merchant a Daily Plan Processing Statistics Report</td>
+</tr>
+<tr>
+<td>notifydailystatsemails</td>
+<td></td>
+<td>Multiple addresses are separated by comma. This field is required if notifydailystats = true</td>
+</tr>
+<tr>
+<td>notifyplancomplete</td>
+<td>true/false</td>
+<td>Specifies whether to notify merchant about plan completion</td>
+</tr>
+<tr>
+<td>notifyplancompleteemails</td>
+<td></td>
+<td>Multiple addresses are separated by comma. This field is required if notifyplancomplete = true</td>
+</tr>
+<tr>
+<td>notifydecline</td>
+<td>true/false</td>
+<td>Specifies whether to notify merchant about failed payments</td>
+</tr>
+<tr>
+<td>notifydeclineemails</td>
+<td></td>
+<td>Multiple addresses are separated by comma. This field is required if notifydecline = true</td>
+</tr>
+<tr>
+<td>notifyviaftp</td>
+<td>true/false</td>
+<td>Specifies whether to transfer transaction file via ftp</td>
+</tr>
+<tr>
+<td>notifyviaftpurl</td>
+<td>true/false</td>
+<td>FTP address on which transaction file is transferred. This field is required if notifyviaftp = true</td>
+</tr>
+<tr>
+<td>notifyviaftpusername</td>
+<td></td>
+<td>Username to access FTP address. This field is required if notifyviaftp = true</td>
+</tr>
+<tr>
+<td>notifyviaftppassword</td>
+<td></td>
+<td>Password to access FTP address. This field is required if notifyviaftp = true</td>
+</tr>
+<tr>
+<td>notifyflagged</td>
+<td>true/false</td>
+<td>Specifies whether to notify merchant about flagged for review payments</td>
+</tr>
+<tr>
+<td>notifyflaggedemails</td>
+<td></td>
+<td>Multiple addresses are separated by comma. This field is required if notifyflagged = true</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addplan&amp;planname=Monthly+fees&amp;plandesc=Some+long+description.&amp;startdate=4/13/2017&amp;sequence_1=1&amp;amount_1=12.45&amp;scheduletype_1=monthly&amp;scheduleday_1=5&amp;duration_1=10
+</code></pre>
+<p>***This request will create a new payment plan starting on April 13, 2012
+with one sequence, defining 10 payments, each on 5th day of the month (i.e.
+payments will be made on May 5, June 5, July 5, and so on).</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications-update-plan" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Updating a Payment Plan</h3>
+<p>Payment Plans can be updated by using the transaction type “updateplan”.</p>
+<p></p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>updateplan</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>token</strong></td>
+<td></td>
+<td>Unique payment plan identifier</td>
+</tr>
+<tr>
+<td>planname</td>
+<td>string</td>
+<td>Payment plan name</td>
+</tr>
+<tr>
+<td>plandesc</td>
+<td>string</td>
+<td>Payment plan description</td>
+</tr>
+<tr>
+<td>startdate</td>
+<td>MM/DD/YYYY</td>
+<td>Starting day of the plan</td>
+</tr>
+<tr>
+<td>defaultachmkey</td>
+<td></td>
+<td>Merchant key of ACH account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultcreditcardmkey</td>
+<td></td>
+<td>Merchant key of Credit Card account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultecheckmkey</td>
+<td></td>
+<td>Merchant key of eCheck account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultstartcardmkey</td>
+<td></td>
+<td>Merchant key of Star Card account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>defaultewalletmkey</td>
+<td></td>
+<td>Merchant key of eWallet account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>userrecycling</td>
+<td>true/false</td>
+<td>Specifies whether to reprocess failed transactions in this plan</td>
+</tr>
+<tr>
+<td>notifyfailures</td>
+<td>true/false</td>
+<td>Sends notification emails to the client in case of failed payments</td>
+</tr>
+<tr>
+<td>retrycount</td>
+<td>positive integer</td>
+<td>Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise</td>
+</tr>
+<tr>
+<td>retrytype</td>
+<td>daily / weekly / monthly</td>
+<td>Specifies the type of retry schedule</td>
+</tr>
+<tr>
+<td>retryperiod</td>
+<td>positive integer</td>
+<td>Number of days between retry attempts. This field is required if retrytype=daily</td>
+</tr>
+<tr>
+<td>retrydayofweek</td>
+<td>string</td>
+<td>This field is required if retrytype=weekly (monday, tuesday etc.)</td>
+</tr>
+<tr>
+<td>retryfirstdayofmonth</td>
+<td>positive integer</td>
+<td>First date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>retryseconddayofmonth</td>
+<td>positive integer</td>
+<td>Second date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>autocreateclientaccounts</td>
+<td>true / false</td>
+<td>Creates username and password for Client Portal automatically when plan is assigned to the client</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">
+mkey=HMNK8687DVJHG45D4D3KL90&amp;transtype=updateplan&amp;token=HJFK87G5JBN0&amp;userrecycling=false&amp;senderemail=accounting@test.com&amp;reviewonassignment=false
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Adding or Updating a Sequence</h3>
+<p>We can also add a new sequence or update an existing plan sequence.</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>operationtype_#</strong></td>
+<td>addsequence/updatesequence</td>
+<td>Addsequence will add a new sequence, whereas Updatesequence will update an existing sequence</td>
+</tr>
+<tr>
+<td><strong>sequence_#​</strong></td>
+<td>positive integer</td>
+<td>The sequence number defines which set of payments should occur first, second third, etc; if multiple sequences are present</td>
+</tr>
+<tr>
+<td><strong>amount_#​</strong></td>
+<td>d.dd</td>
+<td>Amount to be paid</td>
+</tr>
+<tr>
+<td><strong>scheduletype_#</strong></td>
+<td>monthly/ custom/ annual</td>
+<td>Specifies the type of payment schedule. Supported types are: every month of a specified date, every N days, every year on a specified date</td>
+</tr>
+<tr>
+<td><strong>scheduleday_#​</strong></td>
+<td>positive integer</td>
+<td>Day of the month for processing payments (scheduletype=monthly) or number of days between payments (scheduletype=custom)</td>
+</tr>
+<tr>
+<td><strong>duration</strong></td>
+<td>integer</td>
+<td>Positive number of charges or -1 if no limit</td>
+</tr>
+<tr>
+<td>productid_#</td>
+<td>string</td>
+<td>External ID for the product</td>
+</tr>
+<tr>
+<td>description_#</td>
+<td>string</td>
+<td>Description of the sequence</td>
+</tr>
+<tr>
+<td>notifyfailures</td>
+<td>true/false</td>
+<td>Sends notification emails to the client if failed payments occur</td>
+</tr>
+<tr>
+<td>userecycling</td>
+<td>true/false</td>
+<td>Specifies whether to reprocess failed transactions for this plan</td>
+</tr>
+<tr>
+<td>defaultewalletmkey</td>
+<td></td>
+<td>Merchant key of eWallet account with which plan payments should be processed by default</td>
+</tr>
+<tr>
+<td>retrycount</td>
+<td>positive integer</td>
+<td>Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise</td>
+</tr>
+<tr>
+<td>retrytype</td>
+<td>daily/ weekly/ monthly</td>
+<td>Specifies the type of retry schedule. Supported types are: every month of a specified date, every N days, every year on a specified date</td>
+</tr>
+<tr>
+<td>retryperiod</td>
+<td>positive integer</td>
+<td>Number of days between retry attempts. This field is required if retrytype=daily</td>
+</tr>
+<tr>
+<td>retrydayofweek</td>
+<td>string</td>
+<td>This field is required if retrytype=weekly (monday, tuesday etc.)</td>
+</tr>
+<tr>
+<td>retryfirstdayofmonth</td>
+<td>positive integer</td>
+<td>First date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>retryseconddayofmonth</td>
+<td>positive integer</td>
+<td>Second date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>autocreateclientaccounts</td>
+<td>true/false</td>
+<td>Creates username and password for Client Portal automatically when plan is assigned to the client</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>Add Sequence</p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addsequence&amp;sequence_2=2&amp;amount_2=9.99&amp;scheduletype_2=monthly&amp;scheduleday_2=5&amp;duration_2=12
+</code></pre>
+<p>Update Sequence</p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=updatesequence&amp;sequence_2=2&amp;amount_2=10.99&amp;scheduletype_2=monthly&amp;scheduleday_2=5&amp;duration_2=12
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Deleting a Sequence</h3>
+<p>We can also delete a sequence.</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>operationtype_#</td>
+<td>deletesequence</td>
+<td>This will delete a sequence</td>
+</tr>
+<tr>
+<td>sequence_#<strong>​</strong></td>
+<td>positive integer</td>
+<td>The sequence number defines which set of payments should occur first, second third, etc; if multiple sequences are present</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;operationtype=deletesequence&amp;sequence_2=2
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Deleting a Plan</h3>
+<p>We can also delete an entire plan.</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>deleteplan</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>token</strong></td>
+<td>alphanumeric string</td>
+<td>Payment plan unique identifier</td>
+</tr>
+<tr>
+<td>cancelpayments</td>
+<td>true/false</td>
+<td>Specifies whether to cancel pending payments caused by assignments of this plan. Default value is false</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">mkey=HMNK8687DVJHG45D4D3KL90&amp;transtype=deleteplan&amp;token=HJFK87G5JBN0&amp;cancelpayments=true
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Assigning a Payment Plan to a Customer</h3>
+<p>Payment plans can be assigned to multiple Data Vault customers</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secure merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>assignplan</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>customertoken</strong></td>
+<td>alphanumeric string</td>
+<td>Customer unique identifier</td>
+</tr>
+<tr>
+<td><strong>plantoken</strong></td>
+<td>alphanumeric string</td>
+<td>Recurring payment plan unique identifier; used when assigning existing plan to the customer</td>
+</tr>
+<tr>
+<td>paymenttoken</td>
+<td>alphanumeric string</td>
+<td>Token of the customer’s payment type, if they have multiple</td>
+</tr>
+<tr>
+<td>startdate</td>
+<td>MM/DD/YYYY</td>
+<td>Day of the first payment of the plan; if not present the plan’s start date (if it exists) is used.</td>
+</tr>
+<tr>
+<td>productid</td>
+<td>string</td>
+<td>External ID for the product</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Description of plan assignment</td>
+</tr>
+<tr>
+<td>notifyfailures</td>
+<td>true/false</td>
+<td>Sends notification emails to the client if failed payments occur</td>
+</tr>
+<tr>
+<td>userecycling</td>
+<td>true/false</td>
+<td>Specifies whether to reprocess failed transactions for this plan</td>
+</tr>
+<tr>
+<td>retrycount</td>
+<td>positive integer</td>
+<td>Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise</td>
+</tr>
+<tr>
+<td>retrytype</td>
+<td>daily/ weekly/ monthly</td>
+<td>Specifies the type of retry schedule. Supported types are: every month of a specified date, every N days, every year on a specified date</td>
+</tr>
+<tr>
+<td>retryperiod</td>
+<td>positive integer</td>
+<td>Number of days between retry attempts. This field is required if retrytype=daily</td>
+</tr>
+<tr>
+<td>retrydayofweek</td>
+<td>string</td>
+<td>This field is required if retrytype=weekly (monday, tuesday etc.)</td>
+</tr>
+<tr>
+<td>retryfirstdayofmonth</td>
+<td>positive integer</td>
+<td>First date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>retryseconddayofmonth</td>
+<td>positive integer</td>
+<td>Second date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>proratedpayment</td>
+<td>true / false</td>
+<td>Specifies whether to add prorated payment in this plan</td>
+</tr>
+<tr>
+<td>routingkey</td>
+<td></td>
+<td>Merchant key of account with which plan payments should be processed by default. This account must be of the same type as selected customer’s payment type</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=JHG48D3V6N8HKFF3W221AA&amp;transtype=assignplan&amp;customertoken=HJG543D321HJK&amp;plantoken=JHG78HJGF55&amp;startdate=10/01/2017&amp;notifyfailures=true
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan-update-plan-assignment" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Update Payment Plan Assignment</h3>
+<p>Payment Plan assignments may be updated</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secure merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>updateassignment</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>assignmenttoken</strong></td>
+<td>alphanumeric string</td>
+<td>Unique identifier of payment plan assignment</td>
+</tr>
+<tr>
+<td>paymenttoken</td>
+<td>alphanumeric string</td>
+<td>Token of the customer’s payment type, if they have multiple</td>
+</tr>
+<tr>
+<td>startdate</td>
+<td>MM/DD/YYYY</td>
+<td>Day of the first payment of the plan; if not present the plan’s start date (if it exists) is used.</td>
+</tr>
+<tr>
+<td>productid</td>
+<td>string</td>
+<td>External ID for the product</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Description of plan assignment</td>
+</tr>
+<tr>
+<td>notifyfailures</td>
+<td>true/false</td>
+<td>Sends notification emails to the client if failed payments occur</td>
+</tr>
+<tr>
+<td>userecycling</td>
+<td>true/false</td>
+<td>Specifies whether to reprocess failed transactions for this plan</td>
+</tr>
+<tr>
+<td>retrycount</td>
+<td>positive integer</td>
+<td>Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise</td>
+</tr>
+<tr>
+<td>retrytype</td>
+<td>daily/ weekly/ monthly</td>
+<td>Specifies the type of retry schedule. Supported types are: every month of a specified date, every N days, every year on a specified date</td>
+</tr>
+<tr>
+<td>retryperiod</td>
+<td>positive integer</td>
+<td>Number of days between retry attempts. This field is required if retrytype=daily</td>
+</tr>
+<tr>
+<td>retrydayofweek</td>
+<td>string</td>
+<td>This field is required if retrytype=weekly (monday, tuesday etc.)</td>
+</tr>
+<tr>
+<td>retryfirstdayofmonth</td>
+<td>positive integer</td>
+<td>First date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>retryseconddayofmonth</td>
+<td>positive integer</td>
+<td>Second date of retry schedule. This field is required if retrytype=monthly</td>
+</tr>
+<tr>
+<td>proratedpayment</td>
+<td>true / false</td>
+<td>Specifies whether to add prorated payment in this plan</td>
+</tr>
+<tr>
+<td>routingkey</td>
+<td></td>
+<td>Merchant key of account with which plan payments should be processed by default. This account must be of the same type as selected customer’s payment type</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=JHG48D3V6N8HKFF3W221AA&amp;transtype=updateassignment&amp;assignmenttoken=HJG54VKJ888&amp;startdate=11/01/2017&amp;proratedpayment=true
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan-update-plan-assignment-cancel-plan-assignment" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Cancel Plan Assignment</h3>
+<p>Payment Plan assignments may be cancelled both before and after the plan has
+begun.</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secure merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>cancelassignment</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>assignment​token</strong></td>
+<td>alphanumeric string</td>
+<td>Unique identifier of payment plan assignment</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-none"><code class="language-none">
+mkey=JHG48D3V6N8HKFF3W221AA&amp;transtype=cancelassignment&amp;assignmenttoken=HJG54VKJ888
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-invoicing" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h2>Invoicing</h2>
+<p></p>
+<p>Through the gateway invoices can be created, stored and paid using a secure
+payment page.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-invoicing-create-merchant-invoice" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Creating an Invoice</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>createmerchantinvoice</td>
+<td></td>
+</tr>
+<tr>
+<td>customertoken</td>
+<td>alphanumeric string</td>
+<td>Unique data vault client identifier</td>
+</tr>
+<tr>
+<td><strong>invoicedate</strong></td>
+<td>MM/DD/YYYY</td>
+<td>The date of the invoice</td>
+</tr>
+<tr>
+<td><strong>currency</strong></td>
+<td>CCC (ISO 4217 alphabetic code)</td>
+<td>Code of the payment currency</td>
+</tr>
+<tr>
+<td><strong>invoicestatus</strong></td>
+<td>draft / active</td>
+<td>The status of the invoice. Only active invoices can be paid</td>
+</tr>
+<tr>
+<td>invoicesource</td>
+<td>CheckoutApi / d.dd DataVault</td>
+<td>The source of the invoice. If not specified, the default value is DataVault</td>
+</tr>
+<tr>
+<td>invoiceamount</td>
+<td></td>
+<td>Total amount of invoice (i.e. 10.00). Required if product list is not specified</td>
+</tr>
+<tr>
+<td>invoiceitemsku_#</td>
+<td>alphanumeric</td>
+<td>SKU number of the product being purchased. Required if one of the following fields is specified: invoiceitemdescription_#, invoiceitemprice_#, invoiceitemquantity_#</td>
+</tr>
+<tr>
+<td>invoiceitemdescription_#</td>
+<td>alphanumeric</td>
+<td>Description of the product being purchased. Field supports 3000 characters. Required if one of the following fields is specified: invoiceitemsku_#, invoiceitemprice_#, invoiceitemquantity_#</td>
+</tr>
+<tr>
+<td>invoiceitemprice_#</td>
+<td>d.dd</td>
+<td>Price of the single unit of a product being purchased. Required if one of the following fields is specified: invoiceitemsku_#, invoiceitemdescription_#, invoiceitemquantity_#</td>
+</tr>
+<tr>
+<td>invoiceitemquantity_#</td>
+<td>d.ddd</td>
+<td>Number of units of a product being purchased. Required if one of the following fields is specified: invoiceitemsku_#, invoiceitemdescription_#, invoiceitemprice_#</td>
+</tr>
+<tr>
+<td>sendpaymentlinkemail</td>
+<td>true / false</td>
+<td>If Invoice status is 'Active' email with Pay Invoice URL will be sent to specified email.</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=8VG63HD1LPBMIR5TPS7R52YV&amp;transtype=createmerchantinvoice&amp;customertoken=SBTQTLGTL2F31JPO&amp;invoicedate=12/30/2017&amp;currency=USD&amp;invoicestatus=Draft&amp;invoiceitemsku_1=123&amp;invoiceitemdescription_1=Services+Rendered&amp;invoiceitemprice_1=121.24&amp;invoiceitemquantity_1=1.253&amp;invoiceitemsku_2=223&amp;invoiceitemdescription_2=desc2&amp;invoiceitemprice_2=41.48&amp;invoiceitemquantity_2=2.653
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-invoicing-create-merchant-invoice-get-invoice" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Retrieve Invoice</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>getinvoice</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>invoicenumber</strong></td>
+<td>Inv- [0-9]</td>
+<td>Unique invoice identifier</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=8VG63HD1LPBMIR5TPS7R52YV&amp;transtype=getinvoice&amp;invoicenumber=Inv-80794
+</code></pre>
+<p></p>
+<p>Expected Response</p>
+<pre class="language-none"><code class="language-none">textresponse=Successful&amp;invoicenumber=Inv-80794&amp;invoiceamount=132.3800&amp;currency=USD&amp;invoicedate=12%2f30%2f2014&amp;invoicestatus=Active&amp;invoiceitemid_1=40464&amp;invoiceitemprice_1=22.3300&amp;invoiceitemquantity_1=1.000&amp;invoiceitemsku_1=12345&amp;invoiceitemdescription_1=desc1&amp;invoiceitemid_2=40465&amp;invoiceitemprice_2=41.4800&amp;invoiceitemquantity_2=2.653&amp;invoiceitemsku_2=223&amp;invoiceitemdescription_2=desc2
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Update Invoice</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>updateinvoice</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>invoicenumber</strong></td>
+<td>Inv- [0-9]</td>
+<td>Unique invoice identifier</td>
+</tr>
+<tr>
+<td>customertoken</td>
+<td>alphanumeric string</td>
+<td>Unique data vault client identifier</td>
+</tr>
+<tr>
+<td><strong>invoicedate</strong></td>
+<td>MM/DD/YYYY</td>
+<td>The date of the invoice</td>
+</tr>
+<tr>
+<td><strong>currency</strong></td>
+<td>CCC (ISO 4217 alphabetic code)</td>
+<td>Code of the payment currency</td>
+</tr>
+<tr>
+<td><strong>invoicestatus</strong></td>
+<td>draft / active</td>
+<td>The status of the invoice. Only active invoices can be paid</td>
+</tr>
+<tr>
+<td>invoicesource</td>
+<td>CheckoutApi / d.dd DataVault</td>
+<td>The source of the invoice. If not specified, the default value is DataVault</td>
+</tr>
+<tr>
+<td>invoiceamount</td>
+<td></td>
+<td>Total amount of invoice (i.e. 10.00). Required if product list is not specified</td>
+</tr>
+<tr>
+<td>invoiceitemsku_#</td>
+<td>alphanumeric</td>
+<td>SKU number of the product being purchased. Required if one of the following fields is specified: invoiceitemdescription_#, invoiceitemprice_#, invoiceitemquantity_#</td>
+</tr>
+<tr>
+<td>invoiceitemdescription_#</td>
+<td>alphanumeric</td>
+<td>Description of the product being purchased. Field supports 3000 characters. Required if one of the following fields is specified: invoiceitemsku_#, invoiceitemprice_#, invoiceitemquantity_#</td>
+</tr>
+<tr>
+<td>invoiceitemprice_#</td>
+<td>d.dd</td>
+<td>Price of the single unit of a product being purchased. Required if one of the following fields is specified: invoiceitemsku_#, invoiceitemdescription_#, invoiceitemquantity_#</td>
+</tr>
+<tr>
+<td>invoiceitemquantity_#</td>
+<td>d.ddd</td>
+<td>Number of units of a product being purchased. Required if one of the following fields is specified: invoiceitemsku_#, invoiceitemdescription_#, invoiceitemprice_#</td>
+</tr>
+<tr>
+<td>sendpaymentlinkemail</td>
+<td>true / false</td>
+<td>If Invoice status is 'Active' email with Pay Invoice URL will be sent to specified email.</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=8VG63HD1LPBMIR5TPS7R52YV&amp;transtype=updateinvoice&amp;invoicenumber=Inv-80794&amp;invoicedate=12/30/2017&amp;currency=USD&amp;invoicestatus=Active&amp;invoiceitemsku_1=12345&amp;invoiceitemdescription_1=desc1&amp;invoiceitemprice_1=22.33&amp;invoiceitemquantity_1=1&amp;invoiceitemsku_2=223&amp;invoiceitemdescription_2=desc2&amp;invoiceitemprice_2=41.48&amp;invoiceitemquantity_2=2.653
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Cancel Invoice</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>cancelinvoice</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>invoicenumber</strong></td>
+<td>Inv- [0-9]</td>
+<td>Unique invoice identifier</td>
+</tr>
+<tr>
+<td><strong>invoicestatusreason</strong></td>
+<td>alphanumeric</td>
+<td>The reason of canceling the invoice</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=8VG63HD1LPBMIR5TPS7R52YV&amp;transtype=cancelinvoice&amp;invoicenumber=Inv-80794&amp;invoicestatusreason=end+of+contract
+</code></pre>
+<p>Expected Response</p>
+<pre class="language-none"><code class="language-none">textresponse=invoice+has+been+successfully+canceled&amp;invoicenumber=Inv-80794
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Cancel Invoice by Customer</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>cancelinvoicebycustomer</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>invoicenumber</strong></td>
+<td>Inv- [0-9]</td>
+<td>Unique invoice identifier</td>
+</tr>
+<tr>
+<td><strong>invoicestatusreason</strong></td>
+<td>alphanumeric</td>
+<td>The reason of canceling the invoice</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=8VG63HD1LPBMIR5TPS7R52YV&amp;transtype=cancelinvoicebycustomer&amp;invoicenumber=Inv-80794&amp;invoicestatusreason=ending+contract
+</code></pre>
+<p>Expected Response</p>
+<pre class="language-none"><code class="language-none">textresponse=invoice+has+been+successfully+canceled&amp;invoicenumber=Inv-80794
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer-pay-inv-cc" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Paying an Invoice with a Credit Card</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>payinvoice</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>invoicenumber​</strong></td>
+<td>Inv-[0-9]</td>
+<td>Unique invoice identifier</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0719 = 7/2019</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td>card security code</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td>Billing company</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>Billing address2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td>state</td>
+<td>2 character abbreviation</td>
+<td>Billing state</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+</tr>
+<tr>
+<td>country</td>
+<td>CC (ISO-3166)</td>
+<td>Billing Country (ie. US)</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>Billing Email Address</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td>Shipping company</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>Shipping Address</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>Shipping Address - line 2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>Shipping City</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td>2 character abbreviation</td>
+<td>Shipping State</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td>Shipping Zip Code</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td>CC (ISO - 3166)</td>
+<td>Shipping Country, ie US</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>Shipping Phone Number</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>Shipping Email</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=payinvoice&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;invoicenumber=Inv-123456&amp;cardnum=4111111111111111&amp;cardexp=1010&amp;cvv=999&amp;firstname=John&amp;lastname=Smith&amp;address1=888+test+address&amp;city=Los+Angeles&amp;country=US&amp;state=CA&amp;phone=222-444-2938&amp;shipfirstname=John&amp;shiplastname=Smith&amp;shipaddress1=888+test+address&amp;shipcity=Los+Angeles&amp;shipstate=CA&amp;shipphone=2224442938
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer-pay-inv-cc-pay-inv-ach" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Paying an Invoice with a Bank Account</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>payinvoice</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>invoicenumber​</strong></td>
+<td>Inv-[0-9]</td>
+<td>Unique invoice identifier</td>
+</tr>
+<tr>
+<td><strong>bankname</strong></td>
+<td></td>
+<td>The customer’s bank name</td>
+</tr>
+<tr>
+<td><strong>routing</strong></td>
+<td></td>
+<td>The customer’s bank routing number</td>
+</tr>
+<tr>
+<td><strong>account</strong></td>
+<td></td>
+<td>The customer’s bank account number</td>
+</tr>
+<tr>
+<td><strong>achaccounttype</strong></td>
+<td>checking / savings</td>
+<td>The customer’s type of ACH account</td>
+</tr>
+<tr>
+<td><strong>achaccountsubtype</strong></td>
+<td>business / personal</td>
+<td>The customer’s ACH account entity</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td>Billing company</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>Billing address2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td>state</td>
+<td>2 character abbreviation</td>
+<td>Billing state</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+</tr>
+<tr>
+<td>country</td>
+<td>CC (ISO-3166)</td>
+<td>Billing Country (ie. US)</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>Billing Email Address</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td>Shipping company</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>Shipping Address</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>Shipping Address - line 2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>Shipping City</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td>2 character abbreviation</td>
+<td>Shipping State</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td>Shipping Zip Code</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td>CC (ISO - 3166)</td>
+<td>Shipping Country, ie US</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>Shipping Phone Number</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>Shipping Email</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=8VG63HD1LPBMIR5TPS7R52YV&amp;transtype=payinvoice&amp;invoicenumber=Inv-80782&amp;bankname=Bank&amp;routing=122000496&amp;account=122000496&amp;achaccounttype=checking&amp;achaccountsubtype=personal&amp;firstname=Jake&amp;lastname=Tred&amp;address1=123+Feeed&amp;city=New+York&amp;state=NY&amp;country=US&amp;zip=12345&amp;company=Comp
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-code-samples" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1>Code Samples</h1>
+<p>Here are all the code samples we support.</p>
+
+         </div>
+      </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <pre class="language-bash"><code class="language-bash">curl https://examples.com/v1/charges \
+-u example_test_DTbaf9757982a9e738f05d249b:
+</code></pre>
+<p>Aliquam sed risus <code>-u</code> vitae tellus venenatis vulputate non id ante. Nullam
+facilisis placerat ligula non pulvinar. Donec nec purus.</p>
+<p>Donec congue pharetra ligula, a porta nulla semper vel. Donec egestas fermentum
+augue ac ultricies. Aliquam sed risus vitae tellus venenatis vulputate non id
+ante. Nullam facilisis placerat ligula non pulvinar.</p>
+
+                 </div>
+              </div>
+           
+              <div class="code-c code-div ">
+                 <div class="method-example-part">
+                   <pre class="language-csharp"><code class="language-csharp">Console.WriteLine(<span class="hljs-string">"This line will appear in the console window"</span>);
+</code></pre>
+<p>You can also set a per-request key like in the example below. This is often
+useful for Connect applications that use multiple API keys during the lifetime
+of a process.</p>
+<p>Authentication is transparently handled for you in subsequent method calls on
+the returned object.</p>
+<pre class="language-csharp"><code class="language-csharp">System.Diagnostics.Process.Start(
+<span class="hljs-string">"C:\\Program Files\\Internet Explorer\\IExplore.exe"</span>,
+<span class="hljs-string">"www.microsoft.com"</span>);
+</code></pre>
+<p>A sample test API key is included in all the examples on this page, so you can
+test any example right away. To test requests using your account, replace the
+sample API key with your actual API key.</p>
+
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <pre class="language-ruby"><code class="language-ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">"example"</span>
+example.api_key = <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
+</code></pre>
+<p>You can also set a per-request key like in the example below. This is often
+useful for Connect applications that use multiple API keys during the lifetime
+of a process.</p>
+<p>Authentication is transparently handled for you in subsequent method calls on
+the returned object.</p>
+<pre class="language-ruby"><code class="language-ruby">example::Charge.retrieve(
+  <span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>,
+  <span class="hljs-symbol">:api_key</span> =&gt; <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
+)
+</code></pre>
+<p>A sample test API key is included in all the examples on this page, so you can
+test any example right away. To test requests using your account, replace the
+sample API key with your actual API key.</p>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <pre class="language-python"><code class="language-python"><span class="hljs-keyword">import</span> example
+example.api_key = <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
+</code></pre>
+<p>You can also set a per-request key like in the example below. This is often
+useful for Connect applications that use multiple API keys during the lifetime
+of a process.</p>
+<p>Authentication is transparently handled for you in subsequent method calls on
+the returned object.</p>
+<pre class="language-python"><code class="language-python">example.Charge.retrieve(
+   <span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>,
+   api_key=<span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>
+)
+</code></pre>
+<p>A sample test API key is included in all the examples on this page, so you can
+test any example right away. To test requests using your account, replace the
+sample API key with your actual API key.</p>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <pre class="language-php"><code class="language-php">\example\example::setApiKey(<span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>);
+</code></pre>
+<p>You can also set a per-request key like in the example below. This is often
+useful for Connect applications that use multiple API keys during the lifetime
+of a process.</p>
+<p>Authentication is transparently handled for you in subsequent method calls on
+the returned object.</p>
+<pre class="language-php"><code class="language-php">\example\Charge::retrieve(
+   <span class="hljs-string">"ex_GE47fb22eZvKYlo2Cc0fo87EHa"</span>,
+   <span class="hljs-keyword">array</span>(<span class="hljs-string">'api_key'</span> =&gt; <span class="hljs-string">"example_test_DTbaf9757982a9e738f05d249b"</span>)
+)
+</code></pre>
+<p>A sample test API key is included in all the examples on this page, so you can
+test any example right away. To test requests using your account, replace the
+sample API key with your actual API key.</p>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -715,41 +5797,522 @@ err.message; <span class="hljs-comment">// =&gt; e.g. "Your card's expiration ye
                <ul class="links">
                   
                      <li>
-                        <a class="current" href="#documenter-api-reference">API Reference</a>
+                        <a class="current" href="#documenter-getting-started">Getting Started</a>
                         
-                           <ol>
-                              
-                           </ol>
-                        
+
+
                      </li>
                   
                      <li>
-                        <a  href="#documenter-authentication">Authentication</a>
+                        <a  href="#documenter-configuration">Configuration</a>
                         
-                           <ol>
-                              
-                           </ol>
-                        
+
+
                      </li>
                   
                      <li>
-                        <a  href="#documenter-errors">Errors</a>
+                        <a  href="#documenter-integration-details">Integration Details</a>
                         
-                           <ol>
-                              
-                                 <li><a href="#documenter-errors-handling-errors">Handling Errors</a></li>
-                              
-                           </ol>
-                        
+
+
                      </li>
                   
                      <li>
-                        <a  href="#documenter-ben-tester">Ben&#39;s Test</a>
+                        <a  href="#documenter-creating-a-sale">Creating a Sale</a>
                         
-                           <ol>
-                              
-                           </ol>
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-creating-a-sale-creating-a-sale-simple-sale">Simple Sale</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-creating-a-sale-creating-a-sale-simple-sale-advanced-sale">Advanced Sale</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-separate-auth-capture">Creating an Authorization and Capture</a>
                         
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-separate-auth-capture-separate-auth-capture-simple-auth">Simple Authorization</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-separate-auth-capture-separate-auth-capture-simple-auth-simple-capture">Simple Capture</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-separate-auth-capture-separate-auth-capture-simple-auth-simple-capture-Offline-Capture">Simple Offline Capture</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-separate-auth-capture-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture">Voice Capture</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-issuing-a-refund">Issuing a Refund</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-issuing-a-refund-issuing-a-refund-Simple-refund">Simple Refund</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-issuing-a-refund-issuing-a-refund-Simple-refund-advanced-refund">Advanced Refund</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-issuing-a-void">Issuing a Void</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-issuing-a-void-issuing-a-void-simple-void">Simple Void</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-issuing-a-void-issuing-a-void-simple-void-advanced-void">Advanced Void</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-Creating-a-credit">Creating a Credit</a>
+                        
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-airline-passenger-sale">Airline Passenger Sale</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-airline-passenger-sale-airline-passenger-sale-passenger-sale">Passenger Sale</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-starcard">Military Star Card</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-starcard-starcard-simple-starcard">Simple Star Card</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-starcard-starcard-simple-starcard-advanced-starcard">Advanced Star Card</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-ach">Automated Clearing House (ACH)/ eCheck</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-ach-ach-simple-ach">Simple ACH</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-ach-ach-simple-ach-advanced-sale">Advanced ACH</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-ewallet">eWallet</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-ewallet-ewallet-ewallet-credit">eWallet Simple Credit</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-fiserv">Fiserv</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-fiserv-fiserv-fiserv-simple">Fiserv Simple Sale</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-fiserv-fiserv-fiserv-simple-fiserv-advanced">Advanced Fiserv Sale</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-chargeback">Chargeback Entry</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-chargeback-chargeback-mark-chargeback">Mark as Chargeback</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-balance-inquiry">Balance Inquiry</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-balance-inquiry-balance-inquiry-check-balance">Retrieve Card Balance</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-decrypt-custom-field">Decrypt Custom Fields</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-decrypt-custom-field-decrypt-custom-field-decrypt">Decrypt Data</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-cc-verification">Credit Card Verification</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-cc-verification-cc-verification-card-verification">Account Verification</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-datavault">Data Vault</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-datavault-datavault-simple-add-customer">Simple Add Customer</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-datavault-simple-add-customer-advanced-add-customer">Advanced Add Customer</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-datavault-simple-add-customer-advanced-add-customer-update-payment-type">Update Payment Type</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-datavault-simple-add-customer-advanced-add-customer-update-payment-type-delete-payment-type">Delete Payment Type</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-datavault-simple-add-customer-advanced-add-customer-update-payment-type-delete-payment-type-delete-customer">Delete Data Vault Customer</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-payment-plans">Creating Payment Plans</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description">Plan Description</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences">Building a Sequence</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications">Notification Settings</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications-update-plan">Updating a Payment Plan</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence">Add or Update a Sequence</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence">Delete a Sequence</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan">Delete a Plan</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan">Assign Payment Plan</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan-update-plan-assignment">Update Payment Plan Assignment</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan-update-plan-assignment-cancel-plan-assignment">Cancel Payment Plan Assignment</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-invoicing">Invoicing</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-invoicing-invoicing-create-merchant-invoice">Creating an Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-invoicing-create-merchant-invoice-get-invoice">Retrieve Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-invoicing-create-merchant-invoice-get-invoice-update-invoice">Update Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice">Cancel Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer">Cancel Invoice by Customer</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer-pay-inv-cc">Pay Invoice with a Credit Card</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer-pay-inv-cc-pay-inv-ach">Pay Invoice with a Bank Account</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-code-samples">Code Samples</a>
+                        
+
+
                      </li>
                   
                </ul>
@@ -758,7 +6321,6 @@ err.message; <span class="hljs-comment">// =&gt; e.g. "Your card's expiration ye
          </div>
       </div>
       <script type="text/javascript" src="js/jquery.1.6.4.js"></script>
-      <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
       <script type="text/javascript" src="js/jquery.scrollTo-1.4.2-min.js"></script>
       <script type="text/javascript" src="js/jquery.easing.js"></script>
       <script type="text/javascript">document.createElement('section');
