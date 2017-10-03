@@ -547,6 +547,66 @@
                         </li>
                      
                         <li>
+                           <a  href="#documenter-invoicing">Invoicing</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-invoicing-create-merchant-invoice">Creating an Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-create-merchant-invoice-get-invoice">Retrieve Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice">Update Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice">Cancel Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer">Cancel Invoice by Customer</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer-pay-inv-cc">Pay Invoice with a Credit Card</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer-pay-inv-cc-pay-inv-ach">Pay Invoice with a Bank Account</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
                            <a  href="#documenter-code-samples">Code Samples</a>
                            
 
@@ -4911,6 +4971,706 @@ mkey=JHG48D3V6N8HKFF3W221AA&amp;transtype=cancelassignment&amp;assignmenttoken=H
 
            
               
+<section id="documenter-invoicing" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h2>Invoicing</h2>
+<p></p>
+<p>Through the gateway invoices can be created, stored and paid using a secure
+payment page.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-invoicing-create-merchant-invoice" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Creating an Invoice</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>createmerchantinvoice</td>
+<td></td>
+</tr>
+<tr>
+<td>customertoken</td>
+<td>alphanumeric string</td>
+<td>Unique data vault client identifier</td>
+</tr>
+<tr>
+<td><strong>invoicedate</strong></td>
+<td>MM/DD/YYYY</td>
+<td>The date of the invoice</td>
+</tr>
+<tr>
+<td><strong>currency</strong></td>
+<td>CCC (ISO 4217 alphabetic code)</td>
+<td>Code of the payment currency</td>
+</tr>
+<tr>
+<td><strong>invoicestatus</strong></td>
+<td>draft / active</td>
+<td>The status of the invoice. Only active invoices can be paid</td>
+</tr>
+<tr>
+<td>invoicesource</td>
+<td>CheckoutApi / d.dd DataVault</td>
+<td>The source of the invoice. If not specified, the default value is DataVault</td>
+</tr>
+<tr>
+<td>invoiceamount</td>
+<td></td>
+<td>Total amount of invoice (i.e. 10.00). Required if product list is not specified</td>
+</tr>
+<tr>
+<td>invoiceitemsku_#</td>
+<td>alphanumeric</td>
+<td>SKU number of the product being purchased. Required if one of the following fields is specified: invoiceitemdescription_#, invoiceitemprice_#, invoiceitemquantity_#</td>
+</tr>
+<tr>
+<td>invoiceitemdescription_#</td>
+<td>alphanumeric</td>
+<td>Description of the product being purchased. Field supports 3000 characters. Required if one of the following fields is specified: invoiceitemsku_#, invoiceitemprice_#, invoiceitemquantity_#</td>
+</tr>
+<tr>
+<td>invoiceitemprice_#</td>
+<td>d.dd</td>
+<td>Price of the single unit of a product being purchased. Required if one of the following fields is specified: invoiceitemsku_#, invoiceitemdescription_#, invoiceitemquantity_#</td>
+</tr>
+<tr>
+<td>invoiceitemquantity_#</td>
+<td>d.ddd</td>
+<td>Number of units of a product being purchased. Required if one of the following fields is specified: invoiceitemsku_#, invoiceitemdescription_#, invoiceitemprice_#</td>
+</tr>
+<tr>
+<td>sendpaymentlinkemail</td>
+<td>true / false</td>
+<td>If Invoice status is 'Active' email with Pay Invoice URL will be sent to specified email.</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=8VG63HD1LPBMIR5TPS7R52YV&amp;transtype=createmerchantinvoice&amp;customertoken=SBTQTLGTL2F31JPO&amp;invoicedate=12/30/2017&amp;currency=USD&amp;invoicestatus=Draft&amp;invoiceitemsku_1=123&amp;invoiceitemdescription_1=Services+Rendered&amp;invoiceitemprice_1=121.24&amp;invoiceitemquantity_1=1.253&amp;invoiceitemsku_2=223&amp;invoiceitemdescription_2=desc2&amp;invoiceitemprice_2=41.48&amp;invoiceitemquantity_2=2.653
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-invoicing-create-merchant-invoice-get-invoice" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Retrieve Invoice</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>getinvoice</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>invoicenumber</strong></td>
+<td>Inv- [0-9]</td>
+<td>Unique invoice identifier</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=8VG63HD1LPBMIR5TPS7R52YV&amp;transtype=getinvoice&amp;invoicenumber=Inv-80794
+</code></pre>
+<p></p>
+<p>Expected Response</p>
+<pre class="language-none"><code class="language-none">textresponse=Successful&amp;invoicenumber=Inv-80794&amp;invoiceamount=132.3800&amp;currency=USD&amp;invoicedate=12%2f30%2f2014&amp;invoicestatus=Active&amp;invoiceitemid_1=40464&amp;invoiceitemprice_1=22.3300&amp;invoiceitemquantity_1=1.000&amp;invoiceitemsku_1=12345&amp;invoiceitemdescription_1=desc1&amp;invoiceitemid_2=40465&amp;invoiceitemprice_2=41.4800&amp;invoiceitemquantity_2=2.653&amp;invoiceitemsku_2=223&amp;invoiceitemdescription_2=desc2
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Update Invoice</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>updateinvoice</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>invoicenumber</strong></td>
+<td>Inv- [0-9]</td>
+<td>Unique invoice identifier</td>
+</tr>
+<tr>
+<td>customertoken</td>
+<td>alphanumeric string</td>
+<td>Unique data vault client identifier</td>
+</tr>
+<tr>
+<td><strong>invoicedate</strong></td>
+<td>MM/DD/YYYY</td>
+<td>The date of the invoice</td>
+</tr>
+<tr>
+<td><strong>currency</strong></td>
+<td>CCC (ISO 4217 alphabetic code)</td>
+<td>Code of the payment currency</td>
+</tr>
+<tr>
+<td><strong>invoicestatus</strong></td>
+<td>draft / active</td>
+<td>The status of the invoice. Only active invoices can be paid</td>
+</tr>
+<tr>
+<td>invoicesource</td>
+<td>CheckoutApi / d.dd DataVault</td>
+<td>The source of the invoice. If not specified, the default value is DataVault</td>
+</tr>
+<tr>
+<td>invoiceamount</td>
+<td></td>
+<td>Total amount of invoice (i.e. 10.00). Required if product list is not specified</td>
+</tr>
+<tr>
+<td>invoiceitemsku_#</td>
+<td>alphanumeric</td>
+<td>SKU number of the product being purchased. Required if one of the following fields is specified: invoiceitemdescription_#, invoiceitemprice_#, invoiceitemquantity_#</td>
+</tr>
+<tr>
+<td>invoiceitemdescription_#</td>
+<td>alphanumeric</td>
+<td>Description of the product being purchased. Field supports 3000 characters. Required if one of the following fields is specified: invoiceitemsku_#, invoiceitemprice_#, invoiceitemquantity_#</td>
+</tr>
+<tr>
+<td>invoiceitemprice_#</td>
+<td>d.dd</td>
+<td>Price of the single unit of a product being purchased. Required if one of the following fields is specified: invoiceitemsku_#, invoiceitemdescription_#, invoiceitemquantity_#</td>
+</tr>
+<tr>
+<td>invoiceitemquantity_#</td>
+<td>d.ddd</td>
+<td>Number of units of a product being purchased. Required if one of the following fields is specified: invoiceitemsku_#, invoiceitemdescription_#, invoiceitemprice_#</td>
+</tr>
+<tr>
+<td>sendpaymentlinkemail</td>
+<td>true / false</td>
+<td>If Invoice status is 'Active' email with Pay Invoice URL will be sent to specified email.</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=8VG63HD1LPBMIR5TPS7R52YV&amp;transtype=updateinvoice&amp;invoicenumber=Inv-80794&amp;invoicedate=12/30/2017&amp;currency=USD&amp;invoicestatus=Active&amp;invoiceitemsku_1=12345&amp;invoiceitemdescription_1=desc1&amp;invoiceitemprice_1=22.33&amp;invoiceitemquantity_1=1&amp;invoiceitemsku_2=223&amp;invoiceitemdescription_2=desc2&amp;invoiceitemprice_2=41.48&amp;invoiceitemquantity_2=2.653
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Cancel Invoice</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>cancelinvoice</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>invoicenumber</strong></td>
+<td>Inv- [0-9]</td>
+<td>Unique invoice identifier</td>
+</tr>
+<tr>
+<td><strong>invoicestatusreason</strong></td>
+<td>alphanumeric</td>
+<td>The reason of canceling the invoice</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=8VG63HD1LPBMIR5TPS7R52YV&amp;transtype=cancelinvoice&amp;invoicenumber=Inv-80794&amp;invoicestatusreason=end+of+contract
+</code></pre>
+<p>Expected Response</p>
+<pre class="language-none"><code class="language-none">textresponse=invoice+has+been+successfully+canceled&amp;invoicenumber=Inv-80794
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Cancel Invoice by Customer</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>cancelinvoicebycustomer</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>invoicenumber</strong></td>
+<td>Inv- [0-9]</td>
+<td>Unique invoice identifier</td>
+</tr>
+<tr>
+<td><strong>invoicestatusreason</strong></td>
+<td>alphanumeric</td>
+<td>The reason of canceling the invoice</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=8VG63HD1LPBMIR5TPS7R52YV&amp;transtype=cancelinvoicebycustomer&amp;invoicenumber=Inv-80794&amp;invoicestatusreason=ending+contract
+</code></pre>
+<p>Expected Response</p>
+<pre class="language-none"><code class="language-none">textresponse=invoice+has+been+successfully+canceled&amp;invoicenumber=Inv-80794
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer-pay-inv-cc" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Paying an Invoice with a Credit Card</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>payinvoice</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>invoicenumber​</strong></td>
+<td>Inv-[0-9]</td>
+<td>Unique invoice identifier</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0719 = 7/2019</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td>card security code</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td>Billing company</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>Billing address2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td>state</td>
+<td>2 character abbreviation</td>
+<td>Billing state</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+</tr>
+<tr>
+<td>country</td>
+<td>CC (ISO-3166)</td>
+<td>Billing Country (ie. US)</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>Billing Email Address</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td>Shipping company</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>Shipping Address</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>Shipping Address - line 2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>Shipping City</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td>2 character abbreviation</td>
+<td>Shipping State</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td>Shipping Zip Code</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td>CC (ISO - 3166)</td>
+<td>Shipping Country, ie US</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>Shipping Phone Number</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>Shipping Email</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=payinvoice&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;invoicenumber=Inv-123456&amp;cardnum=4111111111111111&amp;cardexp=1010&amp;cvv=999&amp;firstname=John&amp;lastname=Smith&amp;address1=888+test+address&amp;city=Los+Angeles&amp;country=US&amp;state=CA&amp;phone=222-444-2938&amp;shipfirstname=John&amp;shiplastname=Smith&amp;shipaddress1=888+test+address&amp;shipcity=Los+Angeles&amp;shipstate=CA&amp;shipphone=2224442938
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer-pay-inv-cc-pay-inv-ach" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Paying an Invoice with a Bank Account</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>payinvoice</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>invoicenumber​</strong></td>
+<td>Inv-[0-9]</td>
+<td>Unique invoice identifier</td>
+</tr>
+<tr>
+<td><strong>bankname</strong></td>
+<td></td>
+<td>The customer’s bank name</td>
+</tr>
+<tr>
+<td><strong>routing</strong></td>
+<td></td>
+<td>The customer’s bank routing number</td>
+</tr>
+<tr>
+<td><strong>account</strong></td>
+<td></td>
+<td>The customer’s bank account number</td>
+</tr>
+<tr>
+<td><strong>achaccounttype</strong></td>
+<td>checking / savings</td>
+<td>The customer’s type of ACH account</td>
+</tr>
+<tr>
+<td><strong>achaccountsubtype</strong></td>
+<td>business / personal</td>
+<td>The customer’s ACH account entity</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td>Billing company</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>Billing address2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td>state</td>
+<td>2 character abbreviation</td>
+<td>Billing state</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+</tr>
+<tr>
+<td>country</td>
+<td>CC (ISO-3166)</td>
+<td>Billing Country (ie. US)</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>Billing Email Address</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td>Shipping company</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>Shipping Address</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>Shipping Address - line 2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>Shipping City</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td>2 character abbreviation</td>
+<td>Shipping State</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td>Shipping Zip Code</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td>CC (ISO - 3166)</td>
+<td>Shipping Country, ie US</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>Shipping Phone Number</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>Shipping Email</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=8VG63HD1LPBMIR5TPS7R52YV&amp;transtype=payinvoice&amp;invoicenumber=Inv-80782&amp;bankname=Bank&amp;routing=122000496&amp;account=122000496&amp;achaccounttype=checking&amp;achaccountsubtype=personal&amp;firstname=Jake&amp;lastname=Tred&amp;address1=123+Feeed&amp;city=New+York&amp;state=NY&amp;country=US&amp;zip=12345&amp;company=Comp
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
 <section id="documenter-code-samples" class="method">
    <div class="method-area">
       <div class="method-copy">
@@ -5478,6 +6238,66 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-payment-plans-payment-plans-plan-description-sequences-notifications-update-plan-add-update-sequence-delete-sequence-delete-plan-assign-payment-plan-update-plan-assignment-cancel-plan-assignment">Cancel Payment Plan Assignment</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-invoicing">Invoicing</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-invoicing-invoicing-create-merchant-invoice">Creating an Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-invoicing-create-merchant-invoice-get-invoice">Retrieve Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-invoicing-create-merchant-invoice-get-invoice-update-invoice">Update Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice">Cancel Invoice</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer">Cancel Invoice by Customer</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer-pay-inv-cc">Pay Invoice with a Credit Card</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-invoicing-invoicing-create-merchant-invoice-get-invoice-update-invoice-cancel-invoice-cancel-inv-customer-pay-inv-cc-pay-inv-ach">Pay Invoice with a Bank Account</a>
           
 
 
