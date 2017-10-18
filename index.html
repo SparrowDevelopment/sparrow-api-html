@@ -817,16 +817,28 @@ the zip</p>
            
               <div class="code-curl code-div active-code">
                  <div class="method-example-part">
-                   <p>Command line:</p>
-<pre class="language-bash"><code class="language-bash">curl -v -d <span class="hljs-string">"mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;transtype=sale&amp;amount=9.95&amp;cardnum=4111111111111111&amp;cardexp=1019&amp;cvv=999"</span> -X POST  https://secure.sparrowone.com/Payments/Services_api.aspx
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+cvv=999"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
 </code></pre>
-<p></p>
-<p>Success Response:</p>
-<pre class="language-bash"><code class="language-bash">response=1&amp;textresponse=SUCCESS&amp;transid=10497689&amp;xref=3779249270&amp;authcode=123456&amp;orderid=&amp;<span class="hljs-built_in">type</span>=sale&amp;avsresponse=&amp;cvvresponse=M&amp;coderesponse=100&amp;codedescription=Transaction+was+Approved&amp;status=200
-</code></pre>
-<p></p>
-<p>Failure Response:</p>
-<pre class="language-bash"><code class="language-bash">response=3&amp;textresponse=Cannot+find+transaction+routing+info.+Check+the+value+of+payment+field+mkey&amp;errorcode=
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10751328&amp;
+xref=3829811833&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
 </code></pre>
 
                  </div>
@@ -1142,6 +1154,75 @@ puts res[:type]     /</span><span class="hljs-regexp">/ sale
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+cvv=999&amp;\
+currency=USD&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+skunumber_1=123&amp;\
+skunumber_2=456&amp;\
+description_1=Blue widget&amp;\
+description_2=Brown widget&amp;\
+amount_1=1.99&amp;\
+amount_2=2.99&amp;\
+quantity_1=1&amp;\
+quantity_2=2&amp;\
+orderdesc=Order Description&amp;\
+orderid=11111&amp;\
+cardipaddress=8.8.8.8&amp;\
+tax=0.25&amp;\
+shipamount=1.25&amp;\
+ponumber=22222&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipcompany=Sparrow Two&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750810&amp;
+xref=3829708603&amp;
+authcode=123456&amp;
+orderid=11111&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=N&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -1244,6 +1325,39 @@ be made.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=auth&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+cvv=999"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750806&amp;
+xref=3829708674&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=auth&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -1329,6 +1443,41 @@ your account.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=capture&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transid=10750806&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+sendtransreceipttobillemail=true&amp;\
+sendtransreceipttoshipemail=true&amp;\
+sendtransreceipttoemails=email@email.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750806&amp;
+xref=3829708674&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=capture&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -1406,6 +1555,41 @@ your account.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=offline&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+authcode=123456&amp;\
+authdate=01/31/2017&amp;\
+cvv=999"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750801&amp;
+xref=3829708552&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=offline&amp;
+avsresponse=&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -1507,6 +1691,40 @@ settled transaction. If the transaction has not need settled, it must be
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=refund&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transid=10750794&amp;\
+amount=9.95"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=3&amp;
+textresponse=Flagged+<span class="hljs-keyword">for</span>+Review+by+Velocity+and+Duplicates+Policy+(Duplicate+Transactions+Rule).+Original+Transaction+ID%3a+10750789&amp;
+transid=10750794&amp;
+xref=3829708623&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=refund&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=&amp;
+codedescription=&amp;
+status=300&amp;
+origtransid=10750789&amp;
+origresponse=1&amp;
+origtextresponse=SUCCESS
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -1579,6 +1797,40 @@ settled transaction. If the transaction has not need settled, it must be
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=refund&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transid=10750789&amp;\
+amount=9.95&amp;\
+sendtransreceipttobillemail=true&amp;\
+sendtransreceipttoshipemail=true&amp;\
+sendtransreceipttoemails=email@email.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750789&amp;
+xref=3829708545&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=refund&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -1643,6 +1895,37 @@ the transaction has not been settled.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=void&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transid=10750790&amp;\
+amount=9.95"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Transaction+Void+Successful&amp;
+transid=10750790&amp;
+xref=3829708544&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=void&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -1715,6 +1998,39 @@ the transaction has not been settled.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=void&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transid=10750800&amp;\
+sendtransreceipttobillemail=true&amp;\
+sendtransreceipttoshipemail=true&amp;\
+sendtransreceipttoemails=email@email.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Transaction+Void+Successful&amp;
+transid=10750800&amp;
+xref=3829708562&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=void&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -1895,6 +2211,58 @@ settlement operation.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+cvv=999&amp;\
+passengername=John Doe&amp;\
+stopovercode1=O&amp;\
+airportcode1=LAS&amp;\
+airportcode2=CDG&amp;\
+airportcode3=IAD&amp;\
+airportcode4=CPH&amp;\
+carriercoupon1 carriercoupon2 carriercoupon3 carriercoupon4=AA;BB&amp;\
+airlinecodenumber=AA0&amp;\
+ticketnumber=1234567890&amp;\
+classofservicecoupon1 classofservicecoupon2 classofservicecoupon3 classofservicecoupon4=00;AA&amp;\
+flightdatecoupon1=01/31/2017&amp;\
+flightdeparturetimecoupon1=23:59&amp;\
+addressverificationcode=A&amp;\
+approvalcode=123456&amp;\
+transactionid=1234567890&amp;\
+authcharindicator=A&amp;\
+referencenumber=123456789012&amp;\
+validationcode=1234&amp;\
+authresponsecode=AB"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750803&amp;
+xref=3829708653&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -1963,6 +2331,39 @@ Exchange Credit Service and managed by the Army and Air Force Exchange Service.<
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+amount=9.95&amp;\
+cardexp=1019&amp;\
+CID=12345678901"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750791&amp;
+xref=3829708548&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -2182,6 +2583,75 @@ Exchange Credit Service and managed by the Army and Air Force Exchange Service.<
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+CID=12345678901&amp;\
+currency=USD&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+skunumber_1=123&amp;\
+skunumber_2=456&amp;\
+description_1=Blue widget&amp;\
+description_2=Brown widget&amp;\
+amount_1=1.99&amp;\
+amount_2=2.99&amp;\
+quantity_1=1&amp;\
+quantity_2=2&amp;\
+orderdesc=Order Description&amp;\
+orderid=11111&amp;\
+cardipaddress=8.8.8.8&amp;\
+tax=0.25&amp;\
+shipamount=1.25&amp;\
+ponumber=22222&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipcompany=Sparrow Two&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750808&amp;
+xref=3829708587&amp;
+authcode=123456&amp;
+orderid=11111&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=N&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -2283,6 +2753,43 @@ funds directly to and from client’s banks accounts.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$ACH_M_KEY</span>&amp;\
+bankname=First Test Bank&amp;\
+routing=110000000&amp;\
+account=1234567890123&amp;\
+achaccounttype=checking&amp;\
+achaccountsubtype=personal&amp;\
+amount=9.95&amp;\
+firstname=John&amp;\
+lastname=Doe"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=00&amp;
+textresponse=SUCCESS&amp;
+transid=10750797&amp;
+xref=3829708697&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -2566,6 +3073,76 @@ funds directly to and from client’s banks accounts.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$ACH_M_KEY</span>&amp;\
+bankname=First Test Bank&amp;\
+routing=110000000&amp;\
+account=1234567890123&amp;\
+achaccounttype=checking&amp;\
+achaccountsubtype=personal&amp;\
+amount=9.95&amp;\
+orderdesc=Order Description&amp;\
+orderid=11111&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+phone=7025551234&amp;\
+email=john@norepy.com&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com&amp;\
+saveclient=true&amp;\
+updateclient=true&amp;\
+opt_amount_type_1=surcharge&amp;\
+opt_amount_value_1=1.01&amp;\
+opt_amount_percentage_1=18&amp;\
+birthdate=01/31/2000&amp;\
+checknumber=123&amp;\
+driverlicensenumber=1234567890&amp;\
+driverlicensecountry=US&amp;\
+driverlicensestate=AZ&amp;\
+sendtransreceipttobillemail=true&amp;\
+sendtransreceipttoshipemail=true&amp;\
+paymentdescriptor=Custom Payment Descriptor"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=00&amp;
+textresponse=SUCCESS%2c+Customer+with+token+%27I07IO05HGP0NXIQM%27+successfully+updated%2c+Payment+transaction+successfully+assigned+to+the+customer+with+token+%27I07IO05HGP0NXIQM%27&amp;
+transid=10750811&amp;
+xref=3829708723&amp;
+authcode=123456&amp;
+orderid=11111&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200&amp;
+token=I07IO05HGP0NXIQM
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -2661,6 +3238,39 @@ PayPal account to pay securely</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=credit&amp;\
+mkey=<span class="hljs-variable">$E_WALLET_M_KEY</span>&amp;\
+ewalletaccount=user@example.com&amp;\
+ewallet type=PayPal&amp;\
+amount=9.95&amp;\
+currency=USD"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Successful&amp;
+transid=10750788&amp;
+xref=KYAN63Z749J92&amp;
+authcode=&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=credit&amp;
+avsresponse=&amp;
+cvvresponse=&amp;
+coderesponse=&amp;
+codedescription=&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -2736,6 +3346,38 @@ PayPal account to pay securely</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750802&amp;
+xref=3829708633&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -2955,6 +3597,75 @@ PayPal account to pay securely</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+cvv=999&amp;\
+currency=USD&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+skunumber_1=123&amp;\
+skunumber_2=456&amp;\
+description_1=Blue widget&amp;\
+description_2=Brown widget&amp;\
+amount_1=1.99&amp;\
+amount_2=2.99&amp;\
+quantity_1=1&amp;\
+quantity_2=2&amp;\
+orderdesc=Order Description&amp;\
+orderid=11111&amp;\
+cardipaddress=8.8.8.8&amp;\
+tax=0.25&amp;\
+shipamount=1.25&amp;\
+ponumber=22222&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipcompany=Sparrow Two&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750809&amp;
+xref=3829708566&amp;
+authcode=123456&amp;
+orderid=11111&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=N&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -3021,6 +3732,37 @@ module.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=chargeback&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transid=10750804&amp;\
+reason=Reason for chargeback"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Reason+<span class="hljs-keyword">for</span>+chargeback&amp;
+transid=10750804&amp;
+xref=3829708661&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=chargeback&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=&amp;
+codedescription=&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -3082,6 +3824,31 @@ module.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=balanceinquire&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4005562231212149&amp;\
+cardexp=1225"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=3&amp;
+textresponse=Operation+<span class="hljs-built_in">type</span>+is+not+supported+by+payment+processor&amp;
+<span class="hljs-built_in">type</span>=balanceinquire&amp;
+coderesponse=&amp;
+codedescription=&amp;
+status=500
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -3170,6 +3937,28 @@ Vault client and the name of the custom field. Commonly encrypted fields may be:
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=decrypt&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+fieldname=customField1&amp;\
+customertoken=CustomerToken&amp;\
+paymenttoken=PaymentToken"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=3&amp;
+textresponse=Internal+processing+error
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -3265,6 +4054,40 @@ Issuer, and if in good standing</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=auth&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+cvv=999&amp;\
+zip=85254"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750787&amp;
+xref=3829708536&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=auth&amp;
+avsresponse=N&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -3541,6 +4364,89 @@ consumer information is stored adhering to PCI Level 1 compliance.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=addcustomer&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+note=Customer Note&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipcompany=Sparrow Two&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com&amp;\
+username=JohnDoe17101717530877&amp;\
+password=Password123&amp;\
+clientuseremail=john@norepy.com&amp;\
+paytype_1=creditcard&amp;\
+paytype_2=check&amp;\
+firstname_1=John&amp;\
+firstname_2=John&amp;\
+lastname_1=Doe&amp;\
+lastname_2=Doe&amp;\
+address1_1=123 Main Street&amp;\
+address1_2=321 1st Street&amp;\
+address2_1=Suite 1&amp;\
+address2_2=Suite 2&amp;\
+city_1=Pheonix&amp;\
+city_2=Scottsdale&amp;\
+state_1=AZ&amp;\
+state_2=AZ&amp;\
+zip_1=85111&amp;\
+zip_2=85222&amp;\
+country_1=US&amp;\
+country_2=US&amp;\
+phone_1=6025551234&amp;\
+phone_2=6025554321&amp;\
+email_1=john@norepy.com&amp;\
+email_2=jane@noreploy.com&amp;\
+cardnum_1=4111111111111111&amp;\
+cardnum_2=4111111111111111&amp;\
+cardexp_1=1019&amp;\
+cardexp_2=1019&amp;\
+bankname_1=&amp;\
+bankname_2=First Test Bank&amp;\
+routing_1=&amp;\
+routing_2=110000000&amp;\
+account_1=&amp;\
+account_2=1234567890123&amp;\
+achaccounttype_1=&amp;\
+achaccounttype_2=personal&amp;\
+payno_1=1&amp;\
+payno_2=2"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Customer+with+token+%27F6OE0IN0I5HSV6AJ%27+successfully+created&amp;
+<span class="hljs-built_in">type</span>=addcustomer&amp;
+customertoken=F6OE0IN0I5HSV6AJ&amp;
+paymenttoken_1=9K7US80YUQ1LPN27&amp;
+paymenttoken_2=OZA3QU7CYG57D88R
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -3757,6 +4663,33 @@ supported payment type.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$ACH_M_KEY</span>&amp;\
+transtype=addcustomer&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+paytype_1=creditcard&amp;\
+cardnum_1=4111111111111111&amp;\
+cardexp_1=1019"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=00&amp;
+textresponse=Customer+with+token+%27OZMGG9YB5DPF663X%27+successfully+created&amp;
+<span class="hljs-built_in">type</span>=addcustomer&amp;
+customertoken=OZMGG9YB5DPF663X&amp;
+paymenttoken_1=WSJE7RYNRQPLJIRC
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -3916,6 +4849,47 @@ supported payment type.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=updatecustomer&amp;\
+token=O3BEZTT2UHCS7USA&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+phone=7025551234&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Customer+with+token+%27O3BEZTT2UHCS7USA%27+successfully+updated&amp;
+<span class="hljs-built_in">type</span>=updatecustomer&amp;
+customertoken=O3BEZTT2UHCS7USA
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -3962,6 +4936,31 @@ supported payment type.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=updatecustomer&amp;\
+token_1=SXZ27VYHGBSMYDNH&amp;\
+operationtype_1=deletepaytype&amp;\
+token=EBVX61KPEIUZXV7B"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Customer+with+token+%27EBVX61KPEIUZXV7B%27+successfully+updated&amp;
+<span class="hljs-built_in">type</span>=updatecustomer&amp;
+customertoken=EBVX61KPEIUZXV7B&amp;
+paymenttoken_1=SXZ27VYHGBSMYDNH
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -4004,6 +5003,27 @@ supported payment type.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=deletecustomer&amp;\
+token=FX60NPVJY2Y18KZA"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+<span class="hljs-built_in">type</span>=deletecustomer
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -4097,6 +5117,55 @@ amounts and frequencies</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=addplan&amp;\
+planname=PaymentPlan1&amp;\
+plandesc=1st Payment Plan&amp;\
+startdate=01/31/2017&amp;\
+defaultachmkey=<span class="hljs-variable">$ACH_M_KEY</span>&amp;\
+defaultcreditcardmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+defaultcheckmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+defaultstarcardmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+defaulte_walletmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+sequence_1=1&amp;\
+sequence_2=2&amp;\
+amount_1=1.99&amp;\
+amount_2=2.99&amp;\
+scheduletype_1=custom&amp;\
+scheduletype_2=monthly&amp;\
+scheduleday_1=7&amp;\
+scheduleday_2=1&amp;\
+duration_1=365&amp;\
+duration_2=-1&amp;\
+productid_1=abc&amp;\
+productid_2=123&amp;\
+description_1=Weekly&amp;\
+description_2=Monthly&amp;\
+notifyfailures=false&amp;\
+userecycling=true&amp;\
+retrycount=2&amp;\
+retrytype=daily&amp;\
+retryperiod=1&amp;\
+autocreateclientaccounts=true"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+<span class="hljs-built_in">type</span>=addplan&amp;
+plantoken=76Y5QQT2LV54J5SE
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -4228,6 +5297,41 @@ amounts and frequencies</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=updateplan&amp;\
+token=I4LYCSV3FMGDTA9G&amp;\
+planname=PaymentPlan1&amp;\
+plandesc=1st Payment Plan&amp;\
+startdate=01/31/2017&amp;\
+defaultachmkey=<span class="hljs-variable">$ACH_M_KEY</span>&amp;\
+defaultcreditcardmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+defaultcheckmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+defaultstarcardmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+defaulte_walletmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+userrecycling=true&amp;\
+notifyfailures=true&amp;\
+retrycount=2&amp;\
+retrytype=daily&amp;\
+retryperiod=2&amp;\
+autocreateclientaccounts=true"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+<span class="hljs-built_in">type</span>=updateplan
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -4340,6 +5444,35 @@ customer will be charged and when</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"amount_#=1.99;2.99&amp;\
+scheduletype_#=monthly;custom&amp;\
+duration=-1;-1&amp;\
+productid_#=123;321&amp;\
+description_#=Blue widget;Brown widget&amp;\
+notifyfailures=true&amp;\
+userecycling=true&amp;\
+defaultewalletmkey=T6YQTCA3RK3IEW8R14ITSJBI&amp;\
+retrycount=2&amp;\
+retrytype=daily&amp;\
+retryperiod=2&amp;\
+autocreateclientaccounts=true"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=3&amp;
+textresponse=Required+payment+field+transtype+is+missing
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -4480,6 +5613,25 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">""</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=3&amp;
+textresponse=Required+payment+field+transtype+is+missing&amp;
+errorcode=
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -4604,6 +5756,36 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"amount_#=1.99;2.99&amp;\
+scheduletype_#=monthly;custom&amp;\
+duration=-1;-1&amp;\
+productid_#=123;321&amp;\
+description_#=Blue widget;Brown widget&amp;\
+notifyfailures=true&amp;\
+userecycling=true&amp;\
+defaultewalletmkey=T6YQTCA3RK3IEW8R14ITSJBI&amp;\
+retrycount=2&amp;\
+retrytype=daily&amp;\
+retryperiod=2&amp;\
+autocreateclientaccounts=true"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=3&amp;
+textresponse=Required+payment+field+transtype+is+missing&amp;
+errorcode=
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -4642,6 +5824,26 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">""</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=3&amp;
+textresponse=Required+payment+field+transtype+is+missing&amp;
+errorcode=&amp;
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -4691,6 +5893,28 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=deleteplan&amp;\
+token=315KMHH74U690DS5&amp;\
+cancelpayments=true"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+<span class="hljs-built_in">type</span>=deleteplan
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -4812,6 +6036,37 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=assignplan&amp;\
+customertoken=F6OE0IN0I5HSV6AJ&amp;\
+plantoken=76Y5QQT2LV54J5SE&amp;\
+paymenttoken=9K7US80YUQ1LPN27&amp;\
+startdate=01/31/2017&amp;\
+notifyfailures=true&amp;\
+userecycling=true&amp;\
+retrycount=2&amp;\
+retrytype=daily&amp;\
+retryperiod=2&amp;\
+notifyfailuresemails=jdoe@example.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Success&amp;
+<span class="hljs-built_in">type</span>=assignplan&amp;
+assignmenttoken=JCXG572GBX20NFDF
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -4927,6 +6182,35 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=updateassignment&amp;\
+assignmenttoken=4STIQWYX5NM9ZDKJ&amp;\
+paymenttoken=E25BCVW6GPAY7LPA&amp;\
+startdate=1/1/2018&amp;\
+notifyfailures=true&amp;\
+userecycling=true&amp;\
+retrycount=3&amp;\
+retrytype=daily&amp;\
+retryperiod=2"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Success&amp;
+<span class="hljs-built_in">type</span>=updateassignment&amp;
+assignmenttoken=4STIQWYX5NM9ZDKJ
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -4972,6 +6256,27 @@ mkey=JHG48D3V6N8HKFF3W221AA&amp;transtype=cancelassignment&amp;assignmenttoken=H
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=cancelassignment&amp;\
+assignmenttoken=JCXG572GBX20NFDF"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Success&amp;
+<span class="hljs-built_in">type</span>=cancelassignment
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -5084,6 +6389,39 @@ payment page.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=createmerchantinvoice&amp;\
+customertoken=YWVEUMYXUNARZ3VK&amp;\
+invoicedate=12/01/2017&amp;\
+currency=USD&amp;\
+invoicestatus=draft&amp;\
+invoicesource=DataVault&amp;\
+invoiceamount=10.00&amp;\
+invoiceitemsku_1=123&amp;\
+invoiceitemsku_2=456&amp;\
+invoiceitemdescription_1=Widget 1&amp;\
+invoiceitemdescription_2=Widget 2&amp;\
+invoiceitemprice_1=2.00&amp;\
+invoiceitemprice_2=4.00&amp;\
+invoiceitemquantity_1=1&amp;\
+invoiceitemquantity_2=2"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">textresponse=invoice+has+been+successfully+created&amp;
+invoicenumber=Inv-39031
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -5183,6 +6521,31 @@ payment page.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=updateinvoice&amp;\
+invoicenumber=Inv-39031&amp;\
+invoicedate=12/15/2017&amp;\
+currency=USD&amp;\
+invoicestatus=active&amp;\
+invoicesource=DataVault&amp;\
+invoiceamount=15.00"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">textresponse=Invoice+has+been+successfully+updated&amp;
+invoicenumber=Inv-39031
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -5230,6 +6593,43 @@ payment page.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=getinvoice&amp;\
+invoicenumber=Inv-39030"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">textresponse=Success&amp;
+invoicenumber=Inv-39030&amp;
+invoiceamount=10.0000&amp;
+currency=USD&amp;
+invoicedate=12%2f01%2f2017&amp;
+invoicestatus=Draft&amp;
+invoiceitemid_1=3251&amp;
+invoiceitemprice_1=2.0000&amp;
+invoiceitemquantity_1=1.000&amp;
+invoiceitemamount_1=2.0000&amp;
+invoiceitemsku_1=123&amp;
+invoiceitemdescription_1=Widget+1&amp;
+invoiceitemid_2=3252&amp;
+invoiceitemprice_2=4.0000&amp;
+invoiceitemquantity_2=2.000&amp;
+invoiceitemamount_2=8.0000&amp;
+invoiceitemsku_2=456&amp;
+invoiceitemdescription_2=Widget+2&amp;
+customertoken=3F4JAWXXFDYSJ1JX
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -5283,6 +6683,27 @@ payment page.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=cancelinvoice&amp;\
+invoicenumber=Inv-39028&amp;\
+invoicestatusreason=Testing Cancel Feature"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">textresponse=invoice+has+been+successfully+canceled&amp;
+invoicenumber=Inv-39028
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -5334,6 +6755,27 @@ payment page.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=cancelinvoicebycustomer&amp;\
+invoicenumber=Inv-39026&amp;\
+invoicestatusreason=Cancel Invoice By Customer"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">textresponse=invoice+has+been+successfully+canceled&amp;
+invoicenumber=Inv-39026
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -5498,6 +6940,51 @@ payment page.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=payinvoice&amp;\
+invoicenumber=Inv-39025&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+cvv=999&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipcompany=Sparrow Two&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">textresponse=Invoice+has+been+successfully+paid&amp;
+transid=10750812&amp;
+invoicenumber=Inv-39025
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -5672,6 +7159,53 @@ payment page.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$ACH_M_KEY</span>&amp;\
+transtype=payinvoice&amp;\
+invoicenumber=Inv-39040&amp;\
+bankname=First Test Bank&amp;\
+routing=110000000&amp;\
+account=1234567890123&amp;\
+achaccounttype=checking&amp;\
+achaccountsubtype=personal&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipcompany=Sparrow Two&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">textresponse=Invoice+has+been+successfully+paid&amp;
+transid=10750925&amp;
+invoicenumber=Inv-39040
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
