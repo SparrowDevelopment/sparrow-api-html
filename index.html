@@ -174,6 +174,13 @@
 
         </li>
      
+        <li>
+          <a href="#documenter-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture-incremental-auth">Incremental Authorization</a>
+          
+
+
+        </li>
+     
   </ol>
 
 
@@ -635,8 +642,7 @@
 <p>The site describes the direct method for payments and value added features in
 the Sparrow gateway and is referred to as the Services API.</p>
 <p>The Services API URL is:</p>
-<p><a href="https://secure.sparrowone.com/Payments/Services_api.aspx">https://secure.sparrowone.com/Payments/Services
-api.aspx</a></p>
+<p><a href="https://secure.sparrowone.com/Payments/Services_api.aspx">https://secure.sparrowone.com/Payments/Services_api.aspx</a></p>
 <p><code>Services_api.aspx</code> is an API implementation of secure payments. In this
 fashion, merchants can seamlessly integrate gateway payment functions into their
 checkout process using a direct post via HTTP.</p>
@@ -1086,6 +1092,16 @@ puts res[:type]     /</span><span class="hljs-regexp">/ sale
 <td>Billing Country (ie. US)</td>
 </tr>
 <tr>
+<td>phone</td>
+<td></td>
+<td>Billing phone number</td>
+</tr>
+<tr>
+<td>fax</td>
+<td></td>
+<td>Billing fax number</td>
+</tr>
+<tr>
 <td>email</td>
 <td></td>
 <td>Billing Email Address</td>
@@ -1144,6 +1160,36 @@ puts res[:type]     /</span><span class="hljs-regexp">/ sale
 <td>shipemail</td>
 <td></td>
 <td>Shipping Email</td>
+</tr>
+<tr>
+<td>opt_amount_type_1</td>
+<td>tip</td>
+<td>Type of additional amount</td>
+</tr>
+<tr>
+<td>opt_amount_value_1</td>
+<td>d.dd</td>
+<td>Value of additional amount (e.g. 1.00)</td>
+</tr>
+<tr>
+<td>opt_amount_percentage_1</td>
+<td></td>
+<td>Percentage of additional amount (e.g. 10)</td>
+</tr>
+<tr>
+<td>sendtransreceipttobillemail</td>
+<td>true/false</td>
+<td>If true receipt will be sent to email from Billing Information if email is specified</td>
+</tr>
+<tr>
+<td>sendtransreceipttoshippemail</td>
+<td>true/false</td>
+<td>If true receipt will be sent to email from Shipping Information if email is specified</td>
+</tr>
+<tr>
+<td>sendtransreceipttoemails</td>
+<td>email@email.com</td>
+<td>Additional list of emails to receive receipts</td>
 </tr>
 </tbody>
 </table>
@@ -1405,12 +1451,6 @@ your account.</p>
 <td>Original Payment Gateway Transaction ID</td>
 </tr>
 <tr>
-<td><strong>cardexp</strong></td>
-<td></td>
-<td>MMYY</td>
-<td>Credit card expiration (ie. 0711 = 7/2011)</td>
-</tr>
-<tr>
 <td><strong>amount</strong></td>
 <td></td>
 <td>d.dd</td>
@@ -1630,6 +1670,27 @@ request.</p>
 </section>           
 
 
+   
+<section id="documenter-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture-incremental-auth" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Incremental Authorization (Lodging Industry only)</h3>
+<p>Additional operation type is implemented for Lodging industry – Incremental
+Authorization.</p>
+<p>It is used to add amount to original Authorization transaction. It can occur
+multiple times for one initial Authorization. It cannot be applied to already
+captured Authorization.</p>
+<p>Please see details in documents SPARROW API Reference for First Data PTS and
+SPARROW API Reference for TSYS.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
            
               
 <section id="documenter-issuing-a-refund" class="method">
@@ -1678,14 +1739,14 @@ settled transaction. If the transaction has not need settled, it must be
 <td>Original payment gateway transaction ID</td>
 </tr>
 <tr>
-<td>amount</td>
+<td><strong>amount</strong></td>
 <td>d.dd</td>
 <td>Total amount to be refunded</td>
 </tr>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">transtype=refund&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transid=12345678
+<pre class="language-none"><code class="language-none">transtype=refund&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transid=12345678&amp;amount=3.95
 </code></pre>
 
          </div>
@@ -1760,14 +1821,14 @@ origtextresponse=SUCCESS
 <td>Original payment gateway transaction ID</td>
 </tr>
 <tr>
-<td>amount</td>
+<td><strong>amount</strong></td>
 <td>d.dd</td>
 <td>Total amount to be refunded</td>
 </tr>
 <tr>
 <td>opt_amount_type_#</td>
-<td></td>
-<td>Type of additional amount (surcharge, etc)</td>
+<td>tip/surcharge</td>
+<td>Type of additional amount</td>
 </tr>
 <tr>
 <td>opt_amount_value_#</td>
@@ -1883,11 +1944,6 @@ the transaction has not been settled.</p>
 <td></td>
 <td>Original payment gateway transaction ID</td>
 </tr>
-<tr>
-<td>amount</td>
-<td>d.dd</td>
-<td>Total amount to be refunded</td>
-</tr>
 </tbody>
 </table>
 <pre class="language-none"><code class="language-none">transtype=void&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transid=12345678
@@ -1962,21 +2018,6 @@ status=200
 <td>Original payment gateway transaction ID</td>
 </tr>
 <tr>
-<td>amount</td>
-<td>d.dd</td>
-<td>Total amount to be refunded</td>
-</tr>
-<tr>
-<td>opt_amount_type_#</td>
-<td></td>
-<td>Type of additional amount (surcharge, etc)</td>
-</tr>
-<tr>
-<td>opt_amount_value_#</td>
-<td></td>
-<td>Value of additional amount (1.00)</td>
-</tr>
-<tr>
 <td>sendtransreceipttobillemail</td>
 <td>true/false</td>
 <td>If true a receipt will be sent to the email provided in the billing information if email is specified</td>
@@ -1993,7 +2034,7 @@ status=200
 </tr>
 </tbody>
 </table>
-<pre class="language-none"><code class="language-none">transtype=void&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transid=12345678&amp;amount=12.00&amp;sendtransreceipttoemails=John.Smith@email.com
+<pre class="language-none"><code class="language-none">transtype=void&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transid=12345678&amp;sendtransreceipttoemails=John.Smith@email.com
 </code></pre>
 
          </div>
@@ -2089,7 +2130,7 @@ settlement operation.</p>
 <tbody>
 <tr>
 <td><strong>transtype</strong></td>
-<td>sale</td>
+<td>passengersale</td>
 <td>Transaction Sale</td>
 </tr>
 <tr>
@@ -2118,13 +2159,13 @@ settlement operation.</p>
 <td>Card security code</td>
 </tr>
 <tr>
-<td>passengername</td>
-<td>[a-z, A-Z, 0-9, ‘]</td>
-<td>First and last name of the passenger, 1-2 characters</td>
+<td><strong>passengername</strong></td>
+<td>[a-z, A-Z, 0-9, ‘ ’]</td>
+<td>First and last name of the passenger, 1-20 characters</td>
 </tr>
 <tr>
-<td>stopovercode1 stopovercode2 stopovercode3 stopovercode4 etc</td>
-<td>‘ ‘, ‘O’, ‘X’</td>
+<td>stopovercode1 stopovercode2 stopovercode3 stopovercode4 stopovercode5</td>
+<td>‘ ’, ‘O’, ‘X’</td>
 <td></td>
 </tr>
 <tr>
@@ -2133,7 +2174,7 @@ settlement operation.</p>
 <td>Origination Airport Code, 3 characters</td>
 </tr>
 <tr>
-<td>airportcode2 airportcode3 airportcode4</td>
+<td>airportcode2 airportcode3 airportcode4 airportcode5</td>
 <td>[a-z, A-Z, 0-9]</td>
 <td>Codes for different trip legs, 3 characters</td>
 </tr>
@@ -2155,7 +2196,7 @@ settlement operation.</p>
 <tr>
 <td>classofservicecoupon1 classofservicecoupon2 classofservicecoupon3 classofservicecoupon4</td>
 <td>[a-z, A-Z, 0-9]</td>
-<td>2 characters</td>
+<td>1 or 2 characters</td>
 </tr>
 <tr>
 <td><strong>flightdatecoupon1</strong></td>
@@ -2164,7 +2205,7 @@ settlement operation.</p>
 </tr>
 <tr>
 <td><strong>flightdeparturetimecoupon1</strong></td>
-<td>HH;mm (military)</td>
+<td>HH:mm (military)</td>
 <td>Departure time</td>
 </tr>
 <tr>
@@ -2180,11 +2221,11 @@ settlement operation.</p>
 <tr>
 <td>transactionid</td>
 <td>[a-z, A-Z, 0-9]</td>
-<td>The field must be forwarded when sent from TSYS, or manually filled. 15 characters</td>
+<td>The field must be forwarded when sent from TSYS, or manually filled with zeros. 15 characters</td>
 </tr>
 <tr>
 <td><strong>authcharindicator</strong></td>
-<td>supported values: ' ', 'A', 'E', 'F', 'I', 'C', 'K', 'M', 'N', 'P', 'R',</td>
+<td>supported values: ‘ ’, ‘A’, ‘E’, ‘F’, ‘I’, ‘C’, ‘K’, ‘M’, ‘N’, ‘P’, ‘R’, ‘S’, ‘T’, ‘U’, ‘V’, ‘W’</td>
 <td>Used as Returned Authorization Characteristics Indicator. Must contain the value returned in authorization response (ic case of online auth)</td>
 </tr>
 <tr>
@@ -2410,7 +2451,7 @@ status=200
 <td>Total amount to be charged (ie. 10.00)</td>
 </tr>
 <tr>
-<td>CID</td>
+<td><strong>CID</strong></td>
 <td>custom field</td>
 <td>11 digit numerical code</td>
 </tr>
@@ -2513,6 +2554,16 @@ status=200
 <td>country</td>
 <td>CC (ISO-3166)</td>
 <td>Billing Country (ie. US)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td>Billing phone number</td>
+</tr>
+<tr>
+<td>fax</td>
+<td></td>
+<td>Billing fax number</td>
 </tr>
 <tr>
 <td>email</td>
@@ -2748,7 +2799,7 @@ funds directly to and from client’s banks accounts.</p>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=business9
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=business
 </code></pre>
 
          </div>
@@ -2939,6 +2990,24 @@ status=200
 <td>Billing email address</td>
 </tr>
 <tr>
+<td>shipfirstname</td>
+<td></td>
+<td></td>
+<td>Shipping first name, should be from 1-100 characters. Required for PayPal processor if shipping address is entered.</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td></td>
+<td>Shipping last name, should be from 1-100 characters. Required for PayPal processor if shipping address is entered.</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td></td>
+<td>Shipping company</td>
+</tr>
+<tr>
 <td>shipaddress1</td>
 <td></td>
 <td></td>
@@ -3047,6 +3116,12 @@ status=200
 <td>Drivers license state</td>
 </tr>
 <tr>
+<td>courtesycardid</td>
+<td></td>
+<td>[a-z, A-Z, 0-9]</td>
+<td>This field is optional only for GETI ACH, for other processors can be ignored. From 1 to 50 characters.</td>
+</tr>
+<tr>
 <td>sendtransreceipttobillemail</td>
 <td></td>
 <td>true/false</td>
@@ -3059,10 +3134,10 @@ status=200
 <td>If true, this will send a transaction receipt to the shipping email if present</td>
 </tr>
 <tr>
-<td>paymentdescriptor</td>
+<td>sendtransreceipttoemails</td>
 <td></td>
-<td></td>
-<td>Overrides the dynamic payment descriptor</td>
+<td>email@email.com</td>
+<td>Additional list of emails to receive receipts</td>
 </tr>
 </tbody>
 </table>
@@ -3232,7 +3307,7 @@ PayPal account to pay securely</p>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;amount=9.95&amp;ewalletaccount=user@example.com&amp;ewallettype=paypal&amp;currency=USD
+<pre class="language-none"><code class="language-none">transtype=credit&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;amount=9.95&amp;ewalletaccount=user@example.com&amp;ewallettype=paypal&amp;currency=USD
 </code></pre>
 
          </div>
@@ -3341,7 +3416,7 @@ status=200
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;amount=9.95&amp;cardnum=000123456789002&amp;cardexp=1010&amp;
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;amount=9.95&amp;cardnum=000123456789002&amp;cardexp=1010
 </code></pre>
 
          </div>
@@ -3802,8 +3877,8 @@ status=200
 <tr>
 <td><strong>transtype</strong></td>
 <td></td>
-<td>balanceincuire</td>
-<td>Balanceincuire returns the available card balance</td>
+<td>balanceinquire</td>
+<td>Balanceinquire returns the available card balance</td>
 </tr>
 <tr>
 <td><strong>mkey</strong></td>
@@ -3819,7 +3894,7 @@ status=200
 </tr>
 </tbody>
 </table>
-<pre class="language-none"><code class="language-none">transtype=balanceincuire&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;cardnum=4111111111111111
+<pre class="language-none"><code class="language-none">transtype=balanceinquire&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;cardnum=4111111111111111
 </code></pre>
 
          </div>
@@ -3919,20 +3994,14 @@ Vault client and the name of the custom field. Commonly encrypted fields may be:
 <td>Custom field name</td>
 </tr>
 <tr>
-<td>customertoken</td>
+<td><strong>token</strong></td>
 <td></td>
 <td>alphanumeric string</td>
-<td>The field is required if the paymenttoken field is not specified. This is a unique Data Vault customer identifier</td>
-</tr>
-<tr>
-<td>paymenttoken</td>
-<td></td>
-<td>alphanumeric string</td>
-<td>The field is required if the customertoken field is not specified. This is a unique Data Vault payment type identifier</td>
+<td>This is a unique Data Vault customer identifier or Data Vault payment type identifier</td>
 </tr>
 </tbody>
 </table>
-<pre class="language-none"><code class="language-none">transtype=decrypt&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;fieldname=socialsecurity&amp;customertoken=H6FV89KL156
+<pre class="language-none"><code class="language-none">transtype=decrypt&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;fieldname=socialsecurity&amp;token=H6FV89KL156
 </code></pre>
 
          </div>
@@ -4049,7 +4118,7 @@ Issuer, and if in good standing</p>
 </tr>
 </tbody>
 </table>
-<pre class="language-none"><code class="language-none">transtype=auth&amp;mkey=HNJ45D23MKLO85J2D00LOP&amp;cardnum=4111111111111111&amp;amount=0.00&amp;zip=85254
+<pre class="language-none"><code class="language-none">transtype=auth&amp;mkey=HNJ45D23MKLO85J2D00LOP&amp;cardnum=4111111111111111&amp;cardexp=1019&amp;amount=0.00&amp;zip=85254
 </code></pre>
 
          </div>
@@ -4146,6 +4215,11 @@ consumer information is stored adhering to PCI Level 1 compliance.</p>
 <td>Customer’s last name</td>
 </tr>
 <tr>
+<td>customerid</td>
+<td></td>
+<td>External customer identifier</td>
+</tr>
+<tr>
 <td>note</td>
 <td></td>
 <td>Customer note</td>
@@ -4179,6 +4253,11 @@ consumer information is stored adhering to PCI Level 1 compliance.</p>
 <td>country</td>
 <td>CC (ISO-3166)</td>
 <td>Default Country (ie. US)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td>Default billing phone number</td>
 </tr>
 <tr>
 <td>email</td>
@@ -4257,7 +4336,7 @@ consumer information is stored adhering to PCI Level 1 compliance.</p>
 </tr>
 <tr>
 <td>paytype_#</td>
-<td>creditcard/check/ach/starcard/wallet</td>
+<td>creditcard/check/ach/starcard/ewallet</td>
 <td>Type of payment info</td>
 </tr>
 <tr>
@@ -4355,10 +4434,15 @@ consumer information is stored adhering to PCI Level 1 compliance.</p>
 <td></td>
 <td>eWallet account credentials, ie; email</td>
 </tr>
+<tr>
+<td>ewallettype_#</td>
+<td>paypal</td>
+<td>Type of eWallet</td>
+</tr>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=Samantha&amp;lastname=Simmons&amp;address1=1234+N+Wells+street&amp;city=Phoenix&amp;state=AZ&amp;zip=85254&amp;email@sam@test.com&amp;phone=4801234567&amp;cardnum_1=4111111111111111&amp;cardexp_1=0220
+<pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=Samantha&amp;lastname=Simmons&amp;address1=1234+N+Wells+street&amp;city=Phoenix&amp;state=AZ&amp;zip=85254&amp;email@sam@test.com&amp;phone=4801234567&amp;paytype_1=creditcard&amp;cardnum_1=4111111111111111&amp;cardexp_1=0220
 </code></pre>
 
          </div>
@@ -4481,19 +4565,24 @@ supported payment type.</p>
 <td>Add a new Data Vault Customer</td>
 </tr>
 <tr>
-<td><strong>firstname</strong></td>
-<td></td>
-<td>Customer’s first name</td>
-</tr>
-<tr>
 <td>token</td>
 <td>alphanumeric string</td>
 <td>Unique customer or payment info identifier</td>
 </tr>
 <tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td>Customer’s first nam</td>
+</tr>
+<tr>
 <td><strong>lastname</strong></td>
 <td></td>
 <td>Customer’s last name</td>
+</tr>
+<tr>
+<td><strong>paytype_#</strong></td>
+<td>creditcard</td>
+<td>Type of payment info</td>
 </tr>
 <tr>
 <td><strong>cardnum_#</strong></td>
@@ -4508,7 +4597,7 @@ supported payment type.</p>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addcustomer&amp;firstname=John&amp;lastname=Doe&amp;customerid=26B122&amp;cardnum=4111111111111111&amp;cardexp=0220
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addcustomer&amp;firstname=John&amp;lastname=Doe&amp;paytype_1=creditcard&amp;cardnum_1=4111111111111111&amp;cardexp_1=0220
 </code></pre>
 <h3>ACH</h3>
 <table>
@@ -4546,6 +4635,11 @@ supported payment type.</p>
 <td>Customer’s last name</td>
 </tr>
 <tr>
+<td><strong>paytype_#</strong></td>
+<td>ach</td>
+<td>Type of payment info</td>
+</tr>
+<tr>
 <td><strong>bankname_#</strong></td>
 <td></td>
 <td>Bank name</td>
@@ -4560,10 +4654,20 @@ supported payment type.</p>
 <td></td>
 <td>Bank account number</td>
 </tr>
+<tr>
+<td><strong>achaccounttype_#</strong></td>
+<td>checking / savings</td>
+<td>Type of ACH account</td>
+</tr>
+<tr>
+<td><strong>achaccountsubtype_#</strong></td>
+<td>business / personal</td>
+<td>Subtype of ACH account</td>
+</tr>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addcustomer&amp;firstname=John&amp;lastname=Doe&amp;customerid=26B122&amp;bankname=wellsfargo&amp;routing=67890453&amp;account=123456789
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addcustomer&amp;firstname=John&amp;lastname=Doe&amp;paytype_1=ach&amp;bankname_1=wellsfargo&amp;achaccounttype_1=checking&amp;achaccountsubtype_1=personal&amp;routing_1=223456&amp;account_1=123456789
 </code></pre>
 <p></p>
 <h3>Star Card</h3>
@@ -4602,6 +4706,11 @@ supported payment type.</p>
 <td>Customer’s last name</td>
 </tr>
 <tr>
+<td><strong>paytype_#</strong></td>
+<td>starcard</td>
+<td>Type of payment info</td>
+</tr>
+<tr>
 <td><strong>cardnum_#</strong></td>
 <td></td>
 <td>Credit Card number</td>
@@ -4614,7 +4723,7 @@ supported payment type.</p>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=John&amp;lastname=Doe&amp;cardnum=6019440000011111&amp;CID=52347800001
+<pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=John&amp;lastname=Doe&amp;paytype_1=starcard&amp;cardnum_1=6019440000011111&amp;CID=52347800001
 </code></pre>
 <p></p>
 <h3>eWallet</h3>
@@ -4653,12 +4762,43 @@ supported payment type.</p>
 <td>Customer’s last name</td>
 </tr>
 <tr>
+<td><strong>paytype_#</strong></td>
+<td>ewallet</td>
+<td>Type of payment info</td>
+</tr>
+<tr>
+<td>ewallettype_#</td>
+<td>paypal</td>
+<td>Type of eWallet</td>
+</tr>
+<tr>
 <td><strong>ewalletaccount_#</strong></td>
 <td>email</td>
 <td>eWallet credentials (email)</td>
 </tr>
 </tbody>
 </table>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=John&amp;lastname=Doe&amp;paytype_1=ewallet&amp;ewallettype_1=paypal&amp;ewalletaccount_1=email@email.com
+</code></pre>
+<h1>=======</h1>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>257f455c79a028660a25abad4f0520579f009789</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 
          </div>
       </div>
@@ -4684,6 +4824,36 @@ textresponse=Customer+with+token+%27OZMGG9YB5DPF663X%27+successfully+created&amp
 customertoken=OZMGG9YB5DPF663X&amp;
 paymenttoken_1=WSJE7RYNRQPLJIRC
 </code></pre>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>257f455c79a028660a25abad4f0520579f009789
+=======</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>257f455c79a028660a25abad4f0520579f009789</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 
                  </div>
               </div>
@@ -7413,6 +7583,13 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-separate-auth-capture-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture">Voice Capture</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-separate-auth-capture-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture-incremental-auth">Incremental Authorization</a>
           
 
 
