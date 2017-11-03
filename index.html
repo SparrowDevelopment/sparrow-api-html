@@ -306,6 +306,20 @@
 
         </li>
      
+        <li>
+          <a href="#documenter-ach-simple-ach-advanced-sale-simple-echeck">Simple eCheck</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-ach-simple-ach-advanced-sale-simple-echeck-advanced-echeck-sale">Advanced eCheck</a>
+          
+
+
+        </li>
+     
   </ol>
 
 
@@ -1211,6 +1225,19 @@ puts res[:type]     /</span><span class="hljs-regexp">/ sale
 <td>alphanumeric</td>
 <td>Group ID of the Split Funding group. If groupid is defined for the transaction system splits it in accordance with group settings.</td>
 </tr>
+
+<tr>
+<td>pinlessdebitindicator</td>
+<td>true / false</td>
+<td>For Chase Processor only. Indicator to process PIN-less debit transactions.</td>
+</tr>
+<tr>
+<td>sendpaymentdesc</td>
+<td>true / false</td>
+<td>Overrides ‘Send Payment Descriptor’ account setting for the transaction.</td>
+</tr>
+=======
+
 </tbody>
 </table>
 <pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=57.85&amp;cardnum=4111111111111111&amp;cardexp=1010&amp;cvv=999&amp;skunumber_1=5558779&amp;description_1=menssweaterblue&amp;amount_1=50.00&amp;quantity_1=1&amp;tax=2.85&amp;shipamount=5.00&amp;firstname=John&amp;lastname=Smith&amp;address1=888+test+address&amp;city=Los+Angeles&amp;country=US&amp;state=CA&amp;phone=222-444-2938&amp;shipfirstname=John&amp;shiplastname=Smith&amp;shipaddress1=888+test+address&amp;shipcity=Los+Angeles&amp;shipstate=CA&amp;shipphone=2224442938
@@ -2653,6 +2680,81 @@ status=200
       </div>
       
         <div class="method-example">
+
+=======
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+CID=12345678901&amp;\
+currency=USD&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+skunumber_1=123&amp;\
+skunumber_2=456&amp;\
+description_1=Blue widget&amp;\
+description_2=Brown widget&amp;\
+amount_1=1.99&amp;\
+amount_2=2.99&amp;\
+quantity_1=1&amp;\
+quantity_2=2&amp;\
+orderdesc=Order Description&amp;\
+orderid=11111&amp;\
+cardipaddress=8.8.8.8&amp;\
+tax=0.25&amp;\
+shipamount=1.25&amp;\
+ponumber=22222&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipcompany=Sparrow Two&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750808&amp;
+xref=3829708587&amp;
+authcode=123456&amp;
+orderid=11111&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=N&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
+   </div>
+</section>           
+
+
+
            
               <div class="code-curl code-div active-code">
                  <div class="method-example-part">
@@ -2989,6 +3091,7 @@ status=200
 <td></td>
 <td></td>
 <td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx</td>
+
 </tr>
 <tr>
 <td>country</td>
@@ -3227,6 +3330,536 @@ coderesponse=100&amp;
 codedescription=Transaction+was+Approved&amp;
 status=200&amp;
 token=I07IO05HGP0NXIQM
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-ach-simple-ach-advanced-sale-simple-echeck" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Simple eCheck</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>sale/ refund</td>
+<td>sale- transaction sale, refund- transaction refund</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>bankname​</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank name</td>
+</tr>
+<tr>
+<td><strong>routing</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank routing number</td>
+</tr>
+<tr>
+<td><strong>account</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank account number</td>
+</tr>
+<tr>
+<td><strong>achaccounttype</strong></td>
+<td></td>
+<td>business/personal</td>
+<td>Customers type of eCheck account</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td></td>
+<td>Billing Company</td>
+</tr>
+<tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td><strong>lastname</strong></td>
+<td></td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td><strong>address1</strong></td>
+<td></td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td><strong>city</strong></td>
+<td></td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td><strong>state</strong></td>
+<td></td>
+<td></td>
+<td>Billing state (2 character abbreviation)</td>
+</tr>
+<tr>
+<td><strong>zip</strong></td>
+<td></td>
+<td></td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx</td>
+</tr>
+<tr>
+<td><strong>country</strong></td>
+<td></td>
+<td>cc</td>
+<td>Billing country (ie. US</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=110000000&amp;account=1234567890123&amp;achaccounttype=personal&amp;firstname=Henry&amp;lastname=Johnson&amp;address1=Main+Street+45&amp;city=Scottsdale&amp;zip=12345&amp;country=US&amp;state=AZ
+</code></pre>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=110000000&amp;account=1234567890123&amp;achaccounttype=business&amp;company=CompanyName&amp;firstname=Henry&amp;lastname=Johnson&amp;address1=Main+Street+45&amp;city=Scottsdale&amp;zip=12345&amp;country=US&amp;state=AZ
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-ach-simple-ach-advanced-sale-simple-echeck-advanced-echeck-sale" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Advanced eCheck</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>sale/ refund/ credit</td>
+<td>sale- transaction sale, refund- transaction refund, credit- transaction credit</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>bankname​</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank name</td>
+</tr>
+<tr>
+<td><strong>routing</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank routing number</td>
+</tr>
+<tr>
+<td><strong>account</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank account number</td>
+</tr>
+<tr>
+<td><strong>achaccounttype</strong></td>
+<td></td>
+<td>business/personal</td>
+<td>Customers type of eCheck account</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged</td>
+</tr>
+<tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td><strong>lastname</strong></td>
+<td></td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td></td>
+<td>Billing Company</td>
+</tr>
+<tr>
+<td><strong>address1</strong></td>
+<td></td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td><strong>city</strong></td>
+<td></td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td><strong>state</strong></td>
+<td></td>
+<td></td>
+<td>Billing state (2 character abbreviation)</td>
+</tr>
+<tr>
+<td><strong>zip</strong></td>
+<td></td>
+<td></td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx</td>
+</tr>
+<tr>
+<td><strong>country</strong></td>
+<td></td>
+<td>cc</td>
+<td>Billing country (ie. US)</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td></td>
+<td>Billing address - line 2</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td></td>
+<td>Billing phone number, 10 digits</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td></td>
+<td>Billing email address</td>
+
+
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td></td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td></td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td></td>
+<td>Shipping company</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td></td>
+
+<td>Shipping address</td>
+=======
+<td>Shipping first name, should be from 1-100 characters. Required for PayPal processor if shipping address is entered.</td>
+
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td></td>
+
+<td>Shipping address - line 2</td>
+=======
+<td>Shipping last name, should be from 1-100 characters. Required for PayPal processor if shipping address is entered.</td>
+
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td></td>
+
+<td>Shipping city</td>
+=======
+<td>Shipping company</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td></td>
+<td>Shipping address. Should be from 1-200 alpha-numeric characters and can include # - : ;</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td></td>
+<td>Shipping address - line 2. Should be from 1-200 alpha-numeric characters and can include # - : ;</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td></td>
+<td>Shipping city, should be 1-50 alpha characters</td>
+
+</tr>
+<tr>
+<td>shipstate</td>
+<td></td>
+<td></td>
+<td>Shipping state, 2 character abbreviation</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td></td>
+<td>Shipping postal code. If the country is US the zip code format must be: [5 digits: XXXXX] or [9 digits XXXXX-XXXX]</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td></td>
+<td>cc</td>
+<td>Shipping country (ie. US)</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td></td>
+<td>Shipping phone number, 10 digits</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td></td>
+<td>Shipping email</td>
+</tr>
+<tr>
+<td>orderdesc</td>
+<td></td>
+<td></td>
+<td>Order Description</td>
+</tr>
+<tr>
+<td>orderid</td>
+<td></td>
+<td></td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>saveclient</td>
+<td></td>
+<td>true/false</td>
+<td>If parameter 'saveclient' = true and the customer is identified as new, then a new Data Vault client will be created with payment/contact info from the transaction data and DV token will be generated. The payment transaction will be assigned to this new DV client.</td>
+</tr>
+<tr>
+<td>updateclient</td>
+<td></td>
+<td></td>
+<td>If the parameter 'updateclient' = true and the DataVault finds the client according to customer identification rules, then the payment transaction will be assigned to the DataVault client and the DataVault client payment/contact info will be updated according to the transaction's data.</td>
+</tr>
+<tr>
+<td>opt_amount_type_#</td>
+<td></td>
+<td></td>
+<td>Type of additional amount (Tip)</td>
+</tr>
+<tr>
+<td>opt_amount_value_#</td>
+<td></td>
+<td>d.dd</td>
+<td>Value of the additional amount (10.00)</td>
+</tr>
+<tr>
+<td>opt_amount_percentage_#</td>
+<td></td>
+<td></td>
+<td>Percentage of additional amount (20)</td>
+</tr>
+<tr>
+
+=======
+<td>birthdate</td>
+<td></td>
+<td>MM/DD/YYYY</td>
+<td>Birthdate of the customer</td>
+</tr>
+<tr>
+<td>checknumber</td>
+<td></td>
+<td></td>
+<td>Check number. 1-15 alphanumeric characters</td>
+</tr>
+<tr>
+<td>driverlicensenumber</td>
+<td></td>
+<td></td>
+<td>Drivers license number, 1-50 alphanumeric characters</td>
+</tr>
+<tr>
+<td>driverlicensecountry</td>
+<td></td>
+<td>cc</td>
+<td>Drivers license country</td>
+</tr>
+<tr>
+<td>driverlicensestate</td>
+<td></td>
+<td>cc</td>
+<td>Drivers license state</td>
+</tr>
+<tr>
+<td>courtesycardid</td>
+<td></td>
+<td>[a-z, A-Z, 0-9]</td>
+<td>This field is optional only for GETI ACH, for other processors can be ignored. From 1 to 50 characters.</td>
+</tr>
+<tr>
+
+<td>sendtransreceipttobillemail</td>
+<td></td>
+<td>true/false</td>
+<td>If true, this will send a transaction receipt to the billing email if present</td>
+</tr>
+<tr>
+<td>sendtransreceipttoshipemail</td>
+<td></td>
+<td>true/false</td>
+<td>If true, this will send a transaction receipt to the shipping email if present</td>
+</tr>
+<tr>
+<td>sendtransreceipttoemails</td>
+<td></td>
+<td>email@email.com</td>
+<td>Send multiple transaction receipts to customers. Multiple email must be separated by commas.</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=110000000&amp;account=1234567890123&amp;achaccounttype=personal&amp;firstname=Henry&amp;lastname=Johnson&amp;address1=Main+Street+45&amp;city=Scottsdale&amp;zip=12345&amp;country=US&amp;state=AZ&amp;phone=8526547896&amp;email=hjohnson@test.com
+</code></pre>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=110000000&amp;account=1234567890123&amp;achaccounttype=business&amp;company=CompanyName&amp;firstname=Henry&amp;lastname=Johnson&amp;address1=Main+Street+45&amp;city=Scottsdale&amp;zip=12345&amp;country=US&amp;state=AZ&amp;phone=8526547896&amp;email=hjohnson@test.com
+=======
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=personal&amp;firstname=Henry&amp;lastname=Johnson&amp;phone=8526547896&amp;email=hjohnson@test.com
+</code></pre>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=business&amp;company=CompanyName&amp;firstname=Henry&amp;lastname=Johnson&amp;phone=8526547896&amp;email=hjohnson@test.com
+</code></pre>
+<p></p>
+<p>$$language: curl$$</p>
+<p>Command Line:</p>
+<pre class="language-none"><code class="language-none">curl -d &quot;transtype=sale&amp;\
+mkey=$ACH_M_KEY&amp;\
+bankname=First Test Bank&amp;\
+routing=110000000&amp;\
+account=1234567890123&amp;\
+achaccounttype=checking&amp;\
+achaccountsubtype=personal&amp;\
+amount=9.95&amp;\
+orderdesc=Order Description&amp;\
+orderid=11111&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+phone=7025551234&amp;\
+email=john@norepy.com&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com&amp;\
+saveclient=true&amp;\
+updateclient=true&amp;\
+opt_amount_type_1=surcharge&amp;\
+opt_amount_value_1=1.01&amp;\
+opt_amount_percentage_1=18&amp;\
+birthdate=01/31/2000&amp;\
+checknumber=123&amp;\
+driverlicensenumber=1234567890&amp;\
+driverlicensecountry=US&amp;\
+driverlicensestate=AZ&amp;\
+sendtransreceipttobillemail=true&amp;\
+sendtransreceipttoshipemail=true&amp;\
+paymentdescriptor=Custom Payment Descriptor&quot; \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-none"><code class="language-none">response=00&amp;
+textresponse=SUCCESS%2c+Customer+with+token+%27I07IO05HGP0NXIQM%27+successfully+updated%2c+Payment+transaction+successfully+assigned+to+the+customer+with+token+%27I07IO05HGP0NXIQM%27&amp;
+transid=10750811&amp;
+xref=3829708723&amp;
+authcode=123456&amp;
+orderid=11111&amp;
+type=sale&amp;
+avsresponse=&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200&amp;
+token=I07IO05HGP0NXIQM
+
 </code></pre>
 
          </div>
@@ -5185,10 +5818,34 @@ paymenttoken_1=SXZ27VYHGBSMYDNH
 </tbody>
 </table>
 <pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=deletecustomer&amp;token=B31388EA20ABF2776C93
+
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=deletecustomer&amp;\
+token=FX60NPVJY2Y18KZA"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+<span class="hljs-built_in">type</span>=deletecustomer
+
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
         <div class="method-example">
            
@@ -6158,6 +6815,11 @@ textresponse=SUCCESS&amp;
 <td>description</td>
 <td>string</td>
 <td>Description of plan assignment</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>d.dd</td>
+<td>Amount purchased. This field is required for layaway plan assignment and ignored otherwise</td>
 </tr>
 <tr>
 <td>notifyfailures</td>
@@ -7749,6 +8411,20 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-ach-ach-simple-ach-advanced-sale">Advanced ACH</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-ach-ach-simple-ach-advanced-sale-simple-echeck">Simple eCheck</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-ach-ach-simple-ach-advanced-sale-simple-echeck-advanced-echeck-sale">Advanced eCheck</a>
           
 
 
