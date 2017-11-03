@@ -174,6 +174,13 @@
 
         </li>
      
+        <li>
+          <a href="#documenter-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture-incremental-auth">Incremental Authorization</a>
+          
+
+
+        </li>
+     
   </ol>
 
 
@@ -294,6 +301,20 @@
      
         <li>
           <a href="#documenter-ach-simple-ach-advanced-sale">Advanced ACH</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-ach-simple-ach-advanced-sale-simple-echeck">Simple eCheck</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-ach-simple-ach-advanced-sale-simple-echeck-advanced-echeck-sale">Advanced eCheck</a>
           
 
 
@@ -440,7 +461,7 @@
         </li>
      
         <li>
-          <a href="#documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type">Update Payment Type</a>
+          <a href="#documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type">Update Customer</a>
           
 
 
@@ -635,8 +656,7 @@
 <p>The site describes the direct method for payments and value added features in
 the Sparrow gateway and is referred to as the Services API.</p>
 <p>The Services API URL is:</p>
-<p><a href="https://secure.sparrowone.com/Payments/Services_api.aspx">https://secure.sparrowone.com/Payments/Services
-api.aspx</a></p>
+<p><a href="https://secure.sparrowone.com/Payments/Services_api.aspx">https://secure.sparrowone.com/Payments/Services_api.aspx</a></p>
 <p><code>Services_api.aspx</code> is an API implementation of secure payments. In this
 fashion, merchants can seamlessly integrate gateway payment functions into their
 checkout process using a direct post via HTTP.</p>
@@ -817,16 +837,28 @@ the zip</p>
            
               <div class="code-curl code-div active-code">
                  <div class="method-example-part">
-                   <p>Command line:</p>
-<pre class="language-bash"><code class="language-bash">curl -v -d <span class="hljs-string">"mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;transtype=sale&amp;amount=9.95&amp;cardnum=4111111111111111&amp;cardexp=1019&amp;cvv=999"</span> -X POST  https://secure.sparrowone.com/Payments/Services_api.aspx
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+cvv=999"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
 </code></pre>
-<p></p>
-<p>Success Response:</p>
-<pre class="language-bash"><code class="language-bash">response=1&amp;textresponse=SUCCESS&amp;transid=10497689&amp;xref=3779249270&amp;authcode=123456&amp;orderid=&amp;<span class="hljs-built_in">type</span>=sale&amp;avsresponse=&amp;cvvresponse=M&amp;coderesponse=100&amp;codedescription=Transaction+was+Approved&amp;status=200
-</code></pre>
-<p></p>
-<p>Failure Response:</p>
-<pre class="language-bash"><code class="language-bash">response=3&amp;textresponse=Cannot+find+transaction+routing+info.+Check+the+value+of+payment+field+mkey&amp;errorcode=
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10751328&amp;
+xref=3829811833&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
 </code></pre>
 
                  </div>
@@ -990,8 +1022,8 @@ puts res[:type]     /</span><span class="hljs-regexp">/ sale
 </tr>
 <tr>
 <td>skunumber_#</td>
-<td>skunumber_1, skunumber_2, etc</td>
-<td>SKU number of the product being purchased</td>
+<td></td>
+<td>SKU number of the product being purchased (skunumber_1, skunumber_2, etc)</td>
 </tr>
 <tr>
 <td>description_#</td>
@@ -1066,12 +1098,22 @@ puts res[:type]     /</span><span class="hljs-regexp">/ sale
 <tr>
 <td>zip</td>
 <td></td>
-<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx</td>
 </tr>
 <tr>
 <td>country</td>
 <td>CC (ISO-3166)</td>
 <td>Billing Country (ie. US)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td>Billing phone number</td>
+</tr>
+<tr>
+<td>fax</td>
+<td></td>
+<td>Billing fax number</td>
 </tr>
 <tr>
 <td>email</td>
@@ -1133,14 +1175,142 @@ puts res[:type]     /</span><span class="hljs-regexp">/ sale
 <td></td>
 <td>Shipping Email</td>
 </tr>
+<tr>
+<td>opt_amount_type_1</td>
+<td>tip</td>
+<td>Type of additional amount</td>
+</tr>
+<tr>
+<td>opt_amount_value_1</td>
+<td>d.dd</td>
+<td>Value of additional amount (e.g. 1.00)</td>
+</tr>
+<tr>
+<td>opt_amount_percentage_1</td>
+<td></td>
+<td>Percentage of additional amount (e.g. 10)</td>
+</tr>
+<tr>
+<td>sendtransreceipttobillemail</td>
+<td>true/false</td>
+<td>If true receipt will be sent to email from Billing Information if email is specified</td>
+</tr>
+<tr>
+<td>sendtransreceipttoshippemail</td>
+<td>true/false</td>
+<td>If true receipt will be sent to email from Shipping Information if email is specified</td>
+</tr>
+<tr>
+<td>sendtransreceipttoemails</td>
+<td>email@email.com</td>
+<td>Send multiple transaction receipts to customers. Multiple email must be separated by commas.</td>
+</tr>
+<tr>
+<td>token</td>
+<td>[A-Z, 0-9]</td>
+<td>Customer or customer payment info unique identifier.</td>
+</tr>
+<tr>
+<td>saveclient</td>
+<td>true / false</td>
+<td>If parameter 'saveclient' = true and the customer is identified as new, then a new Data Vault client will be created with payment/contact info from the transaction data and DV token will be generated. The payment transaction will be assigned to this new DV client.</td>
+</tr>
+<tr>
+<td>updateclient</td>
+<td>true / false</td>
+<td>If the parameter 'updateclient' = true and the DataVault finds the client according to customer identification rules, then the payment transaction will be assigned to the DataVault client and the DataVault client payment/contact info will be updated according to the transaction's data.</td>
+</tr>
+<tr>
+<td>groupid</td>
+<td>alphanumeric</td>
+<td>Group ID of the Split Funding group. If groupid is defined for the transaction system splits it in accordance with group settings.</td>
+</tr>
+<tr>
+<td>pinlessdebitindicator</td>
+<td>true / false</td>
+<td>For Chase Processor only. Indicator to process PIN-less debit transactions.</td>
+</tr>
+<tr>
+<td>sendpaymentdesc</td>
+<td>true / false</td>
+<td>Overrides ‘Send Payment Descriptor’ account setting for the transaction.</td>
+</tr>
 </tbody>
 </table>
-<p></p>
 <pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=57.85&amp;cardnum=4111111111111111&amp;cardexp=1010&amp;cvv=999&amp;skunumber_1=5558779&amp;description_1=menssweaterblue&amp;amount_1=50.00&amp;quantity_1=1&amp;tax=2.85&amp;shipamount=5.00&amp;firstname=John&amp;lastname=Smith&amp;address1=888+test+address&amp;city=Los+Angeles&amp;country=US&amp;state=CA&amp;phone=222-444-2938&amp;shipfirstname=John&amp;shiplastname=Smith&amp;shipaddress1=888+test+address&amp;shipcity=Los+Angeles&amp;shipstate=CA&amp;shipphone=2224442938
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+cvv=999&amp;\
+currency=USD&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+skunumber_1=123&amp;\
+skunumber_2=456&amp;\
+description_1=Blue widget&amp;\
+description_2=Brown widget&amp;\
+amount_1=1.99&amp;\
+amount_2=2.99&amp;\
+quantity_1=1&amp;\
+quantity_2=2&amp;\
+orderdesc=Order Description&amp;\
+orderid=11111&amp;\
+cardipaddress=8.8.8.8&amp;\
+tax=0.25&amp;\
+shipamount=1.25&amp;\
+ponumber=22222&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipcompany=Sparrow Two&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750810&amp;
+xref=3829708603&amp;
+authcode=123456&amp;
+orderid=11111&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=N&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -1244,6 +1414,39 @@ be made.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=auth&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+cvv=999"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750806&amp;
+xref=3829708674&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=auth&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -1291,12 +1494,6 @@ your account.</p>
 <td>Original Payment Gateway Transaction ID</td>
 </tr>
 <tr>
-<td><strong>cardexp</strong></td>
-<td></td>
-<td>MMYY</td>
-<td>Credit card expiration (ie. 0711 = 7/2011)</td>
-</tr>
-<tr>
 <td><strong>amount</strong></td>
 <td></td>
 <td>d.dd</td>
@@ -1328,6 +1525,41 @@ your account.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=capture&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transid=10750806&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+sendtransreceipttobillemail=true&amp;\
+sendtransreceipttoshipemail=true&amp;\
+sendtransreceipttoemails=email@email.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750806&amp;
+xref=3829708674&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=capture&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -1407,6 +1639,41 @@ your account.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=offline&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+authcode=123456&amp;\
+authdate=01/31/2017&amp;\
+cvv=999"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750801&amp;
+xref=3829708552&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=offline&amp;
+avsresponse=&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -1438,6 +1705,26 @@ issuing bank is requiring a verbal authorization.</p>
 a verbal authorization code.</p>
 <p>4.    The merchant would include the verbal authorization code in the capture
 request.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture-incremental-auth" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Incremental Authorization (Lodging Industry only)</h3>
+<p>The additional operation type, Incremental Authorization, is implemented for the
+Lodging Industry only.</p>
+<p>It is used to add an amount to an original open Authorization and can occur
+multiple times. It cannot be applied to an already captured Authorization.</p>
+<p>Please see details in the document “SPARROW API” in the First Data PTS and TSYS
+sections.</p>
 
          </div>
       </div>
@@ -1494,18 +1781,52 @@ settled transaction. If the transaction has not need settled, it must be
 <td>Original payment gateway transaction ID</td>
 </tr>
 <tr>
-<td>amount</td>
+<td><strong>amount</strong></td>
 <td>d.dd</td>
 <td>Total amount to be refunded</td>
 </tr>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">transtype=refund&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transid=12345678
+<pre class="language-none"><code class="language-none">transtype=refund&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transid=12345678&amp;amount=3.95
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=refund&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transid=10750794&amp;\
+amount=9.95"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=3&amp;
+textresponse=Flagged+<span class="hljs-keyword">for</span>+Review+by+Velocity+and+Duplicates+Policy+(Duplicate+Transactions+Rule).+Original+Transaction+ID%3a+10750789&amp;
+transid=10750794&amp;
+xref=3829708623&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=refund&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=&amp;
+codedescription=&amp;
+status=300&amp;
+origtransid=10750789&amp;
+origresponse=1&amp;
+origtextresponse=SUCCESS
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -1542,14 +1863,14 @@ settled transaction. If the transaction has not need settled, it must be
 <td>Original payment gateway transaction ID</td>
 </tr>
 <tr>
-<td>amount</td>
+<td><strong>amount</strong></td>
 <td>d.dd</td>
 <td>Total amount to be refunded</td>
 </tr>
 <tr>
 <td>opt_amount_type_#</td>
-<td></td>
-<td>Type of additional amount (surcharge, etc)</td>
+<td>tip/surcharge</td>
+<td>Type of additional amount</td>
 </tr>
 <tr>
 <td>opt_amount_value_#</td>
@@ -1569,7 +1890,7 @@ settled transaction. If the transaction has not need settled, it must be
 <tr>
 <td>sendtransreceipttoemails</td>
 <td>email@email.com</td>
-<td>Add additional emails which will receive the refund receipt</td>
+<td>Send multiple transaction receipts to customers. Multiple email must be separated by commas.</td>
 </tr>
 </tbody>
 </table>
@@ -1578,6 +1899,40 @@ settled transaction. If the transaction has not need settled, it must be
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=refund&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transid=10750789&amp;\
+amount=9.95&amp;\
+sendtransreceipttobillemail=true&amp;\
+sendtransreceipttoshipemail=true&amp;\
+sendtransreceipttoemails=email@email.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750789&amp;
+xref=3829708545&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=refund&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -1631,11 +1986,6 @@ the transaction has not been settled.</p>
 <td></td>
 <td>Original payment gateway transaction ID</td>
 </tr>
-<tr>
-<td>amount</td>
-<td>d.dd</td>
-<td>Total amount to be refunded</td>
-</tr>
 </tbody>
 </table>
 <pre class="language-none"><code class="language-none">transtype=void&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transid=12345678
@@ -1643,6 +1993,37 @@ the transaction has not been settled.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=void&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transid=10750790&amp;\
+amount=9.95"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Transaction+Void+Successful&amp;
+transid=10750790&amp;
+xref=3829708544&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=void&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -1679,21 +2060,6 @@ the transaction has not been settled.</p>
 <td>Original payment gateway transaction ID</td>
 </tr>
 <tr>
-<td>amount</td>
-<td>d.dd</td>
-<td>Total amount to be refunded</td>
-</tr>
-<tr>
-<td>opt_amount_type_#</td>
-<td></td>
-<td>Type of additional amount (surcharge, etc)</td>
-</tr>
-<tr>
-<td>opt_amount_value_#</td>
-<td></td>
-<td>Value of additional amount (1.00)</td>
-</tr>
-<tr>
 <td>sendtransreceipttobillemail</td>
 <td>true/false</td>
 <td>If true a receipt will be sent to the email provided in the billing information if email is specified</td>
@@ -1706,15 +2072,48 @@ the transaction has not been settled.</p>
 <tr>
 <td>sendtransreceipttoemails</td>
 <td>email@email.com</td>
-<td>Add additional emails which will receive the refund receipt</td>
+<td>Send multiple transaction receipts to customers. Multiple email must be separated by commas.</td>
 </tr>
 </tbody>
 </table>
-<pre class="language-none"><code class="language-none">transtype=void&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transid=12345678&amp;amount=12.00&amp;sendtransreceipttoemails=John.Smith@email.com
+<pre class="language-none"><code class="language-none">transtype=void&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transid=12345678&amp;sendtransreceipttoemails=John.Smith@email.com
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=void&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transid=10750800&amp;\
+sendtransreceipttobillemail=true&amp;\
+sendtransreceipttoshipemail=true&amp;\
+sendtransreceipttoemails=email@email.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Transaction+Void+Successful&amp;
+transid=10750800&amp;
+xref=3829708562&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=void&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -1773,7 +2172,7 @@ settlement operation.</p>
 <tbody>
 <tr>
 <td><strong>transtype</strong></td>
-<td>sale</td>
+<td>passengersale</td>
 <td>Transaction Sale</td>
 </tr>
 <tr>
@@ -1802,13 +2201,13 @@ settlement operation.</p>
 <td>Card security code</td>
 </tr>
 <tr>
-<td>passengername</td>
-<td>[a-z, A-Z, 0-9, ‘]</td>
-<td>First and last name of the passenger, 1-2 characters</td>
+<td><strong>passengername</strong></td>
+<td>[a-z, A-Z, 0-9, ‘ ’]</td>
+<td>First and last name of the passenger, 1-20 characters</td>
 </tr>
 <tr>
-<td>stopovercode1 stopovercode2 stopovercode3 stopovercode4 etc</td>
-<td>‘ ‘, ‘O’, ‘X’</td>
+<td>stopovercode1 stopovercode2 stopovercode3 stopovercode4 stopovercode5</td>
+<td>‘ ’, ‘O’, ‘X’</td>
 <td></td>
 </tr>
 <tr>
@@ -1817,7 +2216,7 @@ settlement operation.</p>
 <td>Origination Airport Code, 3 characters</td>
 </tr>
 <tr>
-<td>airportcode2 airportcode3 airportcode4</td>
+<td>airportcode2 airportcode3 airportcode4 airportcode5</td>
 <td>[a-z, A-Z, 0-9]</td>
 <td>Codes for different trip legs, 3 characters</td>
 </tr>
@@ -1839,7 +2238,7 @@ settlement operation.</p>
 <tr>
 <td>classofservicecoupon1 classofservicecoupon2 classofservicecoupon3 classofservicecoupon4</td>
 <td>[a-z, A-Z, 0-9]</td>
-<td>2 characters</td>
+<td>1 or 2 characters</td>
 </tr>
 <tr>
 <td><strong>flightdatecoupon1</strong></td>
@@ -1848,7 +2247,7 @@ settlement operation.</p>
 </tr>
 <tr>
 <td><strong>flightdeparturetimecoupon1</strong></td>
-<td>HH;mm (military)</td>
+<td>HH:mm (military)</td>
 <td>Departure time</td>
 </tr>
 <tr>
@@ -1864,11 +2263,11 @@ settlement operation.</p>
 <tr>
 <td>transactionid</td>
 <td>[a-z, A-Z, 0-9]</td>
-<td>The field must be forwarded when sent from TSYS, or manually filled. 15 characters</td>
+<td>The field must be forwarded when sent from TSYS, or manually filled with zeros. 15 characters</td>
 </tr>
 <tr>
 <td><strong>authcharindicator</strong></td>
-<td>supported values: ' ', 'A', 'E', 'F', 'I', 'C', 'K', 'M', 'N', 'P', 'R',</td>
+<td>supported values: ‘ ’, ‘A’, ‘E’, ‘F’, ‘I’, ‘C’, ‘K’, ‘M’, ‘N’, ‘P’, ‘R’, ‘S’, ‘T’, ‘U’, ‘V’, ‘W’</td>
 <td>Used as Returned Authorization Characteristics Indicator. Must contain the value returned in authorization response (ic case of online auth)</td>
 </tr>
 <tr>
@@ -1894,6 +2293,58 @@ settlement operation.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+cvv=999&amp;\
+passengername=John Doe&amp;\
+stopovercode1=O&amp;\
+airportcode1=LAS&amp;\
+airportcode2=CDG&amp;\
+airportcode3=IAD&amp;\
+airportcode4=CPH&amp;\
+carriercoupon1 carriercoupon2 carriercoupon3 carriercoupon4=AA;BB&amp;\
+airlinecodenumber=AA0&amp;\
+ticketnumber=1234567890&amp;\
+classofservicecoupon1 classofservicecoupon2 classofservicecoupon3 classofservicecoupon4=00;AA&amp;\
+flightdatecoupon1=01/31/2017&amp;\
+flightdeparturetimecoupon1=23:59&amp;\
+addressverificationcode=A&amp;\
+approvalcode=123456&amp;\
+transactionid=1234567890&amp;\
+authcharindicator=A&amp;\
+referencenumber=123456789012&amp;\
+validationcode=1234&amp;\
+authresponsecode=AB"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750803&amp;
+xref=3829708653&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -1964,6 +2415,39 @@ Exchange Credit Service and managed by the Army and Air Force Exchange Service.<
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+amount=9.95&amp;\
+cardexp=1019&amp;\
+CID=12345678901"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750791&amp;
+xref=3829708548&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -2009,7 +2493,7 @@ Exchange Credit Service and managed by the Army and Air Force Exchange Service.<
 <td>Total amount to be charged (ie. 10.00)</td>
 </tr>
 <tr>
-<td>CID</td>
+<td><strong>CID</strong></td>
 <td>custom field</td>
 <td>11 digit numerical code</td>
 </tr>
@@ -2030,8 +2514,8 @@ Exchange Credit Service and managed by the Army and Air Force Exchange Service.<
 </tr>
 <tr>
 <td>skunumber_#</td>
-<td>skunumber_1, skunumber_2, etc</td>
-<td>SKU number of the product being purchased</td>
+<td></td>
+<td>SKU number of the product being purchased (skunumber_1, skunumber_2, etc)</td>
 </tr>
 <tr>
 <td>description_#</td>
@@ -2106,12 +2590,22 @@ Exchange Credit Service and managed by the Army and Air Force Exchange Service.<
 <tr>
 <td>zip</td>
 <td></td>
-<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx</td>
 </tr>
 <tr>
 <td>country</td>
 <td>CC (ISO-3166)</td>
 <td>Billing Country (ie. US)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td>Billing phone number</td>
+</tr>
+<tr>
+<td>fax</td>
+<td></td>
+<td>Billing fax number</td>
 </tr>
 <tr>
 <td>email</td>
@@ -2181,6 +2675,75 @@ Exchange Credit Service and managed by the Army and Air Force Exchange Service.<
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+CID=12345678901&amp;\
+currency=USD&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+skunumber_1=123&amp;\
+skunumber_2=456&amp;\
+description_1=Blue widget&amp;\
+description_2=Brown widget&amp;\
+amount_1=1.99&amp;\
+amount_2=2.99&amp;\
+quantity_1=1&amp;\
+quantity_2=2&amp;\
+orderdesc=Order Description&amp;\
+orderid=11111&amp;\
+cardipaddress=8.8.8.8&amp;\
+tax=0.25&amp;\
+shipamount=1.25&amp;\
+ponumber=22222&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipcompany=Sparrow Two&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750808&amp;
+xref=3829708587&amp;
+authcode=123456&amp;
+orderid=11111&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=N&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -2275,10 +2838,48 @@ funds directly to and from client’s banks accounts.</p>
 <td>d.dd</td>
 <td>Total amount to be charged</td>
 </tr>
+<tr>
+<td>company</td>
+<td></td>
+<td></td>
+<td>Billing Company</td>
+</tr>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=business9
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=personal
+</code></pre>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=business&amp;company=CompanyName
+</code></pre>
+<p></p>
+<p>$$language: curl$$</p>
+<p>Command Line:</p>
+<pre class="language-none"><code class="language-none">curl -d &quot;transtype=sale&amp;\
+mkey=$ACH_M_KEY&amp;\
+bankname=First Test Bank&amp;\
+routing=110000000&amp;\
+account=1234567890123&amp;\
+achaccounttype=checking&amp;\
+achaccountsubtype=personal&amp;\
+amount=9.95&amp;\
+firstname=John&amp;\
+lastname=Doe&quot; \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-none"><code class="language-none">response=00&amp;
+textresponse=SUCCESS&amp;
+transid=10750797&amp;
+xref=3829708697&amp;
+authcode=123456&amp;
+orderid=&amp;
+type=sale&amp;
+avsresponse=&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
 </code></pre>
 
          </div>
@@ -2411,7 +3012,7 @@ funds directly to and from client’s banks accounts.</p>
 <td>zip</td>
 <td></td>
 <td></td>
-<td>Billing postal code. If the country is US the zip code format must be: [5 digits: XXXXX] or [9 digits XXXXX-XXXX]</td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx</td>
 </tr>
 <tr>
 <td>country</td>
@@ -2430,6 +3031,24 @@ funds directly to and from client’s banks accounts.</p>
 <td></td>
 <td></td>
 <td>Billing email address</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td></td>
+<td>Shipping first name, should be from 1-100 characters. Required for PayPal processor if shipping address is entered.</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td></td>
+<td>Shipping last name, should be from 1-100 characters. Required for PayPal processor if shipping address is entered.</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td></td>
+<td>Shipping company</td>
 </tr>
 <tr>
 <td>shipaddress1</td>
@@ -2540,6 +3159,12 @@ funds directly to and from client’s banks accounts.</p>
 <td>Drivers license state</td>
 </tr>
 <tr>
+<td>courtesycardid</td>
+<td></td>
+<td>[a-z, A-Z, 0-9]</td>
+<td>This field is optional only for GETI ACH, for other processors can be ignored. From 1 to 50 characters.</td>
+</tr>
+<tr>
 <td>sendtransreceipttobillemail</td>
 <td></td>
 <td>true/false</td>
@@ -2552,15 +3177,470 @@ funds directly to and from client’s banks accounts.</p>
 <td>If true, this will send a transaction receipt to the shipping email if present</td>
 </tr>
 <tr>
-<td>paymentdescriptor</td>
+<td>sendtransreceipttoemails</td>
 <td></td>
-<td></td>
-<td>Overrides the dynamic payment descriptor</td>
+<td>email@email.com</td>
+<td>Send multiple transaction receipts to customers. Multiple email must be separated by commas.</td>
 </tr>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=business&amp;firstname=Henry&amp;lastname=Johnson&amp;phone=8526547896&amp;email=hjohnson@test.com
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=personal&amp;firstname=Henry&amp;lastname=Johnson&amp;phone=8526547896&amp;email=hjohnson@test.com
+</code></pre>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=business&amp;company=CompanyName&amp;firstname=Henry&amp;lastname=Johnson&amp;phone=8526547896&amp;email=hjohnson@test.com
+</code></pre>
+<p></p>
+<p>$$language: curl$$</p>
+<p>Command Line:</p>
+<pre class="language-none"><code class="language-none">curl -d &quot;transtype=sale&amp;\
+mkey=$ACH_M_KEY&amp;\
+bankname=First Test Bank&amp;\
+routing=110000000&amp;\
+account=1234567890123&amp;\
+achaccounttype=checking&amp;\
+achaccountsubtype=personal&amp;\
+amount=9.95&amp;\
+orderdesc=Order Description&amp;\
+orderid=11111&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+phone=7025551234&amp;\
+email=john@norepy.com&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com&amp;\
+saveclient=true&amp;\
+updateclient=true&amp;\
+opt_amount_type_1=surcharge&amp;\
+opt_amount_value_1=1.01&amp;\
+opt_amount_percentage_1=18&amp;\
+birthdate=01/31/2000&amp;\
+checknumber=123&amp;\
+driverlicensenumber=1234567890&amp;\
+driverlicensecountry=US&amp;\
+driverlicensestate=AZ&amp;\
+sendtransreceipttobillemail=true&amp;\
+sendtransreceipttoshipemail=true&amp;\
+paymentdescriptor=Custom Payment Descriptor&quot; \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-none"><code class="language-none">response=00&amp;
+textresponse=SUCCESS%2c+Customer+with+token+%27I07IO05HGP0NXIQM%27+successfully+updated%2c+Payment+transaction+successfully+assigned+to+the+customer+with+token+%27I07IO05HGP0NXIQM%27&amp;
+transid=10750811&amp;
+xref=3829708723&amp;
+authcode=123456&amp;
+orderid=11111&amp;
+type=sale&amp;
+avsresponse=&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200&amp;
+token=I07IO05HGP0NXIQM
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-ach-simple-ach-advanced-sale-simple-echeck" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Simple eCheck</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>sale/ refund</td>
+<td>sale- transaction sale, refund- transaction refund</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>bankname​</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank name</td>
+</tr>
+<tr>
+<td><strong>routing</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank routing number</td>
+</tr>
+<tr>
+<td><strong>account</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank account number</td>
+</tr>
+<tr>
+<td><strong>achaccounttype</strong></td>
+<td></td>
+<td>business/personal</td>
+<td>Customers type of eCheck account</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td></td>
+<td>Billing Company</td>
+</tr>
+<tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td><strong>lastname</strong></td>
+<td></td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td><strong>address1</strong></td>
+<td></td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td><strong>city</strong></td>
+<td></td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td><strong>state</strong></td>
+<td></td>
+<td></td>
+<td>Billing state (2 character abbreviation)</td>
+</tr>
+<tr>
+<td><strong>zip</strong></td>
+<td></td>
+<td></td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx</td>
+</tr>
+<tr>
+<td><strong>country</strong></td>
+<td></td>
+<td>cc</td>
+<td>Billing country (ie. US</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=110000000&amp;account=1234567890123&amp;achaccounttype=personal&amp;firstname=Henry&amp;lastname=Johnson&amp;address1=Main+Street+45&amp;city=Scottsdale&amp;zip=12345&amp;country=US&amp;state=AZ
+</code></pre>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=110000000&amp;account=1234567890123&amp;achaccounttype=business&amp;company=CompanyName&amp;firstname=Henry&amp;lastname=Johnson&amp;address1=Main+Street+45&amp;city=Scottsdale&amp;zip=12345&amp;country=US&amp;state=AZ
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-ach-simple-ach-advanced-sale-simple-echeck-advanced-echeck-sale" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Advanced eCheck</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>sale/ refund/ credit</td>
+<td>sale- transaction sale, refund- transaction refund, credit- transaction credit</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>bankname​</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank name</td>
+</tr>
+<tr>
+<td><strong>routing</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank routing number</td>
+</tr>
+<tr>
+<td><strong>account</strong></td>
+<td></td>
+<td></td>
+<td>Customers bank account number</td>
+</tr>
+<tr>
+<td><strong>achaccounttype</strong></td>
+<td></td>
+<td>business/personal</td>
+<td>Customers type of eCheck account</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged</td>
+</tr>
+<tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td><strong>lastname</strong></td>
+<td></td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td></td>
+<td>Billing Company</td>
+</tr>
+<tr>
+<td><strong>address1</strong></td>
+<td></td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td><strong>city</strong></td>
+<td></td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td><strong>state</strong></td>
+<td></td>
+<td></td>
+<td>Billing state (2 character abbreviation)</td>
+</tr>
+<tr>
+<td><strong>zip</strong></td>
+<td></td>
+<td></td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx</td>
+</tr>
+<tr>
+<td><strong>country</strong></td>
+<td></td>
+<td>cc</td>
+<td>Billing country (ie. US)</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td></td>
+<td>Billing address - line 2</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td></td>
+<td>Billing phone number, 10 digits</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td></td>
+<td>Billing email address</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td></td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td></td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td></td>
+<td>Shipping company</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td></td>
+<td>Shipping address</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td></td>
+<td>Shipping address - line 2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td></td>
+<td>Shipping city</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td></td>
+<td></td>
+<td>Shipping state, 2 character abbreviation</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td></td>
+<td>Shipping postal code. If the country is US the zip code format must be: [5 digits: XXXXX] or [9 digits XXXXX-XXXX]</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td></td>
+<td>cc</td>
+<td>Shipping country (ie. US)</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td></td>
+<td>Shipping phone number, 10 digits</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td></td>
+<td>Shipping email</td>
+</tr>
+<tr>
+<td>orderdesc</td>
+<td></td>
+<td></td>
+<td>Order Description</td>
+</tr>
+<tr>
+<td>orderid</td>
+<td></td>
+<td></td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>saveclient</td>
+<td></td>
+<td>true/false</td>
+<td>If parameter 'saveclient' = true and the customer is identified as new, then a new Data Vault client will be created with payment/contact info from the transaction data and DV token will be generated. The payment transaction will be assigned to this new DV client.</td>
+</tr>
+<tr>
+<td>updateclient</td>
+<td></td>
+<td></td>
+<td>If the parameter 'updateclient' = true and the DataVault finds the client according to customer identification rules, then the payment transaction will be assigned to the DataVault client and the DataVault client payment/contact info will be updated according to the transaction's data.</td>
+</tr>
+<tr>
+<td>opt_amount_type_#</td>
+<td></td>
+<td></td>
+<td>Type of additional amount (Tip)</td>
+</tr>
+<tr>
+<td>opt_amount_value_#</td>
+<td></td>
+<td>d.dd</td>
+<td>Value of the additional amount (10.00)</td>
+</tr>
+<tr>
+<td>opt_amount_percentage_#</td>
+<td></td>
+<td></td>
+<td>Percentage of additional amount (20)</td>
+</tr>
+<tr>
+<td>sendtransreceipttobillemail</td>
+<td></td>
+<td>true/false</td>
+<td>If true, this will send a transaction receipt to the billing email if present</td>
+</tr>
+<tr>
+<td>sendtransreceipttoshipemail</td>
+<td></td>
+<td>true/false</td>
+<td>If true, this will send a transaction receipt to the shipping email if present</td>
+</tr>
+<tr>
+<td>sendtransreceipttoemails</td>
+<td></td>
+<td>email@email.com</td>
+<td>Send multiple transaction receipts to customers. Multiple email must be separated by commas.</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=110000000&amp;account=1234567890123&amp;achaccounttype=personal&amp;firstname=Henry&amp;lastname=Johnson&amp;address1=Main+Street+45&amp;city=Scottsdale&amp;zip=12345&amp;country=US&amp;state=AZ&amp;phone=8526547896&amp;email=hjohnson@test.com
+</code></pre>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=110000000&amp;account=1234567890123&amp;achaccounttype=business&amp;company=CompanyName&amp;firstname=Henry&amp;lastname=Johnson&amp;address1=Main+Street+45&amp;city=Scottsdale&amp;zip=12345&amp;country=US&amp;state=AZ&amp;phone=8526547896&amp;email=hjohnson@test.com
 </code></pre>
 
          </div>
@@ -2655,11 +3735,44 @@ PayPal account to pay securely</p>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;amount=9.95&amp;ewalletaccount=user@example.com&amp;ewallettype=paypal&amp;currency=USD
+<pre class="language-none"><code class="language-none">transtype=credit&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;amount=9.95&amp;ewalletaccount=user@example.com&amp;ewallettype=paypal&amp;currency=USD
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=credit&amp;\
+mkey=<span class="hljs-variable">$E_WALLET_M_KEY</span>&amp;\
+ewalletaccount=user@example.com&amp;\
+ewallet type=PayPal&amp;\
+amount=9.95&amp;\
+currency=USD"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Successful&amp;
+transid=10750788&amp;
+xref=KYAN63Z749J92&amp;
+authcode=&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=credit&amp;
+avsresponse=&amp;
+cvvresponse=&amp;
+coderesponse=&amp;
+codedescription=&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -2731,11 +3844,43 @@ PayPal account to pay securely</p>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;amount=9.95&amp;cardnum=000123456789002&amp;cardexp=1010&amp;
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;amount=9.95&amp;cardnum=000123456789002&amp;cardexp=1010
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750802&amp;
+xref=3829708633&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -2803,8 +3948,8 @@ PayPal account to pay securely</p>
 </tr>
 <tr>
 <td>skunumber_#</td>
-<td>skunumber_1, skunumber_2, etc</td>
-<td>SKU number of the product being purchased</td>
+<td></td>
+<td>SKU number of the product being purchased (skunumber_1, skunumber_2, etc)</td>
 </tr>
 <tr>
 <td>description_#</td>
@@ -2879,7 +4024,7 @@ PayPal account to pay securely</p>
 <tr>
 <td>zip</td>
 <td></td>
-<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx</td>
 </tr>
 <tr>
 <td>country</td>
@@ -2955,6 +4100,75 @@ PayPal account to pay securely</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+cvv=999&amp;\
+currency=USD&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+skunumber_1=123&amp;\
+skunumber_2=456&amp;\
+description_1=Blue widget&amp;\
+description_2=Brown widget&amp;\
+amount_1=1.99&amp;\
+amount_2=2.99&amp;\
+quantity_1=1&amp;\
+quantity_2=2&amp;\
+orderdesc=Order Description&amp;\
+orderid=11111&amp;\
+cardipaddress=8.8.8.8&amp;\
+tax=0.25&amp;\
+shipamount=1.25&amp;\
+ponumber=22222&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipcompany=Sparrow Two&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750809&amp;
+xref=3829708566&amp;
+authcode=123456&amp;
+orderid=11111&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=N&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -3021,6 +4235,37 @@ module.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=chargeback&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transid=10750804&amp;\
+reason=Reason for chargeback"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Reason+<span class="hljs-keyword">for</span>+chargeback&amp;
+transid=10750804&amp;
+xref=3829708661&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=chargeback&amp;
+avsresponse=&amp;
+cvvresponse=M&amp;
+coderesponse=&amp;
+codedescription=&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -3060,8 +4305,8 @@ module.</p>
 <tr>
 <td><strong>transtype</strong></td>
 <td></td>
-<td>balanceincuire</td>
-<td>Balanceincuire returns the available card balance</td>
+<td>balanceinquire</td>
+<td>Balanceinquire returns the available card balance</td>
 </tr>
 <tr>
 <td><strong>mkey</strong></td>
@@ -3077,11 +4322,36 @@ module.</p>
 </tr>
 </tbody>
 </table>
-<pre class="language-none"><code class="language-none">transtype=balanceincuire&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;cardnum=4111111111111111
+<pre class="language-none"><code class="language-none">transtype=balanceinquire&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;cardnum=4111111111111111
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=balanceinquire&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4005562231212149&amp;\
+cardexp=1225"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=3&amp;
+textresponse=Operation+<span class="hljs-built_in">type</span>+is+not+supported+by+payment+processor&amp;
+<span class="hljs-built_in">type</span>=balanceinquire&amp;
+coderesponse=&amp;
+codedescription=&amp;
+status=500
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -3152,24 +4422,40 @@ Vault client and the name of the custom field. Commonly encrypted fields may be:
 <td>Custom field name</td>
 </tr>
 <tr>
-<td>customertoken</td>
+<td><strong>token</strong></td>
 <td></td>
 <td>alphanumeric string</td>
-<td>The field is required if the paymenttoken field is not specified. This is a unique Data Vault customer identifier</td>
-</tr>
-<tr>
-<td>paymenttoken</td>
-<td></td>
-<td>alphanumeric string</td>
-<td>The field is required if the customertoken field is not specified. This is a unique Data Vault payment type identifier</td>
+<td>This is a unique Data Vault customer identifier or Data Vault payment type identifier</td>
 </tr>
 </tbody>
 </table>
-<pre class="language-none"><code class="language-none">transtype=decrypt&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;fieldname=socialsecurity&amp;customertoken=H6FV89KL156
+<pre class="language-none"><code class="language-none">transtype=decrypt&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;fieldname=socialsecurity&amp;token=H6FV89KL156
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=decrypt&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+fieldname=customField1&amp;\
+customertoken=CustomerToken&amp;\
+paymenttoken=PaymentToken"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=3&amp;
+textresponse=Internal+processing+error
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -3256,15 +4542,49 @@ Issuer, and if in good standing</p>
 <tr>
 <td>zip</td>
 <td></td>
-<td>Billing postal code. If the country is US the zip code format must be: [5 digits: XXXXX] or [9 digits XXXXX-XXXX]</td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx</td>
 </tr>
 </tbody>
 </table>
-<pre class="language-none"><code class="language-none">transtype=auth&amp;mkey=HNJ45D23MKLO85J2D00LOP&amp;cardnum=4111111111111111&amp;amount=0.00&amp;zip=85254
+<pre class="language-none"><code class="language-none">transtype=auth&amp;mkey=HNJ45D23MKLO85J2D00LOP&amp;cardnum=4111111111111111&amp;cardexp=1019&amp;amount=0.00&amp;zip=85254
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=auth&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+cvv=999&amp;\
+zip=85254"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750787&amp;
+xref=3829708536&amp;
+authcode=123456&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=auth&amp;
+avsresponse=N&amp;
+cvvresponse=M&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -3323,6 +4643,11 @@ consumer information is stored adhering to PCI Level 1 compliance.</p>
 <td>Customer’s last name</td>
 </tr>
 <tr>
+<td>customerid</td>
+<td></td>
+<td>External customer identifier</td>
+</tr>
+<tr>
 <td>note</td>
 <td></td>
 <td>Customer note</td>
@@ -3350,12 +4675,17 @@ consumer information is stored adhering to PCI Level 1 compliance.</p>
 <tr>
 <td>zip</td>
 <td></td>
-<td>Default postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx</td>
 </tr>
 <tr>
 <td>country</td>
 <td>CC (ISO-3166)</td>
 <td>Default Country (ie. US)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td>Default billing phone number</td>
 </tr>
 <tr>
 <td>email</td>
@@ -3434,8 +4764,13 @@ consumer information is stored adhering to PCI Level 1 compliance.</p>
 </tr>
 <tr>
 <td>paytype_#</td>
-<td>creditcard/check/ach/starcard/wallet</td>
+<td>creditcard/check/ach/starcard/ewallet</td>
 <td>Type of payment info</td>
+</tr>
+<tr>
+<td>company_#</td>
+<td></td>
+<td>Company name, specific to the payment type</td>
 </tr>
 <tr>
 <td>firstname_#</td>
@@ -3532,10 +4867,90 @@ consumer information is stored adhering to PCI Level 1 compliance.</p>
 <td></td>
 <td>eWallet account credentials, ie; email</td>
 </tr>
+<tr>
+<td>ewallettype_#</td>
+<td>paypal</td>
+<td>Type of eWallet</td>
+</tr>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=Samantha&amp;lastname=Simmons&amp;address1=1234+N+Wells+street&amp;city=Phoenix&amp;state=AZ&amp;zip=85254&amp;email@sam@test.com&amp;phone=4801234567&amp;cardnum_1=4111111111111111&amp;cardexp_1=0220
+<pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=Samantha&amp;lastname=Simmons&amp;address1=1234+N+Wells+street&amp;city=Phoenix&amp;state=AZ&amp;zip=85254&amp;email@sam@test.com&amp;phone=4801234567&amp;paytype_1=creditcard&amp;cardnum_1=4111111111111111&amp;cardexp_1=0220
+</code></pre>
+<p></p>
+<p>$$language: curl$$</p>
+<p>Command Line:</p>
+<pre class="language-none"><code class="language-none">curl -d &quot;transtype=addcustomer&amp;\
+mkey=$M_KEY&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+note=Customer Note&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipcompany=Sparrow Two&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com&amp;\
+username=JohnDoe17101717530877&amp;\
+password=Password123&amp;\
+clientuseremail=john@norepy.com&amp;\
+paytype_1=creditcard&amp;\
+paytype_2=check&amp;\
+firstname_1=John&amp;\
+firstname_2=John&amp;\
+lastname_1=Doe&amp;\
+lastname_2=Doe&amp;\
+address1_1=123 Main Street&amp;\
+address1_2=321 1st Street&amp;\
+address2_1=Suite 1&amp;\
+address2_2=Suite 2&amp;\
+city_1=Pheonix&amp;\
+city_2=Scottsdale&amp;\
+state_1=AZ&amp;\
+state_2=AZ&amp;\
+zip_1=85111&amp;\
+zip_2=85222&amp;\
+country_1=US&amp;\
+country_2=US&amp;\
+phone_1=6025551234&amp;\
+phone_2=6025554321&amp;\
+email_1=john@norepy.com&amp;\
+email_2=jane@noreploy.com&amp;\
+cardnum_1=4111111111111111&amp;\
+cardnum_2=4111111111111111&amp;\
+cardexp_1=1019&amp;\
+cardexp_2=1019&amp;\
+bankname_1=&amp;\
+bankname_2=First Test Bank&amp;\
+routing_1=&amp;\
+routing_2=110000000&amp;\
+account_1=&amp;\
+account_2=1234567890123&amp;\
+achaccounttype_1=&amp;\
+achaccounttype_2=personal&amp;\
+payno_1=1&amp;\
+payno_2=2&quot; \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-none"><code class="language-none">response=1&amp;
+textresponse=Customer+with+token+%27F6OE0IN0I5HSV6AJ%27+successfully+created&amp;
+type=addcustomer&amp;
+customertoken=F6OE0IN0I5HSV6AJ&amp;
+paymenttoken_1=9K7US80YUQ1LPN27&amp;
+paymenttoken_2=OZA3QU7CYG57D88R
 </code></pre>
 
          </div>
@@ -3575,19 +4990,24 @@ supported payment type.</p>
 <td>Add a new Data Vault Customer</td>
 </tr>
 <tr>
-<td><strong>firstname</strong></td>
-<td></td>
-<td>Customer’s first name</td>
-</tr>
-<tr>
 <td>token</td>
 <td>alphanumeric string</td>
 <td>Unique customer or payment info identifier</td>
 </tr>
 <tr>
+<td><strong>firstname</strong></td>
+<td></td>
+<td>Customer’s first nam</td>
+</tr>
+<tr>
 <td><strong>lastname</strong></td>
 <td></td>
 <td>Customer’s last name</td>
+</tr>
+<tr>
+<td><strong>paytype_#</strong></td>
+<td>creditcard</td>
+<td>Type of payment info</td>
 </tr>
 <tr>
 <td><strong>cardnum_#</strong></td>
@@ -3602,7 +5022,7 @@ supported payment type.</p>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addcustomer&amp;firstname=John&amp;lastname=Doe&amp;customerid=26B122&amp;cardnum=4111111111111111&amp;cardexp=0220
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addcustomer&amp;firstname=John&amp;lastname=Doe&amp;paytype_1=creditcard&amp;cardnum_1=4111111111111111&amp;cardexp_1=0220
 </code></pre>
 <h3>ACH</h3>
 <table>
@@ -3640,6 +5060,11 @@ supported payment type.</p>
 <td>Customer’s last name</td>
 </tr>
 <tr>
+<td><strong>paytype_#</strong></td>
+<td>ach</td>
+<td>Type of payment info</td>
+</tr>
+<tr>
 <td><strong>bankname_#</strong></td>
 <td></td>
 <td>Bank name</td>
@@ -3654,10 +5079,20 @@ supported payment type.</p>
 <td></td>
 <td>Bank account number</td>
 </tr>
+<tr>
+<td><strong>achaccounttype_#</strong></td>
+<td>checking / savings</td>
+<td>Type of ACH account</td>
+</tr>
+<tr>
+<td><strong>achaccountsubtype_#</strong></td>
+<td>business / personal</td>
+<td>Subtype of ACH account</td>
+</tr>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addcustomer&amp;firstname=John&amp;lastname=Doe&amp;customerid=26B122&amp;bankname=wellsfargo&amp;routing=67890453&amp;account=123456789
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addcustomer&amp;firstname=John&amp;lastname=Doe&amp;paytype_1=ach&amp;bankname_1=wellsfargo&amp;achaccounttype_1=checking&amp;achaccountsubtype_1=personal&amp;routing_1=223456&amp;account_1=123456789
 </code></pre>
 <p></p>
 <h3>Star Card</h3>
@@ -3696,6 +5131,11 @@ supported payment type.</p>
 <td>Customer’s last name</td>
 </tr>
 <tr>
+<td><strong>paytype_#</strong></td>
+<td>starcard</td>
+<td>Type of payment info</td>
+</tr>
+<tr>
 <td><strong>cardnum_#</strong></td>
 <td></td>
 <td>Credit Card number</td>
@@ -3708,7 +5148,7 @@ supported payment type.</p>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=John&amp;lastname=Doe&amp;cardnum=6019440000011111&amp;CID=52347800001
+<pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=John&amp;lastname=Doe&amp;paytype_1=starcard&amp;cardnum_1=6019440000011111&amp;CID=52347800001
 </code></pre>
 <p></p>
 <h3>eWallet</h3>
@@ -3747,15 +5187,103 @@ supported payment type.</p>
 <td>Customer’s last name</td>
 </tr>
 <tr>
+<td><strong>paytype_#</strong></td>
+<td>ewallet</td>
+<td>Type of payment info</td>
+</tr>
+<tr>
+<td>ewallettype_#</td>
+<td>paypal</td>
+<td>Type of eWallet</td>
+</tr>
+<tr>
 <td><strong>ewalletaccount_#</strong></td>
 <td>email</td>
 <td>eWallet credentials (email)</td>
 </tr>
 </tbody>
 </table>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=John&amp;lastname=Doe&amp;paytype_1=ewallet&amp;ewallettype_1=paypal&amp;ewalletaccount_1=email@email.com
+</code></pre>
+<h1>=======</h1>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>257f455c79a028660a25abad4f0520579f009789</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$ACH_M_KEY</span>&amp;\
+transtype=addcustomer&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+paytype_1=creditcard&amp;\
+cardnum_1=4111111111111111&amp;\
+cardexp_1=1019"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=00&amp;
+textresponse=Customer+with+token+%27OZMGG9YB5DPF663X%27+successfully+created&amp;
+<span class="hljs-built_in">type</span>=addcustomer&amp;
+customertoken=OZMGG9YB5DPF663X&amp;
+paymenttoken_1=WSJE7RYNRQPLJIRC
+</code></pre>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>257f455c79a028660a25abad4f0520579f009789
+=======</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>257f455c79a028660a25abad4f0520579f009789</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -3766,7 +5294,7 @@ supported payment type.</p>
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
-            <h3>Update Payment Type</h3>
+            <h3>Update Customer</h3>
 <p></p>
 <table>
 <thead>
@@ -3790,7 +5318,7 @@ supported payment type.</p>
 <tr>
 <td><strong>token</strong></td>
 <td>alphanumericstring</td>
-<td>Unique customer or payment info identifier</td>
+<td>Unique customer identifier</td>
 </tr>
 <tr>
 <td>firstname</td>
@@ -3916,6 +5444,47 @@ supported payment type.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=updatecustomer&amp;\
+token=O3BEZTT2UHCS7USA&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+phone=7025551234&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Customer+with+token+%27O3BEZTT2UHCS7USA%27+successfully+updated&amp;
+<span class="hljs-built_in">type</span>=updatecustomer&amp;
+customertoken=O3BEZTT2UHCS7USA
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -3947,13 +5516,18 @@ supported payment type.</p>
 <td>This transaction type will update the current client information with any new data fields provided</td>
 </tr>
 <tr>
+<td><strong>token</strong></td>
+<td>alphanumericstring</td>
+<td>Unique customer identifier</td>
+</tr>
+<tr>
 <td><strong>token_#</strong></td>
 <td>alphanumericstring</td>
-<td>Unique customer or payment info identifier</td>
+<td>Token of the payment type to be deleted</td>
 </tr>
 <tr>
 <td><strong>operationtype_#</strong></td>
-<td>deletepaymenttype</td>
+<td>deletepaytype</td>
 <td>Delete a specific payment type</td>
 </tr>
 </tbody>
@@ -3961,6 +5535,31 @@ supported payment type.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=updatecustomer&amp;\
+token_1=SXZ27VYHGBSMYDNH&amp;\
+operationtype_1=deletepaytype&amp;\
+token=EBVX61KPEIUZXV7B"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Customer+with+token+%27EBVX61KPEIUZXV7B%27+successfully+updated&amp;
+<span class="hljs-built_in">type</span>=updatecustomer&amp;
+customertoken=EBVX61KPEIUZXV7B&amp;
+paymenttoken_1=SXZ27VYHGBSMYDNH
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -3995,15 +5594,36 @@ supported payment type.</p>
 <tr>
 <td><strong>token</strong></td>
 <td>alphanumericstring</td>
-<td>Unique customer or payment info identifier</td>
+<td>Unique customer identifier</td>
 </tr>
 </tbody>
 </table>
-<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=deletecustomer&amp;token= B31388EA20ABF2776C93
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=deletecustomer&amp;token=B31388EA20ABF2776C93
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=deletecustomer&amp;\
+token=FX60NPVJY2Y18KZA"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+<span class="hljs-built_in">type</span>=deletecustomer
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -4098,6 +5718,55 @@ amounts and frequencies</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=addplan&amp;\
+planname=PaymentPlan1&amp;\
+plandesc=1st Payment Plan&amp;\
+startdate=01/31/2017&amp;\
+defaultachmkey=<span class="hljs-variable">$ACH_M_KEY</span>&amp;\
+defaultcreditcardmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+defaultcheckmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+defaultstarcardmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+defaulte_walletmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+sequence_1=1&amp;\
+sequence_2=2&amp;\
+amount_1=1.99&amp;\
+amount_2=2.99&amp;\
+scheduletype_1=custom&amp;\
+scheduletype_2=monthly&amp;\
+scheduleday_1=7&amp;\
+scheduleday_2=1&amp;\
+duration_1=365&amp;\
+duration_2=-1&amp;\
+productid_1=abc&amp;\
+productid_2=123&amp;\
+description_1=Weekly&amp;\
+description_2=Monthly&amp;\
+notifyfailures=false&amp;\
+userecycling=true&amp;\
+retrycount=2&amp;\
+retrytype=daily&amp;\
+retryperiod=1&amp;\
+autocreateclientaccounts=true"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+<span class="hljs-built_in">type</span>=addplan&amp;
+plantoken=76Y5QQT2LV54J5SE
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -4176,7 +5845,7 @@ amounts and frequencies</p>
 <td>Merchant key of eWallet account with which plan payments should be processed by default</td>
 </tr>
 <tr>
-<td>userrecycling</td>
+<td>userecycling</td>
 <td>true/false</td>
 <td>Specifies whether to reprocess failed transactions in this plan</td>
 </tr>
@@ -4222,11 +5891,46 @@ amounts and frequencies</p>
 </tr>
 </tbody>
 </table>
-<pre class="language-none"><code class="language-none">mkey=HMNK8687DVJHG45D4D3KL90&amp;transtype=updateplan&amp;token=HJFK87G5JBN0&amp;userrecycling=false&amp;senderemail=accounting@test.com&amp;reviewonassignment=false
+<pre class="language-none"><code class="language-none">mkey=HMNK8687DVJHG45D4D3KL90&amp;transtype=updateplan&amp;token=HJFK87G5JBN0&amp;userecycling=false&amp;senderemail=accounting@test.com&amp;reviewonassignment=false
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=updateplan&amp;\
+token=I4LYCSV3FMGDTA9G&amp;\
+planname=PaymentPlan1&amp;\
+plandesc=1st Payment Plan&amp;\
+startdate=01/31/2017&amp;\
+defaultachmkey=<span class="hljs-variable">$ACH_M_KEY</span>&amp;\
+defaultcreditcardmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+defaultcheckmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+defaultstarcardmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+defaulte_walletmkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+userrecycling=true&amp;\
+notifyfailures=true&amp;\
+retrycount=2&amp;\
+retrytype=daily&amp;\
+retryperiod=2&amp;\
+autocreateclientaccounts=true"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+<span class="hljs-built_in">type</span>=updateplan
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -4271,7 +5975,7 @@ customer will be charged and when</p>
 <td>Day of the month for processing payments (scheduletype=monthly) or number of days between payments (scheduletype=custom)</td>
 </tr>
 <tr>
-<td><strong>duration</strong></td>
+<td><strong>duration_#</strong></td>
 <td>integer</td>
 <td>Positive number of charges or -1 if no limit</td>
 </tr>
@@ -4337,6 +6041,27 @@ customer will be charged and when</p>
 </tr>
 </tbody>
 </table>
+<p></p>
+<p>$$language: curl$$</p>
+<p>Command Line:</p>
+<pre class="language-none"><code class="language-none">curl -d &quot;amount_#=1.99;2.99&amp;\
+scheduletype_#=monthly;custom&amp;\
+duration=-1;-1&amp;\
+productid_#=123;321&amp;\
+description_#=Blue widget;Brown widget&amp;\
+notifyfailures=true&amp;\
+userecycling=true&amp;\
+defaultewalletmkey=T6YQTCA3RK3IEW8R14ITSJBI&amp;\
+retrycount=2&amp;\
+retrytype=daily&amp;\
+retryperiod=2&amp;\
+autocreateclientaccounts=true&quot; \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-none"><code class="language-none">response=3&amp;
+textresponse=Required+payment+field+transtype+is+missing
+</code></pre>
 
          </div>
       </div>
@@ -4480,6 +6205,25 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">""</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=3&amp;
+textresponse=Required+payment+field+transtype+is+missing&amp;
+errorcode=
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -4527,7 +6271,7 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
 <td>Day of the month for processing payments (scheduletype=monthly) or number of days between payments (scheduletype=custom)</td>
 </tr>
 <tr>
-<td><strong>duration</strong></td>
+<td><strong>duration_#</strong></td>
 <td>integer</td>
 <td>Positive number of charges or -1 if no limit</td>
 </tr>
@@ -4540,6 +6284,11 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
 <td>description_#</td>
 <td>string</td>
 <td>Description of the sequence</td>
+</tr>
+<tr>
+<td>newsequence_#</td>
+<td>positive integer</td>
+<td>New number for the sequence</td>
 </tr>
 <tr>
 <td>notifyfailures</td>
@@ -4595,14 +6344,44 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
 </table>
 <p></p>
 <p>Add Sequence</p>
-<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=addsequence&amp;sequence_2=2&amp;amount_2=9.99&amp;scheduletype_2=monthly&amp;scheduleday_2=5&amp;duration_2=12
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=updateplan&amp;token=HJFK87G5JBN0&amp;operationtype_1=addsequence&amp;sequence_1=2&amp;amount_1=9.99&amp;scheduletype_1=monthly&amp;scheduleday_1=5&amp;duration_1=12
 </code></pre>
 <p>Update Sequence</p>
-<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=updatesequence&amp;sequence_2=2&amp;amount_2=10.99&amp;scheduletype_2=monthly&amp;scheduleday_2=5&amp;duration_2=12
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=updateplan&amp;token=HJFK87G5JBN0&amp;operationtype_1=updatesequence&amp;sequence_1=2&amp;amount_1=10.99&amp;scheduletype_1=monthly&amp;scheduleday_1=5&amp;duration_1=12
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"amount_#=1.99;2.99&amp;\
+scheduletype_#=monthly;custom&amp;\
+duration=-1;-1&amp;\
+productid_#=123;321&amp;\
+description_#=Blue widget;Brown widget&amp;\
+notifyfailures=true&amp;\
+userecycling=true&amp;\
+defaultewalletmkey=T6YQTCA3RK3IEW8R14ITSJBI&amp;\
+retrycount=2&amp;\
+retrytype=daily&amp;\
+retryperiod=2&amp;\
+autocreateclientaccounts=true"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=3&amp;
+textresponse=Required+payment+field+transtype+is+missing&amp;
+errorcode=
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -4633,15 +6412,34 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
 <tr>
 <td>sequence_#<strong>​</strong></td>
 <td>positive integer</td>
-<td>The sequence number defines which set of payments should occur first, second third, etc; if multiple sequences are present</td>
+<td>Sequence to be deleted</td>
 </tr>
 </tbody>
 </table>
-<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;operationtype=deletesequence&amp;sequence_2=2
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=updateplan&amp;token=HJFK87G5JBN0&amp;operationtype_1=deletesequence&amp;sequence_1=2
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">""</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=3&amp;
+textresponse=Required+payment+field+transtype+is+missing&amp;
+errorcode=&amp;
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -4692,6 +6490,28 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=deleteplan&amp;\
+token=315KMHH74U690DS5&amp;\
+cancelpayments=true"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+<span class="hljs-built_in">type</span>=deleteplan
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -4734,7 +6554,7 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
 <td>Recurring payment plan unique identifier; used when assigning existing plan to the customer</td>
 </tr>
 <tr>
-<td>paymenttoken</td>
+<td><strong>paymenttoken</strong></td>
 <td>alphanumeric string</td>
 <td>Token of the customer’s payment type, if they have multiple</td>
 </tr>
@@ -4752,6 +6572,11 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
 <td>description</td>
 <td>string</td>
 <td>Description of plan assignment</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>d.dd</td>
+<td>Amount purchased. This field is required for layaway plan assignment and ignored otherwise</td>
 </tr>
 <tr>
 <td>notifyfailures</td>
@@ -4806,11 +6631,42 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
 </tbody>
 </table>
 <p></p>
-<pre class="language-none"><code class="language-none">mkey=JHG48D3V6N8HKFF3W221AA&amp;transtype=assignplan&amp;customertoken=HJG543D321HJK&amp;plantoken=JHG78HJGF55&amp;startdate=10/01/2017&amp;notifyfailures=true
+<pre class="language-none"><code class="language-none">mkey=JHG48D3V6N8HKFF3W221AA&amp;transtype=assignplan&amp;customertoken=HJG543D321HJK&amp;&amp;paymenttoken=9K7US80YUQ1LPN27&amp;plantoken=JHG78HJGF55&amp;startdate=10/01/2017&amp;notifyfailures=true
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=assignplan&amp;\
+customertoken=F6OE0IN0I5HSV6AJ&amp;\
+plantoken=76Y5QQT2LV54J5SE&amp;\
+paymenttoken=9K7US80YUQ1LPN27&amp;\
+startdate=01/31/2017&amp;\
+notifyfailures=true&amp;\
+userecycling=true&amp;\
+retrycount=2&amp;\
+retrytype=daily&amp;\
+retryperiod=2&amp;\
+notifyfailuresemails=jdoe@example.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Success&amp;
+<span class="hljs-built_in">type</span>=assignplan&amp;
+assignmenttoken=JCXG572GBX20NFDF
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -4927,6 +6783,35 @@ payments will be made on May 5, June 5, July 5, and so on).</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=updateassignment&amp;\
+assignmenttoken=4STIQWYX5NM9ZDKJ&amp;\
+paymenttoken=E25BCVW6GPAY7LPA&amp;\
+startdate=1/1/2018&amp;\
+notifyfailures=true&amp;\
+userecycling=true&amp;\
+retrycount=3&amp;\
+retrytype=daily&amp;\
+retryperiod=2"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Success&amp;
+<span class="hljs-built_in">type</span>=updateassignment&amp;
+assignmenttoken=4STIQWYX5NM9ZDKJ
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -4972,6 +6857,27 @@ mkey=JHG48D3V6N8HKFF3W221AA&amp;transtype=cancelassignment&amp;assignmenttoken=H
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=cancelassignment&amp;\
+assignmenttoken=JCXG572GBX20NFDF"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Success&amp;
+<span class="hljs-built_in">type</span>=cancelassignment
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -5042,12 +6948,12 @@ payment page.</p>
 </tr>
 <tr>
 <td>invoicesource</td>
-<td>CheckoutApi / d.dd DataVault</td>
+<td>CheckoutApi / DataVault</td>
 <td>The source of the invoice. If not specified, the default value is DataVault</td>
 </tr>
 <tr>
 <td>invoiceamount</td>
-<td></td>
+<td>d.dd</td>
 <td>Total amount of invoice (i.e. 10.00). Required if product list is not specified</td>
 </tr>
 <tr>
@@ -5072,7 +6978,7 @@ payment page.</p>
 </tr>
 <tr>
 <td>sendpaymentlinkemail</td>
-<td>true / false</td>
+<td>email@email.com</td>
 <td>If Invoice status is 'Active' email with Pay Invoice URL will be sent to specified email.</td>
 </tr>
 </tbody>
@@ -5083,6 +6989,39 @@ payment page.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=createmerchantinvoice&amp;\
+customertoken=YWVEUMYXUNARZ3VK&amp;\
+invoicedate=12/01/2017&amp;\
+currency=USD&amp;\
+invoicestatus=draft&amp;\
+invoicesource=DataVault&amp;\
+invoiceamount=10.00&amp;\
+invoiceitemsku_1=123&amp;\
+invoiceitemsku_2=456&amp;\
+invoiceitemdescription_1=Widget 1&amp;\
+invoiceitemdescription_2=Widget 2&amp;\
+invoiceitemprice_1=2.00&amp;\
+invoiceitemprice_2=4.00&amp;\
+invoiceitemquantity_1=1&amp;\
+invoiceitemquantity_2=2"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">textresponse=invoice+has+been+successfully+created&amp;
+invoicenumber=Inv-39031
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -5125,28 +7064,28 @@ payment page.</p>
 <td>Unique data vault client identifier</td>
 </tr>
 <tr>
-<td><strong>invoicedate</strong></td>
+<td>invoicedate</td>
 <td>MM/DD/YYYY</td>
 <td>The date of the invoice</td>
 </tr>
 <tr>
-<td><strong>currency</strong></td>
+<td>currency</td>
 <td>CCC (ISO 4217 alphabetic code)</td>
 <td>Code of the payment currency</td>
 </tr>
 <tr>
-<td><strong>invoicestatus</strong></td>
+<td>invoicestatus</td>
 <td>draft / active</td>
 <td>The status of the invoice. Only active invoices can be paid</td>
 </tr>
 <tr>
 <td>invoicesource</td>
-<td>CheckoutApi / d.dd DataVault</td>
+<td>CheckoutApi / DataVault</td>
 <td>The source of the invoice. If not specified, the default value is DataVault</td>
 </tr>
 <tr>
 <td>invoiceamount</td>
-<td></td>
+<td>d.dd</td>
 <td>Total amount of invoice (i.e. 10.00). Required if product list is not specified</td>
 </tr>
 <tr>
@@ -5171,17 +7110,44 @@ payment page.</p>
 </tr>
 <tr>
 <td>sendpaymentlinkemail</td>
-<td>true / false</td>
+<td>email@email.com</td>
 <td>If Invoice status is 'Active' email with Pay Invoice URL will be sent to specified email.</td>
 </tr>
 </tbody>
 </table>
+<p>If any parameter is missing in the update invoice request system deletes it from
+the invoice.</p>
 <p></p>
 <pre class="language-none"><code class="language-none">mkey=8VG63HD1LPBMIR5TPS7R52YV&amp;transtype=updateinvoice&amp;invoicenumber=Inv-80794&amp;invoicedate=12/30/2017&amp;currency=USD&amp;invoicestatus=Active&amp;invoiceitemsku_1=12345&amp;invoiceitemdescription_1=desc1&amp;invoiceitemprice_1=22.33&amp;invoiceitemquantity_1=1&amp;invoiceitemsku_2=223&amp;invoiceitemdescription_2=desc2&amp;invoiceitemprice_2=41.48&amp;invoiceitemquantity_2=2.653
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=updateinvoice&amp;\
+invoicenumber=Inv-39031&amp;\
+invoicedate=12/15/2017&amp;\
+currency=USD&amp;\
+invoicestatus=active&amp;\
+invoicesource=DataVault&amp;\
+invoiceamount=15.00"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">textresponse=Invoice+has+been+successfully+updated&amp;
+invoicenumber=Inv-39031
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -5230,6 +7196,43 @@ payment page.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=getinvoice&amp;\
+invoicenumber=Inv-39030"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">textresponse=Success&amp;
+invoicenumber=Inv-39030&amp;
+invoiceamount=10.0000&amp;
+currency=USD&amp;
+invoicedate=12%2f01%2f2017&amp;
+invoicestatus=Draft&amp;
+invoiceitemid_1=3251&amp;
+invoiceitemprice_1=2.0000&amp;
+invoiceitemquantity_1=1.000&amp;
+invoiceitemamount_1=2.0000&amp;
+invoiceitemsku_1=123&amp;
+invoiceitemdescription_1=Widget+1&amp;
+invoiceitemid_2=3252&amp;
+invoiceitemprice_2=4.0000&amp;
+invoiceitemquantity_2=2.000&amp;
+invoiceitemamount_2=8.0000&amp;
+invoiceitemsku_2=456&amp;
+invoiceitemdescription_2=Widget+2&amp;
+customertoken=3F4JAWXXFDYSJ1JX
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -5283,6 +7286,27 @@ payment page.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=cancelinvoice&amp;\
+invoicenumber=Inv-39028&amp;\
+invoicestatusreason=Testing Cancel Feature"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">textresponse=invoice+has+been+successfully+canceled&amp;
+invoicenumber=Inv-39028
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -5335,6 +7359,27 @@ payment page.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=cancelinvoicebycustomer&amp;\
+invoicenumber=Inv-39026&amp;\
+invoicestatusreason=Cancel Invoice By Customer"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">textresponse=invoice+has+been+successfully+canceled&amp;
+invoicenumber=Inv-39026
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -5378,7 +7423,7 @@ payment page.</p>
 <tr>
 <td><strong>cardexp</strong></td>
 <td>MMYY</td>
-<td>Credit card expiration (ie. 0719 = 7/2019</td>
+<td>Credit card expiration (ie. 0719 = 7/2019)</td>
 </tr>
 <tr>
 <td>cvv</td>
@@ -5423,12 +7468,22 @@ payment page.</p>
 <tr>
 <td>zip</td>
 <td></td>
-<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx</td>
 </tr>
 <tr>
 <td>country</td>
 <td>CC (ISO-3166)</td>
 <td>Billing Country (ie. US)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td>Billing phone number</td>
+</tr>
+<tr>
+<td>fax</td>
+<td></td>
+<td>Billing fax number</td>
 </tr>
 <tr>
 <td>email</td>
@@ -5498,6 +7553,51 @@ payment page.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=payinvoice&amp;\
+invoicenumber=Inv-39025&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+cvv=999&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipcompany=Sparrow Two&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">textresponse=Invoice+has+been+successfully+paid&amp;
+transid=10750812&amp;
+invoicenumber=Inv-39025
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -5597,12 +7697,22 @@ payment page.</p>
 <tr>
 <td>zip</td>
 <td></td>
-<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx-xxxx</td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx</td>
 </tr>
 <tr>
 <td>country</td>
 <td>CC (ISO-3166)</td>
 <td>Billing Country (ie. US)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td>Billing phone number</td>
+</tr>
+<tr>
+<td>fax</td>
+<td></td>
+<td>Billing fax number</td>
 </tr>
 <tr>
 <td>email</td>
@@ -5672,6 +7782,53 @@ payment page.</p>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$ACH_M_KEY</span>&amp;\
+transtype=payinvoice&amp;\
+invoicenumber=Inv-39040&amp;\
+bankname=First Test Bank&amp;\
+routing=110000000&amp;\
+account=1234567890123&amp;\
+achaccounttype=checking&amp;\
+achaccountsubtype=personal&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipcompany=Sparrow Two&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">textresponse=Invoice+has+been+successfully+paid&amp;
+transid=10750925&amp;
+invoicenumber=Inv-39040
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -5884,6 +8041,13 @@ sample API key with your actual API key.</p>
 
         </li>
      
+        <li>
+          <a href="#documenter-separate-auth-capture-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture-incremental-auth">Incremental Authorization</a>
+          
+
+
+        </li>
+     
   </ol>
 
 
@@ -6004,6 +8168,20 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-ach-ach-simple-ach-advanced-sale">Advanced ACH</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-ach-ach-simple-ach-advanced-sale-simple-echeck">Simple eCheck</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-ach-ach-simple-ach-advanced-sale-simple-echeck-advanced-echeck-sale">Advanced eCheck</a>
           
 
 
@@ -6150,7 +8328,7 @@ sample API key with your actual API key.</p>
         </li>
      
         <li>
-          <a href="#documenter-datavault-datavault-adding-a-customer-simple-add-customer-update-payment-type">Update Payment Type</a>
+          <a href="#documenter-datavault-datavault-adding-a-customer-simple-add-customer-update-payment-type">Update Customer</a>
           
 
 
