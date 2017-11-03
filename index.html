@@ -1225,6 +1225,7 @@ puts res[:type]     /</span><span class="hljs-regexp">/ sale
 <td>alphanumeric</td>
 <td>Group ID of the Split Funding group. If groupid is defined for the transaction system splits it in accordance with group settings.</td>
 </tr>
+
 <tr>
 <td>pinlessdebitindicator</td>
 <td>true / false</td>
@@ -1235,6 +1236,8 @@ puts res[:type]     /</span><span class="hljs-regexp">/ sale
 <td>true / false</td>
 <td>Overrides ‘Send Payment Descriptor’ account setting for the transaction.</td>
 </tr>
+=======
+
 </tbody>
 </table>
 <pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=57.85&amp;cardnum=4111111111111111&amp;cardexp=1010&amp;cvv=999&amp;skunumber_1=5558779&amp;description_1=menssweaterblue&amp;amount_1=50.00&amp;quantity_1=1&amp;tax=2.85&amp;shipamount=5.00&amp;firstname=John&amp;lastname=Smith&amp;address1=888+test+address&amp;city=Los+Angeles&amp;country=US&amp;state=CA&amp;phone=222-444-2938&amp;shipfirstname=John&amp;shiplastname=Smith&amp;shipaddress1=888+test+address&amp;shipcity=Los+Angeles&amp;shipstate=CA&amp;shipphone=2224442938
@@ -2677,6 +2680,81 @@ status=200
       </div>
       
         <div class="method-example">
+
+=======
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+cardnum=4111111111111111&amp;\
+cardexp=1019&amp;\
+amount=9.95&amp;\
+CID=12345678901&amp;\
+currency=USD&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+skunumber_1=123&amp;\
+skunumber_2=456&amp;\
+description_1=Blue widget&amp;\
+description_2=Brown widget&amp;\
+amount_1=1.99&amp;\
+amount_2=2.99&amp;\
+quantity_1=1&amp;\
+quantity_2=2&amp;\
+orderdesc=Order Description&amp;\
+orderid=11111&amp;\
+cardipaddress=8.8.8.8&amp;\
+tax=0.25&amp;\
+shipamount=1.25&amp;\
+ponumber=22222&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+email=john@norepy.com&amp;\
+shipfirstname=Jane&amp;\
+shiplastname=Doe&amp;\
+shipcompany=Sparrow Two&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+transid=10750808&amp;
+xref=3829708587&amp;
+authcode=123456&amp;
+orderid=11111&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
+avsresponse=N&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
+   </div>
+</section>           
+
+
+
            
               <div class="code-curl code-div active-code">
                  <div class="method-example-part">
@@ -3013,6 +3091,7 @@ status=200
 <td></td>
 <td></td>
 <td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx</td>
+
 </tr>
 <tr>
 <td>country</td>
@@ -3507,6 +3586,8 @@ token=I07IO05HGP0NXIQM
 <td></td>
 <td></td>
 <td>Billing email address</td>
+
+
 </tr>
 <tr>
 <td>shipfirstname</td>
@@ -3527,22 +3608,52 @@ token=I07IO05HGP0NXIQM
 <td>Shipping company</td>
 </tr>
 <tr>
+<td>shipfirstname</td>
+<td></td>
+<td></td>
+
+<td>Shipping address</td>
+=======
+<td>Shipping first name, should be from 1-100 characters. Required for PayPal processor if shipping address is entered.</td>
+
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td></td>
+
+<td>Shipping address - line 2</td>
+=======
+<td>Shipping last name, should be from 1-100 characters. Required for PayPal processor if shipping address is entered.</td>
+
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td></td>
+
+<td>Shipping city</td>
+=======
+<td>Shipping company</td>
+</tr>
+<tr>
 <td>shipaddress1</td>
 <td></td>
 <td></td>
-<td>Shipping address</td>
+<td>Shipping address. Should be from 1-200 alpha-numeric characters and can include # - : ;</td>
 </tr>
 <tr>
 <td>shipaddress2</td>
 <td></td>
 <td></td>
-<td>Shipping address - line 2</td>
+<td>Shipping address - line 2. Should be from 1-200 alpha-numeric characters and can include # - : ;</td>
 </tr>
 <tr>
 <td>shipcity</td>
 <td></td>
 <td></td>
-<td>Shipping city</td>
+<td>Shipping city, should be 1-50 alpha characters</td>
+
 </tr>
 <tr>
 <td>shipstate</td>
@@ -3617,6 +3728,45 @@ token=I07IO05HGP0NXIQM
 <td>Percentage of additional amount (20)</td>
 </tr>
 <tr>
+
+=======
+<td>birthdate</td>
+<td></td>
+<td>MM/DD/YYYY</td>
+<td>Birthdate of the customer</td>
+</tr>
+<tr>
+<td>checknumber</td>
+<td></td>
+<td></td>
+<td>Check number. 1-15 alphanumeric characters</td>
+</tr>
+<tr>
+<td>driverlicensenumber</td>
+<td></td>
+<td></td>
+<td>Drivers license number, 1-50 alphanumeric characters</td>
+</tr>
+<tr>
+<td>driverlicensecountry</td>
+<td></td>
+<td>cc</td>
+<td>Drivers license country</td>
+</tr>
+<tr>
+<td>driverlicensestate</td>
+<td></td>
+<td>cc</td>
+<td>Drivers license state</td>
+</tr>
+<tr>
+<td>courtesycardid</td>
+<td></td>
+<td>[a-z, A-Z, 0-9]</td>
+<td>This field is optional only for GETI ACH, for other processors can be ignored. From 1 to 50 characters.</td>
+</tr>
+<tr>
+
 <td>sendtransreceipttobillemail</td>
 <td></td>
 <td>true/false</td>
@@ -3637,10 +3787,79 @@ token=I07IO05HGP0NXIQM
 </tbody>
 </table>
 <p></p>
+
 <pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=110000000&amp;account=1234567890123&amp;achaccounttype=personal&amp;firstname=Henry&amp;lastname=Johnson&amp;address1=Main+Street+45&amp;city=Scottsdale&amp;zip=12345&amp;country=US&amp;state=AZ&amp;phone=8526547896&amp;email=hjohnson@test.com
 </code></pre>
 <p></p>
 <pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=110000000&amp;account=1234567890123&amp;achaccounttype=business&amp;company=CompanyName&amp;firstname=Henry&amp;lastname=Johnson&amp;address1=Main+Street+45&amp;city=Scottsdale&amp;zip=12345&amp;country=US&amp;state=AZ&amp;phone=8526547896&amp;email=hjohnson@test.com
+=======
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=personal&amp;firstname=Henry&amp;lastname=Johnson&amp;phone=8526547896&amp;email=hjohnson@test.com
+</code></pre>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=business&amp;company=CompanyName&amp;firstname=Henry&amp;lastname=Johnson&amp;phone=8526547896&amp;email=hjohnson@test.com
+</code></pre>
+<p></p>
+<p>$$language: curl$$</p>
+<p>Command Line:</p>
+<pre class="language-none"><code class="language-none">curl -d &quot;transtype=sale&amp;\
+mkey=$ACH_M_KEY&amp;\
+bankname=First Test Bank&amp;\
+routing=110000000&amp;\
+account=1234567890123&amp;\
+achaccounttype=checking&amp;\
+achaccountsubtype=personal&amp;\
+amount=9.95&amp;\
+orderdesc=Order Description&amp;\
+orderid=11111&amp;\
+firstname=John&amp;\
+lastname=Doe&amp;\
+company=Sparrow One&amp;\
+address1=16100 N 71st Street&amp;\
+address2=Suite 170&amp;\
+city=Scottsdale&amp;\
+state=AZ&amp;\
+zip=85254&amp;\
+country=US&amp;\
+phone=7025551234&amp;\
+email=john@norepy.com&amp;\
+shipaddress1=16100 N 72nd Street&amp;\
+shipaddress2=Suite 171&amp;\
+shipcity=Pheonix&amp;\
+shipstate=AZ&amp;\
+shipzip=85004&amp;\
+shipcountry=US&amp;\
+shipphone=6025551234&amp;\
+shipemail=jane@noreply.com&amp;\
+saveclient=true&amp;\
+updateclient=true&amp;\
+opt_amount_type_1=surcharge&amp;\
+opt_amount_value_1=1.01&amp;\
+opt_amount_percentage_1=18&amp;\
+birthdate=01/31/2000&amp;\
+checknumber=123&amp;\
+driverlicensenumber=1234567890&amp;\
+driverlicensecountry=US&amp;\
+driverlicensestate=AZ&amp;\
+sendtransreceipttobillemail=true&amp;\
+sendtransreceipttoshipemail=true&amp;\
+paymentdescriptor=Custom Payment Descriptor&quot; \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-none"><code class="language-none">response=00&amp;
+textresponse=SUCCESS%2c+Customer+with+token+%27I07IO05HGP0NXIQM%27+successfully+updated%2c+Payment+transaction+successfully+assigned+to+the+customer+with+token+%27I07IO05HGP0NXIQM%27&amp;
+transid=10750811&amp;
+xref=3829708723&amp;
+authcode=123456&amp;
+orderid=11111&amp;
+type=sale&amp;
+avsresponse=&amp;
+cvvresponse=&amp;
+coderesponse=100&amp;
+codedescription=Transaction+was+Approved&amp;
+status=200&amp;
+token=I07IO05HGP0NXIQM
+
 </code></pre>
 
          </div>
@@ -5599,10 +5818,34 @@ paymenttoken_1=SXZ27VYHGBSMYDNH
 </tbody>
 </table>
 <pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=deletecustomer&amp;token=B31388EA20ABF2776C93
+
 </code></pre>
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+transtype=deletecustomer&amp;\
+token=FX60NPVJY2Y18KZA"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=SUCCESS&amp;
+<span class="hljs-built_in">type</span>=deletecustomer
+
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
         <div class="method-example">
            
