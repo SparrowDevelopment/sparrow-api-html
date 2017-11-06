@@ -475,14 +475,21 @@
         </li>
      
         <li>
-          <a href="#documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type-delete-payment-type">Delete Payment Type</a>
+          <a href="#documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type">Adding Payment Types to a Customer</a>
           
 
 
         </li>
      
         <li>
-          <a href="#documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type-delete-payment-type-delete-customer">Delete Data Vault Customer</a>
+          <a href="#documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type-delete-payment-type">Delete Payment Type</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type-delete-payment-type-delete-customer">Delete Data Vault Customer</a>
           
 
 
@@ -5554,7 +5561,66 @@ customertoken=O3BEZTT2UHCS7USA
 
 
    
-<section id="documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type-delete-payment-type" class="method">
+<section id="documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Adding Payment Types to a Customer</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>updatecustomer</td>
+<td>This transaction type will update the current client information with any new data fields provided</td>
+</tr>
+<tr>
+<td><strong>token</strong></td>
+<td>alphanumericstring</td>
+<td>Unique customer identifier</td>
+</tr>
+<tr>
+<td><strong>operationtype_#</strong></td>
+<td>addpaytype</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=updatecustomer&amp;token=B31388EA20ABF2776C93&amp;operationtype_1=addpaytype&amp;paytype_1=creditcard&amp;cardnum_1=4111111111111111&amp;cardexp_1=0226&amp;firstname_1=John&amp;lastname_1=Smith&amp;operationtype_2=addpaytype&amp;paytype_2=creditcard&amp;cardnum_2=5454545454545454&amp;cardexp_2=0720&amp;firstname_2=John&amp;lastname_2=Smith
+</code></pre>
+
+         </div>
+      </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   No content for this section.
+                 </div>
+              </div>
+           
+        </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type-delete-payment-type" class="method">
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
@@ -5630,7 +5696,7 @@ paymenttoken_1=SXZ27VYHGBSMYDNH
 
 
    
-<section id="documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type-delete-payment-type-delete-customer" class="method">
+<section id="documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type-delete-payment-type-delete-customer" class="method">
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
@@ -8485,14 +8551,21 @@ sample API key with your actual API key.</p>
         </li>
      
         <li>
-          <a href="#documenter-datavault-datavault-adding-a-customer-simple-add-customer-update-payment-type-delete-payment-type">Delete Payment Type</a>
+          <a href="#documenter-datavault-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type">Adding Payment Types to a Customer</a>
           
 
 
         </li>
      
         <li>
-          <a href="#documenter-datavault-datavault-adding-a-customer-simple-add-customer-update-payment-type-delete-payment-type-delete-customer">Delete Data Vault Customer</a>
+          <a href="#documenter-datavault-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type-delete-payment-type">Delete Payment Type</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type-delete-payment-type-delete-customer">Delete Data Vault Customer</a>
           
 
 
