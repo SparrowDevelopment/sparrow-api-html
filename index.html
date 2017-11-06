@@ -7302,6 +7302,85 @@ invoicenumber=Inv-39031
 </tbody>
 </table>
 <p></p>
+<p>Response from the gateway will be as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>textresponse</strong></td>
+<td></td>
+<td>Textual response</td>
+</tr>
+<tr>
+<td><strong>invoicenumber</strong></td>
+<td>Inv-[0-9]</td>
+<td>Unique invoice identifier</td>
+</tr>
+<tr>
+<td><strong>invoiceamount</strong></td>
+<td>d.dddd</td>
+<td>Total amount of invoice (10.0000)</td>
+</tr>
+<tr>
+<td><strong>currency</strong></td>
+<td>CCC</td>
+<td>Code of the payment currency (ISO 4217 alphabetic code)</td>
+</tr>
+<tr>
+<td><strong>invoicedate</strong></td>
+<td>MM/DD/YYYY</td>
+<td>The date of the invoice</td>
+</tr>
+<tr>
+<td><strong>invoicestatus</strong></td>
+<td>draft / active / canceled / canceledbycustomer / paid / failed</td>
+<td>The date of the invoice. Only active invoices can be paid</td>
+</tr>
+<tr>
+<td><strong>invoicepaymentlink</strong></td>
+<td>URL</td>
+<td>Payment link for the customer</td>
+</tr>
+<tr>
+<td>invoiceitemid_#</td>
+<td>numeric</td>
+<td>Unique invoice item identifier</td>
+</tr>
+<tr>
+<td>invoiceitemprice_#</td>
+<td>d.dddd</td>
+<td>Price of the single unit of a product being purchased</td>
+</tr>
+<tr>
+<td>invoiceitemquantity_#</td>
+<td>d.ddd</td>
+<td>Number of units of a product being purchased</td>
+</tr>
+<tr>
+<td>invoiceitemsku_#</td>
+<td>alphanumeric</td>
+<td>SKU number of the product being purchased</td>
+</tr>
+<tr>
+<td>invoiceitemdescription_#</td>
+<td>alphanumeric</td>
+<td>Description of the product being purchased</td>
+</tr>
+<tr>
+<td>invoiceitemamount_#</td>
+<td>d.dddd</td>
+<td>Amount of invoice item (10.0000)</td>
+</tr>
+</tbody>
+</table>
+<p>Item variables are required if invoice contains products.</p>
+<p></p>
 <pre class="language-none"><code class="language-none">mkey=8VG63HD1LPBMIR5TPS7R52YV&amp;transtype=getinvoice&amp;invoicenumber=Inv-80794
 </code></pre>
 <p></p>
