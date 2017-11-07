@@ -502,6 +502,13 @@
 
         </li>
      
+        <li>
+          <a href="#documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type-update-payment-types-delete-payment-type-delete-customer-get-customer">Retrieve Customer</a>
+          
+
+
+        </li>
+     
   </ol>
 
 
@@ -5830,6 +5837,318 @@ textresponse=SUCCESS&amp;
 </section>           
 
 
+   
+<section id="documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type-update-payment-types-delete-payment-type-delete-customer-get-customer" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Retrieve Customer</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transtype</strong></td>
+<td>getcustomer</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>token</strong></td>
+<td>alphanumeric string</td>
+<td>Unique customer identifier</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>Response from the gateway will be as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>response</strong></td>
+<td></td>
+<td>Operation result code</td>
+</tr>
+<tr>
+<td><strong>textresponse</strong></td>
+<td></td>
+<td>Textual response</td>
+</tr>
+<tr>
+<td><strong>customertoken</strong></td>
+<td>alphanumeric string</td>
+<td>Customer unique identifier</td>
+</tr>
+<tr>
+<td><strong>CustomerStatus</strong></td>
+<td></td>
+<td>Customer status</td>
+</tr>
+<tr>
+<td>CustomerID</td>
+<td></td>
+<td>External customer identifier</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td>Billing company name</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>Billing address – line 2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Billing postal code</td>
+</tr>
+<tr>
+<td>country</td>
+<td>CC (ISO-3166)</td>
+<td>Billing country (ie. US)</td>
+</tr>
+<tr>
+<td>state</td>
+<td>2 character abbreviation</td>
+<td>Billing state</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td>Billing phone number</td>
+</tr>
+<tr>
+<td>fax</td>
+<td></td>
+<td>Billing fax number</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>Billing email address</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td>Shipping company name</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>Shipping address</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>Shipping address – line 2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>Shipping city</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td>Shipping postal code</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td>CC (ISO-3166)</td>
+<td>Billing country (ie. US)</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td>2 character abbreviation</td>
+<td>Shipping state</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>Shipping phone number</td>
+</tr>
+<tr>
+<td>shipfax</td>
+<td></td>
+<td>Shipping fax number</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>Shipping email address</td>
+</tr>
+<tr>
+<td>token_#</td>
+<td>alphanumeric string</td>
+<td>Payment Type unique identifier</td>
+</tr>
+<tr>
+<td>paytype_#</td>
+<td>creditcard / check / ach / starcard / cash /ewallet</td>
+<td>Type of payment info</td>
+</tr>
+<tr>
+<td>payno_#</td>
+<td>positive integer</td>
+<td>Priority of the payment type among others, when sending payment using customer’s token</td>
+</tr>
+<tr>
+<td>account_#</td>
+<td></td>
+<td>Masked account number</td>
+</tr>
+<tr>
+<td>paymentdescription_#</td>
+<td>alphanumeric string</td>
+<td>Description of Data Vault payment info</td>
+</tr>
+<tr>
+<td>cardexp_#</td>
+<td>MMYY</td>
+<td>Credit card expiration date (ie. 0719 = 7/2019)</td>
+</tr>
+<tr>
+<td>useAccountUpdater_#</td>
+<td>true / false</td>
+<td>If true, the account updater updates this payment info</td>
+</tr>
+<tr>
+<td>company_#</td>
+<td></td>
+<td>Billing company name, specific for the payment type</td>
+</tr>
+<tr>
+<td>firstname_#</td>
+<td></td>
+<td>Billing first name, specific for the payment type</td>
+</tr>
+<tr>
+<td>lastname_#</td>
+<td></td>
+<td>Billing last name , specific for the payment type</td>
+</tr>
+<tr>
+<td>address1_#</td>
+<td></td>
+<td>Billing address , specific for the payment type</td>
+</tr>
+<tr>
+<td>address2_#</td>
+<td></td>
+<td>Billing address – line 2, specific for the payment type</td>
+</tr>
+<tr>
+<td>city_#</td>
+<td></td>
+<td>Billing city, specific for the payment type</td>
+</tr>
+<tr>
+<td>zip_#</td>
+<td></td>
+<td>Billing postal code, specific for the payment type</td>
+</tr>
+<tr>
+<td>country_#</td>
+<td>CC (ISO-3166)</td>
+<td>Billing country (ie. US), specific for the payment type</td>
+</tr>
+<tr>
+<td>state_#</td>
+<td>2 character abbreviation</td>
+<td>Billing state, specific for the payment type</td>
+</tr>
+<tr>
+<td>phone_#</td>
+<td></td>
+<td>Billing phone number, specific for the payment type</td>
+</tr>
+<tr>
+<td>fax_#</td>
+<td></td>
+<td>Billing fax number, specific for the payment type</td>
+</tr>
+<tr>
+<td>email_#</td>
+<td></td>
+<td>Billing email address, specific for the payment type</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">
+mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;transtype=getcustomer&amp;token=VGHBVEKS8TDRKUC2
+</code></pre>
+<p></p>
+<p>Expected Response</p>
+<pre class="language-none"><code class="language-none">response=1&amp;textresponse=Processed&amp;customertoken=VGHBVEKS8TDRKUC2&amp;CustomerStatus=Active&amp;company=&amp;firstname=John&amp;lastname=Smith&amp;address1=330+Stewart+Street&amp;address2=&amp;city=Indianapolis&amp;email=&amp;country=US&amp;state=IN&amp;phone=&amp;fax=&amp;zip=46268&amp;shipcompany=&amp;shipfirstname=&amp;shiplastname=&amp;shipaddress1=&amp;shipaddress2=&amp;shipcity=&amp;shipemail=&amp;shipphone=&amp;shipfax=&amp;shipzip=&amp;paytype_1=CreditCard&amp;payno_1=1&amp;paymentdescription_1=&amp;cardexp_1=1221&amp;account_1=411111******1111&amp;company_1=&amp;firstname_1=John&amp;lastname_1=Smith&amp;address1_1=1947+Sumner+Street&amp;address2_1=&amp;city_1=Rancho+Dominguez&amp;email_1=&amp;country_1=US&amp;state_1=CA&amp;phone_1=&amp;fax_1=&amp;zip_1=90220&amp;useAccountUpdater_1=True&amp;token_1=6AWRPCF8C4DZ6UU2
+</code></pre>
+
+         </div>
+      </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   No content for this section.
+                 </div>
+              </div>
+           
+        </div>
+      
+   </div>
+</section>           
+
+
            
               
 <section id="documenter-payment-plans" class="method">
@@ -8644,6 +8963,13 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-datavault-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type-update-payment-types-delete-payment-type-delete-customer">Delete Data Vault Customer</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type-update-payment-types-delete-payment-type-delete-customer-get-customer">Retrieve Customer</a>
           
 
 
