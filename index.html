@@ -2995,11 +2995,17 @@ funds directly to and from client’s banks accounts.</p>
 <p></p>
 <pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=business&amp;company=CompanyName
 </code></pre>
-<p></p>
-<p>$$language: curl$$</p>
-<p>Command Line:</p>
-<pre class="language-none"><code class="language-none">curl -d &quot;transtype=sale&amp;\
-mkey=$ACH_M_KEY&amp;\
+
+         </div>
+      </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$ACH_M_KEY</span>&amp;\
 bankname=First Test Bank&amp;\
 routing=110000000&amp;\
 account=1234567890123&amp;\
@@ -3007,17 +3013,17 @@ achaccounttype=checking&amp;\
 achaccountsubtype=personal&amp;\
 amount=9.95&amp;\
 firstname=John&amp;\
-lastname=Doe&quot; \
+lastname=Doe"</span> \
 https://secure.sparrowone.com/Payments/Services_api.aspx
 </code></pre>
 <p>Response:</p>
-<pre class="language-none"><code class="language-none">response=00&amp;
+<pre class="language-bash"><code class="language-bash">response=00&amp;
 textresponse=SUCCESS&amp;
 transid=10750797&amp;
 xref=3829708697&amp;
 authcode=123456&amp;
 orderid=&amp;
-type=sale&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
 avsresponse=&amp;
 cvvresponse=&amp;
 coderesponse=100&amp;
@@ -3025,8 +3031,10 @@ codedescription=Transaction+was+Approved&amp;
 status=200
 </code></pre>
 
-         </div>
-      </div>
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -3333,11 +3341,17 @@ status=200
 <p></p>
 <pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;amount=9.95&amp;bankname=BankofAmerica&amp;routing=123456789&amp;account=11111999&amp;achaccounttype=checking&amp;achaccountsubtype=business&amp;company=CompanyName&amp;firstname=Henry&amp;lastname=Johnson&amp;phone=8526547896&amp;email=hjohnson@test.com
 </code></pre>
-<p></p>
-<p>$$language: curl$$</p>
-<p>Command Line:</p>
-<pre class="language-none"><code class="language-none">curl -d &quot;transtype=sale&amp;\
-mkey=$ACH_M_KEY&amp;\
+
+         </div>
+      </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=sale&amp;\
+mkey=<span class="hljs-variable">$ACH_M_KEY</span>&amp;\
 bankname=First Test Bank&amp;\
 routing=110000000&amp;\
 account=1234567890123&amp;\
@@ -3377,17 +3391,17 @@ driverlicensecountry=US&amp;\
 driverlicensestate=AZ&amp;\
 sendtransreceipttobillemail=true&amp;\
 sendtransreceipttoshipemail=true&amp;\
-paymentdescriptor=Custom Payment Descriptor&quot; \
+paymentdescriptor=Custom Payment Descriptor"</span> \
 https://secure.sparrowone.com/Payments/Services_api.aspx
 </code></pre>
 <p>Response:</p>
-<pre class="language-none"><code class="language-none">response=00&amp;
+<pre class="language-bash"><code class="language-bash">response=00&amp;
 textresponse=SUCCESS%2c+Customer+with+token+%27I07IO05HGP0NXIQM%27+successfully+updated%2c+Payment+transaction+successfully+assigned+to+the+customer+with+token+%27I07IO05HGP0NXIQM%27&amp;
 transid=10750811&amp;
 xref=3829708723&amp;
 authcode=123456&amp;
 orderid=11111&amp;
-type=sale&amp;
+<span class="hljs-built_in">type</span>=sale&amp;
 avsresponse=&amp;
 cvvresponse=&amp;
 coderesponse=100&amp;
@@ -3396,8 +3410,10 @@ status=200&amp;
 token=I07IO05HGP0NXIQM
 </code></pre>
 
-         </div>
-      </div>
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
