@@ -9072,6 +9072,7 @@ invoicenumber=Inv-39040
 <tr>
 <th>Variable Name</th>
 <th>Format</th>
+<th></th>
 <th>Description</th>
 </tr>
 </thead>
@@ -9079,101 +9080,121 @@ invoicenumber=Inv-39040
 <tr>
 <td>status</td>
 <td>alphanumeric string</td>
+<td></td>
 <td>See the table below with statuses list</td>
 </tr>
 <tr>
 <td>response</td>
 <td>alphanumeric string</td>
+<td></td>
 <td>See the table below with responses list</td>
 </tr>
 <tr>
 <td>textresponse</td>
 <td>string</td>
+<td></td>
 <td>Textual response</td>
 </tr>
 <tr>
 <td>authcode</td>
 <td>string</td>
+<td></td>
 <td>Transaction authorization or approval code, depending on the payment processor</td>
 </tr>
 <tr>
 <td>type</td>
 <td>string</td>
+<td></td>
 <td>Type of transaction</td>
 </tr>
 <tr>
 <td>transid</td>
 <td>number</td>
+<td></td>
 <td>Sparrow transaction ID</td>
 </tr>
 <tr>
 <td>xref</td>
 <td>string</td>
+<td></td>
 <td>External transaction ID from the payment processor</td>
 </tr>
 <tr>
 <td>avsresponse</td>
 <td>C</td>
+<td></td>
 <td>AVS Response Code</td>
 </tr>
 <tr>
 <td>cvvresponse</td>
 <td>C</td>
+<td></td>
 <td>CVV Response Code</td>
 </tr>
 <tr>
 <td>coderesponse</td>
 <td>C</td>
+<td></td>
 <td>Numeric mapping of the processor response</td>
 </tr>
 <tr>
 <td>orderid</td>
+<td></td>
 <td></td>
 <td>The original order ID passed in the transaction request</td>
 </tr>
 <tr>
 <td>customertoken</td>
 <td>alphanumeric string</td>
+<td></td>
 <td>Token of the newly created Data Vault customer</td>
 </tr>
 <tr>
 <td>paymenttoken_#</td>
 <td>alphanumeric string</td>
+<td></td>
 <td>Token of the newly created Data Vault payment information set</td>
 </tr>
 <tr>
 <td>assignmenttoken</td>
 <td>alphanumeric string</td>
+<td></td>
 <td>Token of the newly assigned Data Vault payment plan assignment</td>
 </tr>
 <tr>
 <td>plantoken</td>
 <td>alphanumeric string</td>
+<td></td>
 <td>Token of the newly created Data Vault plan</td>
 </tr>
 <tr>
 <td>codedescription</td>
 <td>string</td>
+<td></td>
 <td>Describes the meaning of the response code</td>
 </tr>
 <tr>
 <td>availablecreditbalance</td>
 <td>d.dd</td>
+<td></td>
 <td>Available card balance</td>
 </tr>
 <tr>
 <td>origtransid</td>
 <td>number</td>
+<td></td>
 <td>Sparrow transaction id of an original transaction. System returns this field if the transaction has been Rejected or Flagged for review by FBI rule</td>
 </tr>
 <tr>
 <td>origresponse</td>
 <td>alphanumeric string</td>
+<td></td>
 <td>Response of an original transaction</td>
 </tr>
 <tr>
 <td>origtextresponse</td>
 <td>string</td>
+<td></td>
 <td>Textual response of an original transaction</td>
 </tr>
 </tbody>
@@ -9217,6 +9238,7 @@ invoicenumber=Inv-39040
 </tbody>
 </table>
 <p></p>
+<p></p>
 <p>Statuses for ACH payments:</p>
 <table>
 <thead>
@@ -9240,6 +9262,7 @@ invoicenumber=Inv-39040
 </tr>
 </tbody>
 </table>
+<p></p>
 <p></p>
 <p>Statuses for eCheck payments:</p>
 <table>
@@ -9265,6 +9288,7 @@ invoicenumber=Inv-39040
 </tbody>
 </table>
 <p></p>
+<p></p>
 <p>Statuses for Star Card payments:</p>
 <table>
 <thead>
@@ -9289,6 +9313,7 @@ invoicenumber=Inv-39040
 </tbody>
 </table>
 <p></p>
+<p></p>
 <p>Statuses for eWallet payments:</p>
 <table>
 <thead>
@@ -9312,6 +9337,7 @@ invoicenumber=Inv-39040
 </tr>
 </tbody>
 </table>
+<p></p>
 <p></p>
 <p>Statuses for Cash payments:</p>
 <table>
