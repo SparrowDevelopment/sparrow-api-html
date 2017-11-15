@@ -689,6 +689,13 @@
 
         </li>
      
+        <li>
+          <a href="#documenter-response-variables-transaction-response-variables-gateway-status-status">Status</a>
+          
+
+
+        </li>
+     
   </ol>
 
 
@@ -9366,6 +9373,73 @@ invoicenumber=Inv-39040
 </section>           
 
 
+   
+<section id="documenter-response-variables-transaction-response-variables-gateway-status-status" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Status</h3>
+<p></p>
+<p>Status field can have the following values:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Operation Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>Successful</td>
+<td>No Errors</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Wait For Response</td>
+<td>For Checkout processors only (Eirth Gate, PayGate, etc.). This is a temporary status. It means that the request was sent to the processor and there are no errors, however, the response has not been received yet</td>
+</tr>
+<tr>
+<td>254</td>
+<td>Rejected By Accertify</td>
+<td>Fraud Control System</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Flagged For Review</td>
+<td>Fraud Control System</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Rejected By Policy</td>
+<td>Fraud Control System</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Declined</td>
+<td>Errors occurred on processor side</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Processor Error</td>
+<td>Errors occurred on processor side</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Error</td>
+<td>Unexpected error</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
            
               
 <section id="documenter-code-samples" class="method">
@@ -10083,6 +10157,13 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-response-variables-response-variables-transaction-response-variables-gateway-status">Gateway Status</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-response-variables-response-variables-transaction-response-variables-gateway-status-status">Status</a>
           
 
 
