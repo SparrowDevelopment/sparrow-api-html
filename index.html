@@ -721,6 +721,13 @@
 
         </li>
      
+        <li>
+          <a href="#documenter-processor-response-codes-avs-response-codes-cvv-response-codes-military-star-responses">Military Star Responses</a>
+          
+
+
+        </li>
+     
   </ol>
 
 
@@ -9641,6 +9648,88 @@ invoicenumber=Inv-39040
 </section>           
 
 
+   
+<section id="documenter-processor-response-codes-avs-response-codes-cvv-response-codes-military-star-responses" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Military Star Responses</h3>
+<p></p>
+<p>Listed below are possible values that be returned in the textresponse field. Any
+messages not indicated below should be reported to your AAFES contact.</p>
+<p></p>
+<p><strong>Validation Messages</strong></p>
+<p>“Internal Error: Amount cannot contain decimals (.)”</p>
+<p>This message is returned when the amount field contains at least one decimal.
+Correct the field and send the transaction again.</p>
+<p></p>
+<p>“Internal Error: Amount is not numeric”</p>
+<p>This message is returned when the amount field contains non-numeric data.
+Correct the field and send the transaction again.</p>
+<p></p>
+<p>“Internal Error: Amount cannot be zero”</p>
+<p>This message is returned when the amount field is equal to zero. Correct the
+field and send the transaction again.</p>
+<p></p>
+<p>“Internal Error: Credit card number is required”</p>
+<p>This message is returned when the cardnum field is blank. Correct the field and
+send the transaction again.</p>
+<p></p>
+<p>“Internal Error: Invalid Card Number”</p>
+<p>This message is returned when the data in the cardnum field is a invalid card.</p>
+<p></p>
+<p><strong>Declined Messages</strong></p>
+<p>“Declined, Please try another payment method”</p>
+<p>This message is returned when the transaction is declined. The response field
+will contain a “2”.</p>
+<p></p>
+<p>“Internal Error: Credit is larger than available amount”</p>
+<p>This message is returned when the amount field in a credit transaction is
+greater than the amount settled on the previous transactions. Correct the field
+and send the transactions again. The response field will contain a “2”.</p>
+<p></p>
+<p>“Internal Error: Not authorized for given amount”</p>
+<p>This message is returned when the amount in a settlement transaction is greater
+than the amount that was approved. Correct the field and send the transaction
+again. The response field will contain a “2”.</p>
+<p></p>
+<p><strong>Misc. Messages</strong></p>
+<p>“TimeOut: Unable to verify transaction.”</p>
+<p>This message is returned when there was a communication timeout. The transaction
+will be queued and processed when communication is back online. For an approval,
+you will need to make another request. For settlement and credits the
+transaction will get processed as soon as communications are back online.</p>
+<p></p>
+<p>“MQ: This method is not available at this time.”</p>
+<p>This message is returned when there was a critical failure in the processing of
+the transactions. If this error continues, report it to your AAFES contact. All
+transactions will need to be sent again.</p>
+<p></p>
+<p>“COM: This method is not available at this time.”</p>
+<p>This message is returned when there was a critical failure in the communication
+of the transaction. If this error continues, report it to your AAFES contact.
+All transactions will need to be sent again.</p>
+<p></p>
+<p>“System is down for maintenance”</p>
+<p>This message is returned when the system has been brought down for upgrades or
+scheduled maintenance. All transactions will need to be sent again.</p>
+<p></p>
+<p>“COM: This method is abending, if problem continues notify your AAFES POC.”</p>
+<p>This message is returned when there was a critical failure in the processing of
+the transactions. If this error continues, report it to your AAFES contact. All
+transactions will need to be sent again.</p>
+<p></p>
+<p>“DB Error: System currently down, try again later”</p>
+<p>This message is returned when there is a critical error in accessing a database.
+All transaction will need to be sent again.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
            
               
 <section id="documenter-code-samples" class="method">
@@ -10390,6 +10479,13 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-processor-response-codes-processor-response-codes-avs-response-codes-cvv-response-codes">CVV Response Codes</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-processor-response-codes-processor-response-codes-avs-response-codes-cvv-response-codes-military-star-responses">Military Star Responses</a>
           
 
 
