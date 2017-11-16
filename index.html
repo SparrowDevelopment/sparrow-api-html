@@ -523,6 +523,13 @@
 
         </li>
      
+        <li>
+          <a href="#documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type-update-payment-types-delete-payment-type-delete-customer-get-customer-get-payment-type-decrypt-payment-type-tokenized-payments">Tokenized Payments</a>
+          
+
+
+        </li>
+     
   </ol>
 
 
@@ -6801,6 +6808,51 @@ mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;transtype=getcustomer&amp;token=VGHBVE
 </section>           
 
 
+   
+<section id="documenter-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type-update-payment-types-delete-payment-type-delete-customer-get-customer-get-payment-type-decrypt-payment-type-tokenized-payments" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Tokenized Payments</h3>
+<p></p>
+<p>Sale, Auth and Credit operations could be processed using Data Vault client
+info. For tokenized payment you can use token of the payment type or Data Vault
+client's token. If client's token is used then the first client's payment type
+will be used to process the payment. Please see an example below.</p>
+<p></p>
+<pre class="language-none"><code class="language-none">mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;transtype=sale&amp;token=0558050763310762&amp;amount=10
+</code></pre>
+<p></p>
+<p>Expected Response</p>
+<pre class="language-none"><code class="language-none">response=1&amp;textresponse=SUCCESS&amp;transid=1007397&amp;xref=3393966934&amp;authcode=123456&amp;orderid=&amp;type=sale&amp;avsresponse=N&amp;cvvresponse=&amp;coderesponse=100&amp;codedescription=Transaction+was+Approved&amp;status=200
+</code></pre>
+<p></p>
+<p>Merchant can check “Allow to override Billing information for tokenized
+payments” option on the Configuration Values page (Merchant portal ⇢ Data Vault
+⇢ Administration ⇢ Configuration Settings) to allow system to override billing
+and shipping information with information from the tokenized API request.</p>
+<p>If option is checked billing and shipping fields can be present in the request
+even when token is specified. Parameters specified in the request will override
+corresponding client's parameters for the payment. So payment will be processed
+with specified parameters but Data Vault client's info won’t be updated.</p>
+
+         </div>
+      </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   No content for this section.
+                 </div>
+              </div>
+           
+        </div>
+      
+   </div>
+</section>           
+
+
            
               
 <section id="documenter-payment-plans" class="method">
@@ -10281,6 +10333,13 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-datavault-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type-update-payment-types-delete-payment-type-delete-customer-get-customer-get-payment-type-decrypt-payment-type">Decrypt Payment Type</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-datavault-datavault-adding-a-customer-simple-add-customer-update-payment-type-add-payment-type-update-payment-types-delete-payment-type-delete-customer-get-customer-get-payment-type-decrypt-payment-type-tokenized-payments">Tokenized Payments</a>
           
 
 
