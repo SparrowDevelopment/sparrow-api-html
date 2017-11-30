@@ -59,8 +59,8 @@
                   <ul class="language-toggle">
                      
                      <li>
-                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-curl" data-language="curl" checked="checked">
-                        <label for="toggle-lang-curl" class="language-toggle-button language-toggle-button--curl">curl</label>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-bash" data-language="bash" >
+                        <label for="toggle-lang-bash" class="language-toggle-button language-toggle-button--bash">curl</label>
                      </li>
                     
                      <li>
@@ -74,8 +74,8 @@
                      </li>
                     
                      <li>
-                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-c" data-language="c" >
-                        <label for="toggle-lang-c" class="language-toggle-button language-toggle-button--c">C#</label>
+                        <input type="radio" class="language-toggle-source" name="language-toggle" id="toggle-lang-csharp" data-language="csharp" >
+                        <label for="toggle-lang-csharp" class="language-toggle-button language-toggle-button--csharp">C#</label>
                      </li>
                     
                      <li>
@@ -1067,6 +1067,28 @@ puts res[:type]     /</span><span class="hljs-regexp">/ sale
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleSale(
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    amount: <span class="hljs-number">9.99</span>m);
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.TransId;    <span class="hljs-comment">// 11032426</span>
+result.XRef;    <span class="hljs-comment">// 3876731523</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// sale</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -1423,6 +1445,28 @@ status=200
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AdvancedSale(
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    amount: <span class="hljs-number">9.99</span>m);
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.TransId;    <span class="hljs-comment">// 11032425</span>
+result.XRef;    <span class="hljs-comment">// 3876731470</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// sale</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -1558,6 +1602,28 @@ status=200
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleAuthorization(
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    amount: <span class="hljs-number">9.99</span>m);
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.TransId;    <span class="hljs-comment">// 11032439</span>
+result.XRef;    <span class="hljs-comment">// 3876731939</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// auth</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -1672,6 +1738,42 @@ status=200
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultSimpleAuthorization = <span class="hljs-keyword">await</span> _sparrow.SimpleAuthorization(
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    amount: <span class="hljs-number">9.99</span>m);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleCapture(
+    transId: resultSimpleAuthorization.TransId, 
+    amount: <span class="hljs-number">9.99</span>m);
+</code></pre>
+<p>RESULT SimpleAuthorization:</p>
+<pre class="language-csharp"><code class="language-csharp">resultSimpleAuthorization.Status;    <span class="hljs-comment">// 200</span>
+resultSimpleAuthorization.Response;    <span class="hljs-comment">// 1</span>
+resultSimpleAuthorization.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+resultSimpleAuthorization.TransId;    <span class="hljs-comment">// 11032440</span>
+resultSimpleAuthorization.XRef;    <span class="hljs-comment">// 3876731948</span>
+resultSimpleAuthorization.AuthCode;    <span class="hljs-comment">// 123456</span>
+resultSimpleAuthorization.Type;    <span class="hljs-comment">// auth</span>
+resultSimpleAuthorization.CodeResponse;    <span class="hljs-comment">// 100</span>
+resultSimpleAuthorization.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.TransId;    <span class="hljs-comment">// 11032440</span>
+result.XRef;    <span class="hljs-comment">// 3876731948</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// capture</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -1780,6 +1882,30 @@ cvvresponse=&amp;
 coderesponse=100&amp;
 codedescription=Transaction+was+Approved&amp;
 status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleOfflineCapture(
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    amount: <span class="hljs-number">9.99</span>m, 
+    authCode: <span class="hljs-string">"123456"</span>, 
+    authDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>));
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.TransId;    <span class="hljs-comment">// 11032437</span>
+result.XRef;    <span class="hljs-comment">// 3876731902</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// offline</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
 </code></pre>
 
                  </div>
@@ -1950,6 +2076,46 @@ sections.</p>
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-csharp code-div active-code">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultSimpleAuthorization = <span class="hljs-keyword">await</span> _sparrow.SimpleAuthorization(
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    amount: <span class="hljs-number">9.99</span>m);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AdvancedCapture(
+    transId: resultSimpleAuthorization.TransId, 
+    amount: <span class="hljs-number">9.99</span>m);
+</code></pre>
+<p>RESULT SimpleAuthorization:</p>
+<pre class="language-csharp"><code class="language-csharp">resultSimpleAuthorization.Status;    <span class="hljs-comment">// 200</span>
+resultSimpleAuthorization.Response;    <span class="hljs-comment">// 1</span>
+resultSimpleAuthorization.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+resultSimpleAuthorization.TransId;    <span class="hljs-comment">// 11032438</span>
+resultSimpleAuthorization.XRef;    <span class="hljs-comment">// 3876731911</span>
+resultSimpleAuthorization.AuthCode;    <span class="hljs-comment">// 123456</span>
+resultSimpleAuthorization.Type;    <span class="hljs-comment">// auth</span>
+resultSimpleAuthorization.CodeResponse;    <span class="hljs-comment">// 100</span>
+resultSimpleAuthorization.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.TransId;    <span class="hljs-comment">// 11032438</span>
+result.XRef;    <span class="hljs-comment">// 3876731911</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// capture</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -2042,6 +2208,42 @@ status=300&amp;
 origtransid=10750789&amp;
 origresponse=1&amp;
 origtextresponse=SUCCESS
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultSimpleSale = <span class="hljs-keyword">await</span> _sparrow.SimpleSale(
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    amount: <span class="hljs-number">9.99</span>m);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleRefund(
+    transId: resultSimpleSale.TransId, 
+    amount: <span class="hljs-number">9.99</span>m);
+</code></pre>
+<p>RESULT SimpleSale:</p>
+<pre class="language-csharp"><code class="language-csharp">resultSimpleSale.Status;    <span class="hljs-comment">// 200</span>
+resultSimpleSale.Response;    <span class="hljs-comment">// 1</span>
+resultSimpleSale.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+resultSimpleSale.TransId;    <span class="hljs-comment">// 11032432</span>
+resultSimpleSale.XRef;    <span class="hljs-comment">// 3876731707</span>
+resultSimpleSale.AuthCode;    <span class="hljs-comment">// 123456</span>
+resultSimpleSale.Type;    <span class="hljs-comment">// sale</span>
+resultSimpleSale.CodeResponse;    <span class="hljs-comment">// 100</span>
+resultSimpleSale.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.TransId;    <span class="hljs-comment">// 11032432</span>
+result.XRef;    <span class="hljs-comment">// 3876731707</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// refund</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
 </code></pre>
 
                  </div>
@@ -2153,6 +2355,42 @@ status=200
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultSimpleSale = <span class="hljs-keyword">await</span> _sparrow.SimpleSale(
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    amount: <span class="hljs-number">9.99</span>m);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AdvancedRefund(
+    transId: resultSimpleSale.TransId, 
+    amount: <span class="hljs-number">9.99</span>m);
+</code></pre>
+<p>RESULT SimpleSale:</p>
+<pre class="language-csharp"><code class="language-csharp">resultSimpleSale.Status;    <span class="hljs-comment">// 200</span>
+resultSimpleSale.Response;    <span class="hljs-comment">// 1</span>
+resultSimpleSale.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+resultSimpleSale.TransId;    <span class="hljs-comment">// 11032433</span>
+resultSimpleSale.XRef;    <span class="hljs-comment">// 3876731759</span>
+resultSimpleSale.AuthCode;    <span class="hljs-comment">// 123456</span>
+resultSimpleSale.Type;    <span class="hljs-comment">// sale</span>
+resultSimpleSale.CodeResponse;    <span class="hljs-comment">// 100</span>
+resultSimpleSale.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.TransId;    <span class="hljs-comment">// 11032433</span>
+result.XRef;    <span class="hljs-comment">// 3876731759</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// refund</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -2244,6 +2482,41 @@ status=200
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultSimpleSale = <span class="hljs-keyword">await</span> _sparrow.SimpleSale(
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    amount: <span class="hljs-number">9.99</span>m);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleVoid(
+    transId: resultSimpleSale.TransId);
+</code></pre>
+<p>RESULT SimpleSale:</p>
+<pre class="language-csharp"><code class="language-csharp">resultSimpleSale.Status;    <span class="hljs-comment">// 200</span>
+resultSimpleSale.Response;    <span class="hljs-comment">// 1</span>
+resultSimpleSale.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+resultSimpleSale.TransId;    <span class="hljs-comment">// 11032436</span>
+resultSimpleSale.XRef;    <span class="hljs-comment">// 3876731838</span>
+resultSimpleSale.AuthCode;    <span class="hljs-comment">// 123456</span>
+resultSimpleSale.Type;    <span class="hljs-comment">// sale</span>
+resultSimpleSale.CodeResponse;    <span class="hljs-comment">// 100</span>
+resultSimpleSale.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// Transaction Void Successful</span>
+result.TransId;    <span class="hljs-comment">// 11032436</span>
+result.XRef;    <span class="hljs-comment">// 3876731838</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// void</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -2329,6 +2602,41 @@ cvvresponse=M&amp;
 coderesponse=100&amp;
 codedescription=Transaction+was+Approved&amp;
 status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultSimpleSale = <span class="hljs-keyword">await</span> _sparrow.SimpleSale(
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    amount: <span class="hljs-number">9.99</span>m);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AdvancedVoid(
+    transId: resultSimpleSale.TransId);
+</code></pre>
+<p>RESULT SimpleSale:</p>
+<pre class="language-csharp"><code class="language-csharp">resultSimpleSale.Status;    <span class="hljs-comment">// 200</span>
+resultSimpleSale.Response;    <span class="hljs-comment">// 1</span>
+resultSimpleSale.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+resultSimpleSale.TransId;    <span class="hljs-comment">// 11032435</span>
+resultSimpleSale.XRef;    <span class="hljs-comment">// 3876731796</span>
+resultSimpleSale.AuthCode;    <span class="hljs-comment">// 123456</span>
+resultSimpleSale.Type;    <span class="hljs-comment">// sale</span>
+resultSimpleSale.CodeResponse;    <span class="hljs-comment">// 100</span>
+resultSimpleSale.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// Transaction Void Successful</span>
+result.TransId;    <span class="hljs-comment">// 11032435</span>
+result.XRef;    <span class="hljs-comment">// 3876731796</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// void</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
 </code></pre>
 
                  </div>
@@ -2565,6 +2873,33 @@ status=200
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.PassengerSale(
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    amount: <span class="hljs-number">9.99</span>m, 
+    passengerName: <span class="hljs-string">"John Doe"</span>, 
+    airportCodes: <span class="hljs-keyword">new</span> []{ <span class="hljs-string">""</span> }, 
+    airlineCodeNumber: <span class="hljs-string">"AA0"</span>, 
+    ticketNumber: <span class="hljs-string">"1234567890"</span>, 
+    flightDateCoupons: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    flightDepartureTimeCoupons: <span class="hljs-keyword">new</span> []{ <span class="hljs-string">""</span> }, 
+    approvalCode: <span class="hljs-string">"123456"</span>, 
+    authCharIndicator: Sparrow.AuthCharIndicator.A, 
+    validationCode: <span class="hljs-string">"1234"</span>, 
+    authResponseCode: <span class="hljs-string">"AB"</span>);
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 500</span>
+result.Response;    <span class="hljs-comment">// 3</span>
+result.TextResponse;    <span class="hljs-comment">// Operation type is not supported by payment processor</span>
+result.Type;    <span class="hljs-comment">// passengersale</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -2662,6 +2997,25 @@ cvvresponse=&amp;
 coderesponse=100&amp;
 codedescription=Transaction+was+Approved&amp;
 status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleStarCard(
+    cardNum: <span class="hljs-string">"4111111111111111"</span>, 
+    amount: <span class="hljs-number">9.99</span>m, 
+    CID: <span class="hljs-string">"12345678901"</span>);
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 400</span>
+result.TextResponse;    <span class="hljs-comment">// System Error: Reason Code: 002 CID value is invalid or non existant</span>
+result.TransId;    <span class="hljs-comment">// 11032442</span>
+result.Type;    <span class="hljs-comment">// sale</span>
+result.CodeDescription;    <span class="hljs-comment">// Denied</span>
 </code></pre>
 
                  </div>
@@ -2959,6 +3313,26 @@ status=200
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AdvancedStarCard(
+    cardNum: <span class="hljs-string">"4111111111111111"</span>, 
+    cardExp: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    amount: <span class="hljs-number">9.99</span>m, 
+    CID: <span class="hljs-string">"12345678901"</span>);
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 400</span>
+result.TextResponse;    <span class="hljs-comment">// System Error: Reason Code: 002 CID value is invalid or non existant</span>
+result.TransId;    <span class="hljs-comment">// 11032441</span>
+result.Type;    <span class="hljs-comment">// sale</span>
+result.CodeDescription;    <span class="hljs-comment">// Denied</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -3102,6 +3476,28 @@ cvvresponse=&amp;
 coderesponse=100&amp;
 codedescription=Transaction+was+Approved&amp;
 status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleACH(
+    bankAccount: <span class="hljs-keyword">new</span> Sparrow.BankAccount{ BankName = <span class="hljs-string">"First Test Bank"</span>, Routing = <span class="hljs-string">"110000000"</span>, Account = <span class="hljs-string">"1234567890123"</span>, AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal }, 
+    amount: <span class="hljs-number">9.99</span>m, 
+    contactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> });
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.TransId;    <span class="hljs-comment">// 11032420</span>
+result.XRef;    <span class="hljs-comment">// 3876731380</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// sale</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
 </code></pre>
 
                  </div>
@@ -3486,6 +3882,28 @@ token=I07IO05HGP0NXIQM
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AdvancedACH(
+    bankAccount: <span class="hljs-keyword">new</span> Sparrow.BankAccount{ BankName = <span class="hljs-string">"First Test Bank"</span>, Routing = <span class="hljs-string">"110000000"</span>, Account = <span class="hljs-string">"1234567890123"</span>, AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal }, 
+    amount: <span class="hljs-number">9.99</span>m, 
+    contactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> });
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.TransId;    <span class="hljs-comment">// 11032419</span>
+result.XRef;    <span class="hljs-comment">// 3876731375</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// sale</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -3610,6 +4028,32 @@ token=I07IO05HGP0NXIQM
 
          </div>
       </div>
+      
+        <div class="method-example">
+           
+              <div class="code-csharp code-div active-code">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleECheck(
+    bankAccount: <span class="hljs-keyword">new</span> Sparrow.BankAccount{ BankName = <span class="hljs-string">"First Test Bank"</span>, Routing = <span class="hljs-string">"110000000"</span>, Account = <span class="hljs-string">"1234567890123"</span>, AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal }, 
+    amount: <span class="hljs-number">9.99</span>m, 
+    contactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span>, Company = <span class="hljs-string">"Sparrow One"</span>, Address = <span class="hljs-keyword">new</span> Sparrow.Address{ Address1 = <span class="hljs-string">"16100 N 71st Street"</span>, City = <span class="hljs-string">"Scottsdale"</span>, State = <span class="hljs-string">"AZ"</span>, Zip = <span class="hljs-string">"85254"</span>, Country = <span class="hljs-string">"US"</span> } });
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.TransId;    <span class="hljs-comment">// 11032421</span>
+result.XRef;    <span class="hljs-comment">// 3876731391</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// sale</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -3878,6 +4322,32 @@ token=I07IO05HGP0NXIQM
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-csharp code-div active-code">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AdvancedECheck(
+    bankAccount: <span class="hljs-keyword">new</span> Sparrow.BankAccount{ BankName = <span class="hljs-string">"First Test Bank"</span>, Routing = <span class="hljs-string">"110000000"</span>, Account = <span class="hljs-string">"1234567890123"</span>, AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal }, 
+    amount: <span class="hljs-number">9.99</span>m, 
+    contactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span>, Company = <span class="hljs-string">"Sparrow One"</span>, Address = <span class="hljs-keyword">new</span> Sparrow.Address{ Address1 = <span class="hljs-string">"16100 N 71st Street"</span>, City = <span class="hljs-string">"Scottsdale"</span>, State = <span class="hljs-string">"AZ"</span>, Zip = <span class="hljs-string">"85254"</span>, Country = <span class="hljs-string">"US"</span> } });
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.TransId;    <span class="hljs-comment">// 11032418</span>
+result.XRef;    <span class="hljs-comment">// 3876731357</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// sale</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -4004,6 +4474,25 @@ status=200
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.EWalletSimpleCredit(
+    ewallet: <span class="hljs-keyword">new</span> Sparrow.Ewallet{ EwalletAccount = <span class="hljs-string">"user@example.com"</span> }, 
+    amount: <span class="hljs-number">9.99</span>m);
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// Successful</span>
+result.TransId;    <span class="hljs-comment">// 11032427</span>
+result.XRef;    <span class="hljs-comment">// A2M3983N76ZKS</span>
+result.Type;    <span class="hljs-comment">// credit</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -4107,6 +4596,29 @@ cvvresponse=&amp;
 coderesponse=100&amp;
 codedescription=Transaction+was+Approved&amp;
 status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.FiservSimpleSale(
+    cardNum: <span class="hljs-string">"4111111111111111"</span>, 
+    cardExp: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    amount: <span class="hljs-number">9.99</span>m);
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.TransId;    <span class="hljs-comment">// 11032429</span>
+result.XRef;    <span class="hljs-comment">// 3876731632</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// sale</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
 </code></pre>
 
                  </div>
@@ -4399,6 +4911,28 @@ status=200
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AdvancedFiservSale(
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    amount: <span class="hljs-number">9.99</span>m);
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.TransId;    <span class="hljs-comment">// 11032428</span>
+result.XRef;    <span class="hljs-comment">// 3876731622</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// sale</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -4496,6 +5030,40 @@ status=200
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultSimpleSale = <span class="hljs-keyword">await</span> _sparrow.SimpleSale(
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    amount: <span class="hljs-number">9.99</span>m);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.MarkSuccessfulTransactionAsChargeback(
+    transId: resultSimpleSale.TransId, 
+    reason: <span class="hljs-string">"Testing for Success"</span>);
+</code></pre>
+<p>RESULT SimpleSale:</p>
+<pre class="language-csharp"><code class="language-csharp">resultSimpleSale.Status;    <span class="hljs-comment">// 200</span>
+resultSimpleSale.Response;    <span class="hljs-comment">// 1</span>
+resultSimpleSale.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+resultSimpleSale.TransId;    <span class="hljs-comment">// 11032423</span>
+resultSimpleSale.XRef;    <span class="hljs-comment">// 3876731424</span>
+resultSimpleSale.AuthCode;    <span class="hljs-comment">// 123456</span>
+resultSimpleSale.Type;    <span class="hljs-comment">// sale</span>
+resultSimpleSale.CodeResponse;    <span class="hljs-comment">// 100</span>
+resultSimpleSale.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// Testing for Success</span>
+result.TransId;    <span class="hljs-comment">// 11032423</span>
+result.XRef;    <span class="hljs-comment">// 3876731424</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// chargeback</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -4584,6 +5152,22 @@ textresponse=Operation+<span class="hljs-built_in">type</span>+is+not+supported+
 coderesponse=&amp;
 codedescription=&amp;
 status=500
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.RetrieveCardBalance(
+    cardNum: <span class="hljs-string">"4111111111111111"</span>);
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 500</span>
+result.Response;    <span class="hljs-comment">// 3</span>
+result.TextResponse;    <span class="hljs-comment">// Operation type is not supported by payment processor</span>
+result.Type;    <span class="hljs-comment">// balanceinquire</span>
 </code></pre>
 
                  </div>
@@ -4688,6 +5272,33 @@ https://secure.sparrowone.com/Payments/Services_api.aspx
 <p>Response:</p>
 <pre class="language-bash"><code class="language-bash">response=3&amp;
 textresponse=Internal+processing+error
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.DecryptCustomFields(
+    fieldName: <span class="hljs-string">"customField1"</span>, 
+    token: resultAddCustomer.CustomerToken);
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-csharp"><code class="language-csharp">resultAddCustomer.Response;    <span class="hljs-comment">// 1</span>
+resultAddCustomer.TextResponse;    <span class="hljs-comment">// Customer with token 'B9AOSCDWHD5UDQM0' successfully created</span>
+resultAddCustomer.Type;    <span class="hljs-comment">// addcustomer</span>
+resultAddCustomer.CustomerToken;    <span class="hljs-comment">// B9AOSCDWHD5UDQM0</span>
+resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// EUWP2KMWLGJB9AZ4</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 3</span>
+result.TextResponse;    <span class="hljs-comment">// Custom field 'customField1' not found.</span>
+result.CustomerToken;    <span class="hljs-comment">// B9AOSCDWHD5UDQM0</span>
+result.Token;    <span class="hljs-comment">// B9AOSCDWHD5UDQM0</span>
 </code></pre>
 
                  </div>
@@ -4817,6 +5428,28 @@ cvvresponse=M&amp;
 coderesponse=100&amp;
 codedescription=Transaction+was+Approved&amp;
 status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.VerifyAccount(
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    amount: <span class="hljs-number">9.99</span>m);
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.TransId;    <span class="hljs-comment">// 11032422</span>
+result.XRef;    <span class="hljs-comment">// 3876731403</span>
+result.AuthCode;    <span class="hljs-comment">// 123456</span>
+result.Type;    <span class="hljs-comment">// auth</span>
+result.CodeResponse;    <span class="hljs-comment">// 100</span>
+result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
 </code></pre>
 
                  </div>
@@ -5194,6 +5827,28 @@ paymenttoken_2=OZA3QU7CYG57D88R
          </div>
       </div>
       
+        <div class="method-example">
+           
+              <div class="code-csharp code-div active-code">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// Customer with token 'MDQE3APBQWNPLB0N' successfully created</span>
+result.Type;    <span class="hljs-comment">// addcustomer</span>
+result.CustomerToken;    <span class="hljs-comment">// MDQE3APBQWNPLB0N</span>
+result.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// L5UM9ALNJR2XWQH5</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
    </div>
 </section>           
 
@@ -5441,14 +6096,9 @@ supported payment type.</p>
 </tr>
 </tbody>
 </table>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 <p></p>
 <pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=John&amp;lastname=Doe&amp;paytype_1=ewallet&amp;ewallettype_1=paypal&amp;ewalletaccount_1=email@email.com
 </code></pre>
-<h1>=======</h1>
-<blockquote>
-<p>257f455c79a028660a25abad4f0520579f009789 $$language: curl$$</p>
-</blockquote>
 <p>Command Line:</p>
 <pre class="language-none"><code class="language-none">curl -d &quot;mkey=$ACH_M_KEY&amp;\
 transtype=addcustomer&amp;\
@@ -5466,8 +6116,6 @@ type=addcustomer&amp;
 customertoken=OZMGG9YB5DPF663X&amp;
 paymenttoken_1=WSJE7RYNRQPLJIRC
 </code></pre>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD &gt;&gt;&gt;&gt;&gt;&gt;&gt; 257f455c79a028660a25abad4f0520579f009789
-======= &gt;&gt;&gt;&gt;&gt;&gt;&gt; 257f455c79a028660a25abad4f0520579f009789</p>
 
          </div>
       </div>
@@ -5670,6 +6318,32 @@ customertoken=O3BEZTT2UHCS7USA
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.UpdateCustomer(
+    token: resultAddCustomer.CustomerToken);
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-csharp"><code class="language-csharp">resultAddCustomer.Response;    <span class="hljs-comment">// 1</span>
+resultAddCustomer.TextResponse;    <span class="hljs-comment">// Customer with token 'G7HJV1U70S1290OZ' successfully created</span>
+resultAddCustomer.Type;    <span class="hljs-comment">// addcustomer</span>
+resultAddCustomer.CustomerToken;    <span class="hljs-comment">// G7HJV1U70S1290OZ</span>
+resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// 2HXUOE6WDW6ZBER2</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// Customer with token 'G7HJV1U70S1290OZ' successfully updated</span>
+result.Type;    <span class="hljs-comment">// updatecustomer</span>
+result.CustomerToken;    <span class="hljs-comment">// G7HJV1U70S1290OZ</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -5726,6 +6400,34 @@ customertoken=O3BEZTT2UHCS7USA
               <div class="code-curl code-div active-code">
                  <div class="method-example-part">
                    No content for this section.
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AddPaymentTypesToCustomer(
+    token: resultAddCustomer.CustomerToken, 
+    paymentTypeToAdd: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentTypeToAdd{ PaymentType = <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, BankAccount = <span class="hljs-keyword">new</span> Sparrow.BankAccount{ BankName = <span class="hljs-string">"First Test Bank"</span>, Routing = <span class="hljs-string">"110000000"</span>, Account = <span class="hljs-string">"1234567890123"</span>, AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal }, Ewallet = <span class="hljs-keyword">new</span> Sparrow.Ewallet{ EwalletAccount = <span class="hljs-string">"user@example.com"</span> } } } });
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-csharp"><code class="language-csharp">resultAddCustomer.Response;    <span class="hljs-comment">// 1</span>
+resultAddCustomer.TextResponse;    <span class="hljs-comment">// Customer with token '645GRTD1SIXLJ5U5' successfully created</span>
+resultAddCustomer.Type;    <span class="hljs-comment">// addcustomer</span>
+resultAddCustomer.CustomerToken;    <span class="hljs-comment">// 645GRTD1SIXLJ5U5</span>
+resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// QEU8KSUON36XUWLI</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// Customer with token '645GRTD1SIXLJ5U5' successfully updated</span>
+result.Type;    <span class="hljs-comment">// updatecustomer</span>
+result.CustomerToken;    <span class="hljs-comment">// 645GRTD1SIXLJ5U5</span>
+result.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// 76XRTBDSCGBYBGAA</span>
+</code></pre>
+
                  </div>
               </div>
            
@@ -5790,6 +6492,34 @@ customertoken=O3BEZTT2UHCS7USA
               <div class="code-curl code-div active-code">
                  <div class="method-example-part">
                    No content for this section.
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.UpdatePaymentType(
+    token: resultAddCustomer.CustomerToken, 
+    paymentTypeToUpdate: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentTypeToUpdate{ Token = resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>], PaymentType = <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } } });
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-csharp"><code class="language-csharp">resultAddCustomer.Response;    <span class="hljs-comment">// 1</span>
+resultAddCustomer.TextResponse;    <span class="hljs-comment">// Customer with token '1UILWG9UZ3AQKMRL' successfully created</span>
+resultAddCustomer.Type;    <span class="hljs-comment">// addcustomer</span>
+resultAddCustomer.CustomerToken;    <span class="hljs-comment">// 1UILWG9UZ3AQKMRL</span>
+resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// DWLGPFIBBUG8555V</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// Customer with token '1UILWG9UZ3AQKMRL' successfully updated</span>
+result.Type;    <span class="hljs-comment">// updatecustomer</span>
+result.CustomerToken;    <span class="hljs-comment">// 1UILWG9UZ3AQKMRL</span>
+result.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// DWLGPFIBBUG8555V</span>
+</code></pre>
+
                  </div>
               </div>
            
@@ -5869,6 +6599,34 @@ paymenttoken_1=SXZ27VYHGBSMYDNH
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.DeletePaymentType(
+    token: resultAddCustomer.CustomerToken, 
+    paymentTypeToDelete: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentTypeToDelete{ Token = resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>] } });
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-csharp"><code class="language-csharp">resultAddCustomer.Response;    <span class="hljs-comment">// 1</span>
+resultAddCustomer.TextResponse;    <span class="hljs-comment">// Customer with token 'YKFAA8JWGNX0GLLV' successfully created</span>
+resultAddCustomer.Type;    <span class="hljs-comment">// addcustomer</span>
+resultAddCustomer.CustomerToken;    <span class="hljs-comment">// YKFAA8JWGNX0GLLV</span>
+resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// A7E9RB07JBCD0MYP</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// Customer with token 'YKFAA8JWGNX0GLLV' successfully updated</span>
+result.Type;    <span class="hljs-comment">// updatecustomer</span>
+result.CustomerToken;    <span class="hljs-comment">// YKFAA8JWGNX0GLLV</span>
+result.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// A7E9RB07JBCD0MYP</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -5928,6 +6686,31 @@ https://secure.sparrowone.com/Payments/Services_api.aspx
 <pre class="language-bash"><code class="language-bash">response=1&amp;
 textresponse=SUCCESS&amp;
 <span class="hljs-built_in">type</span>=deletecustomer
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.DeleteDataVaultCustomer(
+    token: resultAddCustomer.CustomerToken);
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-csharp"><code class="language-csharp">resultAddCustomer.Response;    <span class="hljs-comment">// 1</span>
+resultAddCustomer.TextResponse;    <span class="hljs-comment">// Customer with token 'BY7F1K0J4252GRGD' successfully created</span>
+resultAddCustomer.Type;    <span class="hljs-comment">// addcustomer</span>
+resultAddCustomer.CustomerToken;    <span class="hljs-comment">// BY7F1K0J4252GRGD</span>
+resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// UBY9KEP6DXUOUOFX</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.Type;    <span class="hljs-comment">// deletecustomer</span>
 </code></pre>
 
                  </div>
@@ -6245,6 +7028,33 @@ mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;transtype=getcustomer&amp;token=VGHBVE
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.RetrieveCustomer(
+    token: resultAddCustomer.CustomerToken);
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-csharp"><code class="language-csharp">resultAddCustomer.Response;    <span class="hljs-comment">// 1</span>
+resultAddCustomer.TextResponse;    <span class="hljs-comment">// Customer with token 'XIE6MFCW2C26RYZ1' successfully created</span>
+resultAddCustomer.Type;    <span class="hljs-comment">// addcustomer</span>
+resultAddCustomer.CustomerToken;    <span class="hljs-comment">// XIE6MFCW2C26RYZ1</span>
+resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// M9NWKGFXTI195F54</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// Processed</span>
+result.CustomerToken;    <span class="hljs-comment">// XIE6MFCW2C26RYZ1</span>
+result.FirstName;    <span class="hljs-comment">// John</span>
+result.LastName;    <span class="hljs-comment">// Doe</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -6423,6 +7233,38 @@ mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;transtype=getcustomer&amp;token=VGHBVE
               <div class="code-curl code-div active-code">
                  <div class="method-example-part">
                    No content for this section.
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.RetrievePaymentType(
+    token: resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>]);
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-csharp"><code class="language-csharp">resultAddCustomer.Response;    <span class="hljs-comment">// 1</span>
+resultAddCustomer.TextResponse;    <span class="hljs-comment">// Customer with token 'YHD8GOI55SHOJ4PU' successfully created</span>
+resultAddCustomer.Type;    <span class="hljs-comment">// addcustomer</span>
+resultAddCustomer.CustomerToken;    <span class="hljs-comment">// YHD8GOI55SHOJ4PU</span>
+resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// LK118CERCRMEND0W</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// Processed</span>
+result.CustomerToken;    <span class="hljs-comment">// YHD8GOI55SHOJ4PU</span>
+result.FirstName;    <span class="hljs-comment">// John</span>
+result.LastName;    <span class="hljs-comment">// Doe</span>
+result.PayType;    <span class="hljs-comment">// CreditCard</span>
+result.PayNo;    <span class="hljs-comment">// 1</span>
+result.CardExp;    <span class="hljs-comment">// 1019</span>
+result.Account;    <span class="hljs-comment">// 411111******1111</span>
+result.Token;    <span class="hljs-comment">// LK118CERCRMEND0W</span>
+</code></pre>
+
                  </div>
               </div>
            
@@ -6990,6 +7832,25 @@ plantoken=76Y5QQT2LV54J5SE
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.CreatePaymentPlan(
+    planName: <span class="hljs-string">"PaymentPlan1"</span>, 
+    planDesc: <span class="hljs-string">"1st Payment Plan"</span>, 
+    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    sequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStep{ Sequence = <span class="hljs-number">1</span>, Amount = <span class="hljs-number">9.99</span>m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = <span class="hljs-number">5</span>, Duration = <span class="hljs-number">12</span> } });
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.Type;    <span class="hljs-comment">// addplan</span>
+result.PlanToken;    <span class="hljs-comment">// C17KAJUGB2SWV0OW</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -7155,6 +8016,33 @@ textresponse=SUCCESS&amp;
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreatePaymentPlan = <span class="hljs-keyword">await</span> _sparrow.CreatePaymentPlan(
+    planName: <span class="hljs-string">"PaymentPlan1"</span>, 
+    planDesc: <span class="hljs-string">"1st Payment Plan"</span>, 
+    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    sequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStep{ Sequence = <span class="hljs-number">1</span>, Amount = <span class="hljs-number">10.00</span>m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = <span class="hljs-number">5</span>, Duration = <span class="hljs-number">12</span> } });
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.UpdatePaymentPlan(
+    token: resultCreatePaymentPlan.PlanToken, 
+    sequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStep{ Sequence = <span class="hljs-number">1</span>, Amount = <span class="hljs-number">20.00</span>m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = <span class="hljs-number">5</span>, Duration = <span class="hljs-number">12</span>, OperationType = Sparrow.OperationType.Updatesequence } });
+</code></pre>
+<p>RESULT CreatePaymentPlan:</p>
+<pre class="language-csharp"><code class="language-csharp">resultCreatePaymentPlan.Response;    <span class="hljs-comment">// 1</span>
+resultCreatePaymentPlan.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+resultCreatePaymentPlan.Type;    <span class="hljs-comment">// addplan</span>
+resultCreatePaymentPlan.PlanToken;    <span class="hljs-comment">// 0GHHZ4TB1FAUVVCN</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.Type;    <span class="hljs-comment">// updateplan</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -7266,10 +8154,16 @@ customer will be charged and when</p>
 </tr>
 </tbody>
 </table>
-<p></p>
-<p>$$language: curl$$</p>
-<p>Command Line:</p>
-<pre class="language-none"><code class="language-none">curl -d &quot;amount_#=1.99;2.99&amp;\
+
+         </div>
+      </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"amount_#=1.99;2.99&amp;\
 scheduletype_#=monthly;custom&amp;\
 duration=-1;-1&amp;\
 productid_#=123;321&amp;\
@@ -7280,16 +8174,18 @@ defaultewalletmkey=T6YQTCA3RK3IEW8R14ITSJBI&amp;\
 retrycount=2&amp;\
 retrytype=daily&amp;\
 retryperiod=2&amp;\
-autocreateclientaccounts=true&quot; \
+autocreateclientaccounts=true"</span> \
 https://secure.sparrowone.com/Payments/Services_api.aspx
 </code></pre>
 <p>Response:</p>
-<pre class="language-none"><code class="language-none">response=3&amp;
+<pre class="language-bash"><code class="language-bash">response=3&amp;
 textresponse=Required+payment+field+transtype+is+missing
 </code></pre>
 
-         </div>
-      </div>
+                 </div>
+              </div>
+           
+        </div>
       
    </div>
 </section>           
@@ -7664,6 +8560,33 @@ errorcode=&amp;
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreatePaymentPlan = <span class="hljs-keyword">await</span> _sparrow.CreatePaymentPlan(
+    planName: <span class="hljs-string">"PaymentPlan1"</span>, 
+    planDesc: <span class="hljs-string">"1st Payment Plan"</span>, 
+    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    sequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStep{ Sequence = <span class="hljs-number">1</span>, Amount = <span class="hljs-number">9.99</span>m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = <span class="hljs-number">5</span>, Duration = <span class="hljs-number">12</span> } });
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.DeleteSequence(
+    deleteSequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStepToDelete{ Sequence = <span class="hljs-number">1</span> } }, 
+    token: resultCreatePaymentPlan.PlanToken);
+</code></pre>
+<p>RESULT CreatePaymentPlan:</p>
+<pre class="language-csharp"><code class="language-csharp">resultCreatePaymentPlan.Response;    <span class="hljs-comment">// 1</span>
+resultCreatePaymentPlan.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+resultCreatePaymentPlan.Type;    <span class="hljs-comment">// addplan</span>
+resultCreatePaymentPlan.PlanToken;    <span class="hljs-comment">// X16TGWE4V6Z5X90W</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.Type;    <span class="hljs-comment">// updateplan</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -7730,6 +8653,32 @@ https://secure.sparrowone.com/Payments/Services_api.aspx
 <pre class="language-bash"><code class="language-bash">response=1&amp;
 textresponse=SUCCESS&amp;
 <span class="hljs-built_in">type</span>=deleteplan
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreatePaymentPlan = <span class="hljs-keyword">await</span> _sparrow.CreatePaymentPlan(
+    planName: <span class="hljs-string">"PaymentPlan1"</span>, 
+    planDesc: <span class="hljs-string">"1st Payment Plan"</span>, 
+    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    sequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStep{ Sequence = <span class="hljs-number">1</span>, Amount = <span class="hljs-number">9.99</span>m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = <span class="hljs-number">5</span>, Duration = <span class="hljs-number">12</span> } });
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.DeletePlan(
+    token: resultCreatePaymentPlan.PlanToken);
+</code></pre>
+<p>RESULT CreatePaymentPlan:</p>
+<pre class="language-csharp"><code class="language-csharp">resultCreatePaymentPlan.Response;    <span class="hljs-comment">// 1</span>
+resultCreatePaymentPlan.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+resultCreatePaymentPlan.Type;    <span class="hljs-comment">// addplan</span>
+resultCreatePaymentPlan.PlanToken;    <span class="hljs-comment">// DRJWXFITUP47M13F</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+result.Type;    <span class="hljs-comment">// deleteplan</span>
 </code></pre>
 
                  </div>
@@ -7891,6 +8840,45 @@ assignmenttoken=JCXG572GBX20NFDF
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
+<span class="hljs-keyword">var</span> resultCreatePaymentPlan = <span class="hljs-keyword">await</span> _sparrow.CreatePaymentPlan(
+    planName: <span class="hljs-string">"PaymentPlan1"</span>, 
+    planDesc: <span class="hljs-string">"1st Payment Plan"</span>, 
+    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    sequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStep{ Sequence = <span class="hljs-number">1</span>, Amount = <span class="hljs-number">9.99</span>m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = <span class="hljs-number">5</span>, Duration = <span class="hljs-number">12</span> } });
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AssignPaymentPlanToCustomer(
+    customerToken: resultAddCustomer.CustomerToken, 
+    planToken: resultCreatePaymentPlan.PlanToken, 
+    paymentToken: resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>]);
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-csharp"><code class="language-csharp">resultAddCustomer.Response;    <span class="hljs-comment">// 1</span>
+resultAddCustomer.TextResponse;    <span class="hljs-comment">// Customer with token '7P8FPQCQYSSYEFCL' successfully created</span>
+resultAddCustomer.Type;    <span class="hljs-comment">// addcustomer</span>
+resultAddCustomer.CustomerToken;    <span class="hljs-comment">// 7P8FPQCQYSSYEFCL</span>
+resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// DTLYC9IM2C4MH1PA</span>
+</code></pre>
+<p>RESULT CreatePaymentPlan:</p>
+<pre class="language-csharp"><code class="language-csharp">resultCreatePaymentPlan.Response;    <span class="hljs-comment">// 1</span>
+resultCreatePaymentPlan.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+resultCreatePaymentPlan.Type;    <span class="hljs-comment">// addplan</span>
+resultCreatePaymentPlan.PlanToken;    <span class="hljs-comment">// 7OOKMD2ATZ8MKX8V</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// Success</span>
+result.Type;    <span class="hljs-comment">// assignplan</span>
+result.AssignmentToken;    <span class="hljs-comment">// OSS6DU853EXQSWID</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -8035,6 +9023,54 @@ assignmenttoken=4STIQWYX5NM9ZDKJ
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
+<span class="hljs-keyword">var</span> resultCreatePaymentPlan = <span class="hljs-keyword">await</span> _sparrow.CreatePaymentPlan(
+    planName: <span class="hljs-string">"PaymentPlan1"</span>, 
+    planDesc: <span class="hljs-string">"1st Payment Plan"</span>, 
+    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    sequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStep{ Sequence = <span class="hljs-number">1</span>, Amount = <span class="hljs-number">9.99</span>m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = <span class="hljs-number">5</span>, Duration = <span class="hljs-number">12</span> } });
+<span class="hljs-keyword">var</span> resultAssignPaymentPlanToCustomer = <span class="hljs-keyword">await</span> _sparrow.AssignPaymentPlanToCustomer(
+    customerToken: resultAddCustomer.CustomerToken, 
+    planToken: resultCreatePaymentPlan.PlanToken, 
+    paymentToken: resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>]);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.UpdatePaymentPlanAssignment(
+    assignmentToken: resultAssignPaymentPlanToCustomer.AssignmentToken, 
+    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>));
+</code></pre>
+<p>RESULT AssignPaymentPlanToCustomer:</p>
+<pre class="language-csharp"><code class="language-csharp">resultAssignPaymentPlanToCustomer.Response;    <span class="hljs-comment">// 1</span>
+resultAssignPaymentPlanToCustomer.TextResponse;    <span class="hljs-comment">// Success</span>
+resultAssignPaymentPlanToCustomer.Type;    <span class="hljs-comment">// assignplan</span>
+resultAssignPaymentPlanToCustomer.AssignmentToken;    <span class="hljs-comment">// KB5UMCK91864GH2W</span>
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-csharp"><code class="language-csharp">resultAddCustomer.Response;    <span class="hljs-comment">// 1</span>
+resultAddCustomer.TextResponse;    <span class="hljs-comment">// Customer with token 'CPEEHDA9OGDMOPBL' successfully created</span>
+resultAddCustomer.Type;    <span class="hljs-comment">// addcustomer</span>
+resultAddCustomer.CustomerToken;    <span class="hljs-comment">// CPEEHDA9OGDMOPBL</span>
+resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// ONAUCBX8EXRO6A55</span>
+</code></pre>
+<p>RESULT CreatePaymentPlan:</p>
+<pre class="language-csharp"><code class="language-csharp">resultCreatePaymentPlan.Response;    <span class="hljs-comment">// 1</span>
+resultCreatePaymentPlan.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+resultCreatePaymentPlan.Type;    <span class="hljs-comment">// addplan</span>
+resultCreatePaymentPlan.PlanToken;    <span class="hljs-comment">// 4170HM56ZU0RGVJD</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// Success</span>
+result.Type;    <span class="hljs-comment">// updateassignment</span>
+result.AssignmentToken;    <span class="hljs-comment">// KB5UMCK91864GH2W</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -8097,6 +9133,52 @@ https://secure.sparrowone.com/Payments/Services_api.aspx
 <pre class="language-bash"><code class="language-bash">response=1&amp;
 textresponse=Success&amp;
 <span class="hljs-built_in">type</span>=cancelassignment
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
+<span class="hljs-keyword">var</span> resultCreatePaymentPlan = <span class="hljs-keyword">await</span> _sparrow.CreatePaymentPlan(
+    planName: <span class="hljs-string">"PaymentPlan1"</span>, 
+    planDesc: <span class="hljs-string">"1st Payment Plan"</span>, 
+    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    sequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStep{ Sequence = <span class="hljs-number">1</span>, Amount = <span class="hljs-number">9.99</span>m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = <span class="hljs-number">5</span>, Duration = <span class="hljs-number">12</span> } });
+<span class="hljs-keyword">var</span> resultAssignPaymentPlanToCustomer = <span class="hljs-keyword">await</span> _sparrow.AssignPaymentPlanToCustomer(
+    customerToken: resultAddCustomer.CustomerToken, 
+    planToken: resultCreatePaymentPlan.PlanToken, 
+    paymentToken: resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>]);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.CancelPlanAssignment(
+    assignmentToken: resultAssignPaymentPlanToCustomer.AssignmentToken);
+</code></pre>
+<p>RESULT AssignPaymentPlanToCustomer:</p>
+<pre class="language-csharp"><code class="language-csharp">resultAssignPaymentPlanToCustomer.Response;    <span class="hljs-comment">// 1</span>
+resultAssignPaymentPlanToCustomer.TextResponse;    <span class="hljs-comment">// Success</span>
+resultAssignPaymentPlanToCustomer.Type;    <span class="hljs-comment">// assignplan</span>
+resultAssignPaymentPlanToCustomer.AssignmentToken;    <span class="hljs-comment">// IY3TGPWQVYX89QHS</span>
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-csharp"><code class="language-csharp">resultAddCustomer.Response;    <span class="hljs-comment">// 1</span>
+resultAddCustomer.TextResponse;    <span class="hljs-comment">// Customer with token 'IP3KIQ30XODM2BWH' successfully created</span>
+resultAddCustomer.Type;    <span class="hljs-comment">// addcustomer</span>
+resultAddCustomer.CustomerToken;    <span class="hljs-comment">// IP3KIQ30XODM2BWH</span>
+resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// OAXYBBOB2W5DLALY</span>
+</code></pre>
+<p>RESULT CreatePaymentPlan:</p>
+<pre class="language-csharp"><code class="language-csharp">resultCreatePaymentPlan.Response;    <span class="hljs-comment">// 1</span>
+resultCreatePaymentPlan.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
+resultCreatePaymentPlan.Type;    <span class="hljs-comment">// addplan</span>
+resultCreatePaymentPlan.PlanToken;    <span class="hljs-comment">// PRUDES37GWNMVZI6</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// Success</span>
+result.Type;    <span class="hljs-comment">// cancelassignment</span>
 </code></pre>
 
                  </div>
@@ -8246,6 +9328,23 @@ invoicenumber=Inv-39031
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.CreateInvoice(
+    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    currency: <span class="hljs-string">"USD"</span>, 
+    invoiceStatus: Sparrow.InvoiceStatus.Active, 
+    invoiceAmount: <span class="hljs-number">10.00</span>m);
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.TextResponse;    <span class="hljs-comment">// invoice has been successfully created</span>
+result.InvoiceNumber;    <span class="hljs-comment">// Inv-39706</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -8367,6 +9466,30 @@ https://secure.sparrowone.com/Payments/Services_api.aspx
 <p>Response:</p>
 <pre class="language-bash"><code class="language-bash">textresponse=Invoice+has+been+successfully+updated&amp;
 invoicenumber=Inv-39031
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreateInvoice = <span class="hljs-keyword">await</span> _sparrow.CreateInvoice(
+    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    currency: <span class="hljs-string">"USD"</span>, 
+    invoiceStatus: Sparrow.InvoiceStatus.Draft, 
+    invoiceAmount: <span class="hljs-number">10.00</span>m);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.UpdateInvoice(
+    invoiceNumber: resultCreateInvoice.InvoiceNumber, 
+    invoiceStatus: Sparrow.InvoiceStatus.Active);
+</code></pre>
+<p>RESULT CreateInvoice:</p>
+<pre class="language-csharp"><code class="language-csharp">resultCreateInvoice.TextResponse;    <span class="hljs-comment">// invoice has been successfully created</span>
+resultCreateInvoice.InvoiceNumber;    <span class="hljs-comment">// Inv-39710</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.TextResponse;    <span class="hljs-comment">// Invoice has been successfully updated</span>
+result.InvoiceNumber;    <span class="hljs-comment">// Inv-39710</span>
 </code></pre>
 
                  </div>
@@ -8536,6 +9659,34 @@ customertoken=3F4JAWXXFDYSJ1JX
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreateInvoice = <span class="hljs-keyword">await</span> _sparrow.CreateInvoice(
+    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    currency: <span class="hljs-string">"USD"</span>, 
+    invoiceStatus: Sparrow.InvoiceStatus.Active, 
+    invoiceAmount: <span class="hljs-number">10.00</span>m);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.RetrieveInvoice(
+    invoiceNumber: resultCreateInvoice.InvoiceNumber);
+</code></pre>
+<p>RESULT CreateInvoice:</p>
+<pre class="language-csharp"><code class="language-csharp">resultCreateInvoice.TextResponse;    <span class="hljs-comment">// invoice has been successfully created</span>
+resultCreateInvoice.InvoiceNumber;    <span class="hljs-comment">// Inv-39707</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.TextResponse;    <span class="hljs-comment">// Success</span>
+result.InvoiceNumber;    <span class="hljs-comment">// Inv-39707</span>
+result.InvoiceAmount;    <span class="hljs-comment">// 10.0000</span>
+result.Currency;    <span class="hljs-comment">// USD</span>
+result.InvoiceDate;    <span class="hljs-comment">// 10/21/2019</span>
+result.InvoiceStatus;    <span class="hljs-comment">// Active</span>
+result.InvoicePaymentLink;    <span class="hljs-comment">// https://secure.sparrowone.com/Payments/Payment.aspx?token=D5A731D92F086B1C</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -8609,6 +9760,30 @@ invoicenumber=Inv-39028
                  </div>
               </div>
            
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreateInvoice = <span class="hljs-keyword">await</span> _sparrow.CreateInvoice(
+    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    currency: <span class="hljs-string">"USD"</span>, 
+    invoiceStatus: Sparrow.InvoiceStatus.Active, 
+    invoiceAmount: <span class="hljs-number">10.00</span>m);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.CancelInvoice(
+    invoiceNumber: resultCreateInvoice.InvoiceNumber, 
+    invoiceStatusReason: <span class="hljs-string">"Testing"</span>);
+</code></pre>
+<p>RESULT CreateInvoice:</p>
+<pre class="language-csharp"><code class="language-csharp">resultCreateInvoice.TextResponse;    <span class="hljs-comment">// invoice has been successfully created</span>
+resultCreateInvoice.InvoiceNumber;    <span class="hljs-comment">// Inv-39705</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.TextResponse;    <span class="hljs-comment">// invoice has been successfully canceled</span>
+result.InvoiceNumber;    <span class="hljs-comment">// Inv-39705</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -8677,6 +9852,30 @@ https://secure.sparrowone.com/Payments/Services_api.aspx
 <p>Response:</p>
 <pre class="language-bash"><code class="language-bash">textresponse=invoice+has+been+successfully+canceled&amp;
 invoicenumber=Inv-39026
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreateInvoice = <span class="hljs-keyword">await</span> _sparrow.CreateInvoice(
+    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    currency: <span class="hljs-string">"USD"</span>, 
+    invoiceStatus: Sparrow.InvoiceStatus.Active, 
+    invoiceAmount: <span class="hljs-number">10.00</span>m);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.CancelInvoiceByCustomer(
+    invoiceNumber: resultCreateInvoice.InvoiceNumber, 
+    invoiceStatusReason: <span class="hljs-string">"Testing"</span>);
+</code></pre>
+<p>RESULT CreateInvoice:</p>
+<pre class="language-csharp"><code class="language-csharp">resultCreateInvoice.TextResponse;    <span class="hljs-comment">// invoice has been successfully created</span>
+resultCreateInvoice.InvoiceNumber;    <span class="hljs-comment">// Inv-39704</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.TextResponse;    <span class="hljs-comment">// invoice has been successfully canceled</span>
+result.InvoiceNumber;    <span class="hljs-comment">// Inv-39704</span>
 </code></pre>
 
                  </div>
@@ -8896,6 +10095,31 @@ https://secure.sparrowone.com/Payments/Services_api.aspx
 <pre class="language-bash"><code class="language-bash">textresponse=Invoice+has+been+successfully+paid&amp;
 transid=10750812&amp;
 invoicenumber=Inv-39025
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreateInvoice = <span class="hljs-keyword">await</span> _sparrow.CreateInvoice(
+    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    currency: <span class="hljs-string">"USD"</span>, 
+    invoiceStatus: Sparrow.InvoiceStatus.Active, 
+    invoiceAmount: <span class="hljs-number">10.00</span>m);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.PayInvoiceWithCreditCard(
+    invoiceNumber: resultCreateInvoice.InvoiceNumber, 
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) });
+</code></pre>
+<p>RESULT CreateInvoice:</p>
+<pre class="language-csharp"><code class="language-csharp">resultCreateInvoice.TextResponse;    <span class="hljs-comment">// invoice has been successfully created</span>
+resultCreateInvoice.InvoiceNumber;    <span class="hljs-comment">// Inv-39709</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.TextResponse;    <span class="hljs-comment">// Invoice has been successfully paid</span>
+result.TransId;    <span class="hljs-comment">// 11032431</span>
+result.InvoiceNumber;    <span class="hljs-comment">// Inv-39709</span>
 </code></pre>
 
                  </div>
@@ -9127,6 +10351,32 @@ https://secure.sparrowone.com/Payments/Services_api.aspx
 <pre class="language-bash"><code class="language-bash">textresponse=Invoice+has+been+successfully+paid&amp;
 transid=10750925&amp;
 invoicenumber=Inv-39040
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreateInvoice = <span class="hljs-keyword">await</span> _sparrow.CreateInvoice(
+    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    currency: <span class="hljs-string">"USD"</span>, 
+    invoiceStatus: Sparrow.InvoiceStatus.Active, 
+    invoiceAmount: <span class="hljs-number">10.00</span>m);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.PayInvoiceWithBankAccount(
+    invoiceNumber: resultCreateInvoice.InvoiceNumber, 
+    bankAccount: <span class="hljs-keyword">new</span> Sparrow.BankAccount{ BankName = <span class="hljs-string">"First Test Bank"</span>, Routing = <span class="hljs-string">"110000000"</span>, Account = <span class="hljs-string">"1234567890123"</span>, AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal }, 
+    contactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> });
+</code></pre>
+<p>RESULT CreateInvoice:</p>
+<pre class="language-csharp"><code class="language-csharp">resultCreateInvoice.TextResponse;    <span class="hljs-comment">// invoice has been successfully created</span>
+resultCreateInvoice.InvoiceNumber;    <span class="hljs-comment">// Inv-39708</span>
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.TextResponse;    <span class="hljs-comment">// Invoice has been successfully paid</span>
+result.TransId;    <span class="hljs-comment">// 11032430</span>
+result.InvoiceNumber;    <span class="hljs-comment">// Inv-39708</span>
 </code></pre>
 
                  </div>
@@ -9811,22 +11061,57 @@ ante. Nullam facilisis placerat ligula non pulvinar.</p>
                  </div>
               </div>
            
-              <div class="code-c code-div ">
+              <div class="code-c# code-div ">
                  <div class="method-example-part">
-                   <pre class="language-csharp"><code class="language-csharp">Console.WriteLine(<span class="hljs-string">"This line will appear in the console window"</span>);
+                   <p>The following is an example of a simple usage of the Sparrow Sdk.</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">using</span> System.Threading.Tasks;
+<span class="hljs-keyword">using</span> SparrowSdk;
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">SampleClient</span>
+{
+    <span class="hljs-keyword">class</span> <span class="hljs-title">Sample</span>
+    {
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Sparrow _sparrow = <span class="hljs-keyword">new</span> Sparrow(<span class="hljs-string">"SPARROW_API_KEY"</span>);
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">async</span> Task <span class="hljs-title">CreateSparrowSale</span>(<span class="hljs-params"></span>)
+        </span>{
+            <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleSale(<span class="hljs-string">"4111111111111111"</span>, <span class="hljs-string">"01/18"</span>, <span class="hljs-number">9.97</span>m, <span class="hljs-string">"123"</span>);
+
+            <span class="hljs-keyword">if</span> (result.IsSuccess)
+            {
+                <span class="hljs-keyword">var</span> transactionId = result.TransId;
+
+                <span class="hljs-comment">// Do something ...</span>
+            }
+            <span class="hljs-keyword">else</span>
+            {
+                <span class="hljs-keyword">var</span> textResponse = result.TextResponse;
+
+                <span class="hljs-comment">// Handle the Failure ...</span>
+            }
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">async</span> Task <span class="hljs-title">CreateSparrowSale_WithNamedArguments</span>(<span class="hljs-params"></span>)
+        </span>{
+            <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleSale(cardNum: <span class="hljs-string">"4111111111111111"</span>, cardExp: <span class="hljs-string">"01/18"</span>, amount: <span class="hljs-number">9.97</span>m, cvv: <span class="hljs-string">"123"</span>);
+
+            <span class="hljs-keyword">if</span> (result.IsSuccess)
+            {
+                <span class="hljs-keyword">var</span> transactionId = result.TransId;
+
+                <span class="hljs-comment">// Do something ...</span>
+            }
+            <span class="hljs-keyword">else</span>
+            {
+                <span class="hljs-keyword">var</span> textResponse = result.TextResponse;
+
+                <span class="hljs-comment">// Handle the Failure ...</span>
+            }
+        }
+
+    }
+}
 </code></pre>
-<p>You can also set a per-request key like in the example below. This is often
-useful for Connect applications that use multiple API keys during the lifetime
-of a process.</p>
-<p>Authentication is transparently handled for you in subsequent method calls on
-the returned object.</p>
-<pre class="language-csharp"><code class="language-csharp">System.Diagnostics.Process.Start(
-<span class="hljs-string">"C:\\Program Files\\Internet Explorer\\IExplore.exe"</span>,
-<span class="hljs-string">"www.microsoft.com"</span>);
-</code></pre>
-<p>A sample test API key is included in all the examples on this page, so you can
-test any example right away. To test requests using your account, replace the
-sample API key with your actual API key.</p>
 
                  </div>
               </div>
