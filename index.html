@@ -1029,39 +1029,30 @@ $res = $c-&gt;simpleSale(<span class="hljs-number">9.95</span>, $ci);
            
               <div class="code-ruby code-div ">
                  <div class="method-example-part">
-                   <p>Sample request:</p>
-<pre class="language-ruby"><code class="language-ruby">c = Connection.new(<span class="hljs-symbol">mkey:</span> <span class="hljs-string">"&lt;Your machine key&gt;"</span>)
-ci = CardInfo.new({
-  <span class="hljs-symbol">:number=&gt;<span class="hljs-string">'4111111111111111'</span></span>,
-  <span class="hljs-symbol">:expiration=&gt;DateTime</span>.new(<span class="hljs-number">2010</span>, <span class="hljs-number">10</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>),
-  <span class="hljs-symbol">:cvv=&gt;<span class="hljs-string">'999'</span></span>,
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.sale({
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
+  <span class="hljs-symbol">cardnum:</span> <span class="hljs-string">'4111111111111111'</span>,
+  <span class="hljs-symbol">cardexp:</span> <span class="hljs-string">'1010'</span>,
+  <span class="hljs-symbol">cvv:</span> <span class="hljs-string">'999'</span>,
 })
-res = c.simple_sale(<span class="hljs-number">9.95</span>, ci)
-assert_equal <span class="hljs-number">1</span>, res[<span class="hljs-symbol">:response</span>]
-assert res[<span class="hljs-symbol">:transid</span>].is_a? String
-assert_equal <span class="hljs-string">'sale'</span>, res[<span class="hljs-symbol">:type</span>]
 
-puts res[<span class="hljs-symbol">:response</span>] /<span class="hljs-regexp">/ 1
-puts res[:transid]  /</span><span class="hljs-regexp">/ 12345
-puts res[:type]     /</span><span class="hljs-regexp">/ sale
-</span></code></pre>
-<p></p>
-<p>Sample API response:</p>
-<p></p>
-<pre class="language-ruby"><code class="language-ruby">{
- <span class="hljs-symbol">:response=&gt;</span><span class="hljs-number">1</span>,
- <span class="hljs-symbol">:textresponse=&gt;<span class="hljs-string">"SUCCESS"</span></span>,
- <span class="hljs-symbol">:transid=&gt;<span class="hljs-string">"10583912"</span></span>,
- <span class="hljs-symbol">:xref=&gt;<span class="hljs-string">"3793946346"</span></span>,
- <span class="hljs-symbol">:authcode=&gt;<span class="hljs-string">"123456"</span></span>,
- <span class="hljs-symbol">:orderid=&gt;<span class="hljs-string">""</span></span>,
- <span class="hljs-symbol">:type=&gt;<span class="hljs-string">"sale"</span></span>,
- <span class="hljs-symbol">:avsresponse=&gt;<span class="hljs-string">""</span></span>,
- <span class="hljs-symbol">:cvvresponse=&gt;<span class="hljs-string">"M"</span></span>,
- <span class="hljs-symbol">:coderesponse=&gt;<span class="hljs-string">"100"</span></span>,
- <span class="hljs-symbol">:codedescription=&gt;<span class="hljs-string">"Transaction was Approved"</span></span>,
- <span class="hljs-symbol">:status=&gt;<span class="hljs-string">"200"</span></span>
-}
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
+result.transid <span class="hljs-comment"># =&gt; '11037941'</span>
+result.xref <span class="hljs-comment"># =&gt; '3877926163'</span>
+result.authcode <span class="hljs-comment"># =&gt; '123456'</span>
+result.type <span class="hljs-comment"># =&gt; 'sale'</span>
+result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
+result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
+result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
 </code></pre>
 
                  </div>
@@ -1497,6 +1488,57 @@ result.CodeDescription;    <span class="hljs-comment">// Transaction was Approve
                  </div>
               </div>
            
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.sale({
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'57.85'</span>,
+  <span class="hljs-symbol">cardnum:</span> <span class="hljs-string">'4111111111111111'</span>,
+  <span class="hljs-symbol">cardexp:</span> <span class="hljs-string">'1010'</span>,
+  <span class="hljs-symbol">cvv:</span> <span class="hljs-string">'999'</span>,
+  <span class="hljs-symbol">skunumber_1:</span> <span class="hljs-string">'5558779'</span>,
+  <span class="hljs-symbol">description_1:</span> <span class="hljs-string">'menssweaterblue'</span>,
+  <span class="hljs-symbol">amount_1:</span> <span class="hljs-string">'50.00'</span>,
+  <span class="hljs-symbol">quantity_1:</span> <span class="hljs-string">'1'</span>,
+  <span class="hljs-symbol">tax:</span> <span class="hljs-string">'2.85'</span>,
+  <span class="hljs-symbol">shipamount:</span> <span class="hljs-string">'5.00'</span>,
+  <span class="hljs-symbol">firstname:</span> <span class="hljs-string">'John'</span>,
+  <span class="hljs-symbol">lastname:</span> <span class="hljs-string">'Smith'</span>,
+  <span class="hljs-symbol">address1:</span> <span class="hljs-string">'888 test address'</span>,
+  <span class="hljs-symbol">city:</span> <span class="hljs-string">'Los Angeles'</span>,
+  <span class="hljs-symbol">country:</span> <span class="hljs-string">'US'</span>,
+  <span class="hljs-symbol">state:</span> <span class="hljs-string">'CA'</span>,
+  <span class="hljs-symbol">phone:</span> <span class="hljs-string">'222-444-2938'</span>,
+  <span class="hljs-symbol">shipfirstname:</span> <span class="hljs-string">'John'</span>,
+  <span class="hljs-symbol">shiplastname:</span> <span class="hljs-string">'Smith'</span>,
+  <span class="hljs-symbol">shipaddress1:</span> <span class="hljs-string">'888 test address'</span>,
+  <span class="hljs-symbol">shipcity:</span> <span class="hljs-string">'Los Angeles'</span>,
+  <span class="hljs-symbol">shipstate:</span> <span class="hljs-string">'CA'</span>,
+  <span class="hljs-symbol">shipphone:</span> <span class="hljs-string">'2224442938'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
+result.transid <span class="hljs-comment"># =&gt; '11037942'</span>
+result.xref <span class="hljs-comment"># =&gt; '3877926187'</span>
+result.authcode <span class="hljs-comment"># =&gt; '123456'</span>
+result.type <span class="hljs-comment"># =&gt; 'sale'</span>
+result.avsresponse <span class="hljs-comment"># =&gt; 'A'</span>
+result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
+result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
+result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -1654,6 +1696,37 @@ result.CodeDescription;    <span class="hljs-comment">// Transaction was Approve
                  </div>
               </div>
            
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.auth({
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
+  <span class="hljs-symbol">cardnum:</span> <span class="hljs-string">'4111111111111111'</span>,
+  <span class="hljs-symbol">cardexp:</span> <span class="hljs-string">'1010'</span>,
+  <span class="hljs-symbol">cvv:</span> <span class="hljs-string">'999'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
+result.transid <span class="hljs-comment"># =&gt; '11037943'</span>
+result.xref <span class="hljs-comment"># =&gt; '3877926217'</span>
+result.authcode <span class="hljs-comment"># =&gt; '123456'</span>
+result.type <span class="hljs-comment"># =&gt; 'auth'</span>
+result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
+result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
+result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -1799,6 +1872,35 @@ result.AuthCode;    <span class="hljs-comment">// 123456</span>
 result.Type;    <span class="hljs-comment">// capture</span>
 result.CodeResponse;    <span class="hljs-comment">// 100</span>
 result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.capture({
+  <span class="hljs-symbol">transid:</span> <span class="hljs-string">'10934003'</span>,
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.25'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
+result.transid <span class="hljs-comment"># =&gt; '10934003'</span>
+result.xref <span class="hljs-comment"># =&gt; '3865034963'</span>
+result.authcode <span class="hljs-comment"># =&gt; '123456'</span>
+result.type <span class="hljs-comment"># =&gt; 'capture'</span>
+result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
+result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
+result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
 </code></pre>
 
                  </div>
@@ -2144,6 +2246,37 @@ result.CodeDescription;    <span class="hljs-comment">// Transaction was Approve
                  </div>
               </div>
            
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.capture({
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
+  <span class="hljs-symbol">transid:</span> <span class="hljs-string">'123456'</span>,
+  <span class="hljs-symbol">sendtransreceipttobillemail:</span> <span class="hljs-string">'true'</span>,
+  <span class="hljs-symbol">orderid:</span> <span class="hljs-string">'54321'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
+result.transid <span class="hljs-comment"># =&gt; '123456'</span>
+result.xref <span class="hljs-comment"># =&gt; '3865035008'</span>
+result.authcode <span class="hljs-comment"># =&gt; '654321'</span>
+result.type <span class="hljs-comment"># =&gt; 'capture'</span>
+result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
+result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
+result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -2421,6 +2554,40 @@ result.CodeDescription;    <span class="hljs-comment">// Transaction was Approve
                  </div>
               </div>
            
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.refund({
+  <span class="hljs-symbol">transid:</span> <span class="hljs-string">'10750789'</span>,
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
+  <span class="hljs-symbol">sendtransreceipttobillemail:</span> <span class="hljs-string">'true'</span>,
+  <span class="hljs-symbol">sendtransreceipttoshipemail:</span> <span class="hljs-string">'true'</span>,
+  <span class="hljs-symbol">sendtransreceipttoemails:</span> <span class="hljs-string">'email@email.com'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
+result.transid <span class="hljs-comment"># =&gt; '10750789'</span>
+result.xref <span class="hljs-comment"># =&gt; '3829708545'</span>
+result.authcode <span class="hljs-comment"># =&gt; '123456'</span>
+result.orderid <span class="hljs-comment"># =&gt; ''</span>
+result.type <span class="hljs-comment"># =&gt; 'refund'</span>
+result.avsresponse <span class="hljs-comment"># =&gt; ''</span>
+result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
+result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
+result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -2542,6 +2709,36 @@ result.AuthCode;    <span class="hljs-comment">// 123456</span>
 result.Type;    <span class="hljs-comment">// void</span>
 result.CodeResponse;    <span class="hljs-comment">// 100</span>
 result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.void({
+  <span class="hljs-symbol">transid:</span> <span class="hljs-string">'12345678'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'Transaction Void Successful'</span>
+result.transid <span class="hljs-comment"># =&gt; '10750790'</span>
+result.xref <span class="hljs-comment"># =&gt; '3829708544'</span>
+result.authcode <span class="hljs-comment"># =&gt; '123456'</span>
+result.orderid <span class="hljs-comment"># =&gt; ''</span>
+result.type <span class="hljs-comment"># =&gt; 'void'</span>
+result.avsresponse <span class="hljs-comment"># =&gt; ''</span>
+result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
+result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
+result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
 </code></pre>
 
                  </div>
@@ -2925,6 +3122,58 @@ status=200
 result.Response;    <span class="hljs-comment">// 3</span>
 result.TextResponse;    <span class="hljs-comment">// Operation type is not supported by payment processor</span>
 result.Type;    <span class="hljs-comment">// passengersale</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.passenger_sale({
+  <span class="hljs-symbol">cardnum:</span> <span class="hljs-string">'4111111111111111'</span>,
+  <span class="hljs-symbol">cardexp:</span> <span class="hljs-string">'1019'</span>,
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
+  <span class="hljs-symbol">cvv:</span> <span class="hljs-string">'999'</span>,
+  <span class="hljs-symbol">passengername:</span> <span class="hljs-string">'John Doe'</span>,
+  <span class="hljs-symbol">stopovercode1:</span> <span class="hljs-string">'O'</span>,
+  <span class="hljs-symbol">airportcode1:</span> <span class="hljs-string">'LAS'</span>,
+  <span class="hljs-symbol">airportcode2:</span> <span class="hljs-string">'CDG'</span>,
+  <span class="hljs-symbol">airportcode3:</span> <span class="hljs-string">'IAD'</span>,
+  <span class="hljs-symbol">airportcode4:</span> <span class="hljs-string">'CPH'</span>,
+  <span class="hljs-symbol">carriercoupon4:</span> <span class="hljs-string">'AA;BB'</span>,
+  <span class="hljs-symbol">airlinecodenumber:</span> <span class="hljs-string">'AA0'</span>,
+  <span class="hljs-symbol">ticketnumber:</span> <span class="hljs-string">'1234567890'</span>,
+  <span class="hljs-symbol">classofservicecoupon4:</span> <span class="hljs-string">'00;AA'</span>,
+  <span class="hljs-symbol">flightdatecoupon1:</span> <span class="hljs-string">'01/31/2017'</span>,
+  <span class="hljs-symbol">flightdeparturetimecoupon1:</span> <span class="hljs-string">'23:59'</span>,
+  <span class="hljs-symbol">addressverificationcode:</span> <span class="hljs-string">'A'</span>,
+  <span class="hljs-symbol">approvalcode:</span> <span class="hljs-string">'123456'</span>,
+  <span class="hljs-symbol">transactionid:</span> <span class="hljs-string">'1234567890'</span>,
+  <span class="hljs-symbol">authcharindicator:</span> <span class="hljs-string">'A'</span>,
+  <span class="hljs-symbol">referencenumber:</span> <span class="hljs-string">'123456789012'</span>,
+  <span class="hljs-symbol">validationcode:</span> <span class="hljs-string">'1234'</span>,
+  <span class="hljs-symbol">authresponsecode:</span> <span class="hljs-string">'AB'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
+result.transid <span class="hljs-comment"># =&gt; '10750803'</span>
+result.xref <span class="hljs-comment"># =&gt; '3829708653'</span>
+result.authcode <span class="hljs-comment"># =&gt; '123456'</span>
+result.orderid <span class="hljs-comment"># =&gt; ''</span>
+result.type <span class="hljs-comment"># =&gt; 'sale'</span>
+result.avsresponse <span class="hljs-comment"># =&gt; ''</span>
+result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
+result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
+result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
 </code></pre>
 
                  </div>
@@ -3533,6 +3782,40 @@ result.CodeDescription;    <span class="hljs-comment">// Transaction was Approve
                  </div>
               </div>
            
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.sale({
+  <span class="hljs-symbol">bankname:</span> <span class="hljs-string">'First Test Bank'</span>,
+  <span class="hljs-symbol">routing:</span> <span class="hljs-string">'110000000'</span>,
+  <span class="hljs-symbol">account:</span> <span class="hljs-string">'1234567890123'</span>,
+  <span class="hljs-symbol">achaccounttype:</span> <span class="hljs-string">'checking'</span>,
+  <span class="hljs-symbol">achaccountsubtype:</span> <span class="hljs-string">'personal'</span>,
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
+  <span class="hljs-symbol">firstname:</span> <span class="hljs-string">'John'</span>,
+  <span class="hljs-symbol">lastname:</span> <span class="hljs-string">'Doe"'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '00'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
+result.transid <span class="hljs-comment"># =&gt; '11037938'</span>
+result.xref <span class="hljs-comment"># =&gt; '3877926141'</span>
+result.authcode <span class="hljs-comment"># =&gt; '123456'</span>
+result.type <span class="hljs-comment"># =&gt; 'sale'</span>
+result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
+result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -3934,6 +4217,74 @@ result.CodeDescription;    <span class="hljs-comment">// Transaction was Approve
                  </div>
               </div>
            
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.sale({
+  <span class="hljs-symbol">bankname:</span> <span class="hljs-string">'First Test Bank'</span>,
+  <span class="hljs-symbol">routing:</span> <span class="hljs-string">'110000000'</span>,
+  <span class="hljs-symbol">account:</span> <span class="hljs-string">'1234567890123'</span>,
+  <span class="hljs-symbol">achaccounttype:</span> <span class="hljs-string">'checking'</span>,
+  <span class="hljs-symbol">achaccountsubtype:</span> <span class="hljs-string">'personal'</span>,
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
+  <span class="hljs-symbol">orderdesc:</span> <span class="hljs-string">'Order Description'</span>,
+  <span class="hljs-symbol">orderid:</span> <span class="hljs-string">'11111'</span>,
+  <span class="hljs-symbol">firstname:</span> <span class="hljs-string">'John'</span>,
+  <span class="hljs-symbol">lastname:</span> <span class="hljs-string">'Doe'</span>,
+  <span class="hljs-symbol">company:</span> <span class="hljs-string">'Sparrow One'</span>,
+  <span class="hljs-symbol">address1:</span> <span class="hljs-string">'16100 N 71st Street'</span>,
+  <span class="hljs-symbol">address2:</span> <span class="hljs-string">'Suite 170'</span>,
+  <span class="hljs-symbol">city:</span> <span class="hljs-string">'Scottsdale'</span>,
+  <span class="hljs-symbol">state:</span> <span class="hljs-string">'AZ'</span>,
+  <span class="hljs-symbol">zip:</span> <span class="hljs-string">'85254'</span>,
+  <span class="hljs-symbol">country:</span> <span class="hljs-string">'US'</span>,
+  <span class="hljs-symbol">phone:</span> <span class="hljs-string">'7025551234'</span>,
+  <span class="hljs-symbol">email:</span> <span class="hljs-string">'john@norepy.com'</span>,
+  <span class="hljs-symbol">shipaddress1:</span> <span class="hljs-string">'16100 N 72nd Street'</span>,
+  <span class="hljs-symbol">shipaddress2:</span> <span class="hljs-string">'Suite 171'</span>,
+  <span class="hljs-symbol">shipcity:</span> <span class="hljs-string">'Pheonix'</span>,
+  <span class="hljs-symbol">shipstate:</span> <span class="hljs-string">'AZ'</span>,
+  <span class="hljs-symbol">shipzip:</span> <span class="hljs-string">'85004'</span>,
+  <span class="hljs-symbol">shipcountry:</span> <span class="hljs-string">'US'</span>,
+  <span class="hljs-symbol">shipphone:</span> <span class="hljs-string">'6025551234'</span>,
+  <span class="hljs-symbol">shipemail:</span> <span class="hljs-string">'jane@noreply.com'</span>,
+  <span class="hljs-symbol">saveclient:</span> <span class="hljs-string">'true'</span>,
+  <span class="hljs-symbol">updateclient:</span> <span class="hljs-string">'true'</span>,
+  <span class="hljs-symbol">opt_amount_type_1:</span> <span class="hljs-string">'surcharge'</span>,
+  <span class="hljs-symbol">opt_amount_value_1:</span> <span class="hljs-string">'1.01'</span>,
+  <span class="hljs-symbol">opt_amount_percentage_1:</span> <span class="hljs-string">'18'</span>,
+  <span class="hljs-symbol">birthdate:</span> <span class="hljs-string">'01/31/2000'</span>,
+  <span class="hljs-symbol">checknumber:</span> <span class="hljs-string">'123'</span>,
+  <span class="hljs-symbol">driverlicensenumber:</span> <span class="hljs-string">'1234567890'</span>,
+  <span class="hljs-symbol">driverlicensecountry:</span> <span class="hljs-string">'US'</span>,
+  <span class="hljs-symbol">driverlicensestate:</span> <span class="hljs-string">'AZ'</span>,
+  <span class="hljs-symbol">sendtransreceipttobillemail:</span> <span class="hljs-string">'true'</span>,
+  <span class="hljs-symbol">sendtransreceipttoshipemail:</span> <span class="hljs-string">'true'</span>,
+  <span class="hljs-symbol">paymentdescriptor:</span> <span class="hljs-string">'Custom Payment Descriptor'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '00'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS, Customer with token 'LS8W4RO5S7SZKZCN' successfully updated, Payment transaction successfully assigned to the customer with token 'LS8W4RO5S7SZKZCN''</span>
+result.transid <span class="hljs-comment"># =&gt; '11037939'</span>
+result.xref <span class="hljs-comment"># =&gt; '3877926149'</span>
+result.authcode <span class="hljs-comment"># =&gt; '123456'</span>
+result.orderid <span class="hljs-comment"># =&gt; '11111'</span>
+result.type <span class="hljs-comment"># =&gt; 'sale'</span>
+result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
+result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+result.token <span class="hljs-comment"># =&gt; 'LS8W4RO5S7SZKZCN'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -4078,6 +4429,46 @@ result.AuthCode;    <span class="hljs-comment">// 123456</span>
 result.Type;    <span class="hljs-comment">// sale</span>
 result.CodeResponse;    <span class="hljs-comment">// 100</span>
 result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.sale({
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
+  <span class="hljs-symbol">bankname:</span> <span class="hljs-string">'BankofAmerica'</span>,
+  <span class="hljs-symbol">routing:</span> <span class="hljs-string">'110000000'</span>,
+  <span class="hljs-symbol">account:</span> <span class="hljs-string">'1234567890123'</span>,
+  <span class="hljs-symbol">achaccounttype:</span> <span class="hljs-string">'checking'</span>,
+  <span class="hljs-symbol">achaccountsubtype:</span> <span class="hljs-string">'business'</span>,
+  <span class="hljs-symbol">company:</span> <span class="hljs-string">'CompanyName'</span>,
+  <span class="hljs-symbol">firstname:</span> <span class="hljs-string">'Henry'</span>,
+  <span class="hljs-symbol">lastname:</span> <span class="hljs-string">'Johnson'</span>,
+  <span class="hljs-symbol">address1:</span> <span class="hljs-string">'Main Street 45'</span>,
+  <span class="hljs-symbol">city:</span> <span class="hljs-string">'Scottsdale'</span>,
+  <span class="hljs-symbol">zip:</span> <span class="hljs-string">'12345'</span>,
+  <span class="hljs-symbol">country:</span> <span class="hljs-string">'US'</span>,
+  <span class="hljs-symbol">state:</span> <span class="hljs-string">'AZ'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '00'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
+result.transid <span class="hljs-comment"># =&gt; '11037947'</span>
+result.xref <span class="hljs-comment"># =&gt; '3877926400'</span>
+result.authcode <span class="hljs-comment"># =&gt; '123456'</span>
+result.type <span class="hljs-comment"># =&gt; 'sale'</span>
+result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
+result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
 </code></pre>
 
                  </div>
@@ -4376,6 +4767,48 @@ result.CodeDescription;    <span class="hljs-comment">// Transaction was Approve
                  </div>
               </div>
            
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.sale({
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
+  <span class="hljs-symbol">bankname:</span> <span class="hljs-string">'BankofAmerica'</span>,
+  <span class="hljs-symbol">routing:</span> <span class="hljs-string">'110000000'</span>,
+  <span class="hljs-symbol">account:</span> <span class="hljs-string">'1234567890123'</span>,
+  <span class="hljs-symbol">achaccounttype:</span> <span class="hljs-string">'checking'</span>,
+  <span class="hljs-symbol">achaccountsubtype:</span> <span class="hljs-string">'business'</span>,
+  <span class="hljs-symbol">company:</span> <span class="hljs-string">'CompanyName'</span>,
+  <span class="hljs-symbol">firstname:</span> <span class="hljs-string">'Henry'</span>,
+  <span class="hljs-symbol">lastname:</span> <span class="hljs-string">'Johnson'</span>,
+  <span class="hljs-symbol">address1:</span> <span class="hljs-string">'Main Street 45'</span>,
+  <span class="hljs-symbol">city:</span> <span class="hljs-string">'Scottsdale'</span>,
+  <span class="hljs-symbol">zip:</span> <span class="hljs-string">'12345'</span>,
+  <span class="hljs-symbol">country:</span> <span class="hljs-string">'US'</span>,
+  <span class="hljs-symbol">state:</span> <span class="hljs-string">'AZ'</span>,
+  <span class="hljs-symbol">phone:</span> <span class="hljs-string">'8526547896'</span>,
+  <span class="hljs-symbol">email:</span> <span class="hljs-string">'hjohnson@test.com'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '00'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
+result.transid <span class="hljs-comment"># =&gt; '11037948'</span>
+result.xref <span class="hljs-comment"># =&gt; '3877926406'</span>
+result.authcode <span class="hljs-comment"># =&gt; '123456'</span>
+result.type <span class="hljs-comment"># =&gt; 'sale'</span>
+result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
+result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -4523,6 +4956,33 @@ result.Type;    <span class="hljs-comment">// credit</span>
                  </div>
               </div>
            
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.credit({
+  <span class="hljs-symbol">ewalletaccount:</span> <span class="hljs-string">'user@example.com'</span>,
+  <span class="hljs-symbol">ewallet_type:</span> <span class="hljs-string">'PayPal'</span>,
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
+  <span class="hljs-symbol">currency:</span> <span class="hljs-string">'USD'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'Successful'</span>
+result.transid <span class="hljs-comment"># =&gt; '11037949'</span>
+result.xref <span class="hljs-comment"># =&gt; '3RBFE4Q3T5XBJ'</span>
+result.type <span class="hljs-comment"># =&gt; 'credit'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -4649,6 +5109,35 @@ result.AuthCode;    <span class="hljs-comment">// 123456</span>
 result.Type;    <span class="hljs-comment">// sale</span>
 result.CodeResponse;    <span class="hljs-comment">// 100</span>
 result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.sale({
+  <span class="hljs-symbol">cardnum:</span> <span class="hljs-string">'4111111111111111'</span>,
+  <span class="hljs-symbol">cardexp:</span> <span class="hljs-string">'1019'</span>,
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
+result.transid <span class="hljs-comment"># =&gt; '11037950'</span>
+result.xref <span class="hljs-comment"># =&gt; '3877926499'</span>
+result.authcode <span class="hljs-comment"># =&gt; '123456'</span>
+result.type <span class="hljs-comment"># =&gt; 'sale'</span>
+result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
+result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
 </code></pre>
 
                  </div>
@@ -4963,6 +5452,75 @@ result.CodeDescription;    <span class="hljs-comment">// Transaction was Approve
                  </div>
               </div>
            
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.sale({
+  <span class="hljs-symbol">cardnum:</span> <span class="hljs-string">'4111111111111111'</span>,
+  <span class="hljs-symbol">cardexp:</span> <span class="hljs-string">'1019'</span>,
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
+  <span class="hljs-symbol">cvv:</span> <span class="hljs-string">'999'</span>,
+  <span class="hljs-symbol">currency:</span> <span class="hljs-string">'USD'</span>,
+  <span class="hljs-symbol">firstname:</span> <span class="hljs-string">'John'</span>,
+  <span class="hljs-symbol">lastname:</span> <span class="hljs-string">'Doe'</span>,
+  <span class="hljs-symbol">skunumber_1:</span> <span class="hljs-string">'123'</span>,
+  <span class="hljs-symbol">skunumber_2:</span> <span class="hljs-string">'456'</span>,
+  <span class="hljs-symbol">description_1:</span> <span class="hljs-string">'Blue widget'</span>,
+  <span class="hljs-symbol">description_2:</span> <span class="hljs-string">'Brown widget'</span>,
+  <span class="hljs-symbol">amount_1:</span> <span class="hljs-string">'1.99'</span>,
+  <span class="hljs-symbol">amount_2:</span> <span class="hljs-string">'2.99'</span>,
+  <span class="hljs-symbol">quantity_1:</span> <span class="hljs-string">'1'</span>,
+  <span class="hljs-symbol">quantity_2:</span> <span class="hljs-string">'2'</span>,
+  <span class="hljs-symbol">orderdesc:</span> <span class="hljs-string">'Order Description'</span>,
+  <span class="hljs-symbol">orderid:</span> <span class="hljs-string">'11111'</span>,
+  <span class="hljs-symbol">cardipaddress:</span> <span class="hljs-string">'8.8.8.8'</span>,
+  <span class="hljs-symbol">tax:</span> <span class="hljs-string">'0.25'</span>,
+  <span class="hljs-symbol">shipamount:</span> <span class="hljs-string">'1.25'</span>,
+  <span class="hljs-symbol">ponumber:</span> <span class="hljs-string">'22222'</span>,
+  <span class="hljs-symbol">company:</span> <span class="hljs-string">'Sparrow One'</span>,
+  <span class="hljs-symbol">address1:</span> <span class="hljs-string">'16100 N 71st Street'</span>,
+  <span class="hljs-symbol">address2:</span> <span class="hljs-string">'Suite 170'</span>,
+  <span class="hljs-symbol">city:</span> <span class="hljs-string">'Scottsdale'</span>,
+  <span class="hljs-symbol">state:</span> <span class="hljs-string">'AZ'</span>,
+  <span class="hljs-symbol">zip:</span> <span class="hljs-string">'85254'</span>,
+  <span class="hljs-symbol">country:</span> <span class="hljs-string">'US'</span>,
+  <span class="hljs-symbol">email:</span> <span class="hljs-string">'john@norepy.com'</span>,
+  <span class="hljs-symbol">shipfirstname:</span> <span class="hljs-string">'Jane'</span>,
+  <span class="hljs-symbol">shiplastname:</span> <span class="hljs-string">'Doe'</span>,
+  <span class="hljs-symbol">shipcompany:</span> <span class="hljs-string">'Sparrow Two'</span>,
+  <span class="hljs-symbol">shipaddress1:</span> <span class="hljs-string">'16100 N 72nd Street'</span>,
+  <span class="hljs-symbol">shipaddress2:</span> <span class="hljs-string">'Suite 171'</span>,
+  <span class="hljs-symbol">shipcity:</span> <span class="hljs-string">'Pheonix'</span>,
+  <span class="hljs-symbol">shipstate:</span> <span class="hljs-string">'AZ'</span>,
+  <span class="hljs-symbol">shipzip:</span> <span class="hljs-string">'85004'</span>,
+  <span class="hljs-symbol">shipcountry:</span> <span class="hljs-string">'US'</span>,
+  <span class="hljs-symbol">shipphone:</span> <span class="hljs-string">'6025551234'</span>,
+  <span class="hljs-symbol">shipemail:</span> <span class="hljs-string">'jane@noreply.com'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
+result.transid <span class="hljs-comment"># =&gt; '11037951'</span>
+result.xref <span class="hljs-comment"># =&gt; '3877926535'</span>
+result.authcode <span class="hljs-comment"># =&gt; '123456'</span>
+result.orderid <span class="hljs-comment"># =&gt; '11111'</span>
+result.type <span class="hljs-comment"># =&gt; 'sale'</span>
+result.avsresponse <span class="hljs-comment"># =&gt; 'N'</span>
+result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
+result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
+result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -5089,6 +5647,33 @@ result.TransId;    <span class="hljs-comment">// 11032423</span>
 result.XRef;    <span class="hljs-comment">// 3876731424</span>
 result.AuthCode;    <span class="hljs-comment">// 123456</span>
 result.Type;    <span class="hljs-comment">// chargeback</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.chargeback({
+  <span class="hljs-symbol">transid:</span> <span class="hljs-string">'10934104'</span>,
+  <span class="hljs-symbol">reason:</span> <span class="hljs-string">'Card reported lost'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'Card reported lost'</span>
+result.transid <span class="hljs-comment"># =&gt; '10934104'</span>
+result.xref <span class="hljs-comment"># =&gt; '3865091326'</span>
+result.authcode <span class="hljs-comment"># =&gt; '123456'</span>
+result.type <span class="hljs-comment"># =&gt; 'chargeback'</span>
+result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
 </code></pre>
 
                  </div>
@@ -5485,6 +6070,40 @@ result.CodeDescription;    <span class="hljs-comment">// Transaction was Approve
                  </div>
               </div>
            
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.balance({
+  <span class="hljs-symbol">cardnum:</span> <span class="hljs-string">'4111111111111111'</span>,
+  <span class="hljs-symbol">cardexp:</span> <span class="hljs-string">'1019'</span>,
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
+  <span class="hljs-symbol">cvv:</span> <span class="hljs-string">'999'</span>,
+  <span class="hljs-symbol">zip:</span> <span class="hljs-string">'85254"'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
+result.transid <span class="hljs-comment"># =&gt; '10750787'</span>
+result.xref <span class="hljs-comment"># =&gt; '3829708536'</span>
+result.authcode <span class="hljs-comment"># =&gt; '123456'</span>
+result.orderid <span class="hljs-comment"># =&gt; ''</span>
+result.type <span class="hljs-comment"># =&gt; 'auth'</span>
+result.avsresponse <span class="hljs-comment"># =&gt; 'N'</span>
+result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
+result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
+result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -5876,6 +6495,33 @@ result.TextResponse;    <span class="hljs-comment">// Customer with token 'MDQE3
 result.Type;    <span class="hljs-comment">// addcustomer</span>
 result.CustomerToken;    <span class="hljs-comment">// MDQE3APBQWNPLB0N</span>
 result.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// L5UM9ALNJR2XWQH5</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.addcustomer({
+  <span class="hljs-symbol">firstname:</span> <span class="hljs-string">'John'</span>,
+  <span class="hljs-symbol">lastname:</span> <span class="hljs-string">'Doe'</span>,
+  <span class="hljs-symbol">paytype_1:</span> <span class="hljs-string">'starcard'</span>,
+  <span class="hljs-symbol">cardnum_1:</span> <span class="hljs-string">'6019440000011111'</span>,
+  <span class="hljs-symbol">CID:</span> <span class="hljs-string">'52347800001'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'Customer with token 'LDX59BK4441R46J7' successfully created'</span>
+result.type <span class="hljs-comment"># =&gt; 'addcustomer'</span>
+result.customertoken <span class="hljs-comment"># =&gt; 'LDX59BK4441R46J7'</span>
+result.paymenttoken_1 <span class="hljs-comment"># =&gt; 'I5ZVHNONDI5YIGKG'</span>
+
 </code></pre>
 
                  </div>
@@ -6378,6 +7024,30 @@ result.CustomerToken;    <span class="hljs-comment">// G7HJV1U70S1290OZ</span>
                  </div>
               </div>
            
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.updatecustomer({
+  <span class="hljs-symbol">token:</span> <span class="hljs-string">'B31388EA20ABF2776C93'</span>,
+  <span class="hljs-symbol">address1:</span> <span class="hljs-string">'939 St. Winnie’s st.'</span>,
+  <span class="hljs-symbol">city:</span> <span class="hljs-string">'Forest City'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'Customer with token 'O3BEZTT2UHCS7USA' successfully updated'</span>
+result.type <span class="hljs-comment"># =&gt; 'updatecustomer'</span>
+result.customertoken <span class="hljs-comment"># =&gt; 'O3BEZTT2UHCS7USA'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -6460,6 +7130,31 @@ result.TextResponse;    <span class="hljs-comment">// Customer with token '645GR
 result.Type;    <span class="hljs-comment">// updatecustomer</span>
 result.CustomerToken;    <span class="hljs-comment">// 645GRTD1SIXLJ5U5</span>
 result.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// 76XRTBDSCGBYBGAA</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">api.addcustomer({
+  <span class="hljs-symbol">firstname:</span> <span class="hljs-string">'John'</span>,
+  <span class="hljs-symbol">lastname:</span> <span class="hljs-string">'Doe'</span>,
+  <span class="hljs-symbol">paytype_1:</span> <span class="hljs-string">'ewallet'</span>,
+  <span class="hljs-symbol">ewallettype_1:</span> <span class="hljs-string">'paypal'</span>,
+  <span class="hljs-symbol">ewalletaccount_1:</span> <span class="hljs-string">'email@email.com'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'Customer with token 'NA2TF8AJGI5CAKCB' successfully created'</span>
+result.type <span class="hljs-comment"># =&gt; 'addcustomer'</span>
+result.customertoken <span class="hljs-comment"># =&gt; 'NA2TF8AJGI5CAKCB'</span>
+result.paymenttoken_1 <span class="hljs-comment"># =&gt; '48TXLSRFTOAQK680'</span>
+
 </code></pre>
 
                  </div>
@@ -6661,6 +7356,32 @@ result.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-c
                  </div>
               </div>
            
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.delete_payment_type({
+  <span class="hljs-symbol">token:</span> <span class="hljs-string">'LFC0KIYV18APRLCH'</span>,
+  <span class="hljs-symbol">operationtype_1:</span> <span class="hljs-string">'deletepaytype'</span>,
+  <span class="hljs-symbol">token_1:</span> <span class="hljs-string">'QQ8TR7J8P0IQ9TOL'</span>,
+  <span class="hljs-symbol">achaccounttype_1:</span> <span class="hljs-string">'savings'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'Customer with token 'LFC0KIYV18APRLCH' successfully updated'</span>
+result.type <span class="hljs-comment"># =&gt; 'updatecustomer'</span>
+result.customertoken <span class="hljs-comment"># =&gt; 'LFC0KIYV18APRLCH'</span>
+result.paymenttoken_1 <span class="hljs-comment"># =&gt; 'QQ8TR7J8P0IQ9TOL'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -6745,6 +7466,27 @@ resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>];    <span cl
 <pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
 result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
 result.Type;    <span class="hljs-comment">// deletecustomer</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.delete_customer({
+  <span class="hljs-symbol">token:</span> <span class="hljs-string">'LFC0KIYV18APRLCH'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
+result.type <span class="hljs-comment"># =&gt; 'deletecustomer'</span>
+
 </code></pre>
 
                  </div>
@@ -7089,6 +7831,36 @@ result.LastName;    <span class="hljs-comment">// Doe</span>
                  </div>
               </div>
            
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.get_customer({
+  <span class="hljs-symbol">token:</span> <span class="hljs-string">'LFC0KIYV18APRLCH'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'Processed'</span>
+result.customertoken <span class="hljs-comment"># =&gt; 'LFC0KIYV18APRLCH'</span>
+result.CustomerStatus <span class="hljs-comment"># =&gt; 'Active'</span>
+result.firstname <span class="hljs-comment"># =&gt; 'Dude'</span>
+result.lastname <span class="hljs-comment"># =&gt; 'Fella'</span>
+result.paytype_1 <span class="hljs-comment"># =&gt; 'CreditCard'</span>
+result.payno_1 <span class="hljs-comment"># =&gt; '1'</span>
+result.cardexp_1 <span class="hljs-comment"># =&gt; '1019'</span>
+result.account_1 <span class="hljs-comment"># =&gt; '411111******1111'</span>
+result.useAccountUpdater_1 <span class="hljs-comment"># =&gt; 'False'</span>
+result.token_1 <span class="hljs-comment"># =&gt; 'QQ8TR7J8P0IQ9TOL'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -7297,6 +8069,33 @@ result.PayNo;    <span class="hljs-comment">// 1</span>
 result.CardExp;    <span class="hljs-comment">// 1019</span>
 result.Account;    <span class="hljs-comment">// 411111******1111</span>
 result.Token;    <span class="hljs-comment">// LK118CERCRMEND0W</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.get_payment_type({
+  <span class="hljs-symbol">token:</span> <span class="hljs-string">'QQ8TR7J8P0IQ9TOL'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'Processed'</span>
+result.paytype <span class="hljs-comment"># =&gt; 'CreditCard'</span>
+result.payno <span class="hljs-comment"># =&gt; '1'</span>
+result.cardexp <span class="hljs-comment"># =&gt; '1019'</span>
+result.account <span class="hljs-comment"># =&gt; '411111******1111'</span>
+result.useAccountUpdater <span class="hljs-comment"># =&gt; 'False'</span>
+result.token <span class="hljs-comment"># =&gt; 'QQ8TR7J8P0IQ9TOL'</span>
+result.customertoken <span class="hljs-comment"># =&gt; 'LFC0KIYV18APRLCH'</span>
+
 </code></pre>
 
                  </div>
@@ -9379,6 +10178,29 @@ result.InvoiceNumber;    <span class="hljs-comment">// Inv-39706</span>
                  </div>
               </div>
            
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.create_invoice({
+  <span class="hljs-symbol">invoicedate:</span> <span class="hljs-string">'10/15/2018'</span>,
+  <span class="hljs-symbol">currency:</span> <span class="hljs-string">'USD'</span>,
+  <span class="hljs-symbol">invoiceamount:</span> <span class="hljs-string">'212.95'</span>,
+  <span class="hljs-symbol">invoicestatus:</span> <span class="hljs-string">'draft'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.textresponse <span class="hljs-comment"># =&gt; 'invoice has been successfully created'</span>
+result.invoicenumber <span class="hljs-comment"># =&gt; 'Inv-39746'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -9524,6 +10346,27 @@ resultCreateInvoice.InvoiceNumber;    <span class="hljs-comment">// Inv-39710</s
 <p>RESULT:</p>
 <pre class="language-csharp"><code class="language-csharp">result.TextResponse;    <span class="hljs-comment">// Invoice has been successfully updated</span>
 result.InvoiceNumber;    <span class="hljs-comment">// Inv-39710</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.update_invoice({
+  <span class="hljs-symbol">invoicenumber:</span> <span class="hljs-string">'Inv-39744'</span>,
+  <span class="hljs-symbol">invoicestatus:</span> <span class="hljs-string">'active'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.textresponse <span class="hljs-comment"># =&gt; 'Invoice has been successfully updated'</span>
+result.invoicenumber <span class="hljs-comment"># =&gt; 'Inv-39744'</span>
+
 </code></pre>
 
                  </div>
@@ -9721,6 +10564,30 @@ result.InvoicePaymentLink;    <span class="hljs-comment">// https://secure.sparr
                  </div>
               </div>
            
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.get_invoice({
+  <span class="hljs-symbol">invoicenumber:</span> <span class="hljs-string">'Inv-39744'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.textresponse <span class="hljs-comment"># =&gt; 'Success'</span>
+result.invoicenumber <span class="hljs-comment"># =&gt; 'Inv-39744'</span>
+result.invoiceamount <span class="hljs-comment"># =&gt; '212.9500'</span>
+result.currency <span class="hljs-comment"># =&gt; 'USD'</span>
+result.invoicedate <span class="hljs-comment"># =&gt; '10/15/2018'</span>
+result.invoicestatus <span class="hljs-comment"># =&gt; 'Draft'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -9813,6 +10680,27 @@ resultCreateInvoice.InvoiceNumber;    <span class="hljs-comment">// Inv-39705</s
 <p>RESULT:</p>
 <pre class="language-csharp"><code class="language-csharp">result.TextResponse;    <span class="hljs-comment">// invoice has been successfully canceled</span>
 result.InvoiceNumber;    <span class="hljs-comment">// Inv-39705</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.cancel_invoice({
+  <span class="hljs-symbol">invoicenumber:</span> <span class="hljs-string">'Inv-39745'</span>,
+  <span class="hljs-symbol">invoicestatusreason:</span> <span class="hljs-string">'Customer allergic to product'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.textresponse <span class="hljs-comment"># =&gt; 'invoice has been successfully canceled'</span>
+result.invoicenumber <span class="hljs-comment"># =&gt; 'Inv-39745'</span>
+
 </code></pre>
 
                  </div>
