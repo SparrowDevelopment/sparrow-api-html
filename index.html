@@ -1062,7 +1062,7 @@ result.status <span class="hljs-comment"># =&gt; '200'</span>
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleSale(
-    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) },
     amount: <span class="hljs-number">9.99</span>m);
 </code></pre>
 <p>RESULT:</p>
@@ -1075,6 +1075,38 @@ result.AuthCode;    <span class="hljs-comment">// 123456</span>
 result.Type;    <span class="hljs-comment">// sale</span>
 result.CodeResponse;    <span class="hljs-comment">// 100</span>
 result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+card = sparrowone.CardInfo(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>
+)
+resp = sprw.sale(<span class="hljs-number">10.0</span>, card)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"cvvresponse"</span>: <span class="hljs-string">"M"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11188324"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3907208029"</span>
+}
+
 </code></pre>
 
                  </div>
@@ -1470,7 +1502,7 @@ status=200
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AdvancedSale(
-    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) },
     amount: <span class="hljs-number">9.99</span>m);
 </code></pre>
 <p>RESULT:</p>
@@ -1533,6 +1565,65 @@ result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
 result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+sale = sparrowone.SaleInfo(
+    amount=<span class="hljs-number">7.96</span>,
+    currency=<span class="hljs-string">"USD"</span>,
+    billing_contact=sparrowone.Contact(
+        first_name=<span class="hljs-string">"Dana"</span>,
+        last_name=<span class="hljs-string">"Zane"</span>,
+    ),
+    ship_to=sparrowone.Contact(
+        first_name=<span class="hljs-string">"Julianne"</span>,
+        last_name=<span class="hljs-string">"Stingray"</span>,
+        address1=<span class="hljs-string">"16100 N 72nd Street"</span>,
+        address2=<span class="hljs-string">"Suite 171"</span>,
+        city=<span class="hljs-string">"Glitch City"</span>,
+        zip=<span class="hljs-string">"220000"</span>,
+        country=<span class="hljs-string">"XX"</span>,
+        email=<span class="hljs-string">"noreply@sparrowone.com"</span>,
+    ),
+    products=[
+        sparrowone.Product(skunumber=<span class="hljs-number">1999</span>,
+                        description=<span class="hljs-string">"Blue whale"</span>,
+                        amount=<span class="hljs-number">1.99</span>,
+                        quantity=<span class="hljs-number">4</span>)
+    ],
+    ip_addr=<span class="hljs-string">"192.168.12.34"</span>,
+)
+
+card = sparrowone.CardInfo(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>,
+)
+
+resp = sprw.sale(sale, card)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"cvvresponse"</span>: <span class="hljs-string">"M"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11188287"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3907204894"</span>
+}
 
 </code></pre>
 
@@ -1678,7 +1769,7 @@ status=200
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleAuthorization(
-    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) },
     amount: <span class="hljs-number">9.99</span>m);
 </code></pre>
 <p>RESULT:</p>
@@ -1721,6 +1812,38 @@ result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
 result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+card = sparrowone.CardInfo(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>
+)
+resp = sprw.auth(<span class="hljs-number">10.0</span>, card)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"cvvresponse"</span>: <span class="hljs-string">"M"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150723"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"auth"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3901033581"</span>
+}
 
 </code></pre>
 
@@ -1845,10 +1968,10 @@ status=200
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultSimpleAuthorization = <span class="hljs-keyword">await</span> _sparrow.SimpleAuthorization(
-    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) },
     amount: <span class="hljs-number">9.99</span>m);
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleCapture(
-    transId: resultSimpleAuthorization.TransId, 
+    transId: resultSimpleAuthorization.TransId,
     amount: <span class="hljs-number">9.99</span>m);
 </code></pre>
 <p>RESULT SimpleAuthorization:</p>
@@ -1900,6 +2023,42 @@ result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
 result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+card = sparrowone.CardInfo(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>
+)
+
+resp = sprw.auth(<span class="hljs-number">10.0</span>, card)
+transid = resp[<span class="hljs-string">"transid"</span>]
+
+resp = sprw.capture(transid, <span class="hljs-number">10.0</span>, <span class="hljs-string">"1019"</span>)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"cvvresponse"</span>: <span class="hljs-string">"M"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150733"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"capture"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3901034728"</span>
+}
 
 </code></pre>
 
@@ -2023,9 +2182,9 @@ status=200
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleOfflineCapture(
-    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
-    amount: <span class="hljs-number">9.99</span>m, 
-    authCode: <span class="hljs-string">"123456"</span>, 
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) },
+    amount: <span class="hljs-number">9.99</span>m,
+    authCode: <span class="hljs-string">"123456"</span>,
     authDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>));
 </code></pre>
 <p>RESULT:</p>
@@ -2038,6 +2197,44 @@ result.AuthCode;    <span class="hljs-comment">// 123456</span>
 result.Type;    <span class="hljs-comment">// offline</span>
 result.CodeResponse;    <span class="hljs-comment">// 100</span>
 result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+card = sparrowone.CardInfo(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>
+)
+resp = sprw.auth(<span class="hljs-number">10.0</span>, card)
+transid = resp[<span class="hljs-string">"transid"</span>]
+card_exp = <span class="hljs-string">"1019"</span>
+amount = <span class="hljs-number">10.0</span>
+
+resp = sprw.offline(amount, card,
+                    auth_code=<span class="hljs-string">"123456"</span>,
+                    auth_date=<span class="hljs-string">"01/31/2017"</span>)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150737"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"offline"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3901034874"</span>
+}
+
 </code></pre>
 
                  </div>
@@ -2277,6 +2474,43 @@ result.status <span class="hljs-comment"># =&gt; '200'</span>
                  </div>
               </div>
            
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+card = sparrowone.CardInfo(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>
+)
+
+resp = sprw.auth(<span class="hljs-number">10.0</span>, card)
+transid = resp[<span class="hljs-string">"transid"</span>]
+
+resp = sprw.capture(transid, <span class="hljs-number">10.0</span>, <span class="hljs-string">"1019"</span>,
+                    send_receipt_to_billing_email=<span class="hljs-keyword">True</span>)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"cvvresponse"</span>: <span class="hljs-string">"M"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150733"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"capture"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3901034728"</span>
+}
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -2380,10 +2614,10 @@ origtextresponse=SUCCESS
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultSimpleSale = <span class="hljs-keyword">await</span> _sparrow.SimpleSale(
-    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) },
     amount: <span class="hljs-number">9.99</span>m);
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleRefund(
-    transId: resultSimpleSale.TransId, 
+    transId: resultSimpleSale.TransId,
     amount: <span class="hljs-number">9.99</span>m);
 </code></pre>
 <p>RESULT SimpleSale:</p>
@@ -2407,6 +2641,41 @@ result.AuthCode;    <span class="hljs-comment">// 123456</span>
 result.Type;    <span class="hljs-comment">// refund</span>
 result.CodeResponse;    <span class="hljs-comment">// 100</span>
 result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+card = sparrowone.CardInfo(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>
+)
+resp = sprw.sale(<span class="hljs-number">10.0</span>, card)
+transid = resp[<span class="hljs-string">"transid"</span>]
+amount = <span class="hljs-number">10.0</span>
+resp = sprw.refund(transid, amount)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"cvvresponse"</span>: <span class="hljs-string">"M"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150419"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"refund"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900992367"</span>
+}
+
 </code></pre>
 
                  </div>
@@ -2522,10 +2791,10 @@ status=200
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultSimpleSale = <span class="hljs-keyword">await</span> _sparrow.SimpleSale(
-    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) },
     amount: <span class="hljs-number">9.99</span>m);
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AdvancedRefund(
-    transId: resultSimpleSale.TransId, 
+    transId: resultSimpleSale.TransId,
     amount: <span class="hljs-number">9.99</span>m);
 </code></pre>
 <p>RESULT SimpleSale:</p>
@@ -2582,6 +2851,46 @@ result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
 result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+card = sparrowone.CardInfo(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>
+)
+resp = sprw.sale(<span class="hljs-number">10.0</span>, card)
+transid = resp[<span class="hljs-string">"transid"</span>]
+amount = <span class="hljs-number">10.0</span>
+resp = sprw.refund(
+    transid, amount,
+    send_receipt_to_billing_email=<span class="hljs-keyword">True</span>,
+    send_receipt_to_shipping_email=<span class="hljs-keyword">True</span>,
+    send_receipt_to=[<span class="hljs-string">"noreply@sparrowone.com"</span>]
+)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"cvvresponse"</span>: <span class="hljs-string">"M"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150439"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"refund"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900996167"</span>
+}
 
 </code></pre>
 
@@ -2683,7 +2992,7 @@ status=200
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultSimpleSale = <span class="hljs-keyword">await</span> _sparrow.SimpleSale(
-    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) },
     amount: <span class="hljs-number">9.99</span>m);
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleVoid(
     transId: resultSimpleSale.TransId);
@@ -2738,6 +3047,41 @@ result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
 result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+card = sparrowone.CardInfo(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>
+)
+resp = sprw.sale(<span class="hljs-number">10.0</span>, card)
+transid = resp[<span class="hljs-string">"transid"</span>]
+amount = <span class="hljs-number">10.0</span>
+resp = sprw.void(transid, amount)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"cvvresponse"</span>: <span class="hljs-string">"M"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Transaction Void Successful"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150449"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"void"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900997132"</span>
+}
 
 </code></pre>
 
@@ -2838,7 +3182,7 @@ status=200
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultSimpleSale = <span class="hljs-keyword">await</span> _sparrow.SimpleSale(
-    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) },
     amount: <span class="hljs-number">9.99</span>m);
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AdvancedVoid(
     transId: resultSimpleSale.TransId);
@@ -2864,6 +3208,46 @@ result.AuthCode;    <span class="hljs-comment">// 123456</span>
 result.Type;    <span class="hljs-comment">// void</span>
 result.CodeResponse;    <span class="hljs-comment">// 100</span>
 result.CodeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+card = sparrowone.CardInfo(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>
+)
+resp = sprw.sale(<span class="hljs-number">10.0</span>, card)
+transid = resp[<span class="hljs-string">"transid"</span>]
+amount = <span class="hljs-number">10.0</span>
+resp = sprw.void(
+    transid, amount,
+    send_receipt_to_billing_email=<span class="hljs-keyword">True</span>,
+    send_receipt_to_shipping_email=<span class="hljs-keyword">True</span>,
+    send_receipt_to=[<span class="hljs-string">"noreply@sparrowone.com"</span>]
+)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"cvvresponse"</span>: <span class="hljs-string">"M"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Transaction Void Successful"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150452"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"void"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900997234"</span>
+}
+
 </code></pre>
 
                  </div>
@@ -3104,17 +3488,17 @@ status=200
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.PassengerSale(
-    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
-    amount: <span class="hljs-number">9.99</span>m, 
-    passengerName: <span class="hljs-string">"John Doe"</span>, 
-    airportCodes: <span class="hljs-keyword">new</span> []{ <span class="hljs-string">""</span> }, 
-    airlineCodeNumber: <span class="hljs-string">"AA0"</span>, 
-    ticketNumber: <span class="hljs-string">"1234567890"</span>, 
-    flightDateCoupons: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
-    flightDepartureTimeCoupons: <span class="hljs-keyword">new</span> []{ <span class="hljs-string">""</span> }, 
-    approvalCode: <span class="hljs-string">"123456"</span>, 
-    authCharIndicator: Sparrow.AuthCharIndicator.A, 
-    validationCode: <span class="hljs-string">"1234"</span>, 
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) },
+    amount: <span class="hljs-number">9.99</span>m,
+    passengerName: <span class="hljs-string">"John Doe"</span>,
+    airportCodes: <span class="hljs-keyword">new</span> []{ <span class="hljs-string">""</span> },
+    airlineCodeNumber: <span class="hljs-string">"AA0"</span>,
+    ticketNumber: <span class="hljs-string">"1234567890"</span>,
+    flightDateCoupons: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) },
+    flightDepartureTimeCoupons: <span class="hljs-keyword">new</span> []{ <span class="hljs-string">""</span> },
+    approvalCode: <span class="hljs-string">"123456"</span>,
+    authCharIndicator: Sparrow.AuthCharIndicator.A,
+    validationCode: <span class="hljs-string">"1234"</span>,
     authResponseCode: <span class="hljs-string">"AB"</span>);
 </code></pre>
 <p>RESULT:</p>
@@ -3173,6 +3557,57 @@ result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
 result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+sale = sparrowone.SaleInfo(
+    amount=<span class="hljs-number">9.95</span>,
+    airportcode1=<span class="hljs-string">"LAS"</span>,
+    airportcode2=<span class="hljs-string">"CDG"</span>,
+    airportcode3=<span class="hljs-string">"IAD"</span>,
+    airportcode4=<span class="hljs-string">"CPH"</span>,
+    ticketnumber=<span class="hljs-number">1234567890</span>,
+    flightdatecoupon1=<span class="hljs-string">"01/31/2017"</span>,
+    flightdeparturetimecoupon1=<span class="hljs-string">"23:59"</span>,
+    addressverificationcode=<span class="hljs-string">"A"</span>,
+    approvalcode=<span class="hljs-number">123456</span>,
+    transactionid=<span class="hljs-number">1234567890</span>,
+    authcharindicator=<span class="hljs-string">"A"</span>,
+    referencenumber=<span class="hljs-number">123456789012</span>,
+    validationcode=<span class="hljs-number">1234</span>,
+    authresponsecode=<span class="hljs-string">"AB"</span>,
+)
+
+card = sparrowone.CardInfo(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>,
+)
+
+resp = sprw.sale(sale, card)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"cvvresponse"</span>: <span class="hljs-string">"M"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11188178"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3907193949"</span>
+}
 
 </code></pre>
 
@@ -3285,8 +3720,8 @@ status=200
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleStarCard(
-    cardNum: <span class="hljs-string">"4111111111111111"</span>, 
-    amount: <span class="hljs-number">9.99</span>m, 
+    cardNum: <span class="hljs-string">"4111111111111111"</span>,
+    amount: <span class="hljs-number">9.99</span>m,
     CID: <span class="hljs-string">"12345678901"</span>);
 </code></pre>
 <p>RESULT:</p>
@@ -3295,6 +3730,37 @@ result.TextResponse;    <span class="hljs-comment">// System Error: Reason Code:
 result.TransId;    <span class="hljs-comment">// 11032442</span>
 result.Type;    <span class="hljs-comment">// sale</span>
 result.CodeDescription;    <span class="hljs-comment">// Denied</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+card = sparrowone.MilitaryStarCard(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cid=<span class="hljs-string">"12345678901"</span>
+)
+resp = sprw.sale(<span class="hljs-number">10.0</span>, card)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150551"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3901013600"</span>
+}
+
 </code></pre>
 
                  </div>
@@ -3596,9 +4062,9 @@ status=200
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AdvancedStarCard(
-    cardNum: <span class="hljs-string">"4111111111111111"</span>, 
-    cardExp: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
-    amount: <span class="hljs-number">9.99</span>m, 
+    cardNum: <span class="hljs-string">"4111111111111111"</span>,
+    cardExp: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>),
+    amount: <span class="hljs-number">9.99</span>m,
     CID: <span class="hljs-string">"12345678901"</span>);
 </code></pre>
 <p>RESULT:</p>
@@ -3607,6 +4073,64 @@ result.TextResponse;    <span class="hljs-comment">// System Error: Reason Code:
 result.TransId;    <span class="hljs-comment">// 11032441</span>
 result.Type;    <span class="hljs-comment">// sale</span>
 result.CodeDescription;    <span class="hljs-comment">// Denied</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+sale = sparrowone.SaleInfo(
+    amount=<span class="hljs-number">7.96</span>,
+    currency=<span class="hljs-string">"USD"</span>,
+    billing_contact=sparrowone.Contact(
+        first_name=<span class="hljs-string">"Dana"</span>,
+        last_name=<span class="hljs-string">"Zane"</span>,
+    ),
+    ship_to=sparrowone.Contact(
+        first_name=<span class="hljs-string">"Julianne"</span>,
+        last_name=<span class="hljs-string">"Stingray"</span>,
+        address1=<span class="hljs-string">"16100 N 72nd Street"</span>,
+        address2=<span class="hljs-string">"Suite 171"</span>,
+        city=<span class="hljs-string">"Glitch City"</span>,
+        zip=<span class="hljs-string">"220000"</span>,
+        country=<span class="hljs-string">"XX"</span>,
+        email=<span class="hljs-string">"noreply@sparrowone.com"</span>,
+    ),
+    products=[
+        sparrowone.Product(
+            skunumber=<span class="hljs-number">1999</span>,
+            description=<span class="hljs-string">"Blue whale"</span>,
+            amount=<span class="hljs-number">1.99</span>,
+            quantity=<span class="hljs-number">4</span>
+        )
+    ],
+    ip_addr=<span class="hljs-string">"192.168.12.34"</span>,
+)
+card = sparrowone.MilitaryStarCard(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cid=<span class="hljs-string">"12345678901"</span>
+)
+resp = sprw.sale(sale, card)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150550"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3901013550"</span>
+}
+
 </code></pre>
 
                  </div>
@@ -3764,8 +4288,8 @@ status=200
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.SimpleACH(
-    bankAccount: <span class="hljs-keyword">new</span> Sparrow.BankAccount{ BankName = <span class="hljs-string">"First Test Bank"</span>, Routing = <span class="hljs-string">"110000000"</span>, Account = <span class="hljs-string">"1234567890123"</span>, AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal }, 
-    amount: <span class="hljs-number">9.99</span>m, 
+    bankAccount: <span class="hljs-keyword">new</span> Sparrow.BankAccount{ BankName = <span class="hljs-string">"First Test Bank"</span>, Routing = <span class="hljs-string">"110000000"</span>, Account = <span class="hljs-string">"1234567890123"</span>, AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal },
+    amount: <span class="hljs-number">9.99</span>m,
     contactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> });
 </code></pre>
 <p>RESULT:</p>
@@ -3810,6 +4334,47 @@ result.type <span class="hljs-comment"># =&gt; 'sale'</span>
 result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+sale = sparrowone.SaleInfo(
+    amount=<span class="hljs-number">7.95</span>,
+    billing_contact=sparrowone.Contact(
+        first_name=<span class="hljs-string">"Gillian"</span>,
+        last_name=<span class="hljs-string">"Fenimore"</span>,
+    ),
+)
+
+ach_account = sparrowone.ACHInfo(
+    bank_name=<span class="hljs-string">"First Test Bank"</span>,
+    routing=<span class="hljs-string">"110000000"</span>,
+    account=<span class="hljs-string">"1234567890123"</span>,
+    type=<span class="hljs-string">"checking"</span>,
+    subtype=<span class="hljs-string">"personal"</span>,
+)
+resp = sprw.sale(sale, ach_account)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"00"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150237"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900968815"</span>
+}
 
 </code></pre>
 
@@ -4199,8 +4764,8 @@ token=I07IO05HGP0NXIQM
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AdvancedACH(
-    bankAccount: <span class="hljs-keyword">new</span> Sparrow.BankAccount{ BankName = <span class="hljs-string">"First Test Bank"</span>, Routing = <span class="hljs-string">"110000000"</span>, Account = <span class="hljs-string">"1234567890123"</span>, AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal }, 
-    amount: <span class="hljs-number">9.99</span>m, 
+    bankAccount: <span class="hljs-keyword">new</span> Sparrow.BankAccount{ BankName = <span class="hljs-string">"First Test Bank"</span>, Routing = <span class="hljs-string">"110000000"</span>, Account = <span class="hljs-string">"1234567890123"</span>, AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal },
+    amount: <span class="hljs-number">9.99</span>m,
     contactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> });
 </code></pre>
 <p>RESULT:</p>
@@ -4279,6 +4844,63 @@ result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
 result.token <span class="hljs-comment"># =&gt; 'LS8W4RO5S7SZKZCN'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+sale = sparrowone.SaleInfo(
+    amount=<span class="hljs-number">9.95</span>,
+    billing_contact=sparrowone.Contact(
+        first_name=<span class="hljs-string">"Dana"</span>,
+        last_name=<span class="hljs-string">"Zane"</span>,
+    ),
+    ship_to=sparrowone.Contact(
+        first_name=<span class="hljs-string">"Julianne"</span>,
+        last_name=<span class="hljs-string">"Stingray"</span>,
+        address1=<span class="hljs-string">"16100 N 72nd Street"</span>,
+        address2=<span class="hljs-string">"Suite 171"</span>,
+        city=<span class="hljs-string">"Glitch City"</span>,
+        zip=<span class="hljs-string">"220000"</span>,
+        country=<span class="hljs-string">"XX"</span>,
+        email=<span class="hljs-string">"noreply@sparrowone.com"</span>,
+    ),
+    products=[
+        sparrowone.Product(skunumber=<span class="hljs-number">1999</span>,
+                        description=<span class="hljs-string">"Blue whale"</span>,
+                        amount=<span class="hljs-number">1.99</span>,
+                        quantity=<span class="hljs-number">4</span>)
+    ],
+    ip_addr=<span class="hljs-string">"192.168.12.34"</span>,
+)
+ach_account = sparrowone.ACHInfo(
+    bank_name=<span class="hljs-string">"First Test Bank"</span>,
+    routing=<span class="hljs-string">"110000000"</span>,
+    account=<span class="hljs-string">"1234567890123"</span>,
+    type=<span class="hljs-string">"checking"</span>,
+    subtype=<span class="hljs-string">"personal"</span>,
+)
+resp = sprw.sale(sale, ach_account)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"00"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150236"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900968778"</span>
+}
 
 </code></pre>
 
@@ -4468,6 +5090,52 @@ result.type <span class="hljs-comment"># =&gt; 'sale'</span>
 result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+sale = sparrowone.SaleInfo(
+    amount=<span class="hljs-number">7.95</span>,
+    billing_contact=sparrowone.Contact(
+        first_name=<span class="hljs-string">"Dana"</span>,
+        last_name=<span class="hljs-string">"Zane"</span>,
+        address1=<span class="hljs-string">"Main Street 45"</span>,
+        city=<span class="hljs-string">"Scottsdale"</span>,
+        zip=<span class="hljs-string">"12345"</span>,
+        country=<span class="hljs-string">"US"</span>,
+        state=<span class="hljs-string">"AZ"</span>,
+    ),
+)
+
+echeck = sparrowone.ECheck(
+    bank_name=<span class="hljs-string">"First Test Bank"</span>,
+    routing=<span class="hljs-string">"110000000"</span>,
+    account=<span class="hljs-string">"1234567890123"</span>,
+    type=<span class="hljs-string">"checking"</span>,
+    subtype=<span class="hljs-string">"personal"</span>,
+)
+resp = sprw.sale(sale, echeck)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"00"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150237"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900968815"</span>
+}
 
 </code></pre>
 
@@ -4809,6 +5477,68 @@ result.status <span class="hljs-comment"># =&gt; '200'</span>
                  </div>
               </div>
            
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+sale = sparrowone.SaleInfo(
+    amount=<span class="hljs-number">9.95</span>,
+    billing_contact=sparrowone.Contact(
+        first_name=<span class="hljs-string">"Dana"</span>,
+        last_name=<span class="hljs-string">"Zane"</span>,
+        address1=<span class="hljs-string">"Main Street 45"</span>,
+        city=<span class="hljs-string">"Scottsdale"</span>,
+        zip=<span class="hljs-string">"12345"</span>,
+        country=<span class="hljs-string">"US"</span>,
+        state=<span class="hljs-string">"AZ"</span>,
+    ),
+    ship_to=sparrowone.Contact(
+        first_name=<span class="hljs-string">"Julianne"</span>,
+        last_name=<span class="hljs-string">"Stingray"</span>,
+        address1=<span class="hljs-string">"16100 N 72nd Street"</span>,
+        address2=<span class="hljs-string">"Suite 171"</span>,
+        city=<span class="hljs-string">"Glitch City"</span>,
+        zip=<span class="hljs-string">"220000"</span>,
+        country=<span class="hljs-string">"XX"</span>,
+        email=<span class="hljs-string">"noreply@sparrowone.com"</span>,
+    ),
+    products=[
+        sparrowone.Product(skunumber=<span class="hljs-number">1999</span>,
+                           description=<span class="hljs-string">"Blue whale"</span>,
+                           amount=<span class="hljs-number">1.99</span>,
+                           quantity=<span class="hljs-number">4</span>)
+    ],
+    ip_addr=<span class="hljs-string">"192.168.12.34"</span>,
+)
+ach_account = sparrowone.ECheck(
+    bank_name=<span class="hljs-string">"First Test Bank"</span>,
+    routing=<span class="hljs-string">"110000000"</span>,
+    account=<span class="hljs-string">"1234567890123"</span>,
+    type=<span class="hljs-string">"checking"</span>,
+    subtype=<span class="hljs-string">"personal"</span>,
+)
+resp = sprw.sale(sale, ach_account)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"00"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150236"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900968778"</span>
+}
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -4983,6 +5713,26 @@ result.status <span class="hljs-comment"># =&gt; '200'</span>
                  </div>
               </div>
            
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">ewallet = sparrowone.EWallet(<span class="hljs-string">"user@example.com"</span>)
+resp = sprw.credit(<span class="hljs-number">9.95</span>, ewallet)
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">{
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Successful"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11032427"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"A2M3983N76ZKS"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"credit"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+}
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -5095,8 +5845,8 @@ status=200
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.FiservSimpleSale(
-    cardNum: <span class="hljs-string">"4111111111111111"</span>, 
-    cardExp: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    cardNum: <span class="hljs-string">"4111111111111111"</span>,
+    cardExp: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>),
     amount: <span class="hljs-number">9.99</span>m);
 </code></pre>
 <p>RESULT:</p>
@@ -5137,6 +5887,36 @@ result.type <span class="hljs-comment"># =&gt; 'sale'</span>
 result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+card = sparrowone.FiservCard(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>
+)
+resp = sprw.sale(<span class="hljs-number">10.0</span>, card)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150073"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900948523"</span>
+}
 
 </code></pre>
 
@@ -5434,7 +6214,7 @@ status=200
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AdvancedFiservSale(
-    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, 
+    creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) },
     amount: <span class="hljs-number">9.99</span>m);
 </code></pre>
 <p>RESULT:</p>
@@ -5515,6 +6295,65 @@ result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
 result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+sale = sparrowone.SaleInfo(
+    amount=<span class="hljs-number">7.96</span>,
+    currency=<span class="hljs-string">"USD"</span>,
+    billing_contact=sparrowone.Contact(
+        first_name=<span class="hljs-string">"Dana"</span>,
+        last_name=<span class="hljs-string">"Zane"</span>,
+    ),
+    ship_to=sparrowone.Contact(
+        first_name=<span class="hljs-string">"Julianne"</span>,
+        last_name=<span class="hljs-string">"Stingray"</span>,
+        address1=<span class="hljs-string">"16100 N 72nd Street"</span>,
+        address2=<span class="hljs-string">"Suite 171"</span>,
+        city=<span class="hljs-string">"Glitch City"</span>,
+        zip=<span class="hljs-string">"220000"</span>,
+        country=<span class="hljs-string">"XX"</span>,
+        email=<span class="hljs-string">"noreply@sparrowone.com"</span>,
+    ),
+    products=[
+        sparrowone.Product(skunumber=<span class="hljs-number">1999</span>,
+                        description=<span class="hljs-string">"Blue whale"</span>,
+                        amount=<span class="hljs-number">1.99</span>,
+                        quantity=<span class="hljs-number">4</span>)
+    ],
+    ip_addr=<span class="hljs-string">"192.168.12.34"</span>,
+)
+
+card = sparrowone.FiservCard(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>,
+)
+
+resp = sprw.sale(sale, card)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"cvvresponse"</span>: <span class="hljs-string">"M"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150072"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900948475"</span>
+}
 
 </code></pre>
 
@@ -5679,6 +6518,31 @@ result.status <span class="hljs-comment"># =&gt; '200'</span>
                  </div>
               </div>
            
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.chargeback(transid=<span class="hljs-string">'10934104'</span>, reason=<span class="hljs-string">'Card reported lost'</span>)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+  <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+  <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Card reported lost"</span>,
+  <span class="hljs-string">"transid"</span>: <span class="hljs-string">"10934104"</span>,
+  <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3865091326"</span>,
+  <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"chargeback"</span>,
+  <span class="hljs-string">"cvvresponse"</span>: <span class="hljs-string">"M"</span>,
+  <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>
+}
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -5783,6 +6647,30 @@ status=500
 result.Response;    <span class="hljs-comment">// 3</span>
 result.TextResponse;    <span class="hljs-comment">// Operation type is not supported by payment processor</span>
 result.Type;    <span class="hljs-comment">// balanceinquire</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">card = sparrowone.CardInfo(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>,
+)
+resp = sprw.balance_inquire(card)
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">{
+  <span class="hljs-string">"response"</span>: <span class="hljs-string">"3"</span>,
+  <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Operation type is not supported by payment processor"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"balanceinquire"</span>,
+  <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">""</span>,
+  <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">""</span>,
+  <span class="hljs-string">"status"</span>: <span class="hljs-string">"500"</span>
+}
 </code></pre>
 
                  </div>
@@ -6099,6 +6987,33 @@ result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
 
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">card = sparrowone.CardInfo(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>
+)
+resp = sprw.verify(card)
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">{
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11032422"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3876731403"</span>,
+    <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"auth"</span>,
+    <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
+    <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
+}
 </code></pre>
 
                  </div>
@@ -6486,7 +7401,7 @@ paymenttoken_2=OZA3QU7CYG57D88R
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
-    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> },
     paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
 </code></pre>
 <p>RESULT:</p>
@@ -6521,6 +7436,84 @@ result.textresponse <span class="hljs-comment"># =&gt; 'Customer with token 'LDX
 result.type <span class="hljs-comment"># =&gt; 'addcustomer'</span>
 result.customertoken <span class="hljs-comment"># =&gt; 'LDX59BK4441R46J7'</span>
 result.paymenttoken_1 <span class="hljs-comment"># =&gt; 'I5ZVHNONDI5YIGKG'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.customers.create(data=dict(
+    firstname=<span class="hljs-string">"John"</span>,
+    lastname=<span class="hljs-string">"Doe"</span>,
+    note=<span class="hljs-string">"Customer Note"</span>,
+    address1=<span class="hljs-string">"16100 N 71st Street"</span>,
+    address2=<span class="hljs-string">"Suite 170"</span>,
+    city=<span class="hljs-string">"Scottsdale"</span>,
+    state=<span class="hljs-string">"AZ"</span>,
+    zip=<span class="hljs-string">"85254"</span>,
+    country=<span class="hljs-string">"US"</span>,
+    email=<span class="hljs-string">"john@norepy.com"</span>,
+    shipfirstname=<span class="hljs-string">"Jane"</span>,
+    shiplastname=<span class="hljs-string">"Doe"</span>,
+    shipcompany=<span class="hljs-string">"Sparrow Two"</span>,
+    shipaddress1=<span class="hljs-string">"16100 N 72nd Street"</span>,
+    shipaddress2=<span class="hljs-string">"Suite 171"</span>,
+    shipcity=<span class="hljs-string">"Pheonix"</span>,
+    shipstate=<span class="hljs-string">"AZ"</span>,
+    shipzip=<span class="hljs-string">"85004"</span>,
+    shipcountry=<span class="hljs-string">"US"</span>,
+    shipphone=<span class="hljs-string">"6025551234"</span>,
+    shipemail=<span class="hljs-string">"jane@noreply.com"</span>,
+    username=str(uuid.uuid1()),
+    password=<span class="hljs-string">"Password123"</span>,
+    clientuseremail=<span class="hljs-string">"john@norepy.com"</span>,
+    paytype_1=<span class="hljs-string">"creditcard"</span>,
+    firstname_1=<span class="hljs-string">"John"</span>,
+    lastname_1=<span class="hljs-string">"Doe"</span>,
+    address1_1=<span class="hljs-string">"123 Main Street"</span>,
+    address2_1=<span class="hljs-string">"Suite 1"</span>,
+    city_1=<span class="hljs-string">"Pheonix"</span>,
+    state_1=<span class="hljs-string">"AZ"</span>,
+    zip_1=<span class="hljs-string">"85111"</span>,
+    country_1=<span class="hljs-string">"US"</span>,
+    phone_1=<span class="hljs-string">"6025551234"</span>,
+    email_1=<span class="hljs-string">"john@norepy.com"</span>,
+    cardnum_1=<span class="hljs-string">"4111111111111111"</span>,
+    cardexp_1=<span class="hljs-string">"1019"</span>,
+    paytype_2=<span class="hljs-string">"check"</span>,
+    firstname_2=<span class="hljs-string">"John"</span>,
+    lastname_2=<span class="hljs-string">"Doe"</span>,
+    address1_2=<span class="hljs-string">"321 1st Street"</span>,
+    address2_2=<span class="hljs-string">"Suite 2"</span>,
+    city_2=<span class="hljs-string">"Scottsdale"</span>,
+    state_2=<span class="hljs-string">"AZ"</span>,
+    zip_2=<span class="hljs-string">"85222"</span>,
+    country_2=<span class="hljs-string">"US"</span>,
+    phone_2=<span class="hljs-string">"6025554321"</span>,
+    email_2=<span class="hljs-string">"jane@noreploy.com"</span>,
+    cardnum_2=<span class="hljs-string">"4111111111111111"</span>,
+    cardexp_2=<span class="hljs-string">"1019"</span>,
+    bankname_2=<span class="hljs-string">"First Test Bank"</span>,
+    routing_2=<span class="hljs-string">"110000000"</span>,
+    account_2=<span class="hljs-string">"1234567890123"</span>,
+    achaccounttype_2=<span class="hljs-string">"personal"</span>,
+    payno_2=<span class="hljs-string">"2"</span>,
+))
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"customertoken"</span>: <span class="hljs-string">"UOLL9K0L2YU7N1I3"</span>,
+    <span class="hljs-string">"paymenttoken_1"</span>: <span class="hljs-string">"65EQ73QMHFMVUS19"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"00"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Customer with token 'UOLL9K0L2YU7N1I3' successfully created"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"addcustomer"</span>
+}
 
 </code></pre>
 
@@ -7002,7 +7995,7 @@ customertoken=O3BEZTT2UHCS7USA
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
-    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> },
     paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.UpdateCustomer(
     token: resultAddCustomer.CustomerToken);
@@ -7042,6 +8035,34 @@ result.response <span class="hljs-comment"># =&gt; '1'</span>
 result.textresponse <span class="hljs-comment"># =&gt; 'Customer with token 'O3BEZTT2UHCS7USA' successfully updated'</span>
 result.type <span class="hljs-comment"># =&gt; 'updatecustomer'</span>
 result.customertoken <span class="hljs-comment"># =&gt; 'O3BEZTT2UHCS7USA'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.customers.update_payment_type(
+    customer_token,
+    payment_token,
+    data={
+        <span class="hljs-string">"cardnum"</span>: <span class="hljs-string">"4111111111111112"</span>,
+    }
+)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"customertoken"</span>: <span class="hljs-string">"UR1W59V45NY7AY5C"</span>,
+    <span class="hljs-string">"paymenttoken_1"</span>: <span class="hljs-string">"93WACVAMONXJWLAD"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Customer with token 'UR1W59V45NY7AY5C' successfully updated"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"updatecustomer"</span>
+}
 
 </code></pre>
 
@@ -7111,10 +8132,10 @@ result.customertoken <span class="hljs-comment"># =&gt; 'O3BEZTT2UHCS7USA'</span
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
-    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> },
     paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AddPaymentTypesToCustomer(
-    token: resultAddCustomer.CustomerToken, 
+    token: resultAddCustomer.CustomerToken,
     paymentTypeToAdd: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentTypeToAdd{ PaymentType = <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) }, BankAccount = <span class="hljs-keyword">new</span> Sparrow.BankAccount{ BankName = <span class="hljs-string">"First Test Bank"</span>, Routing = <span class="hljs-string">"110000000"</span>, Account = <span class="hljs-string">"1234567890123"</span>, AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal }, Ewallet = <span class="hljs-keyword">new</span> Sparrow.Ewallet{ EwalletAccount = <span class="hljs-string">"user@example.com"</span> } } } });
 </code></pre>
 <p>RESULT AddCustomer:</p>
@@ -7154,6 +8175,35 @@ result.textresponse <span class="hljs-comment"># =&gt; 'Customer with token 'NA2
 result.type <span class="hljs-comment"># =&gt; 'addcustomer'</span>
 result.customertoken <span class="hljs-comment"># =&gt; 'NA2TF8AJGI5CAKCB'</span>
 result.paymenttoken_1 <span class="hljs-comment"># =&gt; '48TXLSRFTOAQK680'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.customers.add_payment_type(
+    customer_token,
+    data={
+        <span class="hljs-string">"paytype"</span>: <span class="hljs-string">"creditcard"</span>,
+        <span class="hljs-string">"cardnum"</span>: <span class="hljs-string">"4111111111111112"</span>,
+        <span class="hljs-string">"cardexp"</span>: <span class="hljs-string">"1019"</span>,
+    }
+)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"customertoken"</span>: <span class="hljs-string">"A312JPG1C9AEK6FX"</span>,
+    <span class="hljs-string">"paymenttoken_1"</span>: <span class="hljs-string">"YDAJV4CTWR6KOZKA"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Customer with token 'A312JPG1C9AEK6FX' successfully updated"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"updatecustomer"</span>
+}
 
 </code></pre>
 
@@ -7332,10 +8382,10 @@ paymenttoken_1=SXZ27VYHGBSMYDNH
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
-    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> },
     paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.DeletePaymentType(
-    token: resultAddCustomer.CustomerToken, 
+    token: resultAddCustomer.CustomerToken,
     paymentTypeToDelete: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentTypeToDelete{ Token = resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>] } });
 </code></pre>
 <p>RESULT AddCustomer:</p>
@@ -7376,6 +8426,25 @@ result.textresponse <span class="hljs-comment"># =&gt; 'Customer with token 'LFC
 result.type <span class="hljs-comment"># =&gt; 'updatecustomer'</span>
 result.customertoken <span class="hljs-comment"># =&gt; 'LFC0KIYV18APRLCH'</span>
 result.paymenttoken_1 <span class="hljs-comment"># =&gt; 'QQ8TR7J8P0IQ9TOL'</span>
+
+</code></pre>
+<p>$
+language: python
+$$</p>
+<p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+resp = sprw.customers.delete_payment_type(customer_token, payment_token)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+{
+    <span class="hljs-string">"customertoken"</span>: <span class="hljs-string">"8XQQWG7VYSMQLGQ2"</span>,
+    <span class="hljs-string">"paymenttoken_1"</span>: <span class="hljs-string">"YZNVHE5E63A3BI8T"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Customer with token '8XQQWG7VYSMQLGQ2' successfully updated"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"updatecustomer"</span>
+}
 
 </code></pre>
 
@@ -7450,7 +8519,7 @@ textresponse=SUCCESS&amp;
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
-    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> },
     paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.DeleteDataVaultCustomer(
     token: resultAddCustomer.CustomerToken);
@@ -7486,6 +8555,26 @@ api.delete_customer({
 result.response <span class="hljs-comment"># =&gt; '1'</span>
 result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
 result.type <span class="hljs-comment"># =&gt; 'deletecustomer'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.customers.delete(customer_token)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"deletecustomer"</span>
+}
 
 </code></pre>
 
@@ -7861,6 +8950,35 @@ result.token_1 <span class="hljs-comment"># =&gt; 'QQ8TR7J8P0IQ9TOL'</span>
                  </div>
               </div>
            
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.customers.get(<span class="hljs-string">"LFC0KIYV18APRLCH"</span>)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+  <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+  <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Processed"</span>,
+  <span class="hljs-string">"customertoken"</span>: <span class="hljs-string">"LFC0KIYV18APRLCH"</span>,
+  <span class="hljs-string">"CustomerStatus"</span>: <span class="hljs-string">"Active"</span>,
+  <span class="hljs-string">"firstname"</span>: <span class="hljs-string">"Dude"</span>,
+  <span class="hljs-string">"lastname"</span>: <span class="hljs-string">"Fella"</span>,
+  <span class="hljs-string">"paytype_1"</span>: <span class="hljs-string">"CreditCard"</span>,
+  <span class="hljs-string">"payno_1"</span>: <span class="hljs-string">"1"</span>,
+  <span class="hljs-string">"cardexp_1"</span>: <span class="hljs-string">"1019"</span>,
+  <span class="hljs-string">"account_1"</span>: <span class="hljs-string">"411111******1111"</span>,
+  <span class="hljs-string">"useAccountUpdater_1"</span>: <span class="hljs-string">"False"</span>,
+  <span class="hljs-string">"token_1"</span>: <span class="hljs-string">"QQ8TR7J8P0IQ9TOL"</span>
+}
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -8095,6 +9213,32 @@ result.account <span class="hljs-comment"># =&gt; '411111******1111'</span>
 result.useAccountUpdater <span class="hljs-comment"># =&gt; 'False'</span>
 result.token <span class="hljs-comment"># =&gt; 'QQ8TR7J8P0IQ9TOL'</span>
 result.customertoken <span class="hljs-comment"># =&gt; 'LFC0KIYV18APRLCH'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.customers.get_payment_type(<span class="hljs-string">"QQ8TR7J8P0IQ9TOL"</span>)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Processed"</span>,
+    <span class="hljs-string">"paytype"</span>: <span class="hljs-string">"CreditCard"</span>,
+    <span class="hljs-string">"payno"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"cardexp"</span>: <span class="hljs-string">"1019"</span>,
+    <span class="hljs-string">"account"</span>: <span class="hljs-string">"411111******1111"</span>,
+    <span class="hljs-string">"useAccountUpdater"</span>: <span class="hljs-string">"False"</span>,
+    <span class="hljs-string">"token"</span>: <span class="hljs-string">"QQ8TR7J8P0IQ9TOL"</span>,
+    <span class="hljs-string">"customertoken"</span>: <span class="hljs-string">"LFC0KIYV18APRLCH"</span>
+}
 
 </code></pre>
 
@@ -8669,9 +9813,9 @@ plantoken=76Y5QQT2LV54J5SE
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.CreatePaymentPlan(
-    planName: <span class="hljs-string">"PaymentPlan1"</span>, 
-    planDesc: <span class="hljs-string">"1st Payment Plan"</span>, 
-    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    planName: <span class="hljs-string">"PaymentPlan1"</span>,
+    planDesc: <span class="hljs-string">"1st Payment Plan"</span>,
+    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>),
     sequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStep{ Sequence = <span class="hljs-number">1</span>, Amount = <span class="hljs-number">9.99</span>m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = <span class="hljs-number">5</span>, Duration = <span class="hljs-number">12</span> } });
 </code></pre>
 <p>RESULT:</p>
@@ -8679,6 +9823,37 @@ plantoken=76Y5QQT2LV54J5SE
 result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
 result.Type;    <span class="hljs-comment">// addplan</span>
 result.PlanToken;    <span class="hljs-comment">// C17KAJUGB2SWV0OW</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.plans.create(data=dict(
+    mkey=M_KEY,
+    planname=<span class="hljs-string">"PaymentPlan1"</span>,
+    plandesc=<span class="hljs-string">"1st Payment Plan"</span>,
+    startdate=<span class="hljs-string">"01/31/2017"</span>,
+    sequence_1=<span class="hljs-number">1</span>,
+    amount_1=<span class="hljs-number">1.99</span>,
+    scheduletype_1=<span class="hljs-string">"custom"</span>,
+    scheduleday_1=<span class="hljs-number">7</span>,
+    duration_1=<span class="hljs-number">365</span>,
+))
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"plantoken"</span>: <span class="hljs-string">"6S0ZJGIQGL1T2XXQ"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"addplan"</span>
+}
+
 </code></pre>
 
                  </div>
@@ -8853,12 +10028,12 @@ textresponse=SUCCESS&amp;
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreatePaymentPlan = <span class="hljs-keyword">await</span> _sparrow.CreatePaymentPlan(
-    planName: <span class="hljs-string">"PaymentPlan1"</span>, 
-    planDesc: <span class="hljs-string">"1st Payment Plan"</span>, 
-    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    planName: <span class="hljs-string">"PaymentPlan1"</span>,
+    planDesc: <span class="hljs-string">"1st Payment Plan"</span>,
+    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>),
     sequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStep{ Sequence = <span class="hljs-number">1</span>, Amount = <span class="hljs-number">10.00</span>m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = <span class="hljs-number">5</span>, Duration = <span class="hljs-number">12</span> } });
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.UpdatePaymentPlan(
-    token: resultCreatePaymentPlan.PlanToken, 
+    token: resultCreatePaymentPlan.PlanToken,
     sequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStep{ Sequence = <span class="hljs-number">1</span>, Amount = <span class="hljs-number">20.00</span>m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = <span class="hljs-number">5</span>, Duration = <span class="hljs-number">12</span>, OperationType = Sparrow.OperationType.Updatesequence } });
 </code></pre>
 <p>RESULT CreatePaymentPlan:</p>
@@ -8871,6 +10046,28 @@ resultCreatePaymentPlan.PlanToken;    <span class="hljs-comment">// 0GHHZ4TB1FAU
 <pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
 result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
 result.Type;    <span class="hljs-comment">// updateplan</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.plans.update(plan_token, data=dict(
+    planname=<span class="hljs-string">"PaymentPlan1Updated"</span>,
+))
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"updateplan"</span>
+}
+
 </code></pre>
 
                  </div>
@@ -9420,6 +10617,29 @@ result.Type;    <span class="hljs-comment">// updateplan</span>
                  </div>
               </div>
            
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.plans.update(plan_token, data=dict(
+    operationtype_1=<span class="hljs-string">"deletesequence"</span>,
+    sequence_1=<span class="hljs-number">2</span>,
+))
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"updateplan"</span>
+}
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -9495,9 +10715,9 @@ textresponse=SUCCESS&amp;
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreatePaymentPlan = <span class="hljs-keyword">await</span> _sparrow.CreatePaymentPlan(
-    planName: <span class="hljs-string">"PaymentPlan1"</span>, 
-    planDesc: <span class="hljs-string">"1st Payment Plan"</span>, 
-    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    planName: <span class="hljs-string">"PaymentPlan1"</span>,
+    planDesc: <span class="hljs-string">"1st Payment Plan"</span>,
+    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>),
     sequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStep{ Sequence = <span class="hljs-number">1</span>, Amount = <span class="hljs-number">9.99</span>m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = <span class="hljs-number">5</span>, Duration = <span class="hljs-number">12</span> } });
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.DeletePlan(
     token: resultCreatePaymentPlan.PlanToken);
@@ -9512,6 +10732,26 @@ resultCreatePaymentPlan.PlanToken;    <span class="hljs-comment">// DRJWXFITUP47
 <pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
 result.TextResponse;    <span class="hljs-comment">// SUCCESS</span>
 result.Type;    <span class="hljs-comment">// deleteplan</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.plans.delete(plan_token)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"deleteplan"</span>
+}
+
 </code></pre>
 
                  </div>
@@ -9677,16 +10917,16 @@ assignmenttoken=JCXG572GBX20NFDF
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
-    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> },
     paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
 <span class="hljs-keyword">var</span> resultCreatePaymentPlan = <span class="hljs-keyword">await</span> _sparrow.CreatePaymentPlan(
-    planName: <span class="hljs-string">"PaymentPlan1"</span>, 
-    planDesc: <span class="hljs-string">"1st Payment Plan"</span>, 
-    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    planName: <span class="hljs-string">"PaymentPlan1"</span>,
+    planDesc: <span class="hljs-string">"1st Payment Plan"</span>,
+    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>),
     sequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStep{ Sequence = <span class="hljs-number">1</span>, Amount = <span class="hljs-number">9.99</span>m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = <span class="hljs-number">5</span>, Duration = <span class="hljs-number">12</span> } });
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AssignPaymentPlanToCustomer(
-    customerToken: resultAddCustomer.CustomerToken, 
-    planToken: resultCreatePaymentPlan.PlanToken, 
+    customerToken: resultAddCustomer.CustomerToken,
+    planToken: resultCreatePaymentPlan.PlanToken,
     paymentToken: resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>]);
 </code></pre>
 <p>RESULT AddCustomer:</p>
@@ -9707,6 +10947,29 @@ resultCreatePaymentPlan.PlanToken;    <span class="hljs-comment">// 7OOKMD2ATZ8M
 result.TextResponse;    <span class="hljs-comment">// Success</span>
 result.Type;    <span class="hljs-comment">// assignplan</span>
 result.AssignmentToken;    <span class="hljs-comment">// OSS6DU853EXQSWID</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.plans.assign(plan_token,
+                        customer_token,
+                        payment_token)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"assignmenttoken"</span>: <span class="hljs-string">"4CVWUY1VSQA4OHEX"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Success"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"assignplan"</span>
+}
+
 </code></pre>
 
                  </div>
@@ -9860,19 +11123,19 @@ assignmenttoken=4STIQWYX5NM9ZDKJ
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
-    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> },
     paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
 <span class="hljs-keyword">var</span> resultCreatePaymentPlan = <span class="hljs-keyword">await</span> _sparrow.CreatePaymentPlan(
-    planName: <span class="hljs-string">"PaymentPlan1"</span>, 
-    planDesc: <span class="hljs-string">"1st Payment Plan"</span>, 
-    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    planName: <span class="hljs-string">"PaymentPlan1"</span>,
+    planDesc: <span class="hljs-string">"1st Payment Plan"</span>,
+    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>),
     sequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStep{ Sequence = <span class="hljs-number">1</span>, Amount = <span class="hljs-number">9.99</span>m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = <span class="hljs-number">5</span>, Duration = <span class="hljs-number">12</span> } });
 <span class="hljs-keyword">var</span> resultAssignPaymentPlanToCustomer = <span class="hljs-keyword">await</span> _sparrow.AssignPaymentPlanToCustomer(
-    customerToken: resultAddCustomer.CustomerToken, 
-    planToken: resultCreatePaymentPlan.PlanToken, 
+    customerToken: resultAddCustomer.CustomerToken,
+    planToken: resultCreatePaymentPlan.PlanToken,
     paymentToken: resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>]);
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.UpdatePaymentPlanAssignment(
-    assignmentToken: resultAssignPaymentPlanToCustomer.AssignmentToken, 
+    assignmentToken: resultAssignPaymentPlanToCustomer.AssignmentToken,
     startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>));
 </code></pre>
 <p>RESULT AssignPaymentPlanToCustomer:</p>
@@ -9899,6 +11162,37 @@ resultCreatePaymentPlan.PlanToken;    <span class="hljs-comment">// 4170HM56ZU0R
 result.TextResponse;    <span class="hljs-comment">// Success</span>
 result.Type;    <span class="hljs-comment">// updateassignment</span>
 result.AssignmentToken;    <span class="hljs-comment">// KB5UMCK91864GH2W</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.plans.assign(
+    plan_token,
+    customer_token,
+    payment_token
+)
+assignment_token = resp[<span class="hljs-string">"assignmenttoken"</span>]
+
+resp = sprw.plans.update_assignment(
+    assignment_token,
+    startdate=<span class="hljs-string">"1/1/2018"</span>
+)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"assignmenttoken"</span>: <span class="hljs-string">"8827HG7JG2URMIXE"</span>,
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Success"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"updateassignment"</span>
+}
+
 </code></pre>
 
                  </div>
@@ -9975,16 +11269,16 @@ textresponse=Success&amp;
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultAddCustomer = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
-    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, 
+    defaultContactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> },
     paymentType: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, ContactInfo = <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> }, CreditCard = <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) } } });
 <span class="hljs-keyword">var</span> resultCreatePaymentPlan = <span class="hljs-keyword">await</span> _sparrow.CreatePaymentPlan(
-    planName: <span class="hljs-string">"PaymentPlan1"</span>, 
-    planDesc: <span class="hljs-string">"1st Payment Plan"</span>, 
-    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
+    planName: <span class="hljs-string">"PaymentPlan1"</span>,
+    planDesc: <span class="hljs-string">"1st Payment Plan"</span>,
+    startDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>),
     sequenceSteps: <span class="hljs-keyword">new</span> []{ <span class="hljs-keyword">new</span> Sparrow.SequenceStep{ Sequence = <span class="hljs-number">1</span>, Amount = <span class="hljs-number">9.99</span>m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = <span class="hljs-number">5</span>, Duration = <span class="hljs-number">12</span> } });
 <span class="hljs-keyword">var</span> resultAssignPaymentPlanToCustomer = <span class="hljs-keyword">await</span> _sparrow.AssignPaymentPlanToCustomer(
-    customerToken: resultAddCustomer.CustomerToken, 
-    planToken: resultCreatePaymentPlan.PlanToken, 
+    customerToken: resultAddCustomer.CustomerToken,
+    planToken: resultCreatePaymentPlan.PlanToken,
     paymentToken: resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>]);
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.CancelPlanAssignment(
     assignmentToken: resultAssignPaymentPlanToCustomer.AssignmentToken);
@@ -10012,6 +11306,26 @@ resultCreatePaymentPlan.PlanToken;    <span class="hljs-comment">// PRUDES37GWNM
 <pre class="language-csharp"><code class="language-csharp">result.Response;    <span class="hljs-comment">// 1</span>
 result.TextResponse;    <span class="hljs-comment">// Success</span>
 result.Type;    <span class="hljs-comment">// cancelassignment</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.plans.cancel_assignment(assignment_token)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Success"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"cancelassignment"</span>
+}
+
 </code></pre>
 
                  </div>
@@ -10165,9 +11479,9 @@ invoicenumber=Inv-39031
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.CreateInvoice(
-    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
-    currency: <span class="hljs-string">"USD"</span>, 
-    invoiceStatus: Sparrow.InvoiceStatus.Active, 
+    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>),
+    currency: <span class="hljs-string">"USD"</span>,
+    invoiceStatus: Sparrow.InvoiceStatus.Active,
     invoiceAmount: <span class="hljs-number">10.00</span>m);
 </code></pre>
 <p>RESULT:</p>
@@ -10195,6 +11509,40 @@ api.create_invoice({
 
 result.textresponse <span class="hljs-comment"># =&gt; 'invoice has been successfully created'</span>
 result.invoicenumber <span class="hljs-comment"># =&gt; 'Inv-39746'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.invoices.create(data=dict(
+    customertoken=CUSTOMER_TOKEN,
+    invoicedate=<span class="hljs-string">"12/12/2017"</span>,
+    currency=<span class="hljs-string">"USD"</span>,
+    invoicestatus=<span class="hljs-string">"draft"</span>,
+    invoicesource=<span class="hljs-string">"DataVault"</span>,
+    invoiceamount=<span class="hljs-string">"10.00"</span>,
+    invoiceitemsku_1=<span class="hljs-string">"123"</span>,
+    invoiceitemsku_2=<span class="hljs-string">"456"</span>,
+    invoiceitemdescription_1=<span class="hljs-string">"Widget 1"</span>,
+    invoiceitemdescription_2=<span class="hljs-string">"Widget 2"</span>,
+    invoiceitemprice_1=<span class="hljs-string">"2.00"</span>,
+    invoiceitemprice_2=<span class="hljs-string">"4.00"</span>,
+    invoiceitemquantity_1=<span class="hljs-string">"1"</span>,
+    invoiceitemquantity_2=<span class="hljs-string">"2"</span>
+))
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"invoicenumber"</span>: <span class="hljs-string">"Inv-39877"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"invoice has been successfully created"</span>
+}
 
 </code></pre>
 
@@ -10331,12 +11679,12 @@ invoicenumber=Inv-39031
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreateInvoice = <span class="hljs-keyword">await</span> _sparrow.CreateInvoice(
-    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
-    currency: <span class="hljs-string">"USD"</span>, 
-    invoiceStatus: Sparrow.InvoiceStatus.Draft, 
+    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>),
+    currency: <span class="hljs-string">"USD"</span>,
+    invoiceStatus: Sparrow.InvoiceStatus.Draft,
     invoiceAmount: <span class="hljs-number">10.00</span>m);
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.UpdateInvoice(
-    invoiceNumber: resultCreateInvoice.InvoiceNumber, 
+    invoiceNumber: resultCreateInvoice.InvoiceNumber,
     invoiceStatus: Sparrow.InvoiceStatus.Active);
 </code></pre>
 <p>RESULT CreateInvoice:</p>
@@ -10366,6 +11714,29 @@ api.update_invoice({
 
 result.textresponse <span class="hljs-comment"># =&gt; 'Invoice has been successfully updated'</span>
 result.invoicenumber <span class="hljs-comment"># =&gt; 'Inv-39744'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.invoices.update(invoice_id, data=dict(
+    invoicedate=<span class="hljs-string">"12/15/2017"</span>,
+    invoiceamount=<span class="hljs-string">"15.00"</span>,
+    invoicestatus=<span class="hljs-string">"active"</span>,
+))
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"invoicenumber"</span>: <span class="hljs-string">"Inv-39888"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Invoice has been successfully updated"</span>
+}
 
 </code></pre>
 
@@ -10540,9 +11911,9 @@ customertoken=3F4JAWXXFDYSJ1JX
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreateInvoice = <span class="hljs-keyword">await</span> _sparrow.CreateInvoice(
-    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
-    currency: <span class="hljs-string">"USD"</span>, 
-    invoiceStatus: Sparrow.InvoiceStatus.Active, 
+    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>),
+    currency: <span class="hljs-string">"USD"</span>,
+    invoiceStatus: Sparrow.InvoiceStatus.Active,
     invoiceAmount: <span class="hljs-number">10.00</span>m);
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.RetrieveInvoice(
     invoiceNumber: resultCreateInvoice.InvoiceNumber);
@@ -10582,6 +11953,31 @@ result.invoiceamount <span class="hljs-comment"># =&gt; '212.9500'</span>
 result.currency <span class="hljs-comment"># =&gt; 'USD'</span>
 result.invoicedate <span class="hljs-comment"># =&gt; '10/15/2018'</span>
 result.invoicestatus <span class="hljs-comment"># =&gt; 'Draft'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+card = sparrowone.CardInfo(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>
+)
+resp = sprw.invoices.pay(invoice_id, card)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"invoicenumber"</span>: <span class="hljs-string">"Inv-39912"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Invoice has been successfully paid"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11188453"</span>
+}
 
 </code></pre>
 
@@ -10665,12 +12061,12 @@ invoicenumber=Inv-39028
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreateInvoice = <span class="hljs-keyword">await</span> _sparrow.CreateInvoice(
-    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
-    currency: <span class="hljs-string">"USD"</span>, 
-    invoiceStatus: Sparrow.InvoiceStatus.Active, 
+    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>),
+    currency: <span class="hljs-string">"USD"</span>,
+    invoiceStatus: Sparrow.InvoiceStatus.Active,
     invoiceAmount: <span class="hljs-number">10.00</span>m);
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.CancelInvoice(
-    invoiceNumber: resultCreateInvoice.InvoiceNumber, 
+    invoiceNumber: resultCreateInvoice.InvoiceNumber,
     invoiceStatusReason: <span class="hljs-string">"Testing"</span>);
 </code></pre>
 <p>RESULT CreateInvoice:</p>
@@ -10700,6 +12096,25 @@ api.cancel_invoice({
 
 result.textresponse <span class="hljs-comment"># =&gt; 'invoice has been successfully canceled'</span>
 result.invoicenumber <span class="hljs-comment"># =&gt; 'Inv-39745'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.invoices.cancel(invoice_id, <span class="hljs-string">"test"</span>)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"invoicenumber"</span>: <span class="hljs-string">"Inv-39886"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"invoice has been successfully canceled"</span>
+}
 
 </code></pre>
 
@@ -10783,12 +12198,12 @@ invoicenumber=Inv-39026
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreateInvoice = <span class="hljs-keyword">await</span> _sparrow.CreateInvoice(
-    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
-    currency: <span class="hljs-string">"USD"</span>, 
-    invoiceStatus: Sparrow.InvoiceStatus.Active, 
+    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>),
+    currency: <span class="hljs-string">"USD"</span>,
+    invoiceStatus: Sparrow.InvoiceStatus.Active,
     invoiceAmount: <span class="hljs-number">10.00</span>m);
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.CancelInvoiceByCustomer(
-    invoiceNumber: resultCreateInvoice.InvoiceNumber, 
+    invoiceNumber: resultCreateInvoice.InvoiceNumber,
     invoiceStatusReason: <span class="hljs-string">"Testing"</span>);
 </code></pre>
 <p>RESULT CreateInvoice:</p>
@@ -10798,6 +12213,25 @@ resultCreateInvoice.InvoiceNumber;    <span class="hljs-comment">// Inv-39704</s
 <p>RESULT:</p>
 <pre class="language-csharp"><code class="language-csharp">result.TextResponse;    <span class="hljs-comment">// invoice has been successfully canceled</span>
 result.InvoiceNumber;    <span class="hljs-comment">// Inv-39704</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+resp = sprw.invoices.cancel(invoice_id, <span class="hljs-string">"test"</span>, by_customer=<span class="hljs-keyword">True</span>)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"invoicenumber"</span>: <span class="hljs-string">"Inv-39887"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"invoice has been successfully canceled"</span>
+}
+
 </code></pre>
 
                  </div>
@@ -11026,12 +12460,12 @@ invoicenumber=Inv-39025
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreateInvoice = <span class="hljs-keyword">await</span> _sparrow.CreateInvoice(
-    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
-    currency: <span class="hljs-string">"USD"</span>, 
-    invoiceStatus: Sparrow.InvoiceStatus.Active, 
+    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>),
+    currency: <span class="hljs-string">"USD"</span>,
+    invoiceStatus: Sparrow.InvoiceStatus.Active,
     invoiceAmount: <span class="hljs-number">10.00</span>m);
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.PayInvoiceWithCreditCard(
-    invoiceNumber: resultCreateInvoice.InvoiceNumber, 
+    invoiceNumber: resultCreateInvoice.InvoiceNumber,
     creditCard: <span class="hljs-keyword">new</span> Sparrow.CreditCard{ CardNum = <span class="hljs-string">"4111111111111111"</span>, CardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>) });
 </code></pre>
 <p>RESULT CreateInvoice:</p>
@@ -11042,6 +12476,35 @@ resultCreateInvoice.InvoiceNumber;    <span class="hljs-comment">// Inv-39709</s
 <pre class="language-csharp"><code class="language-csharp">result.TextResponse;    <span class="hljs-comment">// Invoice has been successfully paid</span>
 result.TransId;    <span class="hljs-comment">// 11032431</span>
 result.InvoiceNumber;    <span class="hljs-comment">// Inv-39709</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+sprw.invoices.update(invoice_id, data=dict(
+    invoicestatus=<span class="hljs-string">"active"</span>,
+))
+
+card = sparrowone.CardInfo(
+    number=<span class="hljs-string">"4111111111111111"</span>,
+    expiration=<span class="hljs-string">"1019"</span>,
+    cvv=<span class="hljs-string">"999"</span>
+)
+resp = sprw.invoices.pay(invoice_id, card)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"invoicenumber"</span>: <span class="hljs-string">"Inv-39888"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Invoice has been successfully paid"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150347"</span>
+}
+
 </code></pre>
 
                  </div>
@@ -11282,13 +12745,13 @@ invoicenumber=Inv-39040
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> resultCreateInvoice = <span class="hljs-keyword">await</span> _sparrow.CreateInvoice(
-    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>), 
-    currency: <span class="hljs-string">"USD"</span>, 
-    invoiceStatus: Sparrow.InvoiceStatus.Active, 
+    invoiceDate: <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>,<span class="hljs-number">10</span>,<span class="hljs-number">21</span>),
+    currency: <span class="hljs-string">"USD"</span>,
+    invoiceStatus: Sparrow.InvoiceStatus.Active,
     invoiceAmount: <span class="hljs-number">10.00</span>m);
 <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.PayInvoiceWithBankAccount(
-    invoiceNumber: resultCreateInvoice.InvoiceNumber, 
-    bankAccount: <span class="hljs-keyword">new</span> Sparrow.BankAccount{ BankName = <span class="hljs-string">"First Test Bank"</span>, Routing = <span class="hljs-string">"110000000"</span>, Account = <span class="hljs-string">"1234567890123"</span>, AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal }, 
+    invoiceNumber: resultCreateInvoice.InvoiceNumber,
+    bankAccount: <span class="hljs-keyword">new</span> Sparrow.BankAccount{ BankName = <span class="hljs-string">"First Test Bank"</span>, Routing = <span class="hljs-string">"110000000"</span>, Account = <span class="hljs-string">"1234567890123"</span>, AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal },
     contactInfo: <span class="hljs-keyword">new</span> Sparrow.ContactInfo{ FirstName = <span class="hljs-string">"John"</span>, LastName = <span class="hljs-string">"Doe"</span> });
 </code></pre>
 <p>RESULT CreateInvoice:</p>
@@ -11299,6 +12762,35 @@ resultCreateInvoice.InvoiceNumber;    <span class="hljs-comment">// Inv-39708</s
 <pre class="language-csharp"><code class="language-csharp">result.TextResponse;    <span class="hljs-comment">// Invoice has been successfully paid</span>
 result.TransId;    <span class="hljs-comment">// 11032430</span>
 result.InvoiceNumber;    <span class="hljs-comment">// Inv-39708</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">
+ach_account = sparrowone.ACHInfo(
+    bank_name=<span class="hljs-string">"First Test Bank"</span>,
+    routing=<span class="hljs-string">"110000000"</span>,
+    account=<span class="hljs-string">"1234567890123"</span>,
+    type=<span class="hljs-string">"checking"</span>,
+    subtype=<span class="hljs-string">"personal"</span>,
+    first_name=<span class="hljs-string">"Alma"</span>,
+    last_name=<span class="hljs-string">"Armas"</span>
+)
+resp = sprw.invoices.pay(invoice_id, ach_account)
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">
+{
+    <span class="hljs-string">"invoicenumber"</span>: <span class="hljs-string">"Inv-39914"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Invoice has been successfully paid"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11188537"</span>
+}
+
 </code></pre>
 
                  </div>
