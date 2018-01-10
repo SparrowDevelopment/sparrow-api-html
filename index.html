@@ -182,7 +182,14 @@
         </li>
      
         <li>
-          <a href="#documenter-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture-incremental-auth-advanced-capture">Advanced Capture</a>
+          <a href="#documenter-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture-incremental-auth-advanced-auth">Advanced Authorization</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture-incremental-auth-advanced-auth-advanced-capture">Advanced Capture</a>
           
 
 
@@ -979,49 +986,26 @@ status=200
            
               <div class="code-php code-div ">
                  <div class="method-example-part">
-                   <p>Sample request:</p>
-<pre class="language-php"><code class="language-php">$c = <span class="hljs-keyword">new</span> Connection(<span class="hljs-string">'&lt;your Sparrow API key&gt;'</span>);
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsSimpleSale = <span class="hljs-keyword">new</span> SimpleSaleParams();
+$paramsSimpleSale-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsSimpleSale-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsSimpleSale-&gt;amount = <span class="hljs-number">9.99</span>;
 
-$ci = <span class="hljs-keyword">new</span> CardInfo([
-  <span class="hljs-string">'number'</span>=&gt;<span class="hljs-string">'4111111111111111'</span>,
-  <span class="hljs-string">'expiration'</span>=&gt;<span class="hljs-string">'1013'</span>,
-  <span class="hljs-string">'cvv'</span>=&gt;<span class="hljs-string">'999'</span>,
-]);
-$res = $c-&gt;simpleSale(<span class="hljs-number">9.95</span>, $ci);
-
-<span class="hljs-keyword">echo</span> $res-&gt;response; <span class="hljs-comment">// 1</span>
-<span class="hljs-keyword">echo</span> $res-&gt;transid; <span class="hljs-comment">// 12345</span>
-<span class="hljs-keyword">echo</span> $res-&gt;type; <span class="hljs-comment">// sale</span>
+$resultSimpleSale = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleSale($paramsSimpleSale)-&gt;wait();
 </code></pre>
-<p></p>
-<p>Sample API response:</p>
-<p></p>
-<pre class="language-php"><code class="language-php">object(Sparrow\Response)<span class="hljs-comment">#51 (12) {</span>
-  [<span class="hljs-string">"response"</span>]=&gt;
-  int(<span class="hljs-number">1</span>)
-  [<span class="hljs-string">"textresponse"</span>]=&gt;
-  string(<span class="hljs-number">7</span>) <span class="hljs-string">"SUCCESS"</span>
-  [<span class="hljs-string">"transid"</span>]=&gt;
-  string(<span class="hljs-number">8</span>) <span class="hljs-string">"10497840"</span>
-  [<span class="hljs-string">"xref"</span>]=&gt;
-  string(<span class="hljs-number">10</span>) <span class="hljs-string">"3779305439"</span>
-  [<span class="hljs-string">"authcode"</span>]=&gt;
-  string(<span class="hljs-number">6</span>) <span class="hljs-string">"123456"</span>
-  [<span class="hljs-string">"orderid"</span>]=&gt;
-  string(<span class="hljs-number">0</span>) <span class="hljs-string">""</span>
-  [<span class="hljs-string">"type"</span>]=&gt;
-  string(<span class="hljs-number">4</span>) <span class="hljs-string">"sale"</span>
-  [<span class="hljs-string">"avsresponse"</span>]=&gt;
-  string(<span class="hljs-number">0</span>) <span class="hljs-string">""</span>
-  [<span class="hljs-string">"cvvresponse"</span>]=&gt;
-  string(<span class="hljs-number">1</span>) <span class="hljs-string">"M"</span>
-  [<span class="hljs-string">"coderesponse"</span>]=&gt;
-  string(<span class="hljs-number">3</span>) <span class="hljs-string">"100"</span>
-  [<span class="hljs-string">"codedescription"</span>]=&gt;
-  string(<span class="hljs-number">24</span>) <span class="hljs-string">"Transaction was Approved"</span>
-  [<span class="hljs-string">"status"</span>]=&gt;
-  string(<span class="hljs-number">3</span>) <span class="hljs-string">"200"</span>
-}
+<p>RESULT SimpleSale:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleSale.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultSimpleSale.status;    <span class="hljs-comment">// 200</span>
+$resultSimpleSale.response;    <span class="hljs-comment">// 1</span>
+$resultSimpleSale.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultSimpleSale.transId;    <span class="hljs-comment">// 11284989</span>
+$resultSimpleSale.xRef;    <span class="hljs-comment">// 3923166057</span>
+$resultSimpleSale.authCode;    <span class="hljs-comment">// 123456</span>
+$resultSimpleSale.type;    <span class="hljs-comment">// sale</span>
+$resultSimpleSale.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultSimpleSale.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
 </code></pre>
 
                  </div>
@@ -1630,6 +1614,33 @@ resp = sprw.sale(sale, card)
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAdvancedSale = <span class="hljs-keyword">new</span> AdvancedSaleParams();
+$paramsAdvancedSale-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsAdvancedSale-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsAdvancedSale-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultAdvancedSale = <span class="hljs-keyword">self</span>::$sparrow-&gt;AdvancedSale($paramsAdvancedSale)-&gt;wait();
+</code></pre>
+<p>RESULT AdvancedSale:</p>
+<pre class="language-php"><code class="language-php">$resultAdvancedSale.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAdvancedSale.status;    <span class="hljs-comment">// 200</span>
+$resultAdvancedSale.response;    <span class="hljs-comment">// 1</span>
+$resultAdvancedSale.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultAdvancedSale.transId;    <span class="hljs-comment">// 11284988</span>
+$resultAdvancedSale.xRef;    <span class="hljs-comment">// 3923166016</span>
+$resultAdvancedSale.authCode;    <span class="hljs-comment">// 123456</span>
+$resultAdvancedSale.type;    <span class="hljs-comment">// sale</span>
+$resultAdvancedSale.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultAdvancedSale.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -1844,6 +1855,33 @@ resp = sprw.auth(<span class="hljs-number">10.0</span>, card)
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"auth"</span>,
     <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3901033581"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsSimpleAuthorization = <span class="hljs-keyword">new</span> SimpleAuthorizationParams();
+$paramsSimpleAuthorization-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsSimpleAuthorization-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsSimpleAuthorization-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultSimpleAuthorization = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleAuthorization($paramsSimpleAuthorization)-&gt;wait();
+</code></pre>
+<p>RESULT SimpleAuthorization:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleAuthorization.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultSimpleAuthorization.status;    <span class="hljs-comment">// 200</span>
+$resultSimpleAuthorization.response;    <span class="hljs-comment">// 1</span>
+$resultSimpleAuthorization.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultSimpleAuthorization.transId;    <span class="hljs-comment">// 11285012</span>
+$resultSimpleAuthorization.xRef;    <span class="hljs-comment">// 3923167317</span>
+$resultSimpleAuthorization.authCode;    <span class="hljs-comment">// 123456</span>
+$resultSimpleAuthorization.type;    <span class="hljs-comment">// auth</span>
+$resultSimpleAuthorization.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultSimpleAuthorization.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
 
 </code></pre>
 
@@ -2065,6 +2103,52 @@ resp = sprw.capture(transid, <span class="hljs-number">10.0</span>, <span class=
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsSimpleAuthorization = <span class="hljs-keyword">new</span> SimpleAuthorizationParams();
+$paramsSimpleAuthorization-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsSimpleAuthorization-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsSimpleAuthorization-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultSimpleAuthorization = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleAuthorization($paramsSimpleAuthorization)-&gt;wait();
+
+$paramsSimpleCapture = <span class="hljs-keyword">new</span> SimpleCaptureParams();
+$paramsSimpleCapture-&gt;transId = $resultSimpleAuthorization-&gt;transId;
+$paramsSimpleCapture-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultSimpleCapture = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleCapture($paramsSimpleCapture)-&gt;wait();
+</code></pre>
+<p>RESULT SimpleAuthorization:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleAuthorization.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultSimpleAuthorization.status;    <span class="hljs-comment">// 200</span>
+$resultSimpleAuthorization.response;    <span class="hljs-comment">// 1</span>
+$resultSimpleAuthorization.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultSimpleAuthorization.transId;    <span class="hljs-comment">// 11285013</span>
+$resultSimpleAuthorization.xRef;    <span class="hljs-comment">// 3923167338</span>
+$resultSimpleAuthorization.authCode;    <span class="hljs-comment">// 123456</span>
+$resultSimpleAuthorization.type;    <span class="hljs-comment">// auth</span>
+$resultSimpleAuthorization.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultSimpleAuthorization.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
+</code></pre>
+<p>RESULT SimpleCapture:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleCapture.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultSimpleCapture.status;    <span class="hljs-comment">// 200</span>
+$resultSimpleCapture.response;    <span class="hljs-comment">// 1</span>
+$resultSimpleCapture.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultSimpleCapture.transId;    <span class="hljs-comment">// 11285013</span>
+$resultSimpleCapture.xRef;    <span class="hljs-comment">// 3923167338</span>
+$resultSimpleCapture.authCode;    <span class="hljs-comment">// 123456</span>
+$resultSimpleCapture.type;    <span class="hljs-comment">// capture</span>
+$resultSimpleCapture.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultSimpleCapture.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -2240,6 +2324,35 @@ resp = sprw.offline(amount, card,
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsSimpleOfflineCapture = <span class="hljs-keyword">new</span> SimpleOfflineCaptureParams();
+$paramsSimpleOfflineCapture-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsSimpleOfflineCapture-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsSimpleOfflineCapture-&gt;amount = <span class="hljs-number">9.99</span>;
+$paramsSimpleOfflineCapture-&gt;authCode = <span class="hljs-string">"123456"</span>;
+$paramsSimpleOfflineCapture-&gt;authDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+
+$resultSimpleOfflineCapture = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleOfflineCapture($paramsSimpleOfflineCapture)-&gt;wait();
+</code></pre>
+<p>RESULT SimpleOfflineCapture:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleOfflineCapture.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultSimpleOfflineCapture.status;    <span class="hljs-comment">// 200</span>
+$resultSimpleOfflineCapture.response;    <span class="hljs-comment">// 1</span>
+$resultSimpleOfflineCapture.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultSimpleOfflineCapture.transId;    <span class="hljs-comment">// 11285010</span>
+$resultSimpleOfflineCapture.xRef;    <span class="hljs-comment">// 3923167199</span>
+$resultSimpleOfflineCapture.authCode;    <span class="hljs-comment">// 123456</span>
+$resultSimpleOfflineCapture.type;    <span class="hljs-comment">// offline</span>
+$resultSimpleOfflineCapture.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultSimpleOfflineCapture.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -2302,7 +2415,327 @@ sections.</p>
 
 
    
-<section id="documenter-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture-incremental-auth-advanced-capture" class="method">
+<section id="documenter-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture-incremental-auth-advanced-auth" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Advanced Authorization</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td>auth</td>
+<td>Authorization = Transaction Auth</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>cardnum</strong></td>
+<td></td>
+<td>Credit card number</td>
+</tr>
+<tr>
+<td><strong>cardexp</strong></td>
+<td>MMYY</td>
+<td>Credit card expiration (ie. 0719 = 7/2019</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td>d.dd</td>
+<td>Total amount to be charged (ie. 10.00)</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td></td>
+<td>card security code</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>CCC (ISO 4217 alphabetic code)</td>
+<td>Code of the payment currency. If currency is not specified, the default currency (USD) is assumed.</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td></td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>skunumber_#</td>
+<td></td>
+<td>SKU number of the product being purchased (skunumber_1, skunumber_2, etc)</td>
+</tr>
+<tr>
+<td>description_#</td>
+<td></td>
+<td>Description of the product being purchased</td>
+</tr>
+<tr>
+<td>amount_#</td>
+<td></td>
+<td>Price of the single unit of a product being purchased</td>
+</tr>
+<tr>
+<td>quantity_#</td>
+<td></td>
+<td>Number of units of a product being purchased</td>
+</tr>
+<tr>
+<td>orderdesc</td>
+<td></td>
+<td>Order Description</td>
+</tr>
+<tr>
+<td>orderid</td>
+<td></td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>cardipaddress</td>
+<td>ddd.ddd.ddd.ddd</td>
+<td>IP address of the customer, can be used for fraud prevention in FBI Tools</td>
+</tr>
+<tr>
+<td>tax</td>
+<td>d.dd</td>
+<td>Total tax amount</td>
+</tr>
+<tr>
+<td>shipamount</td>
+<td>d.dd</td>
+<td>Total shipping amount</td>
+</tr>
+<tr>
+<td>ponumber</td>
+<td></td>
+<td>Original Purchase Order</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td>Billing company</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>Billing address2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td>state</td>
+<td>2 character abbreviation</td>
+<td>Billing state</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td>Billing postal code. If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx</td>
+</tr>
+<tr>
+<td>country</td>
+<td>CC (ISO-3166)</td>
+<td>Billing Country (ie. US)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td>Billing phone number</td>
+</tr>
+<tr>
+<td>fax</td>
+<td></td>
+<td>Billing fax number</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>Billing Email Address</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td>Shipping company</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>Shipping Address</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>Shipping Address - line 2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>Shipping City</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td>2 character abbreviation</td>
+<td>Shipping State</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td>Shipping Zip Code</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td>CC (ISO - 3166)</td>
+<td>Shipping Country, ie US</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>Shipping Phone Number</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>Shipping Email</td>
+</tr>
+<tr>
+<td>opt_amount_type_1</td>
+<td>tip</td>
+<td>Type of additional amount</td>
+</tr>
+<tr>
+<td>opt_amount_value_1</td>
+<td>d.dd</td>
+<td>Value of additional amount (e.g. 1.00)</td>
+</tr>
+<tr>
+<td>opt_amount_percentage_1</td>
+<td></td>
+<td>Percentage of additional amount (e.g. 10)</td>
+</tr>
+<tr>
+<td>sendtransreceipttobillemail</td>
+<td>true/false</td>
+<td>If true receipt will be sent to email from Billing Information if email is specified</td>
+</tr>
+<tr>
+<td>sendtransreceipttoshippemail</td>
+<td>true/false</td>
+<td>If true receipt will be sent to email from Shipping Information if email is specified</td>
+</tr>
+<tr>
+<td>sendtransreceipttoemails</td>
+<td>email@email.com</td>
+<td>Send multiple transaction receipts to customers. Multiple email must be separated by commas.</td>
+</tr>
+<tr>
+<td>token</td>
+<td>[A-Z, 0-9]</td>
+<td>Customer or customer payment info unique identifier.</td>
+</tr>
+<tr>
+<td>saveclient</td>
+<td>true / false</td>
+<td>If parameter 'saveclient' = true and the customer is identified as new, then a new Data Vault client will be created with payment/contact info from the transaction data and DV token will be generated. The payment transaction will be assigned to this new DV client.</td>
+</tr>
+<tr>
+<td>updateclient</td>
+<td>true / false</td>
+<td>If the parameter 'updateclient' = true and the DataVault finds the client according to customer identification rules, then the payment transaction will be assigned to the DataVault client and the DataVault client payment/contact info will be updated according to the transaction's data.</td>
+</tr>
+<tr>
+<td>groupid</td>
+<td>alphanumeric</td>
+<td>Group ID of the Split Funding group. If groupid is defined for the transaction system splits it in accordance with group settings.</td>
+</tr>
+<tr>
+<td>pinlessdebitindicator</td>
+<td>true / false</td>
+<td>For Chase Processor only. Indicator to process PIN-less debit transactions.</td>
+</tr>
+<tr>
+<td>sendpaymentdesc</td>
+<td>true / false</td>
+<td>Overrides ‘Send Payment Descriptor’ account setting for the transaction.</td>
+</tr>
+<tr>
+<td>electrcommind</td>
+<td></td>
+<td>Required for any 3DS-aware payment</td>
+</tr>
+<tr>
+<td>securecavv</td>
+<td></td>
+<td>Required for any 3DS-aware payment</td>
+</tr>
+<tr>
+<td>securexid</td>
+<td></td>
+<td>Required for any 3DS-aware payment</td>
+</tr>
+<tr>
+<td>threedsecparesstatus</td>
+<td></td>
+<td>Optional for 3DS-aware payment. Used by OCBC processor only.</td>
+</tr>
+<tr>
+<td>signatureverification</td>
+<td></td>
+<td>Optional for 3DS-aware payment</td>
+</tr>
+<tr>
+<td>threedsecuretransactionid</td>
+<td></td>
+<td>Optional for 3DS-aware payment</td>
+</tr>
+<tr>
+<td>authindicator</td>
+<td>Pre / Final / Undefined</td>
+<td>This field defines the type of authorization request for Mastercard transactions.</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture-incremental-auth-advanced-auth-advanced-capture" class="method">
    <div class="method-area">
       <div class="method-copy">
          <div class="method-copy-padding">
@@ -2446,19 +2879,15 @@ result.CodeDescription;    <span class="hljs-comment">// Transaction was Approve
               <div class="code-ruby code-div ">
                  <div class="method-example-part">
                    <p>CODE:</p>
-<pre class="language-ruby"><code class="language-ruby">
-api.capture({
+<pre class="language-ruby"><code class="language-ruby">api.capture({
   <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
   <span class="hljs-symbol">transid:</span> <span class="hljs-string">'123456'</span>,
   <span class="hljs-symbol">sendtransreceipttobillemail:</span> <span class="hljs-string">'true'</span>,
   <span class="hljs-symbol">orderid:</span> <span class="hljs-string">'54321'</span>,
 })
-
 </code></pre>
 <p>RESULT:</p>
-<pre class="language-ruby"><code class="language-ruby">
-
-result.response <span class="hljs-comment"># =&gt; '1'</span>
+<pre class="language-ruby"><code class="language-ruby">result.response <span class="hljs-comment"># =&gt; '1'</span>
 result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
 result.transid <span class="hljs-comment"># =&gt; '123456'</span>
 result.xref <span class="hljs-comment"># =&gt; '3865035008'</span>
@@ -2468,7 +2897,6 @@ result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
 result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
-
 </code></pre>
 
                  </div>
@@ -2477,8 +2905,7 @@ result.status <span class="hljs-comment"># =&gt; '200'</span>
               <div class="code-python code-div ">
                  <div class="method-example-part">
                    <p>CODE:</p>
-<pre class="language-python"><code class="language-python">
-card = sparrowone.CardInfo(
+<pre class="language-python"><code class="language-python">card = sparrowone.CardInfo(
     number=<span class="hljs-string">"4111111111111111"</span>,
     expiration=<span class="hljs-string">"1019"</span>,
     cvv=<span class="hljs-string">"999"</span>
@@ -2489,11 +2916,9 @@ transid = resp[<span class="hljs-string">"transid"</span>]
 
 resp = sprw.capture(transid, <span class="hljs-number">10.0</span>, <span class="hljs-string">"1019"</span>,
                     send_receipt_to_billing_email=<span class="hljs-keyword">True</span>)
-
 </code></pre>
 <p>RESULT:</p>
-<pre class="language-python"><code class="language-python">
-{
+<pre class="language-python"><code class="language-python">{
     <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
     <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
     <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
@@ -2505,6 +2930,51 @@ resp = sprw.capture(transid, <span class="hljs-number">10.0</span>, <span class=
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"capture"</span>,
     <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3901034728"</span>
 }
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsSimpleAuthorization = <span class="hljs-keyword">new</span> SimpleAuthorizationParams();
+$paramsSimpleAuthorization-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsSimpleAuthorization-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsSimpleAuthorization-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultSimpleAuthorization = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleAuthorization($paramsSimpleAuthorization)-&gt;wait();
+
+$paramsAdvancedCapture = <span class="hljs-keyword">new</span> AdvancedCaptureParams();
+$paramsAdvancedCapture-&gt;transId = $resultSimpleAuthorization-&gt;transId;
+$paramsAdvancedCapture-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultAdvancedCapture = <span class="hljs-keyword">self</span>::$sparrow-&gt;AdvancedCapture($paramsAdvancedCapture)-&gt;wait();
+</code></pre>
+<p>RESULT SimpleAuthorization:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleAuthorization.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultSimpleAuthorization.status;    <span class="hljs-comment">// 200</span>
+$resultSimpleAuthorization.response;    <span class="hljs-comment">// 1</span>
+$resultSimpleAuthorization.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultSimpleAuthorization.transId;    <span class="hljs-comment">// 11285011</span>
+$resultSimpleAuthorization.xRef;    <span class="hljs-comment">// 3923167234</span>
+$resultSimpleAuthorization.authCode;    <span class="hljs-comment">// 123456</span>
+$resultSimpleAuthorization.type;    <span class="hljs-comment">// auth</span>
+$resultSimpleAuthorization.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultSimpleAuthorization.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
+</code></pre>
+<p>RESULT AdvancedCapture:</p>
+<pre class="language-php"><code class="language-php">$resultAdvancedCapture.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAdvancedCapture.status;    <span class="hljs-comment">// 200</span>
+$resultAdvancedCapture.response;    <span class="hljs-comment">// 1</span>
+$resultAdvancedCapture.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultAdvancedCapture.transId;    <span class="hljs-comment">// 11285011</span>
+$resultAdvancedCapture.xRef;    <span class="hljs-comment">// 3923167234</span>
+$resultAdvancedCapture.authCode;    <span class="hljs-comment">// 123456</span>
+$resultAdvancedCapture.type;    <span class="hljs-comment">// capture</span>
+$resultAdvancedCapture.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultAdvancedCapture.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
 
 </code></pre>
 
@@ -2675,6 +3145,52 @@ resp = sprw.refund(transid, amount)
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"refund"</span>,
     <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900992367"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsSimpleSale = <span class="hljs-keyword">new</span> SimpleSaleParams();
+$paramsSimpleSale-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsSimpleSale-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsSimpleSale-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultSimpleSale = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleSale($paramsSimpleSale)-&gt;wait();
+
+$paramsSimpleRefund = <span class="hljs-keyword">new</span> SimpleRefundParams();
+$paramsSimpleRefund-&gt;transId = $resultSimpleSale-&gt;transId;
+$paramsSimpleRefund-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultSimpleRefund = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleRefund($paramsSimpleRefund)-&gt;wait();
+</code></pre>
+<p>RESULT SimpleSale:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleSale.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultSimpleSale.status;    <span class="hljs-comment">// 200</span>
+$resultSimpleSale.response;    <span class="hljs-comment">// 1</span>
+$resultSimpleSale.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultSimpleSale.transId;    <span class="hljs-comment">// 11285000</span>
+$resultSimpleSale.xRef;    <span class="hljs-comment">// 3923166758</span>
+$resultSimpleSale.authCode;    <span class="hljs-comment">// 123456</span>
+$resultSimpleSale.type;    <span class="hljs-comment">// sale</span>
+$resultSimpleSale.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultSimpleSale.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
+</code></pre>
+<p>RESULT SimpleRefund:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleRefund.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultSimpleRefund.status;    <span class="hljs-comment">// 200</span>
+$resultSimpleRefund.response;    <span class="hljs-comment">// 1</span>
+$resultSimpleRefund.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultSimpleRefund.transId;    <span class="hljs-comment">// 11285000</span>
+$resultSimpleRefund.xRef;    <span class="hljs-comment">// 3923166758</span>
+$resultSimpleRefund.authCode;    <span class="hljs-comment">// 123456</span>
+$resultSimpleRefund.type;    <span class="hljs-comment">// refund</span>
+$resultSimpleRefund.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultSimpleRefund.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
 
 </code></pre>
 
@@ -2897,6 +3413,52 @@ resp = sprw.refund(
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsSimpleSale = <span class="hljs-keyword">new</span> SimpleSaleParams();
+$paramsSimpleSale-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsSimpleSale-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsSimpleSale-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultSimpleSale = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleSale($paramsSimpleSale)-&gt;wait();
+
+$paramsAdvancedRefund = <span class="hljs-keyword">new</span> AdvancedRefundParams();
+$paramsAdvancedRefund-&gt;transId = $resultSimpleSale-&gt;transId;
+$paramsAdvancedRefund-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultAdvancedRefund = <span class="hljs-keyword">self</span>::$sparrow-&gt;AdvancedRefund($paramsAdvancedRefund)-&gt;wait();
+</code></pre>
+<p>RESULT SimpleSale:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleSale.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultSimpleSale.status;    <span class="hljs-comment">// 200</span>
+$resultSimpleSale.response;    <span class="hljs-comment">// 1</span>
+$resultSimpleSale.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultSimpleSale.transId;    <span class="hljs-comment">// 11285003</span>
+$resultSimpleSale.xRef;    <span class="hljs-comment">// 3923166850</span>
+$resultSimpleSale.authCode;    <span class="hljs-comment">// 123456</span>
+$resultSimpleSale.type;    <span class="hljs-comment">// sale</span>
+$resultSimpleSale.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultSimpleSale.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
+</code></pre>
+<p>RESULT AdvancedRefund:</p>
+<pre class="language-php"><code class="language-php">$resultAdvancedRefund.status;    <span class="hljs-comment">// 300</span>
+$resultAdvancedRefund.response;    <span class="hljs-comment">// 3</span>
+$resultAdvancedRefund.textResponse;    <span class="hljs-comment">// Flagged for Review by Velocity and Duplicates Policy (Duplicate Transactions Rule). Original Transaction ID: 11285000</span>
+$resultAdvancedRefund.transId;    <span class="hljs-comment">// 11285003</span>
+$resultAdvancedRefund.xRef;    <span class="hljs-comment">// 3923166850</span>
+$resultAdvancedRefund.authCode;    <span class="hljs-comment">// 123456</span>
+$resultAdvancedRefund.type;    <span class="hljs-comment">// refund</span>
+$resultAdvancedRefund.origTransId;    <span class="hljs-comment">// 11285000</span>
+$resultAdvancedRefund.origResponse;    <span class="hljs-comment">// 1</span>
+$resultAdvancedRefund.origTextResponse;    <span class="hljs-comment">// SUCCESS</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -3088,6 +3650,51 @@ resp = sprw.void(transid, amount)
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsSimpleSale = <span class="hljs-keyword">new</span> SimpleSaleParams();
+$paramsSimpleSale-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsSimpleSale-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsSimpleSale-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultSimpleSale = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleSale($paramsSimpleSale)-&gt;wait();
+
+$paramsSimpleVoid = <span class="hljs-keyword">new</span> SimpleVoidParams();
+$paramsSimpleVoid-&gt;transId = $resultSimpleSale-&gt;transId;
+
+$resultSimpleVoid = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleVoid($paramsSimpleVoid)-&gt;wait();
+</code></pre>
+<p>RESULT SimpleSale:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleSale.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultSimpleSale.status;    <span class="hljs-comment">// 200</span>
+$resultSimpleSale.response;    <span class="hljs-comment">// 1</span>
+$resultSimpleSale.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultSimpleSale.transId;    <span class="hljs-comment">// 11285005</span>
+$resultSimpleSale.xRef;    <span class="hljs-comment">// 3923166943</span>
+$resultSimpleSale.authCode;    <span class="hljs-comment">// 123456</span>
+$resultSimpleSale.type;    <span class="hljs-comment">// sale</span>
+$resultSimpleSale.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultSimpleSale.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
+</code></pre>
+<p>RESULT SimpleVoid:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleVoid.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultSimpleVoid.status;    <span class="hljs-comment">// 200</span>
+$resultSimpleVoid.response;    <span class="hljs-comment">// 1</span>
+$resultSimpleVoid.textResponse;    <span class="hljs-comment">// Transaction Void Successful</span>
+$resultSimpleVoid.transId;    <span class="hljs-comment">// 11285005</span>
+$resultSimpleVoid.xRef;    <span class="hljs-comment">// 3923166943</span>
+$resultSimpleVoid.authCode;    <span class="hljs-comment">// 123456</span>
+$resultSimpleVoid.type;    <span class="hljs-comment">// void</span>
+$resultSimpleVoid.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultSimpleVoid.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -3247,6 +3854,51 @@ resp = sprw.void(
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"void"</span>,
     <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900997234"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsSimpleSale = <span class="hljs-keyword">new</span> SimpleSaleParams();
+$paramsSimpleSale-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsSimpleSale-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsSimpleSale-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultSimpleSale = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleSale($paramsSimpleSale)-&gt;wait();
+
+$paramsAdvancedVoid = <span class="hljs-keyword">new</span> AdvancedVoidParams();
+$paramsAdvancedVoid-&gt;transId = $resultSimpleSale-&gt;transId;
+
+$resultAdvancedVoid = <span class="hljs-keyword">self</span>::$sparrow-&gt;AdvancedVoid($paramsAdvancedVoid)-&gt;wait();
+</code></pre>
+<p>RESULT SimpleSale:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleSale.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultSimpleSale.status;    <span class="hljs-comment">// 200</span>
+$resultSimpleSale.response;    <span class="hljs-comment">// 1</span>
+$resultSimpleSale.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultSimpleSale.transId;    <span class="hljs-comment">// 11285004</span>
+$resultSimpleSale.xRef;    <span class="hljs-comment">// 3923166885</span>
+$resultSimpleSale.authCode;    <span class="hljs-comment">// 123456</span>
+$resultSimpleSale.type;    <span class="hljs-comment">// sale</span>
+$resultSimpleSale.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultSimpleSale.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
+</code></pre>
+<p>RESULT AdvancedVoid:</p>
+<pre class="language-php"><code class="language-php">$resultAdvancedVoid.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAdvancedVoid.status;    <span class="hljs-comment">// 200</span>
+$resultAdvancedVoid.response;    <span class="hljs-comment">// 1</span>
+$resultAdvancedVoid.textResponse;    <span class="hljs-comment">// Transaction Void Successful</span>
+$resultAdvancedVoid.transId;    <span class="hljs-comment">// 11285004</span>
+$resultAdvancedVoid.xRef;    <span class="hljs-comment">// 3923166885</span>
+$resultAdvancedVoid.authCode;    <span class="hljs-comment">// 123456</span>
+$resultAdvancedVoid.type;    <span class="hljs-comment">// void</span>
+$resultAdvancedVoid.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultAdvancedVoid.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
 
 </code></pre>
 
@@ -3614,6 +4266,37 @@ resp = sprw.sale(sale, card)
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsPassengerSale = <span class="hljs-keyword">new</span> PassengerSaleParams();
+$paramsPassengerSale-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsPassengerSale-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsPassengerSale-&gt;amount = <span class="hljs-number">9.99</span>;
+$paramsPassengerSale-&gt;passengerName = <span class="hljs-string">"John Doe"</span>;
+$paramsPassengerSale-&gt;airportCodes[<span class="hljs-number">0</span>] = <span class="hljs-string">""</span>;
+$paramsPassengerSale-&gt;airlineCodeNumber = <span class="hljs-string">"AA0"</span>;
+$paramsPassengerSale-&gt;ticketNumber = <span class="hljs-string">"1234567890"</span>;
+$paramsPassengerSale-&gt;flightDateCoupons[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsPassengerSale-&gt;flightDepartureTimeCoupons[<span class="hljs-number">0</span>] = <span class="hljs-string">""</span>;
+$paramsPassengerSale-&gt;approvalCode = <span class="hljs-string">"123456"</span>;
+$paramsPassengerSale-&gt;authCharIndicator = AuthCharIndicator::A;
+$paramsPassengerSale-&gt;validationCode = <span class="hljs-string">"1234"</span>;
+$paramsPassengerSale-&gt;authResponseCode = <span class="hljs-string">"AB"</span>;
+
+$resultPassengerSale = <span class="hljs-keyword">self</span>::$sparrow-&gt;PassengerSale($paramsPassengerSale)-&gt;wait();
+</code></pre>
+<p>RESULT PassengerSale:</p>
+<pre class="language-php"><code class="language-php">$resultPassengerSale.status;    <span class="hljs-comment">// 500</span>
+$resultPassengerSale.response;    <span class="hljs-comment">// 3</span>
+$resultPassengerSale.textResponse;    <span class="hljs-comment">// Operation type is not supported by payment processor</span>
+$resultPassengerSale.type;    <span class="hljs-comment">// passengersale</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -3760,6 +4443,28 @@ resp = sprw.sale(<span class="hljs-number">10.0</span>, card)
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
     <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3901013600"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsSimpleStarCard = <span class="hljs-keyword">new</span> SimpleStarCardParams();
+$paramsSimpleStarCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsSimpleStarCard-&gt;amount = <span class="hljs-number">9.99</span>;
+$paramsSimpleStarCard-&gt;CID = <span class="hljs-string">"12345678901"</span>;
+
+$resultSimpleStarCard = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleStarCard($paramsSimpleStarCard)-&gt;wait();
+</code></pre>
+<p>RESULT SimpleStarCard:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleStarCard.status;    <span class="hljs-comment">// 401</span>
+$resultSimpleStarCard.textResponse;    <span class="hljs-comment">// System Error: Reason Code: 000 Empty CID field/No CID provided, unable to verify transaction</span>
+$resultSimpleStarCard.transId;    <span class="hljs-comment">// 11285016</span>
+$resultSimpleStarCard.type;    <span class="hljs-comment">// sale</span>
+$resultSimpleStarCard.codeDescription;    <span class="hljs-comment">// Error</span>
 
 </code></pre>
 
@@ -4136,6 +4841,29 @@ resp = sprw.sale(sale, card)
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAdvancedStarCard = <span class="hljs-keyword">new</span> AdvancedStarCardParams();
+$paramsAdvancedStarCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsAdvancedStarCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsAdvancedStarCard-&gt;amount = <span class="hljs-number">9.99</span>;
+$paramsAdvancedStarCard-&gt;CID = <span class="hljs-string">"12345678901"</span>;
+
+$resultAdvancedStarCard = <span class="hljs-keyword">self</span>::$sparrow-&gt;AdvancedStarCard($paramsAdvancedStarCard)-&gt;wait();
+</code></pre>
+<p>RESULT AdvancedStarCard:</p>
+<pre class="language-php"><code class="language-php">$resultAdvancedStarCard.status;    <span class="hljs-comment">// 401</span>
+$resultAdvancedStarCard.textResponse;    <span class="hljs-comment">// System Error: Reason Code: 000 Empty CID field/No CID provided, unable to verify transaction</span>
+$resultAdvancedStarCard.transId;    <span class="hljs-comment">// 11285015</span>
+$resultAdvancedStarCard.type;    <span class="hljs-comment">// sale</span>
+$resultAdvancedStarCard.codeDescription;    <span class="hljs-comment">// Error</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -4375,6 +5103,37 @@ resp = sprw.sale(sale, ach_account)
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
     <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900968815"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsSimpleACH = <span class="hljs-keyword">new</span> SimpleACHParams();
+$paramsSimpleACH-&gt;bankAccount-&gt;bankName = <span class="hljs-string">"First Test Bank"</span>;
+$paramsSimpleACH-&gt;bankAccount-&gt;routing = <span class="hljs-string">"110000000"</span>;
+$paramsSimpleACH-&gt;bankAccount-&gt;account = <span class="hljs-string">"1234567890123"</span>;
+$paramsSimpleACH-&gt;bankAccount-&gt;achAccountType = AchAccountType::CHECKING;
+$paramsSimpleACH-&gt;bankAccount-&gt;achAccountSubType = AchAccountSubType::PERSONAL;
+$paramsSimpleACH-&gt;amount = <span class="hljs-number">9.99</span>;
+$paramsSimpleACH-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsSimpleACH-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+
+$resultSimpleACH = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleACH($paramsSimpleACH)-&gt;wait();
+</code></pre>
+<p>RESULT SimpleACH:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleACH.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultSimpleACH.status;    <span class="hljs-comment">// 200</span>
+$resultSimpleACH.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultSimpleACH.transId;    <span class="hljs-comment">// 11284983</span>
+$resultSimpleACH.xRef;    <span class="hljs-comment">// 3923165784</span>
+$resultSimpleACH.authCode;    <span class="hljs-comment">// 123456</span>
+$resultSimpleACH.type;    <span class="hljs-comment">// sale</span>
+$resultSimpleACH.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultSimpleACH.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
 
 </code></pre>
 
@@ -4907,6 +5666,37 @@ resp = sprw.sale(sale, ach_account)
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAdvancedACH = <span class="hljs-keyword">new</span> AdvancedACHParams();
+$paramsAdvancedACH-&gt;bankAccount-&gt;bankName = <span class="hljs-string">"First Test Bank"</span>;
+$paramsAdvancedACH-&gt;bankAccount-&gt;routing = <span class="hljs-string">"110000000"</span>;
+$paramsAdvancedACH-&gt;bankAccount-&gt;account = <span class="hljs-string">"1234567890123"</span>;
+$paramsAdvancedACH-&gt;bankAccount-&gt;achAccountType = AchAccountType::CHECKING;
+$paramsAdvancedACH-&gt;bankAccount-&gt;achAccountSubType = AchAccountSubType::PERSONAL;
+$paramsAdvancedACH-&gt;amount = <span class="hljs-number">9.99</span>;
+$paramsAdvancedACH-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAdvancedACH-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+
+$resultAdvancedACH = <span class="hljs-keyword">self</span>::$sparrow-&gt;AdvancedACH($paramsAdvancedACH)-&gt;wait();
+</code></pre>
+<p>RESULT AdvancedACH:</p>
+<pre class="language-php"><code class="language-php">$resultAdvancedACH.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAdvancedACH.status;    <span class="hljs-comment">// 200</span>
+$resultAdvancedACH.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultAdvancedACH.transId;    <span class="hljs-comment">// 11284982</span>
+$resultAdvancedACH.xRef;    <span class="hljs-comment">// 3923165760</span>
+$resultAdvancedACH.authCode;    <span class="hljs-comment">// 123456</span>
+$resultAdvancedACH.type;    <span class="hljs-comment">// sale</span>
+$resultAdvancedACH.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultAdvancedACH.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -5136,6 +5926,43 @@ resp = sprw.sale(sale, echeck)
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
     <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900968815"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsSimpleECheck = <span class="hljs-keyword">new</span> SimpleECheckParams();
+$paramsSimpleECheck-&gt;bankAccount-&gt;bankName = <span class="hljs-string">"First Test Bank"</span>;
+$paramsSimpleECheck-&gt;bankAccount-&gt;routing = <span class="hljs-string">"110000000"</span>;
+$paramsSimpleECheck-&gt;bankAccount-&gt;account = <span class="hljs-string">"1234567890123"</span>;
+$paramsSimpleECheck-&gt;bankAccount-&gt;achAccountType = AchAccountType::CHECKING;
+$paramsSimpleECheck-&gt;bankAccount-&gt;achAccountSubType = AchAccountSubType::PERSONAL;
+$paramsSimpleECheck-&gt;amount = <span class="hljs-number">9.99</span>;
+$paramsSimpleECheck-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsSimpleECheck-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsSimpleECheck-&gt;contactInfo-&gt;company = <span class="hljs-string">"Sparrow One"</span>;
+$paramsSimpleECheck-&gt;contactInfo-&gt;address-&gt;address1 = <span class="hljs-string">"16100 N 71st Street"</span>;
+$paramsSimpleECheck-&gt;contactInfo-&gt;address-&gt;city = <span class="hljs-string">"Scottsdale"</span>;
+$paramsSimpleECheck-&gt;contactInfo-&gt;address-&gt;state = <span class="hljs-string">"AZ"</span>;
+$paramsSimpleECheck-&gt;contactInfo-&gt;address-&gt;zip = <span class="hljs-string">"85254"</span>;
+$paramsSimpleECheck-&gt;contactInfo-&gt;address-&gt;country = <span class="hljs-string">"US"</span>;
+
+$resultSimpleECheck = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleECheck($paramsSimpleECheck)-&gt;wait();
+</code></pre>
+<p>RESULT SimpleECheck:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleECheck.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultSimpleECheck.status;    <span class="hljs-comment">// 200</span>
+$resultSimpleECheck.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultSimpleECheck.transId;    <span class="hljs-comment">// 11284984</span>
+$resultSimpleECheck.xRef;    <span class="hljs-comment">// 3923165804</span>
+$resultSimpleECheck.authCode;    <span class="hljs-comment">// 123456</span>
+$resultSimpleECheck.type;    <span class="hljs-comment">// sale</span>
+$resultSimpleECheck.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultSimpleECheck.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
 
 </code></pre>
 
@@ -5539,6 +6366,43 @@ resp = sprw.sale(sale, ach_account)
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAdvancedECheck = <span class="hljs-keyword">new</span> AdvancedECheckParams();
+$paramsAdvancedECheck-&gt;bankAccount-&gt;bankName = <span class="hljs-string">"First Test Bank"</span>;
+$paramsAdvancedECheck-&gt;bankAccount-&gt;routing = <span class="hljs-string">"110000000"</span>;
+$paramsAdvancedECheck-&gt;bankAccount-&gt;account = <span class="hljs-string">"1234567890123"</span>;
+$paramsAdvancedECheck-&gt;bankAccount-&gt;achAccountType = AchAccountType::CHECKING;
+$paramsAdvancedECheck-&gt;bankAccount-&gt;achAccountSubType = AchAccountSubType::PERSONAL;
+$paramsAdvancedECheck-&gt;amount = <span class="hljs-number">9.99</span>;
+$paramsAdvancedECheck-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAdvancedECheck-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAdvancedECheck-&gt;contactInfo-&gt;company = <span class="hljs-string">"Sparrow One"</span>;
+$paramsAdvancedECheck-&gt;contactInfo-&gt;address-&gt;address1 = <span class="hljs-string">"16100 N 71st Street"</span>;
+$paramsAdvancedECheck-&gt;contactInfo-&gt;address-&gt;city = <span class="hljs-string">"Scottsdale"</span>;
+$paramsAdvancedECheck-&gt;contactInfo-&gt;address-&gt;state = <span class="hljs-string">"AZ"</span>;
+$paramsAdvancedECheck-&gt;contactInfo-&gt;address-&gt;zip = <span class="hljs-string">"85254"</span>;
+$paramsAdvancedECheck-&gt;contactInfo-&gt;address-&gt;country = <span class="hljs-string">"US"</span>;
+
+$resultAdvancedECheck = <span class="hljs-keyword">self</span>::$sparrow-&gt;AdvancedECheck($paramsAdvancedECheck)-&gt;wait();
+</code></pre>
+<p>RESULT AdvancedECheck:</p>
+<pre class="language-php"><code class="language-php">$resultAdvancedECheck.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAdvancedECheck.status;    <span class="hljs-comment">// 200</span>
+$resultAdvancedECheck.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultAdvancedECheck.transId;    <span class="hljs-comment">// 11284981</span>
+$resultAdvancedECheck.xRef;    <span class="hljs-comment">// 3923165741</span>
+$resultAdvancedECheck.authCode;    <span class="hljs-comment">// 123456</span>
+$resultAdvancedECheck.type;    <span class="hljs-comment">// sale</span>
+$resultAdvancedECheck.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultAdvancedECheck.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -5733,6 +6597,30 @@ resp = sprw.credit(<span class="hljs-number">9.95</span>, ewallet)
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsEWalletSimpleCredit = <span class="hljs-keyword">new</span> EWalletSimpleCreditParams();
+$paramsEWalletSimpleCredit-&gt;ewallet-&gt;ewalletAccount = <span class="hljs-string">"user@example.com"</span>;
+$paramsEWalletSimpleCredit-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultEWalletSimpleCredit = <span class="hljs-keyword">self</span>::$sparrow-&gt;EWalletSimpleCredit($paramsEWalletSimpleCredit)-&gt;wait();
+</code></pre>
+<p>RESULT EWalletSimpleCredit:</p>
+<pre class="language-php"><code class="language-php">$resultEWalletSimpleCredit.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultEWalletSimpleCredit.status;    <span class="hljs-comment">// 200</span>
+$resultEWalletSimpleCredit.response;    <span class="hljs-comment">// 1</span>
+$resultEWalletSimpleCredit.textResponse;    <span class="hljs-comment">// Successful: SUCCESS</span>
+$resultEWalletSimpleCredit.transId;    <span class="hljs-comment">// 11284992</span>
+$resultEWalletSimpleCredit.xRef;    <span class="hljs-comment">// Y5JESRJ5MU3XE</span>
+$resultEWalletSimpleCredit.type;    <span class="hljs-comment">// credit</span>
+$resultEWalletSimpleCredit.codeDescription;    <span class="hljs-comment">// SUCCESS</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -5917,6 +6805,33 @@ resp = sprw.sale(<span class="hljs-number">10.0</span>, card)
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
     <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900948523"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsFiservSimpleSale = <span class="hljs-keyword">new</span> FiservSimpleSaleParams();
+$paramsFiservSimpleSale-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsFiservSimpleSale-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsFiservSimpleSale-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultFiservSimpleSale = <span class="hljs-keyword">self</span>::$sparrow-&gt;FiservSimpleSale($paramsFiservSimpleSale)-&gt;wait();
+</code></pre>
+<p>RESULT FiservSimpleSale:</p>
+<pre class="language-php"><code class="language-php">$resultFiservSimpleSale.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultFiservSimpleSale.status;    <span class="hljs-comment">// 200</span>
+$resultFiservSimpleSale.response;    <span class="hljs-comment">// 1</span>
+$resultFiservSimpleSale.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultFiservSimpleSale.transId;    <span class="hljs-comment">// 11284996</span>
+$resultFiservSimpleSale.xRef;    <span class="hljs-comment">// 3923166556</span>
+$resultFiservSimpleSale.authCode;    <span class="hljs-comment">// 123456</span>
+$resultFiservSimpleSale.type;    <span class="hljs-comment">// sale</span>
+$resultFiservSimpleSale.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultFiservSimpleSale.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
 
 </code></pre>
 
@@ -6360,6 +7275,33 @@ resp = sprw.sale(sale, card)
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAdvancedFiservSale = <span class="hljs-keyword">new</span> AdvancedFiservSaleParams();
+$paramsAdvancedFiservSale-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsAdvancedFiservSale-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsAdvancedFiservSale-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultAdvancedFiservSale = <span class="hljs-keyword">self</span>::$sparrow-&gt;AdvancedFiservSale($paramsAdvancedFiservSale)-&gt;wait();
+</code></pre>
+<p>RESULT AdvancedFiservSale:</p>
+<pre class="language-php"><code class="language-php">$resultAdvancedFiservSale.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAdvancedFiservSale.status;    <span class="hljs-comment">// 200</span>
+$resultAdvancedFiservSale.response;    <span class="hljs-comment">// 1</span>
+$resultAdvancedFiservSale.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultAdvancedFiservSale.transId;    <span class="hljs-comment">// 11284994</span>
+$resultAdvancedFiservSale.xRef;    <span class="hljs-comment">// 3923166531</span>
+$resultAdvancedFiservSale.authCode;    <span class="hljs-comment">// 123456</span>
+$resultAdvancedFiservSale.type;    <span class="hljs-comment">// sale</span>
+$resultAdvancedFiservSale.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultAdvancedFiservSale.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -6543,6 +7485,50 @@ resp = sprw.chargeback(transid=<span class="hljs-string">'10934104'</span>, reas
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsSimpleSale = <span class="hljs-keyword">new</span> SimpleSaleParams();
+$paramsSimpleSale-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsSimpleSale-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsSimpleSale-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultSimpleSale = <span class="hljs-keyword">self</span>::$sparrow-&gt;SimpleSale($paramsSimpleSale)-&gt;wait();
+
+$paramsMarkSuccessfulTransactionAsChargeback = <span class="hljs-keyword">new</span> MarkSuccessfulTransactionAsChargebackParams();
+$paramsMarkSuccessfulTransactionAsChargeback-&gt;transId = $resultSimpleSale-&gt;transId;
+$paramsMarkSuccessfulTransactionAsChargeback-&gt;reason = <span class="hljs-string">"Testing for Success"</span>;
+
+$resultMarkSuccessfulTransactionAsChargeback = <span class="hljs-keyword">self</span>::$sparrow-&gt;MarkSuccessfulTransactionAsChargeback($paramsMarkSuccessfulTransactionAsChargeback)-&gt;wait();
+</code></pre>
+<p>RESULT SimpleSale:</p>
+<pre class="language-php"><code class="language-php">$resultSimpleSale.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultSimpleSale.status;    <span class="hljs-comment">// 200</span>
+$resultSimpleSale.response;    <span class="hljs-comment">// 1</span>
+$resultSimpleSale.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultSimpleSale.transId;    <span class="hljs-comment">// 11284986</span>
+$resultSimpleSale.xRef;    <span class="hljs-comment">// 3923165886</span>
+$resultSimpleSale.authCode;    <span class="hljs-comment">// 123456</span>
+$resultSimpleSale.type;    <span class="hljs-comment">// sale</span>
+$resultSimpleSale.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultSimpleSale.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
+</code></pre>
+<p>RESULT MarkSuccessfulTransactionAsChargeback:</p>
+<pre class="language-php"><code class="language-php">$resultMarkSuccessfulTransactionAsChargeback.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultMarkSuccessfulTransactionAsChargeback.status;    <span class="hljs-comment">// 200</span>
+$resultMarkSuccessfulTransactionAsChargeback.response;    <span class="hljs-comment">// 1</span>
+$resultMarkSuccessfulTransactionAsChargeback.textResponse;    <span class="hljs-comment">// Testing for Success</span>
+$resultMarkSuccessfulTransactionAsChargeback.transId;    <span class="hljs-comment">// 11284986</span>
+$resultMarkSuccessfulTransactionAsChargeback.xRef;    <span class="hljs-comment">// 3923165886</span>
+$resultMarkSuccessfulTransactionAsChargeback.authCode;    <span class="hljs-comment">// 123456</span>
+$resultMarkSuccessfulTransactionAsChargeback.type;    <span class="hljs-comment">// chargeback</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -6676,6 +7662,23 @@ resp = sprw.balance_inquire(card)
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsRetrieveCardBalance = <span class="hljs-keyword">new</span> RetrieveCardBalanceParams();
+$paramsRetrieveCardBalance-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+
+$resultRetrieveCardBalance = <span class="hljs-keyword">self</span>::$sparrow-&gt;RetrieveCardBalance($paramsRetrieveCardBalance)-&gt;wait();
+</code></pre>
+<p>RESULT RetrieveCardBalance:</p>
+<pre class="language-php"><code class="language-php">$resultRetrieveCardBalance.response;    <span class="hljs-comment">// 3</span>
+$resultRetrieveCardBalance.textResponse;    <span class="hljs-comment">// Required payment field cardexp is missing</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -6802,6 +7805,46 @@ resultAddCustomer.PaymentTokens[<span class="hljs-number">0</span>];    <span cl
 result.TextResponse;    <span class="hljs-comment">// Custom field 'customField1' not found.</span>
 result.CustomerToken;    <span class="hljs-comment">// B9AOSCDWHD5UDQM0</span>
 result.Token;    <span class="hljs-comment">// B9AOSCDWHD5UDQM0</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAddCustomer = <span class="hljs-keyword">new</span> AddCustomerParams();
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> PaymentType();
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+
+$resultAddCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AddCustomer($paramsAddCustomer)-&gt;wait();
+
+$paramsDecryptCustomFields = <span class="hljs-keyword">new</span> DecryptCustomFieldsParams();
+$paramsDecryptCustomFields-&gt;fieldName = <span class="hljs-string">"customField1"</span>;
+$paramsDecryptCustomFields-&gt;token = $resultAddCustomer-&gt;customerToken;
+
+$resultDecryptCustomFields = <span class="hljs-keyword">self</span>::$sparrow-&gt;DecryptCustomFields($paramsDecryptCustomFields)-&gt;wait();
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultAddCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.textResponse;    <span class="hljs-comment">// Customer with token 'M69T61U6KD8O7V3D' successfully created</span>
+$resultAddCustomer.type;    <span class="hljs-comment">// addcustomer</span>
+$resultAddCustomer.customerToken;    <span class="hljs-comment">// M69T61U6KD8O7V3D</span>
+$resultAddCustomer.p;    <span class="hljs-comment">// WX5U9OF7K3YBFW09</span>
+
+</code></pre>
+<p>RESULT DecryptCustomFields:</p>
+<pre class="language-php"><code class="language-php">$resultDecryptCustomFields.response;    <span class="hljs-comment">// 3</span>
+$resultDecryptCustomFields.textResponse;    <span class="hljs-comment">// Custom field 'customField1' not found.</span>
+$resultDecryptCustomFields.customerToken;    <span class="hljs-comment">// M69T61U6KD8O7V3D</span>
+$resultDecryptCustomFields.token;    <span class="hljs-comment">// M69T61U6KD8O7V3D</span>
+
 </code></pre>
 
                  </div>
@@ -7014,6 +8057,33 @@ resp = sprw.verify(card)
     <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
     <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
 }
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsVerifyAccount = <span class="hljs-keyword">new</span> VerifyAccountParams();
+$paramsVerifyAccount-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsVerifyAccount-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsVerifyAccount-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultVerifyAccount = <span class="hljs-keyword">self</span>::$sparrow-&gt;VerifyAccount($paramsVerifyAccount)-&gt;wait();
+</code></pre>
+<p>RESULT VerifyAccount:</p>
+<pre class="language-php"><code class="language-php">$resultVerifyAccount.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultVerifyAccount.status;    <span class="hljs-comment">// 200</span>
+$resultVerifyAccount.response;    <span class="hljs-comment">// 1</span>
+$resultVerifyAccount.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultVerifyAccount.transId;    <span class="hljs-comment">// 11284985</span>
+$resultVerifyAccount.xRef;    <span class="hljs-comment">// 3923165840</span>
+$resultVerifyAccount.authCode;    <span class="hljs-comment">// 123456</span>
+$resultVerifyAccount.type;    <span class="hljs-comment">// auth</span>
+$resultVerifyAccount.codeResponse;    <span class="hljs-comment">// 100</span>
+$resultVerifyAccount.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
+
 </code></pre>
 
                  </div>
@@ -7520,6 +8590,34 @@ resp = sprw.customers.create(data=dict(
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAddCustomer = <span class="hljs-keyword">new</span> AddCustomerParams();
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> PaymentType();
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;payType = PayType::CREDITCARD;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+
+$resultAddCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AddCustomer($paramsAddCustomer)-&gt;wait();
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultAddCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.textResponse;    <span class="hljs-comment">// Customer with token 'PE4WB9TIYLXCZXIV' successfully created</span>
+$resultAddCustomer.type;    <span class="hljs-comment">// addcustomer</span>
+$resultAddCustomer.customerToken;    <span class="hljs-comment">// PE4WB9TIYLXCZXIV</span>
+$resultAddCustomer.p;    <span class="hljs-comment">// PTGX8RBJ9GJ1MM9Z</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -7584,6 +8682,11 @@ supported payment type.</p>
 <td><strong>cardexp_#</strong></td>
 <td>MMYY</td>
 <td>Credit card expiration</td>
+</tr>
+<tr>
+<td>paytypeblocked_#</td>
+<td>true / false</td>
+<td>If true payment type will be marked as paused. Payments will not be processed via paused payment type.</td>
 </tr>
 </tbody>
 </table>
@@ -8069,6 +9172,47 @@ resp = sprw.customers.update_payment_type(
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAddCustomer = <span class="hljs-keyword">new</span> AddCustomerParams();
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> PaymentType();
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;payType = PayType::CREDITCARD;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+
+$resultAddCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AddCustomer($paramsAddCustomer)-&gt;wait();
+
+$paramsUpdateCustomer = <span class="hljs-keyword">new</span> UpdateCustomerParams();
+$paramsUpdateCustomer-&gt;token = $resultAddCustomer-&gt;customerToken;
+
+$resultUpdateCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;UpdateCustomer($paramsUpdateCustomer)-&gt;wait();
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultAddCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.textResponse;    <span class="hljs-comment">// Customer with token '6V6AH643CTREHEEX' successfully created</span>
+$resultAddCustomer.type;    <span class="hljs-comment">// addcustomer</span>
+$resultAddCustomer.customerToken;    <span class="hljs-comment">// 6V6AH643CTREHEEX</span>
+$resultAddCustomer.p;    <span class="hljs-comment">// BTLTOL2KZ8CRW6QI</span>
+
+</code></pre>
+<p>RESULT UpdateCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultUpdateCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultUpdateCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultUpdateCustomer.textResponse;    <span class="hljs-comment">// Customer with token '6V6AH643CTREHEEX' successfully updated</span>
+$resultUpdateCustomer.type;    <span class="hljs-comment">// updatecustomer</span>
+$resultUpdateCustomer.customerToken;    <span class="hljs-comment">// 6V6AH643CTREHEEX</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -8210,6 +9354,58 @@ resp = sprw.customers.add_payment_type(
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAddCustomer = <span class="hljs-keyword">new</span> AddCustomerParams();
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> PaymentType();
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;payType = PayType::CREDITCARD;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+
+$resultAddCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AddCustomer($paramsAddCustomer)-&gt;wait();
+
+$paramsAddPaymentTypesToCustomer = <span class="hljs-keyword">new</span> AddPaymentTypesToCustomerParams();
+$paramsAddPaymentTypesToCustomer-&gt;token = $resultAddCustomer-&gt;customerToken;
+$paramsAddPaymentTypesToCustomer-&gt;paymentTypeToAdds[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> PaymentTypeToAdd();
+$paramsAddPaymentTypesToCustomer-&gt;paymentTypeToAdds[<span class="hljs-number">0</span>]-&gt;paymentType-&gt;payType = PayType::CREDITCARD;
+$paramsAddPaymentTypesToCustomer-&gt;paymentTypeToAdds[<span class="hljs-number">0</span>]-&gt;paymentType-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsAddPaymentTypesToCustomer-&gt;paymentTypeToAdds[<span class="hljs-number">0</span>]-&gt;paymentType-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsAddPaymentTypesToCustomer-&gt;paymentTypeToAdds[<span class="hljs-number">0</span>]-&gt;paymentType-&gt;bankAccount-&gt;bankName = <span class="hljs-string">"First Test Bank"</span>;
+$paramsAddPaymentTypesToCustomer-&gt;paymentTypeToAdds[<span class="hljs-number">0</span>]-&gt;paymentType-&gt;bankAccount-&gt;routing = <span class="hljs-string">"110000000"</span>;
+$paramsAddPaymentTypesToCustomer-&gt;paymentTypeToAdds[<span class="hljs-number">0</span>]-&gt;paymentType-&gt;bankAccount-&gt;account = <span class="hljs-string">"1234567890123"</span>;
+$paramsAddPaymentTypesToCustomer-&gt;paymentTypeToAdds[<span class="hljs-number">0</span>]-&gt;paymentType-&gt;bankAccount-&gt;achAccountType = AchAccountType::CHECKING;
+$paramsAddPaymentTypesToCustomer-&gt;paymentTypeToAdds[<span class="hljs-number">0</span>]-&gt;paymentType-&gt;bankAccount-&gt;achAccountSubType = AchAccountSubType::PERSONAL;
+$paramsAddPaymentTypesToCustomer-&gt;paymentTypeToAdds[<span class="hljs-number">0</span>]-&gt;paymentType-&gt;ewallet-&gt;ewalletAccount = <span class="hljs-string">"user@example.com"</span>;
+
+$resultAddPaymentTypesToCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AddPaymentTypesToCustomer($paramsAddPaymentTypesToCustomer)-&gt;wait();
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultAddCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.textResponse;    <span class="hljs-comment">// Customer with token 'UEON6IEAJI0L41TP' successfully created</span>
+$resultAddCustomer.type;    <span class="hljs-comment">// addcustomer</span>
+$resultAddCustomer.customerToken;    <span class="hljs-comment">// UEON6IEAJI0L41TP</span>
+$resultAddCustomer.p;    <span class="hljs-comment">// 98GDPLFHEE51AUHX</span>
+
+</code></pre>
+<p>RESULT AddPaymentTypesToCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultAddPaymentTypesToCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAddPaymentTypesToCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultAddPaymentTypesToCustomer.textResponse;    <span class="hljs-comment">// Customer with token 'UEON6IEAJI0L41TP' successfully updated</span>
+$resultAddPaymentTypesToCustomer.type;    <span class="hljs-comment">// updatecustomer</span>
+$resultAddPaymentTypesToCustomer.customerToken;    <span class="hljs-comment">// UEON6IEAJI0L41TP</span>
+$resultAddPaymentTypesToCustomer.p;    <span class="hljs-comment">// 1ED1OV0K9FI7XAKX</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -8297,6 +9493,53 @@ result.TextResponse;    <span class="hljs-comment">// Customer with token '1UILW
 result.Type;    <span class="hljs-comment">// updatecustomer</span>
 result.CustomerToken;    <span class="hljs-comment">// 1UILWG9UZ3AQKMRL</span>
 result.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-comment">// DWLGPFIBBUG8555V</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAddCustomer = <span class="hljs-keyword">new</span> AddCustomerParams();
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> PaymentType();
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;payType = PayType::CREDITCARD;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+
+$resultAddCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AddCustomer($paramsAddCustomer)-&gt;wait();
+
+$paramsUpdatePaymentType = <span class="hljs-keyword">new</span> UpdatePaymentTypeParams();
+$paramsUpdatePaymentType-&gt;token = $resultAddCustomer-&gt;customerToken;
+$paramsUpdatePaymentType-&gt;paymentTypeToUpdates[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> PaymentTypeToUpdate();
+$paramsUpdatePaymentType-&gt;paymentTypeToUpdates[<span class="hljs-number">0</span>]-&gt;token = $resultAddCustomer-&gt;paymentTokens[<span class="hljs-number">0</span>];
+$paramsUpdatePaymentType-&gt;paymentTypeToUpdates[<span class="hljs-number">0</span>]-&gt;paymentType-&gt;payType = PayType::CREDITCARD;
+$paramsUpdatePaymentType-&gt;paymentTypeToUpdates[<span class="hljs-number">0</span>]-&gt;paymentType-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsUpdatePaymentType-&gt;paymentTypeToUpdates[<span class="hljs-number">0</span>]-&gt;paymentType-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+
+$resultUpdatePaymentType = <span class="hljs-keyword">self</span>::$sparrow-&gt;UpdatePaymentType($paramsUpdatePaymentType)-&gt;wait();
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultAddCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.textResponse;    <span class="hljs-comment">// Customer with token '4S0911NIPAIX47IN' successfully created</span>
+$resultAddCustomer.type;    <span class="hljs-comment">// addcustomer</span>
+$resultAddCustomer.customerToken;    <span class="hljs-comment">// 4S0911NIPAIX47IN</span>
+$resultAddCustomer.p;    <span class="hljs-comment">// N6J9Y6I6LZW1RQWJ</span>
+
+</code></pre>
+<p>RESULT UpdatePaymentType:</p>
+<pre class="language-php"><code class="language-php">$resultUpdatePaymentType.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultUpdatePaymentType.response;    <span class="hljs-comment">// 1</span>
+$resultUpdatePaymentType.textResponse;    <span class="hljs-comment">// Customer with token '4S0911NIPAIX47IN' successfully updated</span>
+$resultUpdatePaymentType.type;    <span class="hljs-comment">// updatecustomer</span>
+$resultUpdatePaymentType.customerToken;    <span class="hljs-comment">// 4S0911NIPAIX47IN</span>
+$resultUpdatePaymentType.p;    <span class="hljs-comment">// N6J9Y6I6LZW1RQWJ</span>
+
 </code></pre>
 
                  </div>
@@ -8429,22 +9672,51 @@ result.paymenttoken_1 <span class="hljs-comment"># =&gt; 'QQ8TR7J8P0IQ9TOL'</spa
 
 </code></pre>
 <p>$
-language: python
-$$</p>
-<p>CODE:</p>
-<pre class="language-ruby"><code class="language-ruby">
-resp = sprw.customers.delete_payment_type(customer_token, payment_token)
+language: python</p>
+
+                 </div>
+              </div>
+           
+              <div class="code-none code-div ">
+                 <div class="method-example-part">
+                   <p>language: php
+$$
+CODE:</p>
+<pre class="language-none"><code class="language-none">$paramsAddCustomer = new AddCustomerParams();
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;firstName = &quot;John&quot;;
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;lastName = &quot;Doe&quot;;
+$paramsAddCustomer-&gt;paymentTypes[0] = new PaymentType();
+$paramsAddCustomer-&gt;paymentTypes[0]-&gt;payType = PayType::CREDITCARD;
+$paramsAddCustomer-&gt;paymentTypes[0]-&gt;contactInfo-&gt;firstName = &quot;John&quot;;
+$paramsAddCustomer-&gt;paymentTypes[0]-&gt;contactInfo-&gt;lastName = &quot;Doe&quot;;
+$paramsAddCustomer-&gt;paymentTypes[0]-&gt;creditCard-&gt;cardNum = &quot;4111111111111111&quot;;
+$paramsAddCustomer-&gt;paymentTypes[0]-&gt;creditCard-&gt;cardExp = new DateTime(&quot;2019-10-21&quot;);
+
+$resultAddCustomer = self::$sparrow-&gt;AddCustomer($paramsAddCustomer)-&gt;wait();
+
+$paramsDeletePaymentType = new DeletePaymentTypeParams();
+$paramsDeletePaymentType-&gt;token = $resultAddCustomer-&gt;customerToken;
+$paramsDeletePaymentType-&gt;paymentTypeToDeletes[0] = new PaymentTypeToDelete();
+$paramsDeletePaymentType-&gt;paymentTypeToDeletes[0]-&gt;token = $resultAddCustomer-&gt;paymentTokens[0];
+
+$resultDeletePaymentType = self::$sparrow-&gt;DeletePaymentType($paramsDeletePaymentType)-&gt;wait();
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-none"><code class="language-none">$resultAddCustomer.isSuccess;    // 1
+$resultAddCustomer.response;    // 1
+$resultAddCustomer.textResponse;    // Customer with token 'BC5Z67O9P8ODXDRQ' successfully created
+$resultAddCustomer.type;    // addcustomer
+$resultAddCustomer.customerToken;    // BC5Z67O9P8ODXDRQ
+$resultAddCustomer.p;    // 5JMQNUZ8CVX4015M
 
 </code></pre>
-<p>RESULT:</p>
-<pre class="language-ruby"><code class="language-ruby">
-{
-    <span class="hljs-string">"customertoken"</span>: <span class="hljs-string">"8XQQWG7VYSMQLGQ2"</span>,
-    <span class="hljs-string">"paymenttoken_1"</span>: <span class="hljs-string">"YZNVHE5E63A3BI8T"</span>,
-    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
-    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Customer with token '8XQQWG7VYSMQLGQ2' successfully updated"</span>,
-    <span class="hljs-string">"type"</span>: <span class="hljs-string">"updatecustomer"</span>
-}
+<p>RESULT DeletePaymentType:</p>
+<pre class="language-none"><code class="language-none">$resultDeletePaymentType.isSuccess;    // 1
+$resultDeletePaymentType.response;    // 1
+$resultDeletePaymentType.textResponse;    // Customer with token 'BC5Z67O9P8ODXDRQ' successfully updated
+$resultDeletePaymentType.type;    // updatecustomer
+$resultDeletePaymentType.customerToken;    // BC5Z67O9P8ODXDRQ
+$resultDeletePaymentType.p;    // 5JMQNUZ8CVX4015M
 
 </code></pre>
 
@@ -8575,6 +9847,45 @@ resp = sprw.customers.delete(customer_token)
     <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"deletecustomer"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAddCustomer = <span class="hljs-keyword">new</span> AddCustomerParams();
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> PaymentType();
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+
+$resultAddCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AddCustomer($paramsAddCustomer)-&gt;wait();
+
+$paramsDeleteDataVaultCustomer = <span class="hljs-keyword">new</span> DeleteDataVaultCustomerParams();
+$paramsDeleteDataVaultCustomer-&gt;token = $resultAddCustomer-&gt;customerToken;
+
+$resultDeleteDataVaultCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;DeleteDataVaultCustomer($paramsDeleteDataVaultCustomer)-&gt;wait();
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultAddCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.textResponse;    <span class="hljs-comment">// Customer with token 'CVOXWSYCS003CW1M' successfully created</span>
+$resultAddCustomer.type;    <span class="hljs-comment">// addcustomer</span>
+$resultAddCustomer.customerToken;    <span class="hljs-comment">// CVOXWSYCS003CW1M</span>
+$resultAddCustomer.p;    <span class="hljs-comment">// YYMNPGJYB4AIQJN3</span>
+
+</code></pre>
+<p>RESULT DeleteDataVaultCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultDeleteDataVaultCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultDeleteDataVaultCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultDeleteDataVaultCustomer.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultDeleteDataVaultCustomer.type;    <span class="hljs-comment">// deletecustomer</span>
 
 </code></pre>
 
@@ -8979,6 +10290,47 @@ resp = sprw.customers.get(<span class="hljs-string">"LFC0KIYV18APRLCH"</span>)
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAddCustomer = <span class="hljs-keyword">new</span> AddCustomerParams();
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> PaymentType();
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+
+$resultAddCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AddCustomer($paramsAddCustomer)-&gt;wait();
+
+$paramsRetrieveCustomer = <span class="hljs-keyword">new</span> RetrieveCustomerParams();
+$paramsRetrieveCustomer-&gt;token = $resultAddCustomer-&gt;customerToken;
+
+$resultRetrieveCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;RetrieveCustomer($paramsRetrieveCustomer)-&gt;wait();
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultAddCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.textResponse;    <span class="hljs-comment">// Customer with token 'L8BW1SYRFGI9C8V6' successfully created</span>
+$resultAddCustomer.type;    <span class="hljs-comment">// addcustomer</span>
+$resultAddCustomer.customerToken;    <span class="hljs-comment">// L8BW1SYRFGI9C8V6</span>
+$resultAddCustomer.p;    <span class="hljs-comment">// Z26C9TLQN7XLKUJX</span>
+
+</code></pre>
+<p>RESULT RetrieveCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultRetrieveCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultRetrieveCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultRetrieveCustomer.textResponse;    <span class="hljs-comment">// Processed</span>
+$resultRetrieveCustomer.customerToken;    <span class="hljs-comment">// L8BW1SYRFGI9C8V6</span>
+$resultRetrieveCustomer.firstName;    <span class="hljs-comment">// John</span>
+$resultRetrieveCustomer.lastName;    <span class="hljs-comment">// Doe</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -9239,6 +10591,53 @@ resp = sprw.customers.get_payment_type(<span class="hljs-string">"QQ8TR7J8P0IQ9T
     <span class="hljs-string">"token"</span>: <span class="hljs-string">"QQ8TR7J8P0IQ9TOL"</span>,
     <span class="hljs-string">"customertoken"</span>: <span class="hljs-string">"LFC0KIYV18APRLCH"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAddCustomer = <span class="hljs-keyword">new</span> AddCustomerParams();
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> PaymentType();
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;payType = PayType::CREDITCARD;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+
+$resultAddCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AddCustomer($paramsAddCustomer)-&gt;wait();
+
+$paramsRetrievePaymentType = <span class="hljs-keyword">new</span> RetrievePaymentTypeParams();
+$paramsRetrievePaymentType-&gt;token = $resultAddCustomer-&gt;paymentTokens[<span class="hljs-number">0</span>];
+
+$resultRetrievePaymentType = <span class="hljs-keyword">self</span>::$sparrow-&gt;RetrievePaymentType($paramsRetrievePaymentType)-&gt;wait();
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultAddCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.textResponse;    <span class="hljs-comment">// Customer with token 'DC1ZB5ZMV4LHLZ5D' successfully created</span>
+$resultAddCustomer.type;    <span class="hljs-comment">// addcustomer</span>
+$resultAddCustomer.customerToken;    <span class="hljs-comment">// DC1ZB5ZMV4LHLZ5D</span>
+$resultAddCustomer.p;    <span class="hljs-comment">// 90F752M2WUI35NHV</span>
+
+</code></pre>
+<p>RESULT RetrievePaymentType:</p>
+<pre class="language-php"><code class="language-php">$resultRetrievePaymentType.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultRetrievePaymentType.response;    <span class="hljs-comment">// 1</span>
+$resultRetrievePaymentType.textResponse;    <span class="hljs-comment">// Processed</span>
+$resultRetrievePaymentType.customerToken;    <span class="hljs-comment">// DC1ZB5ZMV4LHLZ5D</span>
+$resultRetrievePaymentType.firstName;    <span class="hljs-comment">// John</span>
+$resultRetrievePaymentType.lastName;    <span class="hljs-comment">// Doe</span>
+$resultRetrievePaymentType.payType;    <span class="hljs-comment">// CreditCard</span>
+$resultRetrievePaymentType.payNo;    <span class="hljs-comment">// 1</span>
+$resultRetrievePaymentType.cardExp;    <span class="hljs-comment">// 1019</span>
+$resultRetrievePaymentType.account;    <span class="hljs-comment">// 411111******1111</span>
+$resultRetrievePaymentType.token;    <span class="hljs-comment">// 90F752M2WUI35NHV</span>
 
 </code></pre>
 
@@ -9859,6 +11258,34 @@ resp = sprw.plans.create(data=dict(
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsCreatePaymentPlan = <span class="hljs-keyword">new</span> CreatePaymentPlanParams();
+$paramsCreatePaymentPlan-&gt;planName = <span class="hljs-string">"PaymentPlan1"</span>;
+$paramsCreatePaymentPlan-&gt;planDesc = <span class="hljs-string">"1st Payment Plan"</span>;
+$paramsCreatePaymentPlan-&gt;startDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> SequenceStep();
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;sequence = <span class="hljs-number">1</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;amount = <span class="hljs-number">9.99</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleType = ScheduleType::MONTHLY;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleDay = <span class="hljs-number">5</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;duration = <span class="hljs-number">12</span>;
+
+$resultCreatePaymentPlan = <span class="hljs-keyword">self</span>::$sparrow-&gt;CreatePaymentPlan($paramsCreatePaymentPlan)-&gt;wait();
+</code></pre>
+<p>RESULT CreatePaymentPlan:</p>
+<pre class="language-php"><code class="language-php">$resultCreatePaymentPlan.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCreatePaymentPlan.response;    <span class="hljs-comment">// 1</span>
+$resultCreatePaymentPlan.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultCreatePaymentPlan.type;    <span class="hljs-comment">// addplan</span>
+$resultCreatePaymentPlan.planToken;    <span class="hljs-comment">// 1PAXMAY2TEILKDSC</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -10067,6 +11494,53 @@ resp = sprw.plans.update(plan_token, data=dict(
     <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"updateplan"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsCreatePaymentPlan = <span class="hljs-keyword">new</span> CreatePaymentPlanParams();
+$paramsCreatePaymentPlan-&gt;planName = <span class="hljs-string">"PaymentPlan1"</span>;
+$paramsCreatePaymentPlan-&gt;planDesc = <span class="hljs-string">"1st Payment Plan"</span>;
+$paramsCreatePaymentPlan-&gt;startDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> SequenceStep();
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;sequence = <span class="hljs-number">1</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;amount = <span class="hljs-number">10.00</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleType = ScheduleType::MONTHLY;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleDay = <span class="hljs-number">5</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;duration = <span class="hljs-number">12</span>;
+
+$resultCreatePaymentPlan = <span class="hljs-keyword">self</span>::$sparrow-&gt;CreatePaymentPlan($paramsCreatePaymentPlan)-&gt;wait();
+
+$paramsUpdatePaymentPlan = <span class="hljs-keyword">new</span> UpdatePaymentPlanParams();
+$paramsUpdatePaymentPlan-&gt;token = $resultCreatePaymentPlan-&gt;planToken;
+$paramsUpdatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> SequenceStep();
+$paramsUpdatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;sequence = <span class="hljs-number">1</span>;
+$paramsUpdatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;amount = <span class="hljs-number">20.00</span>;
+$paramsUpdatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleType = ScheduleType::MONTHLY;
+$paramsUpdatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleDay = <span class="hljs-number">5</span>;
+$paramsUpdatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;duration = <span class="hljs-number">12</span>;
+$paramsUpdatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;operationType = OperationType::UPDATESEQUENCE;
+
+$resultUpdatePaymentPlan = <span class="hljs-keyword">self</span>::$sparrow-&gt;UpdatePaymentPlan($paramsUpdatePaymentPlan)-&gt;wait();
+</code></pre>
+<p>RESULT CreatePaymentPlan:</p>
+<pre class="language-php"><code class="language-php">$resultCreatePaymentPlan.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCreatePaymentPlan.response;    <span class="hljs-comment">// 1</span>
+$resultCreatePaymentPlan.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultCreatePaymentPlan.type;    <span class="hljs-comment">// addplan</span>
+$resultCreatePaymentPlan.planToken;    <span class="hljs-comment">// 2CYQTFQRH3UZ1FV7</span>
+
+</code></pre>
+<p>RESULT UpdatePaymentPlan:</p>
+<pre class="language-php"><code class="language-php">$resultUpdatePaymentPlan.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultUpdatePaymentPlan.response;    <span class="hljs-comment">// 1</span>
+$resultUpdatePaymentPlan.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultUpdatePaymentPlan.type;    <span class="hljs-comment">// updateplan</span>
 
 </code></pre>
 
@@ -10640,6 +12114,48 @@ resp = sprw.plans.update(plan_token, data=dict(
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsCreatePaymentPlan = <span class="hljs-keyword">new</span> CreatePaymentPlanParams();
+$paramsCreatePaymentPlan-&gt;planName = <span class="hljs-string">"PaymentPlan1"</span>;
+$paramsCreatePaymentPlan-&gt;planDesc = <span class="hljs-string">"1st Payment Plan"</span>;
+$paramsCreatePaymentPlan-&gt;startDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> SequenceStep();
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;sequence = <span class="hljs-number">1</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;amount = <span class="hljs-number">9.99</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleType = ScheduleType::MONTHLY;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleDay = <span class="hljs-number">5</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;duration = <span class="hljs-number">12</span>;
+
+$resultCreatePaymentPlan = <span class="hljs-keyword">self</span>::$sparrow-&gt;CreatePaymentPlan($paramsCreatePaymentPlan)-&gt;wait();
+
+$paramsDeleteSequence = <span class="hljs-keyword">new</span> DeleteSequenceParams();
+$paramsDeleteSequence-&gt;deleteSequenceStepss[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> SequenceStepToDelete();
+$paramsDeleteSequence-&gt;deleteSequenceStepss[<span class="hljs-number">0</span>]-&gt;sequence = <span class="hljs-number">1</span>;
+$paramsDeleteSequence-&gt;token = $resultCreatePaymentPlan-&gt;planToken;
+
+$resultDeleteSequence = <span class="hljs-keyword">self</span>::$sparrow-&gt;DeleteSequence($paramsDeleteSequence)-&gt;wait();
+</code></pre>
+<p>RESULT CreatePaymentPlan:</p>
+<pre class="language-php"><code class="language-php">$resultCreatePaymentPlan.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCreatePaymentPlan.response;    <span class="hljs-comment">// 1</span>
+$resultCreatePaymentPlan.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultCreatePaymentPlan.type;    <span class="hljs-comment">// addplan</span>
+$resultCreatePaymentPlan.planToken;    <span class="hljs-comment">// RRR4A4H85CE86SFI</span>
+
+</code></pre>
+<p>RESULT DeleteSequence:</p>
+<pre class="language-php"><code class="language-php">$resultDeleteSequence.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultDeleteSequence.response;    <span class="hljs-comment">// 1</span>
+$resultDeleteSequence.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultDeleteSequence.type;    <span class="hljs-comment">// updateplan</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -10751,6 +12267,46 @@ resp = sprw.plans.delete(plan_token)
     <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"SUCCESS"</span>,
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"deleteplan"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsCreatePaymentPlan = <span class="hljs-keyword">new</span> CreatePaymentPlanParams();
+$paramsCreatePaymentPlan-&gt;planName = <span class="hljs-string">"PaymentPlan1"</span>;
+$paramsCreatePaymentPlan-&gt;planDesc = <span class="hljs-string">"1st Payment Plan"</span>;
+$paramsCreatePaymentPlan-&gt;startDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> SequenceStep();
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;sequence = <span class="hljs-number">1</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;amount = <span class="hljs-number">9.99</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleType = ScheduleType::MONTHLY;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleDay = <span class="hljs-number">5</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;duration = <span class="hljs-number">12</span>;
+
+$resultCreatePaymentPlan = <span class="hljs-keyword">self</span>::$sparrow-&gt;CreatePaymentPlan($paramsCreatePaymentPlan)-&gt;wait();
+
+$paramsDeletePlan = <span class="hljs-keyword">new</span> DeletePlanParams();
+$paramsDeletePlan-&gt;token = $resultCreatePaymentPlan-&gt;planToken;
+
+$resultDeletePlan = <span class="hljs-keyword">self</span>::$sparrow-&gt;DeletePlan($paramsDeletePlan)-&gt;wait();
+</code></pre>
+<p>RESULT CreatePaymentPlan:</p>
+<pre class="language-php"><code class="language-php">$resultCreatePaymentPlan.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCreatePaymentPlan.response;    <span class="hljs-comment">// 1</span>
+$resultCreatePaymentPlan.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultCreatePaymentPlan.type;    <span class="hljs-comment">// addplan</span>
+$resultCreatePaymentPlan.planToken;    <span class="hljs-comment">// 9056DMDZBUPL6TTZ</span>
+
+</code></pre>
+<p>RESULT DeletePlan:</p>
+<pre class="language-php"><code class="language-php">$resultDeletePlan.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultDeletePlan.response;    <span class="hljs-comment">// 1</span>
+$resultDeletePlan.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultDeletePlan.type;    <span class="hljs-comment">// deleteplan</span>
 
 </code></pre>
 
@@ -10969,6 +12525,70 @@ resp = sprw.plans.assign(plan_token,
     <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Success"</span>,
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"assignplan"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAddCustomer = <span class="hljs-keyword">new</span> AddCustomerParams();
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> PaymentType();
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;payType = PayType::CREDITCARD;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+
+$resultAddCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AddCustomer($paramsAddCustomer)-&gt;wait();
+
+$paramsCreatePaymentPlan = <span class="hljs-keyword">new</span> CreatePaymentPlanParams();
+$paramsCreatePaymentPlan-&gt;planName = <span class="hljs-string">"PaymentPlan1"</span>;
+$paramsCreatePaymentPlan-&gt;planDesc = <span class="hljs-string">"1st Payment Plan"</span>;
+$paramsCreatePaymentPlan-&gt;startDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> SequenceStep();
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;sequence = <span class="hljs-number">1</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;amount = <span class="hljs-number">9.99</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleType = ScheduleType::MONTHLY;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleDay = <span class="hljs-number">5</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;duration = <span class="hljs-number">12</span>;
+
+$resultCreatePaymentPlan = <span class="hljs-keyword">self</span>::$sparrow-&gt;CreatePaymentPlan($paramsCreatePaymentPlan)-&gt;wait();
+
+$paramsAssignPaymentPlanToCustomer = <span class="hljs-keyword">new</span> AssignPaymentPlanToCustomerParams();
+$paramsAssignPaymentPlanToCustomer-&gt;customerToken = $resultAddCustomer-&gt;customerToken;
+$paramsAssignPaymentPlanToCustomer-&gt;planToken = $resultCreatePaymentPlan-&gt;planToken;
+$paramsAssignPaymentPlanToCustomer-&gt;paymentToken = $resultAddCustomer-&gt;paymentTokens[<span class="hljs-number">0</span>];
+
+$resultAssignPaymentPlanToCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AssignPaymentPlanToCustomer($paramsAssignPaymentPlanToCustomer)-&gt;wait();
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultAddCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.textResponse;    <span class="hljs-comment">// Customer with token 'M8A8K5F8GJIWYU9R' successfully created</span>
+$resultAddCustomer.type;    <span class="hljs-comment">// addcustomer</span>
+$resultAddCustomer.customerToken;    <span class="hljs-comment">// M8A8K5F8GJIWYU9R</span>
+$resultAddCustomer.p;    <span class="hljs-comment">// 38FWR7OMZMG7POS2</span>
+
+</code></pre>
+<p>RESULT CreatePaymentPlan:</p>
+<pre class="language-php"><code class="language-php">$resultCreatePaymentPlan.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCreatePaymentPlan.response;    <span class="hljs-comment">// 1</span>
+$resultCreatePaymentPlan.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultCreatePaymentPlan.type;    <span class="hljs-comment">// addplan</span>
+$resultCreatePaymentPlan.planToken;    <span class="hljs-comment">// DYIC0DZC1VZ3ADEM</span>
+
+</code></pre>
+<p>RESULT AssignPaymentPlanToCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultAssignPaymentPlanToCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAssignPaymentPlanToCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultAssignPaymentPlanToCustomer.textResponse;    <span class="hljs-comment">// Success</span>
+$resultAssignPaymentPlanToCustomer.type;    <span class="hljs-comment">// assignplan</span>
+$resultAssignPaymentPlanToCustomer.assignmentToken;    <span class="hljs-comment">// WAI93BPANGWL3WJG</span>
 
 </code></pre>
 
@@ -11198,6 +12818,84 @@ resp = sprw.plans.update_assignment(
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAddCustomer = <span class="hljs-keyword">new</span> AddCustomerParams();
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> PaymentType();
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;payType = PayType::CREDITCARD;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+
+$resultAddCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AddCustomer($paramsAddCustomer)-&gt;wait();
+
+$paramsCreatePaymentPlan = <span class="hljs-keyword">new</span> CreatePaymentPlanParams();
+$paramsCreatePaymentPlan-&gt;planName = <span class="hljs-string">"PaymentPlan1"</span>;
+$paramsCreatePaymentPlan-&gt;planDesc = <span class="hljs-string">"1st Payment Plan"</span>;
+$paramsCreatePaymentPlan-&gt;startDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> SequenceStep();
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;sequence = <span class="hljs-number">1</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;amount = <span class="hljs-number">9.99</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleType = ScheduleType::MONTHLY;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleDay = <span class="hljs-number">5</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;duration = <span class="hljs-number">12</span>;
+
+$resultCreatePaymentPlan = <span class="hljs-keyword">self</span>::$sparrow-&gt;CreatePaymentPlan($paramsCreatePaymentPlan)-&gt;wait();
+
+$paramsAssignPaymentPlanToCustomer = <span class="hljs-keyword">new</span> AssignPaymentPlanToCustomerParams();
+$paramsAssignPaymentPlanToCustomer-&gt;customerToken = $resultAddCustomer-&gt;customerToken;
+$paramsAssignPaymentPlanToCustomer-&gt;planToken = $resultCreatePaymentPlan-&gt;planToken;
+$paramsAssignPaymentPlanToCustomer-&gt;paymentToken = $resultAddCustomer-&gt;paymentTokens[<span class="hljs-number">0</span>];
+
+$resultAssignPaymentPlanToCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AssignPaymentPlanToCustomer($paramsAssignPaymentPlanToCustomer)-&gt;wait();
+
+$paramsUpdatePaymentPlanAssignment = <span class="hljs-keyword">new</span> UpdatePaymentPlanAssignmentParams();
+$paramsUpdatePaymentPlanAssignment-&gt;assignmentToken = $resultAssignPaymentPlanToCustomer-&gt;assignmentToken;
+$paramsUpdatePaymentPlanAssignment-&gt;startDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+
+$resultUpdatePaymentPlanAssignment = <span class="hljs-keyword">self</span>::$sparrow-&gt;UpdatePaymentPlanAssignment($paramsUpdatePaymentPlanAssignment)-&gt;wait();
+</code></pre>
+<p>RESULT AssignPaymentPlanToCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultAssignPaymentPlanToCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAssignPaymentPlanToCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultAssignPaymentPlanToCustomer.textResponse;    <span class="hljs-comment">// Success</span>
+$resultAssignPaymentPlanToCustomer.type;    <span class="hljs-comment">// assignplan</span>
+$resultAssignPaymentPlanToCustomer.assignmentToken;    <span class="hljs-comment">// FF4XM5XOBS3TVT9B</span>
+
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultAddCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.textResponse;    <span class="hljs-comment">// Customer with token 'DA5XFNOR32OE2RMF' successfully created</span>
+$resultAddCustomer.type;    <span class="hljs-comment">// addcustomer</span>
+$resultAddCustomer.customerToken;    <span class="hljs-comment">// DA5XFNOR32OE2RMF</span>
+$resultAddCustomer.p;    <span class="hljs-comment">// W4TNWV3BCQVJ65ER</span>
+
+</code></pre>
+<p>RESULT CreatePaymentPlan:</p>
+<pre class="language-php"><code class="language-php">$resultCreatePaymentPlan.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCreatePaymentPlan.response;    <span class="hljs-comment">// 1</span>
+$resultCreatePaymentPlan.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultCreatePaymentPlan.type;    <span class="hljs-comment">// addplan</span>
+$resultCreatePaymentPlan.planToken;    <span class="hljs-comment">// NETYSCNIR50HT6AD</span>
+
+</code></pre>
+<p>RESULT UpdatePaymentPlanAssignment:</p>
+<pre class="language-php"><code class="language-php">$resultUpdatePaymentPlanAssignment.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultUpdatePaymentPlanAssignment.response;    <span class="hljs-comment">// 1</span>
+$resultUpdatePaymentPlanAssignment.textResponse;    <span class="hljs-comment">// Success</span>
+$resultUpdatePaymentPlanAssignment.type;    <span class="hljs-comment">// updateassignment</span>
+$resultUpdatePaymentPlanAssignment.assignmentToken;    <span class="hljs-comment">// FF4XM5XOBS3TVT9B</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -11325,6 +13023,82 @@ resp = sprw.plans.cancel_assignment(assignment_token)
     <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Success"</span>,
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"cancelassignment"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsAddCustomer = <span class="hljs-keyword">new</span> AddCustomerParams();
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;defaultContactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> PaymentType();
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;payType = PayType::CREDITCARD;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+
+$resultAddCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AddCustomer($paramsAddCustomer)-&gt;wait();
+
+$paramsCreatePaymentPlan = <span class="hljs-keyword">new</span> CreatePaymentPlanParams();
+$paramsCreatePaymentPlan-&gt;planName = <span class="hljs-string">"PaymentPlan1"</span>;
+$paramsCreatePaymentPlan-&gt;planDesc = <span class="hljs-string">"1st Payment Plan"</span>;
+$paramsCreatePaymentPlan-&gt;startDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> SequenceStep();
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;sequence = <span class="hljs-number">1</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;amount = <span class="hljs-number">9.99</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleType = ScheduleType::MONTHLY;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;scheduleDay = <span class="hljs-number">5</span>;
+$paramsCreatePaymentPlan-&gt;sequenceStepss[<span class="hljs-number">0</span>]-&gt;duration = <span class="hljs-number">12</span>;
+
+$resultCreatePaymentPlan = <span class="hljs-keyword">self</span>::$sparrow-&gt;CreatePaymentPlan($paramsCreatePaymentPlan)-&gt;wait();
+
+$paramsAssignPaymentPlanToCustomer = <span class="hljs-keyword">new</span> AssignPaymentPlanToCustomerParams();
+$paramsAssignPaymentPlanToCustomer-&gt;customerToken = $resultAddCustomer-&gt;customerToken;
+$paramsAssignPaymentPlanToCustomer-&gt;planToken = $resultCreatePaymentPlan-&gt;planToken;
+$paramsAssignPaymentPlanToCustomer-&gt;paymentToken = $resultAddCustomer-&gt;paymentTokens[<span class="hljs-number">0</span>];
+
+$resultAssignPaymentPlanToCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AssignPaymentPlanToCustomer($paramsAssignPaymentPlanToCustomer)-&gt;wait();
+
+$paramsCancelPlanAssignment = <span class="hljs-keyword">new</span> CancelPlanAssignmentParams();
+$paramsCancelPlanAssignment-&gt;assignmentToken = $resultAssignPaymentPlanToCustomer-&gt;assignmentToken;
+
+$resultCancelPlanAssignment = <span class="hljs-keyword">self</span>::$sparrow-&gt;CancelPlanAssignment($paramsCancelPlanAssignment)-&gt;wait();
+</code></pre>
+<p>RESULT AssignPaymentPlanToCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultAssignPaymentPlanToCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAssignPaymentPlanToCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultAssignPaymentPlanToCustomer.textResponse;    <span class="hljs-comment">// Success</span>
+$resultAssignPaymentPlanToCustomer.type;    <span class="hljs-comment">// assignplan</span>
+$resultAssignPaymentPlanToCustomer.assignmentToken;    <span class="hljs-comment">// VVV129I7WJ9IFVWF</span>
+
+</code></pre>
+<p>RESULT AddCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultAddCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.response;    <span class="hljs-comment">// 1</span>
+$resultAddCustomer.textResponse;    <span class="hljs-comment">// Customer with token 'W25KLGC8CR8DPWV9' successfully created</span>
+$resultAddCustomer.type;    <span class="hljs-comment">// addcustomer</span>
+$resultAddCustomer.customerToken;    <span class="hljs-comment">// W25KLGC8CR8DPWV9</span>
+$resultAddCustomer.p;    <span class="hljs-comment">// 8D91I61K49JSON9Q</span>
+
+</code></pre>
+<p>RESULT CreatePaymentPlan:</p>
+<pre class="language-php"><code class="language-php">$resultCreatePaymentPlan.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCreatePaymentPlan.response;    <span class="hljs-comment">// 1</span>
+$resultCreatePaymentPlan.textResponse;    <span class="hljs-comment">// SUCCESS</span>
+$resultCreatePaymentPlan.type;    <span class="hljs-comment">// addplan</span>
+$resultCreatePaymentPlan.planToken;    <span class="hljs-comment">// B1IENEHPUYI7YIT2</span>
+
+</code></pre>
+<p>RESULT CancelPlanAssignment:</p>
+<pre class="language-php"><code class="language-php">$resultCancelPlanAssignment.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCancelPlanAssignment.response;    <span class="hljs-comment">// 1</span>
+$resultCancelPlanAssignment.textResponse;    <span class="hljs-comment">// Success</span>
+$resultCancelPlanAssignment.type;    <span class="hljs-comment">// cancelassignment</span>
 
 </code></pre>
 
@@ -11549,6 +13323,27 @@ resp = sprw.invoices.create(data=dict(
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsCreateInvoice = <span class="hljs-keyword">new</span> CreateInvoiceParams();
+$paramsCreateInvoice-&gt;invoiceDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsCreateInvoice-&gt;currency = <span class="hljs-string">"USD"</span>;
+$paramsCreateInvoice-&gt;invoiceStatus = InvoiceStatus::ACTIVE;
+$paramsCreateInvoice-&gt;invoiceAmount = <span class="hljs-number">10.00</span>;
+
+$resultCreateInvoice = <span class="hljs-keyword">self</span>::$sparrow-&gt;CreateInvoice($paramsCreateInvoice)-&gt;wait();
+</code></pre>
+<p>RESULT CreateInvoice:</p>
+<pre class="language-php"><code class="language-php">$resultCreateInvoice.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCreateInvoice.textResponse;    <span class="hljs-comment">// invoice has been successfully created</span>
+$resultCreateInvoice.invoiceNumber;    <span class="hljs-comment">// Inv-40003</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -11737,6 +13532,39 @@ resp = sprw.invoices.update(invoice_id, data=dict(
     <span class="hljs-string">"invoicenumber"</span>: <span class="hljs-string">"Inv-39888"</span>,
     <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Invoice has been successfully updated"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsCreateInvoice = <span class="hljs-keyword">new</span> CreateInvoiceParams();
+$paramsCreateInvoice-&gt;invoiceDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsCreateInvoice-&gt;currency = <span class="hljs-string">"USD"</span>;
+$paramsCreateInvoice-&gt;invoiceStatus = InvoiceStatus::DRAFT;
+$paramsCreateInvoice-&gt;invoiceAmount = <span class="hljs-number">10.00</span>;
+
+$resultCreateInvoice = <span class="hljs-keyword">self</span>::$sparrow-&gt;CreateInvoice($paramsCreateInvoice)-&gt;wait();
+
+$paramsUpdateInvoice = <span class="hljs-keyword">new</span> UpdateInvoiceParams();
+$paramsUpdateInvoice-&gt;invoiceNumber = $resultCreateInvoice-&gt;invoiceNumber;
+$paramsUpdateInvoice-&gt;invoiceStatus = InvoiceStatus::ACTIVE;
+
+$resultUpdateInvoice = <span class="hljs-keyword">self</span>::$sparrow-&gt;UpdateInvoice($paramsUpdateInvoice)-&gt;wait();
+</code></pre>
+<p>RESULT CreateInvoice:</p>
+<pre class="language-php"><code class="language-php">$resultCreateInvoice.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCreateInvoice.textResponse;    <span class="hljs-comment">// invoice has been successfully created</span>
+$resultCreateInvoice.invoiceNumber;    <span class="hljs-comment">// Inv-40007</span>
+
+</code></pre>
+<p>RESULT UpdateInvoice:</p>
+<pre class="language-php"><code class="language-php">$resultUpdateInvoice.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultUpdateInvoice.textResponse;    <span class="hljs-comment">// Invoice has been successfully updated</span>
+$resultUpdateInvoice.invoiceNumber;    <span class="hljs-comment">// Inv-40007</span>
 
 </code></pre>
 
@@ -11984,6 +13812,43 @@ resp = sprw.invoices.pay(invoice_id, card)
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsCreateInvoice = <span class="hljs-keyword">new</span> CreateInvoiceParams();
+$paramsCreateInvoice-&gt;invoiceDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsCreateInvoice-&gt;currency = <span class="hljs-string">"USD"</span>;
+$paramsCreateInvoice-&gt;invoiceStatus = InvoiceStatus::ACTIVE;
+$paramsCreateInvoice-&gt;invoiceAmount = <span class="hljs-number">10.00</span>;
+
+$resultCreateInvoice = <span class="hljs-keyword">self</span>::$sparrow-&gt;CreateInvoice($paramsCreateInvoice)-&gt;wait();
+
+$paramsRetrieveInvoice = <span class="hljs-keyword">new</span> RetrieveInvoiceParams();
+$paramsRetrieveInvoice-&gt;invoiceNumber = $resultCreateInvoice-&gt;invoiceNumber;
+
+$resultRetrieveInvoice = <span class="hljs-keyword">self</span>::$sparrow-&gt;RetrieveInvoice($paramsRetrieveInvoice)-&gt;wait();
+</code></pre>
+<p>RESULT CreateInvoice:</p>
+<pre class="language-php"><code class="language-php">$resultCreateInvoice.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCreateInvoice.textResponse;    <span class="hljs-comment">// invoice has been successfully created</span>
+$resultCreateInvoice.invoiceNumber;    <span class="hljs-comment">// Inv-40004</span>
+
+</code></pre>
+<p>RESULT RetrieveInvoice:</p>
+<pre class="language-php"><code class="language-php">$resultRetrieveInvoice.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultRetrieveInvoice.textResponse;    <span class="hljs-comment">// Success</span>
+$resultRetrieveInvoice.invoiceNumber;    <span class="hljs-comment">// Inv-40004</span>
+$resultRetrieveInvoice.invoiceAmount;    <span class="hljs-comment">// 10.0000</span>
+$resultRetrieveInvoice.currency;    <span class="hljs-comment">// USD</span>
+$resultRetrieveInvoice.invoiceDate;    <span class="hljs-comment">// 10/21/2019</span>
+$resultRetrieveInvoice.invoiceStatus;    <span class="hljs-comment">// Active</span>
+$resultRetrieveInvoice.invoicePaymentLink;    <span class="hljs-comment">// https://secure.sparrowone.com/Payments/Payment.aspx?token=068A72B58B9B2DDA</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -12121,6 +13986,39 @@ resp = sprw.invoices.cancel(invoice_id, <span class="hljs-string">"test"</span>)
                  </div>
               </div>
            
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsCreateInvoice = <span class="hljs-keyword">new</span> CreateInvoiceParams();
+$paramsCreateInvoice-&gt;invoiceDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsCreateInvoice-&gt;currency = <span class="hljs-string">"USD"</span>;
+$paramsCreateInvoice-&gt;invoiceStatus = InvoiceStatus::ACTIVE;
+$paramsCreateInvoice-&gt;invoiceAmount = <span class="hljs-number">10.00</span>;
+
+$resultCreateInvoice = <span class="hljs-keyword">self</span>::$sparrow-&gt;CreateInvoice($paramsCreateInvoice)-&gt;wait();
+
+$paramsCancelInvoice = <span class="hljs-keyword">new</span> CancelInvoiceParams();
+$paramsCancelInvoice-&gt;invoiceNumber = $resultCreateInvoice-&gt;invoiceNumber;
+$paramsCancelInvoice-&gt;invoiceStatusReason = <span class="hljs-string">"Testing"</span>;
+
+$resultCancelInvoice = <span class="hljs-keyword">self</span>::$sparrow-&gt;CancelInvoice($paramsCancelInvoice)-&gt;wait();
+</code></pre>
+<p>RESULT CreateInvoice:</p>
+<pre class="language-php"><code class="language-php">$resultCreateInvoice.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCreateInvoice.textResponse;    <span class="hljs-comment">// invoice has been successfully created</span>
+$resultCreateInvoice.invoiceNumber;    <span class="hljs-comment">// Inv-40002</span>
+
+</code></pre>
+<p>RESULT CancelInvoice:</p>
+<pre class="language-php"><code class="language-php">$resultCancelInvoice.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCancelInvoice.textResponse;    <span class="hljs-comment">// invoice has been successfully canceled</span>
+$resultCancelInvoice.invoiceNumber;    <span class="hljs-comment">// Inv-40002</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
         </div>
       
    </div>
@@ -12231,6 +14129,39 @@ resp = sprw.invoices.cancel(invoice_id, <span class="hljs-string">"test"</span>,
     <span class="hljs-string">"invoicenumber"</span>: <span class="hljs-string">"Inv-39887"</span>,
     <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"invoice has been successfully canceled"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsCreateInvoice = <span class="hljs-keyword">new</span> CreateInvoiceParams();
+$paramsCreateInvoice-&gt;invoiceDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsCreateInvoice-&gt;currency = <span class="hljs-string">"USD"</span>;
+$paramsCreateInvoice-&gt;invoiceStatus = InvoiceStatus::ACTIVE;
+$paramsCreateInvoice-&gt;invoiceAmount = <span class="hljs-number">10.00</span>;
+
+$resultCreateInvoice = <span class="hljs-keyword">self</span>::$sparrow-&gt;CreateInvoice($paramsCreateInvoice)-&gt;wait();
+
+$paramsCancelInvoiceByCustomer = <span class="hljs-keyword">new</span> CancelInvoiceByCustomerParams();
+$paramsCancelInvoiceByCustomer-&gt;invoiceNumber = $resultCreateInvoice-&gt;invoiceNumber;
+$paramsCancelInvoiceByCustomer-&gt;invoiceStatusReason = <span class="hljs-string">"Testing"</span>;
+
+$resultCancelInvoiceByCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;CancelInvoiceByCustomer($paramsCancelInvoiceByCustomer)-&gt;wait();
+</code></pre>
+<p>RESULT CreateInvoice:</p>
+<pre class="language-php"><code class="language-php">$resultCreateInvoice.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCreateInvoice.textResponse;    <span class="hljs-comment">// invoice has been successfully created</span>
+$resultCreateInvoice.invoiceNumber;    <span class="hljs-comment">// Inv-40001</span>
+
+</code></pre>
+<p>RESULT CancelInvoiceByCustomer:</p>
+<pre class="language-php"><code class="language-php">$resultCancelInvoiceByCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCancelInvoiceByCustomer.textResponse;    <span class="hljs-comment">// invoice has been successfully canceled</span>
+$resultCancelInvoiceByCustomer.invoiceNumber;    <span class="hljs-comment">// Inv-40001</span>
 
 </code></pre>
 
@@ -12504,6 +14435,41 @@ resp = sprw.invoices.pay(invoice_id, card)
     <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Invoice has been successfully paid"</span>,
     <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11150347"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsCreateInvoice = <span class="hljs-keyword">new</span> CreateInvoiceParams();
+$paramsCreateInvoice-&gt;invoiceDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsCreateInvoice-&gt;currency = <span class="hljs-string">"USD"</span>;
+$paramsCreateInvoice-&gt;invoiceStatus = InvoiceStatus::ACTIVE;
+$paramsCreateInvoice-&gt;invoiceAmount = <span class="hljs-number">10.00</span>;
+
+$resultCreateInvoice = <span class="hljs-keyword">self</span>::$sparrow-&gt;CreateInvoice($paramsCreateInvoice)-&gt;wait();
+
+$paramsPayInvoiceWithCreditCard = <span class="hljs-keyword">new</span> PayInvoiceWithCreditCardParams();
+$paramsPayInvoiceWithCreditCard-&gt;invoiceNumber = $resultCreateInvoice-&gt;invoiceNumber;
+$paramsPayInvoiceWithCreditCard-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
+$paramsPayInvoiceWithCreditCard-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+
+$resultPayInvoiceWithCreditCard = <span class="hljs-keyword">self</span>::$sparrow-&gt;PayInvoiceWithCreditCard($paramsPayInvoiceWithCreditCard)-&gt;wait();
+</code></pre>
+<p>RESULT CreateInvoice:</p>
+<pre class="language-php"><code class="language-php">$resultCreateInvoice.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCreateInvoice.textResponse;    <span class="hljs-comment">// invoice has been successfully created</span>
+$resultCreateInvoice.invoiceNumber;    <span class="hljs-comment">// Inv-40006</span>
+
+</code></pre>
+<p>RESULT PayInvoiceWithCreditCard:</p>
+<pre class="language-php"><code class="language-php">$resultPayInvoiceWithCreditCard.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultPayInvoiceWithCreditCard.textResponse;    <span class="hljs-comment">// Invoice has been successfully paid</span>
+$resultPayInvoiceWithCreditCard.transId;    <span class="hljs-comment">// 11284999</span>
+$resultPayInvoiceWithCreditCard.invoiceNumber;    <span class="hljs-comment">// Inv-40006</span>
 
 </code></pre>
 
@@ -12790,6 +14756,46 @@ resp = sprw.invoices.pay(invoice_id, ach_account)
     <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Invoice has been successfully paid"</span>,
     <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11188537"</span>
 }
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsCreateInvoice = <span class="hljs-keyword">new</span> CreateInvoiceParams();
+$paramsCreateInvoice-&gt;invoiceDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsCreateInvoice-&gt;currency = <span class="hljs-string">"USD"</span>;
+$paramsCreateInvoice-&gt;invoiceStatus = InvoiceStatus::ACTIVE;
+$paramsCreateInvoice-&gt;invoiceAmount = <span class="hljs-number">10.00</span>;
+
+$resultCreateInvoice = <span class="hljs-keyword">self</span>::$sparrow-&gt;CreateInvoice($paramsCreateInvoice)-&gt;wait();
+
+$paramsPayInvoiceWithBankAccount = <span class="hljs-keyword">new</span> PayInvoiceWithBankAccountParams();
+$paramsPayInvoiceWithBankAccount-&gt;invoiceNumber = $resultCreateInvoice-&gt;invoiceNumber;
+$paramsPayInvoiceWithBankAccount-&gt;bankAccount-&gt;bankName = <span class="hljs-string">"First Test Bank"</span>;
+$paramsPayInvoiceWithBankAccount-&gt;bankAccount-&gt;routing = <span class="hljs-string">"110000000"</span>;
+$paramsPayInvoiceWithBankAccount-&gt;bankAccount-&gt;account = <span class="hljs-string">"1234567890123"</span>;
+$paramsPayInvoiceWithBankAccount-&gt;bankAccount-&gt;achAccountType = AchAccountType::CHECKING;
+$paramsPayInvoiceWithBankAccount-&gt;bankAccount-&gt;achAccountSubType = AchAccountSubType::PERSONAL;
+$paramsPayInvoiceWithBankAccount-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
+$paramsPayInvoiceWithBankAccount-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
+
+$resultPayInvoiceWithBankAccount = <span class="hljs-keyword">self</span>::$sparrow-&gt;PayInvoiceWithBankAccount($paramsPayInvoiceWithBankAccount)-&gt;wait();
+</code></pre>
+<p>RESULT CreateInvoice:</p>
+<pre class="language-php"><code class="language-php">$resultCreateInvoice.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultCreateInvoice.textResponse;    <span class="hljs-comment">// invoice has been successfully created</span>
+$resultCreateInvoice.invoiceNumber;    <span class="hljs-comment">// Inv-40005</span>
+
+</code></pre>
+<p>RESULT PayInvoiceWithBankAccount:</p>
+<pre class="language-php"><code class="language-php">$resultPayInvoiceWithBankAccount.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultPayInvoiceWithBankAccount.textResponse;    <span class="hljs-comment">// Invoice has been successfully paid</span>
+$resultPayInvoiceWithBankAccount.transId;    <span class="hljs-comment">// 11284998</span>
+$resultPayInvoiceWithBankAccount.invoiceNumber;    <span class="hljs-comment">// Inv-40005</span>
 
 </code></pre>
 
@@ -13697,7 +15703,14 @@ sample API key with your actual API key.</p>
         </li>
      
         <li>
-          <a href="#documenter-separate-auth-capture-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture-incremental-auth-advanced-capture">Advanced Capture</a>
+          <a href="#documenter-separate-auth-capture-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture-incremental-auth-advanced-auth">Advanced Authorization</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-separate-auth-capture-separate-auth-capture-simple-auth-simple-capture-Offline-Capture-Voice-capture-incremental-auth-advanced-auth-advanced-capture">Advanced Capture</a>
           
 
 
