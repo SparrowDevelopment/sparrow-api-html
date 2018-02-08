@@ -258,6 +258,24 @@
                         </li>
                      
                         <li>
+                           <a  href="#documenter-get-transaction-details">Get Transaction Details</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-get-transaction-details-simple-sale">Inquiry Operation</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
                            <a  href="#documenter-airline-passenger-sale">Airline Passenger Sale</a>
                            
 
@@ -301,6 +319,24 @@
                         </li>
                      
                         <li>
+                           <a  href="#documenter-ewallet">eWallet</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-ewallet-ewallet-credit">eWallet Simple Credit</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
                            <a  href="#documenter-ach">Automated Clearing House (ACH)/ eCheck</a>
                            
 
@@ -329,24 +365,6 @@
      
         <li>
           <a href="#documenter-ach-simple-ach-advanced-sale-simple-echeck-advanced-echeck-sale">Advanced eCheck</a>
-          
-
-
-        </li>
-     
-  </ol>
-
-
-                        </li>
-                     
-                        <li>
-                           <a  href="#documenter-ewallet">eWallet</a>
-                           
-
-  <ol>
-     
-        <li>
-          <a href="#documenter-ewallet-ewallet-credit">eWallet Simple Credit</a>
           
 
 
@@ -3929,6 +3947,156 @@ refund, a credit is not associated with an original sale transaction.</p>
 
            
               
+<section id="documenter-get-transaction-details" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1>Get Transaction Details</h1>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-get-transaction-details-simple-sale" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Inquiry Operation</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>inquiry</td>
+<td>Indicate operation type</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td>alphanumeric</td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>transid</strong></td>
+<td></td>
+<td>numeric</td>
+<td>Transaction ID</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>Response from the gateway will be as follows:</p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transid</strong></td>
+<td></td>
+<td>numeric</td>
+<td>Transaction ID</td>
+</tr>
+<tr>
+<td><strong>transtatus</strong></td>
+<td></td>
+<td>Not Processed / Declined / Pending Capture / Approved / Refunded / Canceled / Internal Error / Transaction Failed / Failed / Flagged For Review / Dispute</td>
+<td>Transaction status</td>
+</tr>
+<tr>
+<td><strong>textresponse</strong></td>
+<td></td>
+<td>alphanumeric</td>
+<td>Original textresponse of the last operation</td>
+</tr>
+<tr>
+<td><strong>transtatuschangeddate</strong></td>
+<td></td>
+<td>MM/DD/YYYY HH:MM:SS AM/PM</td>
+<td>Date and time of the transaction status change</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged</td>
+</tr>
+<tr>
+<td><strong>currency</strong></td>
+<td></td>
+<td>CCC (ISO 4217 alphabetic code)</td>
+<td>Code of the payment currency</td>
+</tr>
+<tr>
+<td>xref</td>
+<td></td>
+<td>string</td>
+<td>External transaction ID from the payment processor</td>
+</tr>
+<tr>
+<td>authcode</td>
+<td></td>
+<td>string</td>
+<td>Auth code received from the issuer</td>
+</tr>
+<tr>
+<td>avsresponse</td>
+<td></td>
+<td>C</td>
+<td>AVS Response Code</td>
+</tr>
+<tr>
+<td>cvvresponse</td>
+<td></td>
+<td>C</td>
+<td>CVV Response Code</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=inquiry&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;transid=1234567
+</code></pre>
+<p></p>
+<p>Expected Response</p>
+<pre class="language-none"><code class="language-none">textresponse=Transaction+Void+Successful&amp;transid=1234567&amp;xref=1979829668&amp;authcode=123456&amp;avsresponse=Y&amp;cvvresponse=M&amp;transtatus=Canceled&amp;transtatuschangeddate=2%2f3%2f2018+2%3a18%3a31+PM&amp;currency=USD&amp;amount=0.00
+</code></pre>
+
+         </div>
+      </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   No content for this section.
+                 </div>
+              </div>
+           
+        </div>
+      
+   </div>
+</section>           
+
+
+           
+              
 <section id="documenter-airline-passenger-sale" class="method">
    <div class="method-area">
       <div class="method-copy">
@@ -4858,6 +5026,224 @@ $resultAdvancedStarCard.textResponse;    <span class="hljs-comment">// System Er
 $resultAdvancedStarCard.transId;    <span class="hljs-comment">// 11285015</span>
 $resultAdvancedStarCard.type;    <span class="hljs-comment">// sale</span>
 $resultAdvancedStarCard.codeDescription;    <span class="hljs-comment">// Error</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+        </div>
+      
+   </div>
+</section>           
+
+
+           
+              
+<section id="documenter-ewallet" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>eWallet</h3>
+<p>An eWallet is a device, website, software system or database which facilitates
+transactions securely by storing a consumers credit card or bank account within
+a password protected system.</p>
+<p>SPARROW currently supports the PayPal eWallet. eWallet operations can be
+processed via both the Services API and Checkout API.</p>
+<ul>
+<li>
+<p>The Services API can be used to process credit operations only</p>
+</li>
+<li>
+<p>The Checkout API must be used for Sale transactions. The customer must be
+directed to the PayPal Express Checkout page where they will login to their
+PayPal account to pay securely</p>
+</li>
+</ul>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-ewallet-ewallet-credit" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>eWallet Simple Credit</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>credit</td>
+<td>credit- funds being pushed to the customer</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key</td>
+</tr>
+<tr>
+<td><strong>ewalletaccount​</strong></td>
+<td></td>
+<td></td>
+<td>eWallet account credentials (ie email address associated with the customers paypal account)</td>
+</tr>
+<tr>
+<td>ewallet type​</td>
+<td></td>
+<td>PayPal</td>
+<td>Currently PayPal is the only eWallet type supported</td>
+</tr>
+<tr>
+<td><strong>amount</strong></td>
+<td></td>
+<td>d.dd</td>
+<td>Total amount to be charged (i.e. 10.00)</td>
+</tr>
+<tr>
+<td>currency</td>
+<td></td>
+<td>ccc</td>
+<td>Code of the payment currency. If not currency is specified, the default is USD</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=credit&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;amount=9.95&amp;ewalletaccount=user@example.com&amp;ewallettype=paypal&amp;currency=USD
+</code></pre>
+
+         </div>
+      </div>
+      
+        <div class="method-example">
+           
+              <div class="code-curl code-div active-code">
+                 <div class="method-example-part">
+                   <p>Command Line:</p>
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=credit&amp;\
+mkey=<span class="hljs-variable">$E_WALLET_M_KEY</span>&amp;\
+ewalletaccount=user@example.com&amp;\
+ewallet type=PayPal&amp;\
+amount=9.95&amp;\
+currency=USD"</span> \
+https://secure.sparrowone.com/Payments/Services_api.aspx
+</code></pre>
+<p>Response:</p>
+<pre class="language-bash"><code class="language-bash">response=1&amp;
+textresponse=Successful&amp;
+transid=10750788&amp;
+xref=KYAN63Z749J92&amp;
+authcode=&amp;
+orderid=&amp;
+<span class="hljs-built_in">type</span>=credit&amp;
+avsresponse=&amp;
+cvvresponse=&amp;
+coderesponse=&amp;
+codedescription=&amp;
+status=200
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-csharp code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.EWalletSimpleCredit(
+    ewallet: <span class="hljs-keyword">new</span> Sparrow.Ewallet{ EwalletAccount = <span class="hljs-string">"user@example.com"</span> }, 
+    amount: <span class="hljs-number">9.99</span>m);
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
+result.Response;    <span class="hljs-comment">// 1</span>
+result.TextResponse;    <span class="hljs-comment">// Successful</span>
+result.TransId;    <span class="hljs-comment">// 11032427</span>
+result.XRef;    <span class="hljs-comment">// A2M3983N76ZKS</span>
+result.Type;    <span class="hljs-comment">// credit</span>
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-ruby code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-ruby"><code class="language-ruby">
+api.credit({
+  <span class="hljs-symbol">ewalletaccount:</span> <span class="hljs-string">'user@example.com'</span>,
+  <span class="hljs-symbol">ewallet_type:</span> <span class="hljs-string">'PayPal'</span>,
+  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
+  <span class="hljs-symbol">currency:</span> <span class="hljs-string">'USD'</span>,
+})
+
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-ruby"><code class="language-ruby">
+
+result.response <span class="hljs-comment"># =&gt; '1'</span>
+result.textresponse <span class="hljs-comment"># =&gt; 'Successful'</span>
+result.transid <span class="hljs-comment"># =&gt; '11037949'</span>
+result.xref <span class="hljs-comment"># =&gt; '3RBFE4Q3T5XBJ'</span>
+result.type <span class="hljs-comment"># =&gt; 'credit'</span>
+result.status <span class="hljs-comment"># =&gt; '200'</span>
+
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-python code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-python"><code class="language-python">ewallet = sparrowone.EWallet(<span class="hljs-string">"user@example.com"</span>)
+resp = sprw.credit(<span class="hljs-number">9.95</span>, ewallet)
+</code></pre>
+<p>RESULT:</p>
+<pre class="language-python"><code class="language-python">{
+    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
+    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Successful"</span>,
+    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11032427"</span>,
+    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"A2M3983N76ZKS"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"credit"</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
+}
+</code></pre>
+
+                 </div>
+              </div>
+           
+              <div class="code-php code-div ">
+                 <div class="method-example-part">
+                   <p>CODE:</p>
+<pre class="language-php"><code class="language-php">$paramsEWalletSimpleCredit = <span class="hljs-keyword">new</span> EWalletSimpleCreditParams();
+$paramsEWalletSimpleCredit-&gt;ewallet-&gt;ewalletAccount = <span class="hljs-string">"user@example.com"</span>;
+$paramsEWalletSimpleCredit-&gt;amount = <span class="hljs-number">9.99</span>;
+
+$resultEWalletSimpleCredit = <span class="hljs-keyword">self</span>::$sparrow-&gt;EWalletSimpleCredit($paramsEWalletSimpleCredit)-&gt;wait();
+</code></pre>
+<p>RESULT EWalletSimpleCredit:</p>
+<pre class="language-php"><code class="language-php">$resultEWalletSimpleCredit.isSuccess;    <span class="hljs-comment">// 1</span>
+$resultEWalletSimpleCredit.status;    <span class="hljs-comment">// 200</span>
+$resultEWalletSimpleCredit.response;    <span class="hljs-comment">// 1</span>
+$resultEWalletSimpleCredit.textResponse;    <span class="hljs-comment">// Successful: SUCCESS</span>
+$resultEWalletSimpleCredit.transId;    <span class="hljs-comment">// 11284992</span>
+$resultEWalletSimpleCredit.xRef;    <span class="hljs-comment">// Y5JESRJ5MU3XE</span>
+$resultEWalletSimpleCredit.type;    <span class="hljs-comment">// credit</span>
+$resultEWalletSimpleCredit.codeDescription;    <span class="hljs-comment">// SUCCESS</span>
 
 </code></pre>
 
@@ -6397,224 +6783,6 @@ $resultAdvancedECheck.authCode;    <span class="hljs-comment">// 123456</span>
 $resultAdvancedECheck.type;    <span class="hljs-comment">// sale</span>
 $resultAdvancedECheck.codeResponse;    <span class="hljs-comment">// 100</span>
 $resultAdvancedECheck.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
-
-</code></pre>
-
-                 </div>
-              </div>
-           
-        </div>
-      
-   </div>
-</section>           
-
-
-           
-              
-<section id="documenter-ewallet" class="method">
-   <div class="method-area">
-      <div class="method-copy">
-         <div class="method-copy-padding">
-            <h3>eWallet</h3>
-<p>An eWallet is a device, website, software system or database which facilitates
-transactions securely by storing a consumers credit card or bank account within
-a password protected system.</p>
-<p>SPARROW currently supports the PayPal eWallet. eWallet operations can be
-processed via both the Services API and Checkout API.</p>
-<ul>
-<li>
-<p>The Services API can be used to process credit operations only</p>
-</li>
-<li>
-<p>The Checkout API must be used for Sale transactions. The customer must be
-directed to the PayPal Express Checkout page where they will login to their
-PayPal account to pay securely</p>
-</li>
-</ul>
-
-         </div>
-      </div>
-      
-   </div>
-</section>           
-
-   
-<section id="documenter-ewallet-ewallet-credit" class="method">
-   <div class="method-area">
-      <div class="method-copy">
-         <div class="method-copy-padding">
-            <h3>eWallet Simple Credit</h3>
-<p></p>
-<table>
-<thead>
-<tr>
-<th>VariableName</th>
-<th></th>
-<th>Format</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>transtype</strong></td>
-<td></td>
-<td>credit</td>
-<td>credit- funds being pushed to the customer</td>
-</tr>
-<tr>
-<td><strong>mkey</strong></td>
-<td></td>
-<td></td>
-<td>Secured merchant account key</td>
-</tr>
-<tr>
-<td><strong>ewalletaccount​</strong></td>
-<td></td>
-<td></td>
-<td>eWallet account credentials (ie email address associated with the customers paypal account)</td>
-</tr>
-<tr>
-<td>ewallet type​</td>
-<td></td>
-<td>PayPal</td>
-<td>Currently PayPal is the only eWallet type supported</td>
-</tr>
-<tr>
-<td><strong>amount</strong></td>
-<td></td>
-<td>d.dd</td>
-<td>Total amount to be charged (i.e. 10.00)</td>
-</tr>
-<tr>
-<td>currency</td>
-<td></td>
-<td>ccc</td>
-<td>Code of the payment currency. If not currency is specified, the default is USD</td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<pre class="language-none"><code class="language-none">transtype=credit&amp;mkey=MTA6MzM6NTYgUE0tLVBheVRhY3RpeALO&amp;amount=9.95&amp;ewalletaccount=user@example.com&amp;ewallettype=paypal&amp;currency=USD
-</code></pre>
-
-         </div>
-      </div>
-      
-        <div class="method-example">
-           
-              <div class="code-curl code-div active-code">
-                 <div class="method-example-part">
-                   <p>Command Line:</p>
-<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=credit&amp;\
-mkey=<span class="hljs-variable">$E_WALLET_M_KEY</span>&amp;\
-ewalletaccount=user@example.com&amp;\
-ewallet type=PayPal&amp;\
-amount=9.95&amp;\
-currency=USD"</span> \
-https://secure.sparrowone.com/Payments/Services_api.aspx
-</code></pre>
-<p>Response:</p>
-<pre class="language-bash"><code class="language-bash">response=1&amp;
-textresponse=Successful&amp;
-transid=10750788&amp;
-xref=KYAN63Z749J92&amp;
-authcode=&amp;
-orderid=&amp;
-<span class="hljs-built_in">type</span>=credit&amp;
-avsresponse=&amp;
-cvvresponse=&amp;
-coderesponse=&amp;
-codedescription=&amp;
-status=200
-</code></pre>
-
-                 </div>
-              </div>
-           
-              <div class="code-csharp code-div ">
-                 <div class="method-example-part">
-                   <p>CODE:</p>
-<pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.EWalletSimpleCredit(
-    ewallet: <span class="hljs-keyword">new</span> Sparrow.Ewallet{ EwalletAccount = <span class="hljs-string">"user@example.com"</span> }, 
-    amount: <span class="hljs-number">9.99</span>m);
-</code></pre>
-<p>RESULT:</p>
-<pre class="language-csharp"><code class="language-csharp">result.Status;    <span class="hljs-comment">// 200</span>
-result.Response;    <span class="hljs-comment">// 1</span>
-result.TextResponse;    <span class="hljs-comment">// Successful</span>
-result.TransId;    <span class="hljs-comment">// 11032427</span>
-result.XRef;    <span class="hljs-comment">// A2M3983N76ZKS</span>
-result.Type;    <span class="hljs-comment">// credit</span>
-</code></pre>
-
-                 </div>
-              </div>
-           
-              <div class="code-ruby code-div ">
-                 <div class="method-example-part">
-                   <p>CODE:</p>
-<pre class="language-ruby"><code class="language-ruby">
-api.credit({
-  <span class="hljs-symbol">ewalletaccount:</span> <span class="hljs-string">'user@example.com'</span>,
-  <span class="hljs-symbol">ewallet_type:</span> <span class="hljs-string">'PayPal'</span>,
-  <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
-  <span class="hljs-symbol">currency:</span> <span class="hljs-string">'USD'</span>,
-})
-
-</code></pre>
-<p>RESULT:</p>
-<pre class="language-ruby"><code class="language-ruby">
-
-result.response <span class="hljs-comment"># =&gt; '1'</span>
-result.textresponse <span class="hljs-comment"># =&gt; 'Successful'</span>
-result.transid <span class="hljs-comment"># =&gt; '11037949'</span>
-result.xref <span class="hljs-comment"># =&gt; '3RBFE4Q3T5XBJ'</span>
-result.type <span class="hljs-comment"># =&gt; 'credit'</span>
-result.status <span class="hljs-comment"># =&gt; '200'</span>
-
-</code></pre>
-
-                 </div>
-              </div>
-           
-              <div class="code-python code-div ">
-                 <div class="method-example-part">
-                   <p>CODE:</p>
-<pre class="language-python"><code class="language-python">ewallet = sparrowone.EWallet(<span class="hljs-string">"user@example.com"</span>)
-resp = sprw.credit(<span class="hljs-number">9.95</span>, ewallet)
-</code></pre>
-<p>RESULT:</p>
-<pre class="language-python"><code class="language-python">{
-    <span class="hljs-string">"response"</span>: <span class="hljs-string">"1"</span>,
-    <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Successful"</span>,
-    <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11032427"</span>,
-    <span class="hljs-string">"xref"</span>: <span class="hljs-string">"A2M3983N76ZKS"</span>,
-    <span class="hljs-string">"type"</span>: <span class="hljs-string">"credit"</span>,
-    <span class="hljs-string">"status"</span>: <span class="hljs-string">"200"</span>,
-}
-</code></pre>
-
-                 </div>
-              </div>
-           
-              <div class="code-php code-div ">
-                 <div class="method-example-part">
-                   <p>CODE:</p>
-<pre class="language-php"><code class="language-php">$paramsEWalletSimpleCredit = <span class="hljs-keyword">new</span> EWalletSimpleCreditParams();
-$paramsEWalletSimpleCredit-&gt;ewallet-&gt;ewalletAccount = <span class="hljs-string">"user@example.com"</span>;
-$paramsEWalletSimpleCredit-&gt;amount = <span class="hljs-number">9.99</span>;
-
-$resultEWalletSimpleCredit = <span class="hljs-keyword">self</span>::$sparrow-&gt;EWalletSimpleCredit($paramsEWalletSimpleCredit)-&gt;wait();
-</code></pre>
-<p>RESULT EWalletSimpleCredit:</p>
-<pre class="language-php"><code class="language-php">$resultEWalletSimpleCredit.isSuccess;    <span class="hljs-comment">// 1</span>
-$resultEWalletSimpleCredit.status;    <span class="hljs-comment">// 200</span>
-$resultEWalletSimpleCredit.response;    <span class="hljs-comment">// 1</span>
-$resultEWalletSimpleCredit.textResponse;    <span class="hljs-comment">// Successful: SUCCESS</span>
-$resultEWalletSimpleCredit.transId;    <span class="hljs-comment">// 11284992</span>
-$resultEWalletSimpleCredit.xRef;    <span class="hljs-comment">// Y5JESRJ5MU3XE</span>
-$resultEWalletSimpleCredit.type;    <span class="hljs-comment">// credit</span>
-$resultEWalletSimpleCredit.codeDescription;    <span class="hljs-comment">// SUCCESS</span>
 
 </code></pre>
 
@@ -15779,6 +15947,24 @@ sample API key with your actual API key.</p>
                      </li>
                   
                      <li>
+                        <a  href="#documenter-get-transaction-details">Get Transaction Details</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-get-transaction-details-get-transaction-details-simple-sale">Inquiry Operation</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
                         <a  href="#documenter-airline-passenger-sale">Airline Passenger Sale</a>
                         
 
@@ -15822,6 +16008,24 @@ sample API key with your actual API key.</p>
                      </li>
                   
                      <li>
+                        <a  href="#documenter-ewallet">eWallet</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-ewallet-ewallet-ewallet-credit">eWallet Simple Credit</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
                         <a  href="#documenter-ach">Automated Clearing House (ACH)/ eCheck</a>
                         
 
@@ -15850,24 +16054,6 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-ach-ach-simple-ach-advanced-sale-simple-echeck-advanced-echeck-sale">Advanced eCheck</a>
-          
-
-
-        </li>
-     
-  </ol>
-
-
-                     </li>
-                  
-                     <li>
-                        <a  href="#documenter-ewallet">eWallet</a>
-                        
-
-  <ol>
-     
-        <li>
-          <a href="#documenter-ewallet-ewallet-ewallet-credit">eWallet Simple Credit</a>
           
 
 
