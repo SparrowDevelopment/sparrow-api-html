@@ -5758,8 +5758,8 @@ $resultSimpleACH.codeDescription;    <span class="hljs-comment">// Transaction w
 <tr>
 <td>opt_amount_type_#</td>
 <td></td>
-<td></td>
-<td>Type of additional amount (Tip)</td>
+<td>tip</td>
+<td>Type of additional amount (tip)</td>
 </tr>
 <tr>
 <td>opt_amount_value_#</td>
@@ -5932,8 +5932,7 @@ result.CodeDescription;    <span class="hljs-comment">// Transaction was Approve
               <div class="code-ruby code-div ">
                  <div class="method-example-part">
                    <p>CODE:</p>
-<pre class="language-ruby"><code class="language-ruby">
-api.sale({
+<pre class="language-ruby"><code class="language-ruby">api.sale({
   <span class="hljs-symbol">bankname:</span> <span class="hljs-string">'First Test Bank'</span>,
   <span class="hljs-symbol">routing:</span> <span class="hljs-string">'110000000'</span>,
   <span class="hljs-symbol">account:</span> <span class="hljs-string">'1234567890123'</span>,
@@ -5975,12 +5974,9 @@ api.sale({
   <span class="hljs-symbol">sendtransreceipttoshipemail:</span> <span class="hljs-string">'true'</span>,
   <span class="hljs-symbol">paymentdescriptor:</span> <span class="hljs-string">'Custom Payment Descriptor'</span>,
 })
-
 </code></pre>
 <p>RESULT:</p>
-<pre class="language-ruby"><code class="language-ruby">
-
-result.response <span class="hljs-comment"># =&gt; '00'</span>
+<pre class="language-ruby"><code class="language-ruby">result.response <span class="hljs-comment"># =&gt; '00'</span>
 result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS, Customer with token 'LS8W4RO5S7SZKZCN' successfully updated, Payment transaction successfully assigned to the customer with token 'LS8W4RO5S7SZKZCN''</span>
 result.transid <span class="hljs-comment"># =&gt; '11037939'</span>
 result.xref <span class="hljs-comment"># =&gt; '3877926149'</span>
@@ -5991,7 +5987,6 @@ result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
 result.token <span class="hljs-comment"># =&gt; 'LS8W4RO5S7SZKZCN'</span>
-
 </code></pre>
 
                  </div>
@@ -6000,8 +5995,7 @@ result.token <span class="hljs-comment"># =&gt; 'LS8W4RO5S7SZKZCN'</span>
               <div class="code-python code-div ">
                  <div class="method-example-part">
                    <p>CODE:</p>
-<pre class="language-python"><code class="language-python">
-sale = sparrowone.SaleInfo(
+<pre class="language-python"><code class="language-python">sale = sparrowone.SaleInfo(
     amount=<span class="hljs-number">9.95</span>,
     billing_contact=sparrowone.Contact(
         first_name=<span class="hljs-string">"Dana"</span>,
@@ -6033,11 +6027,9 @@ ach_account = sparrowone.ACHInfo(
     subtype=<span class="hljs-string">"personal"</span>,
 )
 resp = sprw.sale(sale, ach_account)
-
 </code></pre>
 <p>RESULT:</p>
-<pre class="language-python"><code class="language-python">
-{
+<pre class="language-python"><code class="language-python">{
     <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
     <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
     <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
@@ -6048,16 +6040,9 @@ resp = sprw.sale(sale, ach_account)
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
     <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900968778"</span>
 }
-
 </code></pre>
-
-                 </div>
-              </div>
-           
-              <div class="code-php code-div ">
-                 <div class="method-example-part">
-                   <p>CODE:</p>
-<pre class="language-php"><code class="language-php">$paramsAdvancedACH = <span class="hljs-keyword">new</span> AdvancedACHParams();
+<p>$$language: php$$ CODE:</p>
+<pre class="language-python"><code class="language-python">$paramsAdvancedACH = new AdvancedACHParams();
 $paramsAdvancedACH-&gt;bankAccount-&gt;bankName = <span class="hljs-string">"First Test Bank"</span>;
 $paramsAdvancedACH-&gt;bankAccount-&gt;routing = <span class="hljs-string">"110000000"</span>;
 $paramsAdvancedACH-&gt;bankAccount-&gt;account = <span class="hljs-string">"1234567890123"</span>;
@@ -6067,19 +6052,18 @@ $paramsAdvancedACH-&gt;amount = <span class="hljs-number">9.99</span>;
 $paramsAdvancedACH-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
 $paramsAdvancedACH-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
 
-$resultAdvancedACH = <span class="hljs-keyword">self</span>::$sparrow-&gt;AdvancedACH($paramsAdvancedACH)-&gt;wait();
+$resultAdvancedACH = self::$sparrow-&gt;AdvancedACH($paramsAdvancedACH)-&gt;wait();
 </code></pre>
 <p>RESULT AdvancedACH:</p>
-<pre class="language-php"><code class="language-php">$resultAdvancedACH.isSuccess;    <span class="hljs-comment">// 1</span>
-$resultAdvancedACH.status;    <span class="hljs-comment">// 200</span>
-$resultAdvancedACH.textResponse;    <span class="hljs-comment">// SUCCESS</span>
-$resultAdvancedACH.transId;    <span class="hljs-comment">// 11284982</span>
-$resultAdvancedACH.xRef;    <span class="hljs-comment">// 3923165760</span>
-$resultAdvancedACH.authCode;    <span class="hljs-comment">// 123456</span>
-$resultAdvancedACH.type;    <span class="hljs-comment">// sale</span>
-$resultAdvancedACH.codeResponse;    <span class="hljs-comment">// 100</span>
-$resultAdvancedACH.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
-
+<pre class="language-python"><code class="language-python">$resultAdvancedACH.isSuccess;    // <span class="hljs-number">1</span>
+$resultAdvancedACH.status;    // <span class="hljs-number">200</span>
+$resultAdvancedACH.textResponse;    // SUCCESS
+$resultAdvancedACH.transId;    // <span class="hljs-number">11284982</span>
+$resultAdvancedACH.xRef;    // <span class="hljs-number">3923165760</span>
+$resultAdvancedACH.authCode;    // <span class="hljs-number">123456</span>
+$resultAdvancedACH.type;    // sale
+$resultAdvancedACH.codeResponse;    // <span class="hljs-number">100</span>
+$resultAdvancedACH.codeDescription;    // Transaction was Approved
 </code></pre>
 
                  </div>
@@ -6581,8 +6565,8 @@ $resultSimpleECheck.codeDescription;    <span class="hljs-comment">// Transactio
 <tr>
 <td>opt_amount_type_#</td>
 <td></td>
-<td></td>
-<td>Type of additional amount (Tip)</td>
+<td>tip</td>
+<td>Type of additional amount (tip)</td>
 </tr>
 <tr>
 <td>opt_amount_value_#</td>
@@ -6653,8 +6637,7 @@ result.CodeDescription;    <span class="hljs-comment">// Transaction was Approve
               <div class="code-ruby code-div ">
                  <div class="method-example-part">
                    <p>CODE:</p>
-<pre class="language-ruby"><code class="language-ruby">
-api.sale({
+<pre class="language-ruby"><code class="language-ruby">api.sale({
   <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
   <span class="hljs-symbol">bankname:</span> <span class="hljs-string">'BankofAmerica'</span>,
   <span class="hljs-symbol">routing:</span> <span class="hljs-string">'110000000'</span>,
@@ -6672,12 +6655,9 @@ api.sale({
   <span class="hljs-symbol">phone:</span> <span class="hljs-string">'8526547896'</span>,
   <span class="hljs-symbol">email:</span> <span class="hljs-string">'hjohnson@test.com'</span>,
 })
-
 </code></pre>
 <p>RESULT:</p>
-<pre class="language-ruby"><code class="language-ruby">
-
-result.response <span class="hljs-comment"># =&gt; '00'</span>
+<pre class="language-ruby"><code class="language-ruby">result.response <span class="hljs-comment"># =&gt; '00'</span>
 result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
 result.transid <span class="hljs-comment"># =&gt; '11037948'</span>
 result.xref <span class="hljs-comment"># =&gt; '3877926406'</span>
@@ -6686,7 +6666,6 @@ result.type <span class="hljs-comment"># =&gt; 'sale'</span>
 result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
-
 </code></pre>
 
                  </div>
@@ -6695,8 +6674,7 @@ result.status <span class="hljs-comment"># =&gt; '200'</span>
               <div class="code-python code-div ">
                  <div class="method-example-part">
                    <p>CODE:</p>
-<pre class="language-python"><code class="language-python">
-sale = sparrowone.SaleInfo(
+<pre class="language-python"><code class="language-python">sale = sparrowone.SaleInfo(
     amount=<span class="hljs-number">9.95</span>,
     billing_contact=sparrowone.Contact(
         first_name=<span class="hljs-string">"Dana"</span>,
@@ -6733,11 +6711,9 @@ ach_account = sparrowone.ECheck(
     subtype=<span class="hljs-string">"personal"</span>,
 )
 resp = sprw.sale(sale, ach_account)
-
 </code></pre>
 <p>RESULT:</p>
-<pre class="language-python"><code class="language-python">
-{
+<pre class="language-python"><code class="language-python">{
     <span class="hljs-string">"authcode"</span>: <span class="hljs-string">"123456"</span>,
     <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
     <span class="hljs-string">"coderesponse"</span>: <span class="hljs-string">"100"</span>,
@@ -6748,16 +6724,9 @@ resp = sprw.sale(sale, ach_account)
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"sale"</span>,
     <span class="hljs-string">"xref"</span>: <span class="hljs-string">"3900968778"</span>
 }
-
 </code></pre>
-
-                 </div>
-              </div>
-           
-              <div class="code-php code-div ">
-                 <div class="method-example-part">
-                   <p>CODE:</p>
-<pre class="language-php"><code class="language-php">$paramsAdvancedECheck = <span class="hljs-keyword">new</span> AdvancedECheckParams();
+<p>$$language: php$$ CODE:</p>
+<pre class="language-python"><code class="language-python">$paramsAdvancedECheck = new AdvancedECheckParams();
 $paramsAdvancedECheck-&gt;bankAccount-&gt;bankName = <span class="hljs-string">"First Test Bank"</span>;
 $paramsAdvancedECheck-&gt;bankAccount-&gt;routing = <span class="hljs-string">"110000000"</span>;
 $paramsAdvancedECheck-&gt;bankAccount-&gt;account = <span class="hljs-string">"1234567890123"</span>;
@@ -6773,19 +6742,18 @@ $paramsAdvancedECheck-&gt;contactInfo-&gt;address-&gt;state = <span class="hljs-
 $paramsAdvancedECheck-&gt;contactInfo-&gt;address-&gt;zip = <span class="hljs-string">"85254"</span>;
 $paramsAdvancedECheck-&gt;contactInfo-&gt;address-&gt;country = <span class="hljs-string">"US"</span>;
 
-$resultAdvancedECheck = <span class="hljs-keyword">self</span>::$sparrow-&gt;AdvancedECheck($paramsAdvancedECheck)-&gt;wait();
+$resultAdvancedECheck = self::$sparrow-&gt;AdvancedECheck($paramsAdvancedECheck)-&gt;wait();
 </code></pre>
 <p>RESULT AdvancedECheck:</p>
-<pre class="language-php"><code class="language-php">$resultAdvancedECheck.isSuccess;    <span class="hljs-comment">// 1</span>
-$resultAdvancedECheck.status;    <span class="hljs-comment">// 200</span>
-$resultAdvancedECheck.textResponse;    <span class="hljs-comment">// SUCCESS</span>
-$resultAdvancedECheck.transId;    <span class="hljs-comment">// 11284981</span>
-$resultAdvancedECheck.xRef;    <span class="hljs-comment">// 3923165741</span>
-$resultAdvancedECheck.authCode;    <span class="hljs-comment">// 123456</span>
-$resultAdvancedECheck.type;    <span class="hljs-comment">// sale</span>
-$resultAdvancedECheck.codeResponse;    <span class="hljs-comment">// 100</span>
-$resultAdvancedECheck.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
-
+<pre class="language-python"><code class="language-python">$resultAdvancedECheck.isSuccess;    // <span class="hljs-number">1</span>
+$resultAdvancedECheck.status;    // <span class="hljs-number">200</span>
+$resultAdvancedECheck.textResponse;    // SUCCESS
+$resultAdvancedECheck.transId;    // <span class="hljs-number">11284981</span>
+$resultAdvancedECheck.xRef;    // <span class="hljs-number">3923165741</span>
+$resultAdvancedECheck.authCode;    // <span class="hljs-number">123456</span>
+$resultAdvancedECheck.type;    // sale
+$resultAdvancedECheck.codeResponse;    // <span class="hljs-number">100</span>
+$resultAdvancedECheck.codeDescription;    // Transaction was Approved
 </code></pre>
 
                  </div>
