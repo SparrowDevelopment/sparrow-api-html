@@ -14659,7 +14659,7 @@ $resultPayInvoiceWithCreditCard.invoiceNumber;    // Inv<span class="hljs-number
 <tr>
 <td><strong>mkey</strong></td>
 <td></td>
-<td>secured merchant account key</td>
+<td>Secured merchant account key</td>
 </tr>
 <tr>
 <td><strong>transtype</strong></td>
@@ -14894,8 +14894,7 @@ result.InvoiceNumber;    <span class="hljs-comment">// Inv-39708</span>
               <div class="code-python code-div ">
                  <div class="method-example-part">
                    <p>CODE:</p>
-<pre class="language-python"><code class="language-python">
-ach_account = sparrowone.ACHInfo(
+<pre class="language-python"><code class="language-python">ach_account = sparrowone.ACHInfo(
     bank_name=<span class="hljs-string">"First Test Bank"</span>,
     routing=<span class="hljs-string">"110000000"</span>,
     account=<span class="hljs-string">"1234567890123"</span>,
@@ -14905,33 +14904,24 @@ ach_account = sparrowone.ACHInfo(
     last_name=<span class="hljs-string">"Armas"</span>
 )
 resp = sprw.invoices.pay(invoice_id, ach_account)
-
 </code></pre>
 <p>RESULT:</p>
-<pre class="language-python"><code class="language-python">
-{
+<pre class="language-python"><code class="language-python">{
     <span class="hljs-string">"invoicenumber"</span>: <span class="hljs-string">"Inv-39914"</span>,
     <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Invoice has been successfully paid"</span>,
     <span class="hljs-string">"transid"</span>: <span class="hljs-string">"11188537"</span>
 }
-
 </code></pre>
-
-                 </div>
-              </div>
-           
-              <div class="code-php code-div ">
-                 <div class="method-example-part">
-                   <p>CODE:</p>
-<pre class="language-php"><code class="language-php">$paramsCreateInvoice = <span class="hljs-keyword">new</span> CreateInvoiceParams();
-$paramsCreateInvoice-&gt;invoiceDate = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+<p>$$language: php$$ CODE:</p>
+<pre class="language-python"><code class="language-python">$paramsCreateInvoice = new CreateInvoiceParams();
+$paramsCreateInvoice-&gt;invoiceDate = new DateTime(<span class="hljs-string">"2019-10-21"</span>);
 $paramsCreateInvoice-&gt;currency = <span class="hljs-string">"USD"</span>;
 $paramsCreateInvoice-&gt;invoiceStatus = InvoiceStatus::ACTIVE;
 $paramsCreateInvoice-&gt;invoiceAmount = <span class="hljs-number">10.00</span>;
 
-$resultCreateInvoice = <span class="hljs-keyword">self</span>::$sparrow-&gt;CreateInvoice($paramsCreateInvoice)-&gt;wait();
+$resultCreateInvoice = self::$sparrow-&gt;CreateInvoice($paramsCreateInvoice)-&gt;wait();
 
-$paramsPayInvoiceWithBankAccount = <span class="hljs-keyword">new</span> PayInvoiceWithBankAccountParams();
+$paramsPayInvoiceWithBankAccount = new PayInvoiceWithBankAccountParams();
 $paramsPayInvoiceWithBankAccount-&gt;invoiceNumber = $resultCreateInvoice-&gt;invoiceNumber;
 $paramsPayInvoiceWithBankAccount-&gt;bankAccount-&gt;bankName = <span class="hljs-string">"First Test Bank"</span>;
 $paramsPayInvoiceWithBankAccount-&gt;bankAccount-&gt;routing = <span class="hljs-string">"110000000"</span>;
@@ -14941,20 +14931,18 @@ $paramsPayInvoiceWithBankAccount-&gt;bankAccount-&gt;achAccountSubType = AchAcco
 $paramsPayInvoiceWithBankAccount-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
 $paramsPayInvoiceWithBankAccount-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
 
-$resultPayInvoiceWithBankAccount = <span class="hljs-keyword">self</span>::$sparrow-&gt;PayInvoiceWithBankAccount($paramsPayInvoiceWithBankAccount)-&gt;wait();
+$resultPayInvoiceWithBankAccount = self::$sparrow-&gt;PayInvoiceWithBankAccount($paramsPayInvoiceWithBankAccount)-&gt;wait();
 </code></pre>
 <p>RESULT CreateInvoice:</p>
-<pre class="language-php"><code class="language-php">$resultCreateInvoice.isSuccess;    <span class="hljs-comment">// 1</span>
-$resultCreateInvoice.textResponse;    <span class="hljs-comment">// invoice has been successfully created</span>
-$resultCreateInvoice.invoiceNumber;    <span class="hljs-comment">// Inv-40005</span>
-
+<pre class="language-python"><code class="language-python">$resultCreateInvoice.isSuccess;    // <span class="hljs-number">1</span>
+$resultCreateInvoice.textResponse;    // invoice has been successfully created
+$resultCreateInvoice.invoiceNumber;    // Inv<span class="hljs-number">-40005</span>
 </code></pre>
 <p>RESULT PayInvoiceWithBankAccount:</p>
-<pre class="language-php"><code class="language-php">$resultPayInvoiceWithBankAccount.isSuccess;    <span class="hljs-comment">// 1</span>
-$resultPayInvoiceWithBankAccount.textResponse;    <span class="hljs-comment">// Invoice has been successfully paid</span>
-$resultPayInvoiceWithBankAccount.transId;    <span class="hljs-comment">// 11284998</span>
-$resultPayInvoiceWithBankAccount.invoiceNumber;    <span class="hljs-comment">// Inv-40005</span>
-
+<pre class="language-python"><code class="language-python">$resultPayInvoiceWithBankAccount.isSuccess;    // <span class="hljs-number">1</span>
+$resultPayInvoiceWithBankAccount.textResponse;    // Invoice has been successfully paid
+$resultPayInvoiceWithBankAccount.transId;    // <span class="hljs-number">11284998</span>
+$resultPayInvoiceWithBankAccount.invoiceNumber;    // Inv<span class="hljs-number">-40005</span>
 </code></pre>
 
                  </div>
