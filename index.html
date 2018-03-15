@@ -8044,8 +8044,8 @@ Issuer, and if in good standing</p>
 <tbody>
 <tr>
 <td><strong>transtype</strong></td>
-<td>auth</td>
-<td>auth</td>
+<td>verification</td>
+<td></td>
 </tr>
 <tr>
 <td><strong>mkey</strong></td>
@@ -8079,7 +8079,7 @@ Issuer, and if in good standing</p>
 </tr>
 </tbody>
 </table>
-<pre class="language-none"><code class="language-none">transtype=auth&amp;mkey=HNJ45D23MKLO85J2D00LOP&amp;cardnum=4111111111111111&amp;cardexp=1019&amp;amount=0.00&amp;zip=85254
+<pre class="language-none"><code class="language-none">transtype=verification&amp;mkey=HNJ45D23MKLO85J2D00LOP&amp;cardnum=4111111111111111&amp;cardexp=1019&amp;amount=0.00&amp;zip=85254
 </code></pre>
 
          </div>
@@ -8142,20 +8142,16 @@ result.CodeDescription;    <span class="hljs-comment">// Transaction was Approve
               <div class="code-ruby code-div ">
                  <div class="method-example-part">
                    <p>CODE:</p>
-<pre class="language-ruby"><code class="language-ruby">
-api.balance({
+<pre class="language-ruby"><code class="language-ruby">api.balance({
   <span class="hljs-symbol">cardnum:</span> <span class="hljs-string">'4111111111111111'</span>,
   <span class="hljs-symbol">cardexp:</span> <span class="hljs-string">'1019'</span>,
   <span class="hljs-symbol">amount:</span> <span class="hljs-string">'9.95'</span>,
   <span class="hljs-symbol">cvv:</span> <span class="hljs-string">'999'</span>,
   <span class="hljs-symbol">zip:</span> <span class="hljs-string">'85254"'</span>,
 })
-
 </code></pre>
 <p>RESULT:</p>
-<pre class="language-ruby"><code class="language-ruby">
-
-result.response <span class="hljs-comment"># =&gt; '1'</span>
+<pre class="language-ruby"><code class="language-ruby">result.response <span class="hljs-comment"># =&gt; '1'</span>
 result.textresponse <span class="hljs-comment"># =&gt; 'SUCCESS'</span>
 result.transid <span class="hljs-comment"># =&gt; '10750787'</span>
 result.xref <span class="hljs-comment"># =&gt; '3829708536'</span>
@@ -8167,7 +8163,6 @@ result.cvvresponse <span class="hljs-comment"># =&gt; 'M'</span>
 result.coderesponse <span class="hljs-comment"># =&gt; '100'</span>
 result.codedescription <span class="hljs-comment"># =&gt; 'Transaction was Approved'</span>
 result.status <span class="hljs-comment"># =&gt; '200'</span>
-
 </code></pre>
 
                  </div>
@@ -8196,32 +8191,25 @@ resp = sprw.verify(card)
     <span class="hljs-string">"codedescription"</span>: <span class="hljs-string">"Transaction was Approved"</span>,
 }
 </code></pre>
-
-                 </div>
-              </div>
-           
-              <div class="code-php code-div ">
-                 <div class="method-example-part">
-                   <p>CODE:</p>
-<pre class="language-php"><code class="language-php">$paramsVerifyAccount = <span class="hljs-keyword">new</span> VerifyAccountParams();
+<p>$$language: php$$ CODE:</p>
+<pre class="language-python"><code class="language-python">$paramsVerifyAccount = new VerifyAccountParams();
 $paramsVerifyAccount-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
-$paramsVerifyAccount-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsVerifyAccount-&gt;creditCard-&gt;cardExp = new DateTime(<span class="hljs-string">"2019-10-21"</span>);
 $paramsVerifyAccount-&gt;amount = <span class="hljs-number">9.99</span>;
 
-$resultVerifyAccount = <span class="hljs-keyword">self</span>::$sparrow-&gt;VerifyAccount($paramsVerifyAccount)-&gt;wait();
+$resultVerifyAccount = self::$sparrow-&gt;VerifyAccount($paramsVerifyAccount)-&gt;wait();
 </code></pre>
 <p>RESULT VerifyAccount:</p>
-<pre class="language-php"><code class="language-php">$resultVerifyAccount.isSuccess;    <span class="hljs-comment">// 1</span>
-$resultVerifyAccount.status;    <span class="hljs-comment">// 200</span>
-$resultVerifyAccount.response;    <span class="hljs-comment">// 1</span>
-$resultVerifyAccount.textResponse;    <span class="hljs-comment">// SUCCESS</span>
-$resultVerifyAccount.transId;    <span class="hljs-comment">// 11284985</span>
-$resultVerifyAccount.xRef;    <span class="hljs-comment">// 3923165840</span>
-$resultVerifyAccount.authCode;    <span class="hljs-comment">// 123456</span>
-$resultVerifyAccount.type;    <span class="hljs-comment">// auth</span>
-$resultVerifyAccount.codeResponse;    <span class="hljs-comment">// 100</span>
-$resultVerifyAccount.codeDescription;    <span class="hljs-comment">// Transaction was Approved</span>
-
+<pre class="language-python"><code class="language-python">$resultVerifyAccount.isSuccess;    // <span class="hljs-number">1</span>
+$resultVerifyAccount.status;    // <span class="hljs-number">200</span>
+$resultVerifyAccount.response;    // <span class="hljs-number">1</span>
+$resultVerifyAccount.textResponse;    // SUCCESS
+$resultVerifyAccount.transId;    // <span class="hljs-number">11284985</span>
+$resultVerifyAccount.xRef;    // <span class="hljs-number">3923165840</span>
+$resultVerifyAccount.authCode;    // <span class="hljs-number">123456</span>
+$resultVerifyAccount.type;    // auth
+$resultVerifyAccount.codeResponse;    // <span class="hljs-number">100</span>
+$resultVerifyAccount.codeDescription;    // Transaction was Approved
 </code></pre>
 
                  </div>
