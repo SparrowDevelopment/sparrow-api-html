@@ -8090,27 +8090,27 @@ Issuer, and if in good standing</p>
               <div class="code-curl code-div active-code">
                  <div class="method-example-part">
                    <p>Command Line:</p>
-<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=auth&amp;\
+<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=verification&amp;\
 mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
 cardnum=4111111111111111&amp;\
 cardexp=1019&amp;\
-amount=9.95&amp;\
+amount=0.00&amp;\
 cvv=999&amp;\
 zip=85254"</span> \
 https://secure.sparrowone.com/Payments/Services_api.aspx
 </code></pre>
 <p>Response:</p>
 <pre class="language-bash"><code class="language-bash">response=1&amp;
-textresponse=SUCCESS&amp;
+textresponse=APPROVAL&amp;
 transid=10750787&amp;
-xref=3829708536&amp;
+xref=&amp;
 authcode=123456&amp;
 orderid=&amp;
-<span class="hljs-built_in">type</span>=auth&amp;
-avsresponse=N&amp;
-cvvresponse=M&amp;
-coderesponse=100&amp;
-codedescription=Transaction+was+Approved&amp;
+<span class="hljs-built_in">type</span>=verification&amp;
+avsresponse=Z&amp;
+cvvresponse=&amp;
+coderesponse=000&amp;
+codedescription=Approve&amp;
 status=200
 </code></pre>
 
