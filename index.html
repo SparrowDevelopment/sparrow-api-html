@@ -702,6 +702,31 @@
                         </li>
                      
                         <li>
+                           <a  href="#documenter-forget-customer">Response Variables</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-forget-customer-forget-customer-operation">Forget Customer Operation</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-forget-customer-forget-customer-operation-inquiry-gdrp-request">Inquiry GDPR Request</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
                            <a  href="#documenter-response-variables">Response Variables</a>
                            
 
@@ -14912,6 +14937,218 @@ $resultPayInvoiceWithBankAccount.invoiceNumber;    // Inv<span class="hljs-numbe
 
            
               
+<section id="documenter-forget-customer" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h2>Forget Customer</h2>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-forget-customer-forget-customer-operation" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Forget Customer</h3>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>forgetcustomer</td>
+<td>Delete data for Regular Customer or Data Vault Client.</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key.</td>
+</tr>
+<tr>
+<td>transid</td>
+<td></td>
+<td>number</td>
+<td>Payment Gateway Transaction ID. This field is required if ‘token’ is not specified. System identifies regular customer assigned to the transaction and deletes data for the customer and for all associated transactions. Please note that system does not delete data for assigned Data Vault client.</td>
+</tr>
+<tr>
+<td>token</td>
+<td></td>
+<td>alphanumeric string</td>
+<td>Unique Data Vault client or payment info identifier. This field is required if ‘transid’ is not specified. System deletes Contact info and payment info for the Data Vault client; Data related to Client Portal; Values for Custom fields marked as personal; Data for all associated transactions; Data for all associated regular customers. Also, the system unassigns plans assigned to the Data Vault client.</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>If merchant sends Transaction ID in the request, system deletes data for the
+regular customer and transaction data.</p>
+<p>If merchant sends token, system deletes data for the data vault client, regular
+customer and transaction data.</p>
+<p></p>
+<p>Response from the gateway will be as follows:</p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>response</strong></td>
+<td></td>
+<td></td>
+<td>1 = Successful; 2 = Declined; 3 = Internal Error</td>
+</tr>
+<tr>
+<td><strong>textresponse</strong></td>
+<td></td>
+<td>text</td>
+<td>Textual response</td>
+</tr>
+<tr>
+<td>requestID</td>
+<td></td>
+<td>integer</td>
+<td>GDPR Request ID</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>Request example for Data Vault Client:</p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=ForgetCustomer&amp;transid=1272231
+</code></pre>
+<p></p>
+<p>Expected Response</p>
+<pre class="language-none"><code class="language-none">response=1&amp;textresponse=The+request+is+registered+and+will+be+processed.&amp;requestID=9
+</code></pre>
+<p></p>
+<p>Request example for Regular Customer:</p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=ForgetCustomer&amp;token=4RGMO40I0ASWG1UM
+</code></pre>
+<p></p>
+<p>Expected Response</p>
+<pre class="language-none"><code class="language-none">response=1&amp;textresponse=The+request+is+registered+and+will+be+processed.&amp;requestID=10
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-forget-customer-forget-customer-operation-inquiry-gdrp-request" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Inquiry GDPR Request</h3>
+<p></p>
+<p>Merchant could check status of the GDPR request via API using “Inquiry Gdpr
+Request” operation.</p>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>transtype</strong></td>
+<td></td>
+<td>InquiryGdrpRequest</td>
+<td>Check status of the GDPR request.</td>
+</tr>
+<tr>
+<td><strong>mkey</strong></td>
+<td></td>
+<td></td>
+<td>Secured merchant account key.</td>
+</tr>
+<tr>
+<td><strong>requestID</strong></td>
+<td></td>
+<td>integer</td>
+<td>GDPR request ID.</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>Response from the gateway will be as follows:</p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>response</strong></td>
+<td></td>
+<td></td>
+<td>1 = Successful; 2 = Declined; 3 = Internal Error</td>
+</tr>
+<tr>
+<td><strong>textresponse</strong></td>
+<td></td>
+<td>text</td>
+<td>Textual response.</td>
+</tr>
+<tr>
+<td>requestID</td>
+<td></td>
+<td>integer</td>
+<td>GDPR Request ID.</td>
+</tr>
+<tr>
+<td>status</td>
+<td></td>
+<td>text</td>
+<td>GDPR Request status.</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>Request example:</p>
+<pre class="language-none"><code class="language-none">mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;transtype=InquiryGdrpRequest&amp;requestid=14
+</code></pre>
+<p></p>
+<p>Expected Response</p>
+<pre class="language-none"><code class="language-none">response=1&amp;textresponse=Successful&amp;status=InternalError&amp;requestID=14
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
 <section id="documenter-response-variables" class="method">
    <div class="method-area">
       <div class="method-copy">
@@ -16314,6 +16551,31 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-invoicing-invoicing-create-merchant-invoice-update-invoice-get-invoice-cancel-invoice-cancel-inv-customer-pay-inv-cc-pay-inv-ach">Pay Invoice with a Bank Account</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-forget-customer">Response Variables</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-forget-customer-forget-customer-forget-customer-operation">Forget Customer Operation</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-forget-customer-forget-customer-forget-customer-operation-inquiry-gdrp-request">Inquiry GDPR Request</a>
           
 
 
