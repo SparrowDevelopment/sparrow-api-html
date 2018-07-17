@@ -727,6 +727,59 @@
                         </li>
                      
                         <li>
+                           <a  href="#documenter-merchant-dynamic-descriptors">Dynamic Descriptors</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-merchant-dynamic-descriptors-chase-processor">Chase Processor</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-merchant-dynamic-descriptors-chase-processor-mes-processor">MeS Processors</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-merchant-dynamic-descriptors-chase-processor-mes-processor-first-data-processor">First Data Processor</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-merchant-dynamic-descriptors-chase-processor-mes-processor-first-data-processor-mims-processor">MIMS Processor</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-merchant-dynamic-descriptors-chase-processor-mes-processor-first-data-processor-mims-processor-globalone-processor">GlobalOne Processor</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-merchant-dynamic-descriptors-chase-processor-mes-processor-first-data-processor-mims-processor-globalone-processor-tsys-processor">TSYS Processor</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
                            <a  href="#documenter-response-variables">Response Variables</a>
                            
 
@@ -15149,6 +15202,404 @@ Request” operation.</p>
 
            
               
+<section id="documenter-merchant-dynamic-descriptors" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h2>Dynamic Descriptors</h2>
+<p></p>
+<p>This feature enables to submit merchant descriptor values that are displayed on
+a cardholder’s statement.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-merchant-dynamic-descriptors-chase-processor" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Chase Processor</h3>
+<p></p>
+<p>Services:</p>
+<ul>
+<li>
+<p>Sale</p>
+</li>
+<li>
+<p>Authorization</p>
+</li>
+<li>
+<p>Capture</p>
+</li>
+<li>
+<p>Credit</p>
+</li>
+</ul>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dba_merch_name</td>
+<td></td>
+<td>text (12) or text (38)</td>
+<td>Merchant name. Format text (12) if fields dba_merch_name, dba_merch_city OR dba_merch_phone are entered. Format text (38) if fields dba_merch_name, dba_merch_zip, dba_merch_city, dba_merch_country, dba_merch_mcc, dba_merch_id, dba_merch_addr, dba_merch_state are entered.</td>
+</tr>
+<tr>
+<td>dba_merch_city</td>
+<td></td>
+<td>text (13) or text (21)</td>
+<td>Merchant City. Format text (13) if fields dba_merch_name, dba_merch_city OR dba_merch_phone are entered. Format text (21) if fields dba_merch_name, dba_merch_zip, dba_merch_city, dba_merch_country, dba_merch_mcc, dba_merch_id, dba_merch_addr, dba_merch_state are entered.</td>
+</tr>
+<tr>
+<td>dba_merch_phone</td>
+<td></td>
+<td>text (13)</td>
+<td>Merhcant Phone. Specified format if fields dba_merch_name, dba_merch_city OR dba_merch_phone are entered. Format: NNN-NNN-NNNN (U.S. and Canada); NNN-AAAAAAA (U.S. and Canada); NNN-NNNNNNN (U.S. and Canada).</td>
+</tr>
+<tr>
+<td>dba_merch_country</td>
+<td></td>
+<td>Country Alpha 2 Code</td>
+<td>Merchant Country</td>
+</tr>
+<tr>
+<td>dba_merch_zip</td>
+<td></td>
+<td>text (15)</td>
+<td>Merchant Postal Code</td>
+</tr>
+<tr>
+<td>dba_merch_state</td>
+<td></td>
+<td>text (3)</td>
+<td>Merchant State</td>
+</tr>
+<tr>
+<td>dba_merch_id</td>
+<td></td>
+<td>text (15)</td>
+<td>Merchant ID</td>
+</tr>
+<tr>
+<td>dba_merch_mcc</td>
+<td></td>
+<td>digit (4)</td>
+<td>Merchant Category Code</td>
+</tr>
+<tr>
+<td>dba_merch_addr</td>
+<td></td>
+<td>text (38)</td>
+<td>Merchant Address (street)</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-merchant-dynamic-descriptors-chase-processor-mes-processor" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>MeS Processors</h3>
+<p></p>
+<p>Services:</p>
+<ul>
+<li>
+<p>Sale</p>
+</li>
+<li>
+<p>Authorization</p>
+</li>
+<li>
+<p>Offline</p>
+</li>
+</ul>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dba_merch_name</td>
+<td></td>
+<td>text (25) from account settings only</td>
+<td>Merchant Name</td>
+</tr>
+<tr>
+<td>dba_merch_city</td>
+<td></td>
+<td>text (13) from merchant company info</td>
+<td>Merchant City</td>
+</tr>
+<tr>
+<td>dba_merch_phone</td>
+<td></td>
+<td>text (13) from merchant settings only</td>
+<td>Merchant Phone</td>
+</tr>
+<tr>
+<td>dba_merch_state</td>
+<td></td>
+<td>text (2) from merchant company info</td>
+<td>Merchant State</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-merchant-dynamic-descriptors-chase-processor-mes-processor-first-data-processor" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>First Data Processor</h3>
+<p></p>
+<p>Services:</p>
+<ul>
+<li>
+<p>Sale</p>
+</li>
+<li>
+<p>Authorization</p>
+</li>
+<li>
+<p>Capture</p>
+</li>
+<li>
+<p>Credit</p>
+</li>
+</ul>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dba_merch_name</td>
+<td></td>
+<td>text (38)</td>
+<td>This field contains the merchant name/product/service to be used in lieu of the DBA name on the First Data Merchant File.</td>
+</tr>
+<tr>
+<td>dba_merch_city</td>
+<td></td>
+<td>text (20)</td>
+<td>This field contains the merchant city to be used in lieu of the city on the First Data Merchant File.</td>
+</tr>
+<tr>
+<td>dba_merch_country</td>
+<td></td>
+<td>Country Alpha 3 Code; Country Digit 3 Code</td>
+<td>This field contains the merchant county to be used in lieu of the merchant county on the First Data Merchant File.</td>
+</tr>
+<tr>
+<td>dba_merch_zip</td>
+<td></td>
+<td>text (9)</td>
+<td>This field contains the merchant postal code to be used in lieu of the merchant postal code on the First Data Merchant File.</td>
+</tr>
+<tr>
+<td>dba_merch_state</td>
+<td></td>
+<td>text (2)</td>
+<td>This field contains the merchant state code to be used in lieu of the state code on the First Data Merchant File.</td>
+</tr>
+<tr>
+<td>dba_merch_addr</td>
+<td></td>
+<td>text (30)</td>
+<td>This field contains the merchant address to be used in lieu of the merchant address on the First Data Merchant File.</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-merchant-dynamic-descriptors-chase-processor-mes-processor-first-data-processor-mims-processor" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>MIMS Processor</h3>
+<p></p>
+<p>Services:</p>
+<ul>
+<li>
+<p>Sale</p>
+</li>
+<li>
+<p>Authorization</p>
+</li>
+<li>
+<p>Offline</p>
+</li>
+<li>
+<p>Credit</p>
+</li>
+</ul>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dba_merch_name</td>
+<td></td>
+<td>Not specified</td>
+<td>Merchant Name</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-merchant-dynamic-descriptors-chase-processor-mes-processor-first-data-processor-mims-processor-globalone-processor" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>GlobalOne Processor</h3>
+<p></p>
+<p>Services:</p>
+<ul>
+<li>
+<p>Sale</p>
+</li>
+<li>
+<p>Authorization</p>
+</li>
+</ul>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dba_merch_name</td>
+<td></td>
+<td>Not specified</td>
+<td>A summary of the Merchant</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>Please note Custom field paymentdescriptor should be created in the GlobalOne
+system. Please request Dynamic Descripription Guide from GlobaOne support.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-merchant-dynamic-descriptors-chase-processor-mes-processor-first-data-processor-mims-processor-globalone-processor-tsys-processor" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>TSYS Processor</h3>
+<p></p>
+<p>Services:</p>
+<ul>
+<li>
+<p>Sale</p>
+</li>
+<li>
+<p>Authorization</p>
+</li>
+<li>
+<p>Offline</p>
+</li>
+</ul>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>VariableName</th>
+<th></th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>paymentdescriptor</td>
+<td></td>
+<td>Not specified</td>
+<td>A summary of the Merchant</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
 <section id="documenter-response-variables" class="method">
    <div class="method-area">
       <div class="method-copy">
@@ -16576,6 +17027,59 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-forget-customer-forget-customer-forget-customer-operation-inquiry-gdrp-request">Inquiry GDPR Request</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-merchant-dynamic-descriptors">Dynamic Descriptors</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-merchant-dynamic-descriptors-merchant-dynamic-descriptors-chase-processor">Chase Processor</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-merchant-dynamic-descriptors-merchant-dynamic-descriptors-chase-processor-mes-processor">MeS Processors</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-merchant-dynamic-descriptors-merchant-dynamic-descriptors-chase-processor-mes-processor-first-data-processor">First Data Processor</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-merchant-dynamic-descriptors-merchant-dynamic-descriptors-chase-processor-mes-processor-first-data-processor-mims-processor">MIMS Processor</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-merchant-dynamic-descriptors-merchant-dynamic-descriptors-chase-processor-mes-processor-first-data-processor-mims-processor-globalone-processor">GlobalOne Processor</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-merchant-dynamic-descriptors-merchant-dynamic-descriptors-chase-processor-mes-processor-first-data-processor-mims-processor-globalone-processor-tsys-processor">TSYS Processor</a>
           
 
 
