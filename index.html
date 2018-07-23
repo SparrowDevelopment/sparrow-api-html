@@ -856,6 +856,20 @@
 
         </li>
      
+        <li>
+          <a href="#documenter-checkout-api-architecture-integration">Integration</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-checkout-api-architecture-integration-checkout-process">Integration</a>
+          
+
+
+        </li>
+     
   </ol>
 
 
@@ -16309,7 +16323,7 @@ payments. It is located at the following URL:</p>
 </ul>
 <p>Description of all its methods can be found in Appendix A and in sections below.</p>
 <p></p>
-<h3>Merchant Private Key and Payment Types</h3>
+<h4>Merchant Private Key and Payment Types</h4>
 <p>When sending a payment transaction request to Sparrow (on either implementation)
 a Merchant Private Key is required.  A sample Merchant Private Key follows:</p>
 <p><strong>MTA6MzM6NTYgUE0tLVBheVRhY3RpeA</strong></p>
@@ -16322,6 +16336,251 @@ appropriate information on the Transaction Routing Management page:</p>
 <p>The following image shows the account management page in the Merchant Accounts
 section:</p>
 <p><img src="merchant-accounts.jpg" alt=""></p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-checkout-api-architecture-integration" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Integration</h3>
+<h4>Setting up the Account</h4>
+<p>Please contact the administrator for setting a merchant account.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-checkout-api-architecture-integration-checkout-process" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Checkout Process</h3>
+<h4>Getting the Token</h4>
+<p>First action to initiate the checkout process is getting the checkout token.
+This is achieved by calling <strong>GetCheckoutToken</strong> method of Checkout API web
+service.</p>
+<h5>GetCheckoutToken method</h5>
+<p>GetCheckoutToken method has the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th><strong>VARIABLENAME</strong></th>
+<th></th>
+<th><strong>FORMAT</strong></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transactionKey</td>
+<td></td>
+<td>string</td>
+<td>Private key of the merchant account that will receive the payment</td>
+</tr>
+<tr>
+<td>amount</td>
+<td></td>
+<td>decimal</td>
+<td>Total amount of the payment</td>
+</tr>
+<tr>
+<td>currency</td>
+<td></td>
+<td>string</td>
+<td>Code of the payment currency. If the currency is not specified, the default currency (USD) is assumed</td>
+</tr>
+<tr>
+<td>items</td>
+<td></td>
+<td>XML</td>
+<td>Products forming the payment. This is an optional parameter. See Appendix A for detailed description of items format</td>
+</tr>
+<tr>
+<td>apiFields</td>
+<td></td>
+<td>XML</td>
+<td>Additional api fields such as order, billing and shipping information. See Appendix A for detailed description of Web Methods. See Appendix C for description of fields format. See Appendix D for description of integration with eWallet account</td>
+</tr>
+<tr>
+<td>variableQuantity</td>
+<td></td>
+<td>boolean</td>
+<td>This is an optional flag and it is not used in the Checkout API integration. The default value is false</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>The response consists of the following fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>VARIABLENAME</strong></th>
+<th></th>
+<th><strong>FORMAT</strong></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public key</td>
+<td></td>
+<td>string, 16..128 characters</td>
+<td>This is the public part of the token key which can be exposed to end users. Public key will be specified as an URL query parameter during the checkout process</td>
+</tr>
+<tr>
+<td>Private key</td>
+<td></td>
+<td>string, 16..128 characters</td>
+<td>This is the private part of the token key which must be kept secret. Private key will be used to retrieve the results of the payment</td>
+</tr>
+<tr>
+<td>Expiration Date</td>
+<td></td>
+<td>&lt;date&gt;T&lt;time&gt;</td>
+<td>This is the date and time of the moment when the checkout token will expire and all further actions with it will not be possible</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<h4>Processing Payment</h4>
+<p>To process the payment, redirect the customer to the checkout URL with
+<strong>public</strong> token key as a parameter. Here is an example of the resulting URL:</p>
+<p><a href="https://secure.sparrowone.com/Payments/Checkout.aspx?Token=214A3E3C8265F6EE">https://secure.sparrowone.com/Payments/Checkout.aspx?Token=214A3E3C8265F6EE</a></p>
+<p></p>
+<p>The Checkout Payment page will then ask the customer of his payment information
+and allow him to process the payment. In the end, system will redirect customer
+to the page set up in the merchant account settings on Merchant Portal &gt;
+Administration &gt; Redirect Settings &gt; Edit Account Settings. The customer will
+be redirected to the page with the following parameters in the query string:</p>
+<table>
+<thead>
+<tr>
+<th><strong>VARIABLENAME</strong></th>
+<th></th>
+<th><strong>FORMAT</strong></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>response</td>
+<td></td>
+<td>alphanumeric string</td>
+<td>See the table below for possible responses list</td>
+</tr>
+<tr>
+<td>textresponse</td>
+<td></td>
+<td>string</td>
+<td>Textual response</td>
+</tr>
+<tr>
+<td>transid</td>
+<td></td>
+<td>number</td>
+<td>Sparrow transaction ID</td>
+</tr>
+<tr>
+<td>orderid</td>
+<td></td>
+<td>alphanumeric string</td>
+<td>The original order id passed in the transaction request</td>
+</tr>
+<tr>
+<td>status</td>
+<td></td>
+<td>alphanumeric string</td>
+<td>See the table below for possible statuses list</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>Gateway response field can have the following values:</p>
+<table>
+<thead>
+<tr>
+<th><strong>VALUE</strong></th>
+<th></th>
+<th><strong>TRANSACTION STATUS​</strong></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td>Approved</td>
+<td>Transaction has been processed successfully</td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>Declined</td>
+<td>Transaction has been declined</td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td>Undefined</td>
+<td>Please see status field for details. Status of the transaction is “Wait For Response”, “Processor Error” or “Internal Error”</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>Gateway status field can have the following values:</p>
+<table>
+<thead>
+<tr>
+<th><strong>VALUE</strong></th>
+<th></th>
+<th><strong>OPERATION STATUS​</strong></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td></td>
+<td>Successful</td>
+<td>No Errors</td>
+</tr>
+<tr>
+<td>201</td>
+<td></td>
+<td>Wait For Response</td>
+<td>This is a temporary status. It means that the request was sent to the processor and there are no errors, however, the response has not been received yet</td>
+</tr>
+<tr>
+<td>400</td>
+<td></td>
+<td>Declined</td>
+<td>Transaction has been declined by processor</td>
+</tr>
+<tr>
+<td>401</td>
+<td></td>
+<td>Processor Error</td>
+<td>Errors occurred on the processor side</td>
+</tr>
+<tr>
+<td>500</td>
+<td></td>
+<td>Internal Error</td>
+<td>Unexpected errors</td>
+</tr>
+</tbody>
+</table>
 
          </div>
       </div>
@@ -17249,6 +17508,20 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-checkout-api-checkout-api-architecture">Architecture</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-checkout-api-checkout-api-architecture-integration">Integration</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-checkout-api-checkout-api-architecture-integration-checkout-process">Integration</a>
           
 
 
