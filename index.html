@@ -884,6 +884,20 @@
 
         </li>
      
+        <li>
+          <a href="#documenter-checkout-api-architecture-integration-checkout-process-appendix-a-appendix-b-appendix-c">Appendix C</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-checkout-api-architecture-integration-checkout-process-appendix-a-appendix-b-appendix-c-appendix-d">Appendix D</a>
+          
+
+
+        </li>
+     
   </ol>
 
 
@@ -16938,6 +16952,253 @@ PaymentInfo element in <strong>GetCheckoutPaymentResult</strong> method’s resp
 </section>           
 
 
+   
+<section id="documenter-checkout-api-architecture-integration-checkout-process-appendix-a-appendix-b-appendix-c" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Appendix C – API Fields Description</h3>
+<p></p>
+<p>The following table describes possible values of apiFields parameter for
+GetCheckoutToken method.</p>
+<table>
+<thead>
+<tr>
+<th><strong>VARIABLENAME</strong></th>
+<th></th>
+<th><strong>FORMAT</strong></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>firstname</td>
+<td></td>
+<td>string</td>
+<td>Billing first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td></td>
+<td>string</td>
+<td>Billing last name</td>
+</tr>
+<tr>
+<td>company</td>
+<td></td>
+<td>string</td>
+<td>Billing company</td>
+</tr>
+<tr>
+<td>address1</td>
+<td></td>
+<td>string</td>
+<td>Billing address</td>
+</tr>
+<tr>
+<td>address2</td>
+<td></td>
+<td>string</td>
+<td>Billing address – line 2</td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td>string</td>
+<td>Billing city</td>
+</tr>
+<tr>
+<td>state</td>
+<td></td>
+<td>CC</td>
+<td>Billing state (2 character abbrev.)</td>
+</tr>
+<tr>
+<td>zip</td>
+<td></td>
+<td></td>
+<td>Billing postal code. If the country is US zip code format must be: 5 digits; 9 digits or xxxxx-xxxx (9 digits with -)</td>
+</tr>
+<tr>
+<td>country</td>
+<td></td>
+<td>CC (ISO-3166)</td>
+<td>Billing country (i.e. US)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td></td>
+<td>integer</td>
+<td>Billing phone number</td>
+</tr>
+<tr>
+<td>fax</td>
+<td></td>
+<td>string</td>
+<td>Billing fax number</td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td>string</td>
+<td>Billing email address</td>
+</tr>
+<tr>
+<td>shipfirstname</td>
+<td></td>
+<td>string</td>
+<td>Shipping first name</td>
+</tr>
+<tr>
+<td>shiplastname</td>
+<td></td>
+<td>string</td>
+<td>Shipping last name</td>
+</tr>
+<tr>
+<td>shipcompany</td>
+<td></td>
+<td>string</td>
+<td>Shipping company</td>
+</tr>
+<tr>
+<td>shipaddress1</td>
+<td></td>
+<td>string</td>
+<td>Shipping address</td>
+</tr>
+<tr>
+<td>shipaddress2</td>
+<td></td>
+<td>string</td>
+<td>Shipping address – line 2</td>
+</tr>
+<tr>
+<td>shipcity</td>
+<td></td>
+<td>string</td>
+<td>Shipping city</td>
+</tr>
+<tr>
+<td>shipstate</td>
+<td></td>
+<td>CC</td>
+<td>Shipping state (2 character abbrev.)</td>
+</tr>
+<tr>
+<td>shipzip</td>
+<td></td>
+<td></td>
+<td>Shipping zip. If the country is US zip code format must be: 5 digits; 9 digits or xxxxx-xxxx (9 digits with -)</td>
+</tr>
+<tr>
+<td>shipcountry</td>
+<td></td>
+<td>CC (ISO-3166)</td>
+<td>Shipping country (i.e. US)</td>
+</tr>
+<tr>
+<td>shipphone</td>
+<td></td>
+<td>integer</td>
+<td>Shipping phone number</td>
+</tr>
+<tr>
+<td>shipemail</td>
+<td></td>
+<td>string</td>
+<td>Shipping email address (single or comma separated emails)</td>
+</tr>
+<tr>
+<td>orderdesc</td>
+<td></td>
+<td>string</td>
+<td>Order description</td>
+</tr>
+<tr>
+<td>orderid</td>
+<td></td>
+<td>string</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>ponumber</td>
+<td></td>
+<td>string</td>
+<td>Original Purchase Order</td>
+</tr>
+<tr>
+<td>shipamount</td>
+<td></td>
+<td>d.dd</td>
+<td>Total shipping amount</td>
+</tr>
+<tr>
+<td>tax</td>
+<td></td>
+<td>d.dd</td>
+<td>Total tax amount</td>
+</tr>
+<tr>
+<td>ewallettype</td>
+<td></td>
+<td>PayPal</td>
+<td>This field is optional. It is valid only for eWallet payments. Default value (if the field is messing in the request) is “PayPal”.</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-checkout-api-architecture-integration-checkout-process-appendix-a-appendix-b-appendix-c-appendix-d" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Appendix D – Example of Request for eWallet</h3>
+<p></p>
+<p>This section contains an example of the GetCheckoutToken request for integration
+with eWallet account.</p>
+<p></p>
+<h4>GetCheckoutToken</h4>
+<p>Request:</p>
+<pre class="language-none"><code class="language-none">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;s:Envelope xmlns:s=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;s:Body&gt;
+    &lt;GetCheckoutToken xmlns=&quot;https://secure.5thdl.com/Services/&quot; xmlns:i=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+      &lt;transactionKey&gt;xxxxxxxxxxxxxxxxxxx&lt;/transactionKey&gt;
+      &lt;amount&gt;5&lt;/amount&gt;
+      &lt;currency&gt;USD&lt;/currency&gt;
+      &lt;variableQuantity i:nil=&quot;true&quot;/&gt;
+      &lt;apiFields&gt;
+        &lt;CheckoutApiField&gt;
+          &lt;Name&gt;ewallettype&lt;/Name&gt;
+          &lt;Value&gt;paypal&lt;/Value&gt;
+        &lt;/CheckoutApiField&gt;
+        &lt;CheckoutApiField&gt;
+          &lt;Name&gt; firstname&lt;/Name&gt;
+          &lt;Value&gt; Sheila&lt;/Value&gt;
+          &lt;Name&gt; lastname&lt;/Name&gt;
+          &lt;Value&gt; Johnson&lt;/Value&gt;
+        &lt;/CheckoutApiField&gt;
+      &lt;/apiFields&gt;
+    &lt;/GetCheckoutToken&gt;
+  &lt;/s:Body&gt;
+&lt;/s:Envelope&gt;
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
            
               
 <section id="documenter-code-samples" class="method">
@@ -17885,6 +18146,20 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-checkout-api-checkout-api-architecture-integration-checkout-process-appendix-a-appendix-b">Appendix B</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-checkout-api-checkout-api-architecture-integration-checkout-process-appendix-a-appendix-b-appendix-c">Appendix C</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-checkout-api-checkout-api-architecture-integration-checkout-process-appendix-a-appendix-b-appendix-c-appendix-d">Appendix D</a>
           
 
 
