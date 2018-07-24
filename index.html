@@ -16310,17 +16310,13 @@ payment page for payment.</p>
          <div class="method-copy-padding">
             <h3>Architecture</h3>
 <p>Here is the URL for the method of integration:</p>
-<ul>
-<li><a href="https://secure.sparrowone.com/Payments/Checkout.aspx">https://secure.sparrowone.com/Payments/Checkout.aspx</a></li>
-</ul>
+<p><a href="https://secure.sparrowone.com/Payments/Checkout.aspx">https://secure.sparrowone.com/Payments/Checkout.aspx</a></p>
 <p>The Checkout.aspx is a secure payment page hosted on the Sparrow gateway. 
 Consumers can be redirected from the merchant website to the payment gateway for
 customer information collection and payment processing.</p>
 <p>There is an additional web service used to provide information for checkout
 payments. It is located at the following URL:</p>
-<ul>
-<li><a href="https://secure.sparrowone.com/Services/CheckoutApi.asmx">https://secure.sparrowone.com/Services/CheckoutApi.asmx</a></li>
-</ul>
+<p><a href="https://secure.sparrowone.com/Services/CheckoutApi.asmx">https://secure.sparrowone.com/Services/CheckoutApi.asmx</a></p>
 <p>Description of all its methods can be found in Appendix A and in sections below.</p>
 <p></p>
 <h4>Merchant Private Key and Payment Types</h4>
@@ -16332,10 +16328,10 @@ the transaction.  This methodology allows merchants to have multiple merchant
 accounts for processing transactions.</p>
 <p>To generate a private key, select Add Transaction Routing and enter the
 appropriate information on the Transaction Routing Management page:</p>
-<p><img src="transaction-routing-management.jpg" alt=""></p>
+<p><img src="transaction-routing-management.jpg" alt="Transaction Routing Management page"></p>
 <p>The following image shows the account management page in the Merchant Accounts
 section:</p>
-<p><img src="merchant-accounts.jpg" alt=""></p>
+<p><img src="merchant-accounts.jpg" alt="Merchant Accounts page"></p>
 
          </div>
       </div>
@@ -16581,6 +16577,106 @@ be redirected to the page with the following parameters in the query string:</p>
 </tr>
 </tbody>
 </table>
+<p></p>
+<h4>Getting the Payment Result</h4>
+<p>To get the results, call the <strong>GetCheckoutPaymentResult</strong> method of the Checkout
+API. This method requires the <strong>private</strong> token key as a parameter. The fields
+returned by this method are the following:</p>
+<table>
+<thead>
+<tr>
+<th><strong>VARIABLENAME</strong></th>
+<th></th>
+<th><strong>FORMAT</strong></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ResultCode</td>
+<td></td>
+<td>integer</td>
+<td>Result code of the GetCheckoutPaymentResult operation. See Appendix B for all possible codes</td>
+</tr>
+<tr>
+<td>Message</td>
+<td></td>
+<td>string</td>
+<td>Message describing the result of this operation, i.e. “Success”. This is not the description of payment result</td>
+</tr>
+<tr>
+<td>PaymentInfo</td>
+<td></td>
+<td>XML</td>
+<td>A structure containing information about payment result. See the table below for field explanations</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>PaymentInfo element contains the following fields (see full description in XML
+schema, examples can be found in Appendix A):</p>
+<table>
+<thead>
+<tr>
+<th><strong>VARIABLENAME</strong></th>
+<th></th>
+<th><strong>FORMAT</strong></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amount</td>
+<td></td>
+<td>decimal</td>
+<td>Total payment amount (sum of prices for all products)</td>
+</tr>
+<tr>
+<td>FailedPaymentAttempts</td>
+<td></td>
+<td>integer</td>
+<td>Amount of payment attempts made by customer which were declined by the processor</td>
+</tr>
+<tr>
+<td>PaymentStatus</td>
+<td></td>
+<td>string</td>
+<td>Status of the payment. See Appendix B for the list of possible values</td>
+</tr>
+<tr>
+<td>PaymentDate</td>
+<td></td>
+<td>&lt;date&gt;T&lt;time&gt;</td>
+<td>Date of the transaction, if applicable</td>
+</tr>
+<tr>
+<td>PaymentMessage</td>
+<td></td>
+<td>string</td>
+<td>Message returned by the processor</td>
+</tr>
+<tr>
+<td>PaymentTransactionId</td>
+<td></td>
+<td>64-bit integer</td>
+<td>The gateway’s ID of the transaction, if the transaction exists</td>
+</tr>
+<tr>
+<td>Items</td>
+<td></td>
+<td>XML</td>
+<td>A copy of product list provided to GetCheckoutToken method</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>If the method runs successfully (i.e. specified token exists, is not expired
+etc.), it returns the ResultCode of 0. Note that even if the method is
+successful, this does not mean that the payment was successful. Check the
+&lt;PaymentInfo&gt; element contents to get the result of the payment itself. Result
+codes different from zero mean that an error has happened, and &lt;PaymentInfo&gt;
+element of the response won’t contain any data. You can find the full list of
+result codes and their meanings in the Appendix B.</p>
 
          </div>
       </div>
