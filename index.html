@@ -877,6 +877,13 @@
 
         </li>
      
+        <li>
+          <a href="#documenter-checkout-api-architecture-integration-checkout-process-appendix-a-appendix-b">Appendix B</a>
+          
+
+
+        </li>
+     
   </ol>
 
 
@@ -16812,6 +16819,125 @@ methods. Full schema can be found at
 </section>           
 
 
+   
+<section id="documenter-checkout-api-architecture-integration-checkout-process-appendix-a-appendix-b" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Appendix B – Return Values</h3>
+<p></p>
+<h4>ReturnCode</h4>
+<p>The following table describes possible values of ReturnCode field in all web
+method responses.</p>
+<table>
+<thead>
+<tr>
+<th><strong>RETURN CODE</strong></th>
+<th></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td></td>
+<td>Success</td>
+</tr>
+<tr>
+<td>9</td>
+<td></td>
+<td>Transaction Key parameter is missing</td>
+</tr>
+<tr>
+<td>10</td>
+<td></td>
+<td>Invalid Transaction Key specified</td>
+</tr>
+<tr>
+<td>11</td>
+<td></td>
+<td>Private Key parameter is missing</td>
+</tr>
+<tr>
+<td>12</td>
+<td></td>
+<td>Specified checkout token was not found (invalid private key)</td>
+</tr>
+<tr>
+<td>13</td>
+<td></td>
+<td>Checkout token has expired</td>
+</tr>
+<tr>
+<td>14</td>
+<td></td>
+<td>Invalid checkout amount: sum of prices for each product is not equal to the total payment amount</td>
+</tr>
+<tr>
+<td>15</td>
+<td></td>
+<td>Specified account cannot process transactions. Possible reason is that account is closed</td>
+</tr>
+<tr>
+<td>100</td>
+<td></td>
+<td>Unknown processing error, contact support for details</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<h4>PaymentStatus</h4>
+<p>The following table describes possible values of PaymentStatus sub element of
+PaymentInfo element in <strong>GetCheckoutPaymentResult</strong> method’s response.</p>
+<table>
+<thead>
+<tr>
+<th><strong>STATUS</strong></th>
+<th></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Successful</td>
+<td></td>
+<td>Payment was successful. Transaction has been created.</td>
+</tr>
+<tr>
+<td>Declined</td>
+<td></td>
+<td>Processor has declined the payment. PaymentMessage contains details. Transaction has been created.</td>
+</tr>
+<tr>
+<td>Error</td>
+<td></td>
+<td>There was an error processing the message, either at gateway or processor’s side. Transaction may or may not exist in the case of this payment status.</td>
+</tr>
+<tr>
+<td>NotProcessed</td>
+<td></td>
+<td>User has not completed payment or payment has not been processed by processor yet. Status of the transaction in this case is “Wait For Response”.</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<pre class="language-none"><code class="language-none">transtype=
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
            
               
 <section id="documenter-code-samples" class="method">
@@ -17752,6 +17878,13 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-checkout-api-checkout-api-architecture-integration-checkout-process-appendix-a">Appendix A</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-checkout-api-checkout-api-architecture-integration-checkout-process-appendix-a-appendix-b">Appendix B</a>
           
 
 
