@@ -16704,9 +16704,106 @@ methods. Full schema can be found at
 <p></p>
 <h4>GetCheckoutToken</h4>
 <p>Request:</p>
-<p></p>
+<pre class="language-none"><code class="language-none">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;GetCheckoutToken xmlns=&quot;https://secure.5thdl.com/Services/&quot;&gt;
+      &lt;transactionKey&gt;string&lt;/transactionKey&gt;
+      &lt;amount&gt;decimal&lt;/amount&gt;
+      &lt;items&gt;
+        &lt;CheckoutPaymentItem&gt;
+          &lt;Description&gt;string&lt;/Description&gt;
+          &lt;SkuNumber&gt;string&lt;/SkuNumber&gt;
+          &lt;UnitPrice&gt;decimal&lt;/UnitPrice&gt;
+          &lt;Quantity&gt;int&lt;/Quantity&gt;
+        &lt;/CheckoutPaymentItem&gt;
+        &lt;CheckoutPaymentItem&gt;
+          &lt;Description&gt;string&lt;/Description&gt;
+          &lt;SkuNumber&gt;string&lt;/SkuNumber&gt;
+          &lt;UnitPrice&gt;decimal&lt;/UnitPrice&gt;
+          &lt;Quantity&gt;int&lt;/Quantity&gt;
+        &lt;/CheckoutPaymentItem&gt;
+        ...
+      &lt;/items&gt;
+      &lt;apiFields&gt;
+        &lt;CheckoutApiField&gt;
+            &lt;Name&gt;see Appendix C&lt;/Name&gt;
+            &lt;Value&gt;see Appendix C&lt;/Value&gt;
+        &lt;/CheckoutApiField&gt;
+        ...
+      &lt;/apiFields&gt;
+    &lt;/GetCheckoutToken&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+</code></pre>
 <p></p>
 <p>Response:</p>
+<pre class="language-none"><code class="language-none">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;GetCheckoutTokenResponse xmlns=&quot;https://secure.5thdl.com/Services/&quot;&gt;
+      &lt;GetCheckoutTokenResult&gt;
+        &lt;ResultCode&gt;int&lt;/ResultCode&gt;
+        &lt;Message&gt;string&lt;/Message&gt;
+        &lt;Token&gt;
+          &lt;PublicKey&gt;string&lt;/PublicKey&gt;
+          &lt;PrivateKey&gt;string&lt;/PrivateKey&gt;
+          &lt;ExpirationTime&gt;dateTime&lt;/ExpirationTime&gt;
+        &lt;/Token&gt;
+      &lt;/GetCheckoutTokenResult&gt;
+    &lt;/GetCheckoutTokenResponse&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+</code></pre>
+<p></p>
+<h4>GetCheckoutPaymentResult</h4>
+<p>Request:</p>
+<pre class="language-none"><code class="language-none">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;GetCheckoutPaymentResult xmlns=&quot;https://secure.5thdl.com/Services/&quot;&gt;
+      &lt;privateKey&gt;string&lt;/privateKey&gt;
+    &lt;/GetCheckoutPaymentResult&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+</code></pre>
+<p></p>
+<p>Response:</p>
+<pre class="language-none"><code class="language-none">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;GetCheckoutPaymentResultResponse xmlns=&quot;https://secure.5thdl.com/Services/&quot;&gt;
+      &lt;GetCheckoutPaymentResultResult&gt;
+        &lt;ResultCode&gt;int&lt;/ResultCode&gt;
+        &lt;Message&gt;string&lt;/Message&gt;
+        &lt;PaymentInfo&gt;
+          &lt;Amount&gt;decimal&lt;/Amount&gt;
+          &lt;Items&gt;
+            &lt;CheckoutPaymentItem&gt;
+              &lt;Description&gt;string&lt;/Description&gt;
+              &lt;SkuNumber&gt;string&lt;/SkuNumber&gt;
+              &lt;UnitPrice&gt;decimal&lt;/UnitPrice&gt;
+              &lt;Quantity&gt;int&lt;/Quantity&gt;
+            &lt;/CheckoutPaymentItem&gt;
+            &lt;CheckoutPaymentItem&gt;
+              &lt;Description&gt;string&lt;/Description&gt;
+              &lt;SkuNumber&gt;string&lt;/SkuNumber&gt;
+              &lt;UnitPrice&gt;decimal&lt;/UnitPrice&gt;
+              &lt;Quantity&gt;int&lt;/Quantity&gt;
+            &lt;/CheckoutPaymentItem&gt;
+            ...
+          &lt;/Items&gt;
+          &lt;FailedPaymentAttempts&gt;int&lt;/FailedPaymentAttempts&gt;
+          &lt;PaymentTransactionId&gt;long&lt;/PaymentTransactionId&gt;
+          &lt;PaymentDate&gt;dateTime&lt;/PaymentDate&gt;
+          &lt;PaymentStatus&gt;string&lt;/PaymentStatus&gt;
+          &lt;PaymentMessage&gt;string&lt;/PaymentMessage&gt;
+        &lt;/PaymentInfo&gt;
+      &lt;/GetCheckoutPaymentResultResult&gt;
+    &lt;/GetCheckoutPaymentResultResponse&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+</code></pre>
 
          </div>
       </div>
