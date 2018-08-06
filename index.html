@@ -844,6 +844,59 @@
                         </li>
                      
                         <li>
+                           <a  href="#documenter-payment-redirect">Payment Redirect</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-payment-redirect-architecture">Architecture</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-redirect-architecture-process-workflow">Process Workflow</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-redirect-architecture-process-workflow-integration">Integration</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-redirect-architecture-process-workflow-integration-checkout-process">Checkout Process</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-redirect-architecture-process-workflow-integration-checkout-process-appendix-a">Appendix A</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-redirect-architecture-process-workflow-integration-checkout-process-appendix-a-appendix-b">Appendix B</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
                            <a  href="#documenter-checkout-api">3DS Checkout API</a>
                            
 
@@ -893,59 +946,6 @@
      
         <li>
           <a href="#documenter-checkout-api-architecture-integration-checkout-process-appendix-a-appendix-b-appendix-c-appendix-d">Appendix D</a>
-          
-
-
-        </li>
-     
-  </ol>
-
-
-                        </li>
-                     
-                        <li>
-                           <a  href="#documenter-payment-redirect">Payment Redirect</a>
-                           
-
-  <ol>
-     
-        <li>
-          <a href="#documenter-payment-redirect-architecture">Architecture</a>
-          
-
-
-        </li>
-     
-        <li>
-          <a href="#documenter-payment-redirect-architecture-process-workflow">Process Workflow</a>
-          
-
-
-        </li>
-     
-        <li>
-          <a href="#documenter-payment-redirect-architecture-process-workflow-integration">Integration</a>
-          
-
-
-        </li>
-     
-        <li>
-          <a href="#documenter-payment-redirect-architecture-process-workflow-integration-checkout-process">Checkout Process</a>
-          
-
-
-        </li>
-     
-        <li>
-          <a href="#documenter-payment-redirect-architecture-process-workflow-integration-checkout-process-appendix-a">Appendix A</a>
-          
-
-
-        </li>
-     
-        <li>
-          <a href="#documenter-payment-redirect-architecture-process-workflow-integration-checkout-process-appendix-a-appendix-b">Appendix B</a>
           
 
 
@@ -16370,6 +16370,563 @@ All transaction will need to be sent again.</p>
 
            
               
+<section id="documenter-payment-redirect" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1>Payment Redirect</h1>
+<p>Custom white-label redirect page for uComm Global, Inc. uComm’s redirect page
+will communicate with CardinalCommerce and associated banks to process 3DS
+cards.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-payment-redirect-architecture" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Architecture</h3>
+<p>The architecture will remain the same way the current redirect exists today.</p>
+<p>Interaction with the service should be performed through the POST Http Request.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-redirect-architecture-process-workflow" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Process Workflow</h3>
+<p>Here is the URL for the method</p>
+<ol>
+<li>
+<p>Cardholder enters in payment information into the custom redirect page</p>
+</li>
+<li>
+<p>The data is sent as a lookup request to CardinalCommerce to valid
+enrollment.</p>
+<ol>
+<li>
+<p>If card is not enrolled:</p>
+<p>Cardinal will return an enrollment status of ‘N’ back with an ECI value.</p>
+<p>Redirect page will append the ECI value to the transaction and process
+the payment for the merchant.</p>
+</li>
+<li>
+<p>If card is enrolled:</p>
+<ul>
+<li>
+<p>Cardinal will return parameters which represent the URL for the
+issuing bank (ACS URL) and the Payer Authentication Request (PaReq).</p>
+</li>
+<li>
+<p>Request page will POST the form data to the ACS URL.  This form POST
+will include the PaReq payload, a TermURL and an MD value (if no MD,
+you can leave blank but the field still needs to be there).  Through
+the posting to the ACS URL, the cardholder will be redirected to the
+bank page to enter in their bank password.</p>
+</li>
+<li>
+<p>Once submitted, the ACS will post the cardholder and the encrypted
+data back to the TermURL (on the Sparrow server).</p>
+</li>
+<li>
+<p>The Sparrow server will then take the encrypted value which is the
+PaRes (Payer Authentication Response) and send that in the
+Authenticate Request message to CardinalCommerce to decrypt.</p>
+</li>
+<li>
+<p>CardinalCommerce will decrypt and send back the Authenticate
+Response which will include the PaResStatus, the Signature Status
+along with the ECI, CAVV and XID values.</p>
+</li>
+<li>
+<p>The redirect page will append the ECI, CAVV and XID values to the
+transaction and then process the payment for the merchant.</p>
+</li>
+</ul>
+<p>(Sample code will be provided that represents this process)</p>
+</li>
+</ol>
+</li>
+</ol>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-redirect-architecture-process-workflow-integration" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Integration</h3>
+<h4>Setting up the Account</h4>
+<p>Before attempting to process checkout payments, the merchant account which will
+be receiving payments must be additionally setup.</p>
+<p>To do that, visit the Integration page available from the Administration menu,
+select the account you want to setup, and enter the URL of the page where
+customers will be redirected after processing the payment.</p>
+<p>The page available at the entered URL should have the functionality of checking
+the result of the payment. The details can be found below in Getting the Payment
+Result section. Note that it is critical to have this URL field filled or
+otherwise payments will not be processed via redirect method.</p>
+<p>To integrate an account:</p>
+<ol>
+<li>
+<p>Select the Merchant Account to integrate</p>
+</li>
+<li>
+<p>Enter the Return URL</p>
+</li>
+<li>
+<p>Check the “Allow user to enter quantity” checkbox if you would like to allow
+customers to enter custom quantity for the products they’re buying</p>
+</li>
+<li>
+<p>If you want to customize the look of the redirect page, you can upload your
+own CSS File</p>
+</li>
+<li>
+<p>Click Save</p>
+</li>
+</ol>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-redirect-architecture-process-workflow-integration-checkout-process" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Checkout Process</h3>
+<h4>Getting the Token</h4>
+<p>First action to initiate the checkout process is getting the checkout token.
+This is achieved by calling <strong>GetCheckoutToken</strong> method of Checkout API web
+service. This method has the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th><strong>FIELD</strong></th>
+<th></th>
+<th><strong>FORMAT</strong></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transactionKey</td>
+<td></td>
+<td>String</td>
+<td>Private key of the merchant account that will receive the payment</td>
+</tr>
+<tr>
+<td>amount</td>
+<td></td>
+<td>Decimal</td>
+<td>Total amount of the payment</td>
+</tr>
+<tr>
+<td>items</td>
+<td></td>
+<td>XML</td>
+<td>Products forming the payment. This is an optional parameter. See Appendix A for detailed description of items format</td>
+</tr>
+<tr>
+<td>variableQuantity</td>
+<td></td>
+<td>Boolean</td>
+<td>This is an optional flag signaling a redirect page if the customer is allowed to change the quantity of each product in the purchase. Changing the quantity will affect the total amount of the payment. The default value is false.</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>The returned token consists of the following fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>FIELD</strong></th>
+<th></th>
+<th><strong>FORMAT</strong></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public key</td>
+<td></td>
+<td>String, 16..128 characters</td>
+<td>This is the public part of the token key which can be exposed to end users. Public key will be specified as an URL query parameter two times during the checkout process</td>
+</tr>
+<tr>
+<td>Private key</td>
+<td></td>
+<td>String, 16..128 characters</td>
+<td>This is the private part of the token key which must be kept secret. Private key will be used to retrieve the results of the payment</td>
+</tr>
+<tr>
+<td>Expiration Date</td>
+<td></td>
+<td>&lt;date&gt;T&lt;time&gt;</td>
+<td>This is the date and time of the moment when the checkout token will expire and all further actions with it will not be possible</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<h4>Processing Payment</h4>
+<p>To process the payment, redirect the customer to the payment URL with <strong>public</strong>
+token key as a parameter. Here is an example of the resulting URL:</p>
+<p><a href="https://secure.5thdl.com/Payments/Payment.aspx?Token=214A3E3C8265F6EE">https://secure.sparrowone.com/Payments/Payment.aspx?Token=214A3E3C8265F6EE</a></p>
+<p>The Checkout Payment page will then ask the customer of his payment, billing and
+shipping information and allow him to process the payment. In the end, the
+customer will be redirected to the page set up in the merchant account settings,
+with <strong>public</strong> token key as a parameter.</p>
+<p><a href="https://secure.sparrowone.com/Payments/Payment.aspx?Token=eAaNOpIu7DH5h58E3qDNLewDTayu+4Fz">https://secure.sparrowone.com/Payments/Payment.aspx?Token=eAaNOpIu7DH5h58E3qDNLewDTayu+4Fz</a></p>
+<p></p>
+<h4>Getting the Payment Result</h4>
+<p>The results of the payment will not be provided to the merchant page during the
+redirect. To get the results, call the <strong>GetCheckoutPaymentResult</strong> method of
+the Checkout API. This method requires the <strong>private</strong> token key as a parameter.
+The fields returned by this method are the following:</p>
+<table>
+<thead>
+<tr>
+<th><strong>FIELD</strong></th>
+<th></th>
+<th><strong>FORMAT</strong></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ResultCode</td>
+<td></td>
+<td>Integer</td>
+<td>Result code of the GetCheckoutPaymentResult operation. See Appendix B for all possible codes</td>
+</tr>
+<tr>
+<td>Message</td>
+<td></td>
+<td>String</td>
+<td>Message describing the result of this operation, i.e. “Success”. This is not the description of payment result</td>
+</tr>
+<tr>
+<td>PaymentInfo</td>
+<td></td>
+<td>XML</td>
+<td>A structure containing information about payment result. See the table below for field explanations</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>PaymentInfo element contains the following fields (see full description in XML
+schema, examples can be found in Appendix A):</p>
+<table>
+<thead>
+<tr>
+<th><strong>FIELD</strong></th>
+<th></th>
+<th><strong>FORMAT</strong></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amount</td>
+<td></td>
+<td>Decimal</td>
+<td>Total payment amount (sum of prices for all products)</td>
+</tr>
+<tr>
+<td>FailedPaymentAttempts</td>
+<td></td>
+<td>Integer</td>
+<td>Amount of payment attempts made by customer which were declined by the processor</td>
+</tr>
+<tr>
+<td>PaymentStatus</td>
+<td></td>
+<td>String</td>
+<td>Status of the payment. See Appendix B for the list of possible values</td>
+</tr>
+<tr>
+<td>PaymentDate</td>
+<td></td>
+<td>&lt;date&gt;T&lt;time&gt;</td>
+<td>Date of the transaction, if applicable</td>
+</tr>
+<tr>
+<td>PaymentMessage</td>
+<td></td>
+<td>String</td>
+<td>Message returned by the processor</td>
+</tr>
+<tr>
+<td>PaymentTransactionId</td>
+<td></td>
+<td>64-bit integer</td>
+<td>The gateway’s ID of the transaction, if the transaction exists</td>
+</tr>
+<tr>
+<td>Items</td>
+<td></td>
+<td>XML</td>
+<td>A copy of product list provided to GetCheckoutToken  method</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>If the method runs successfully (i.e. specified token exists, is not expired
+etc.), it returns the ResultCode of 0. Note that even if the method is
+successful, this does not mean that the payment was successful. Check the
+&lt;PaymentInfo&gt; element contents to get the result of the payment itself. Result
+codes different from zero mean that an error has happened, and &lt;PaymentInfo&gt;
+element of the response won’t contain any data. You can find the full list of
+result codes and their meanings in the Appendix B.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-redirect-architecture-process-workflow-integration-checkout-process-appendix-a" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Appendix A – Web Methods Description</h3>
+<p>This section contains request and response formats for both Checkout API
+methods. Full schema can be found
+at<a href="https://secure.sparrowone.com/Services/CheckoutApi.asmx?wsdl">https://secure.sparrowone.com/Services/CheckoutApi.asmx?wsdl</a></p>
+<h4>GetCheckoutToken</h4>
+<p>Request:</p>
+<pre class="language-none"><code class="language-none">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;GetCheckoutToken xmlns=&quot;https://secure.sparrowone.com/Services/&quot;&gt;
+      &lt;transactionKey&gt;string&lt;/transactionKey&gt;
+      &lt;amount&gt;decimal&lt;/amount&gt;
+      &lt;items&gt;
+        &lt;CheckoutPaymentItem&gt;
+          &lt;Description&gt;string&lt;/Description&gt;
+          &lt;SkuNumber&gt;string&lt;/SkuNumber&gt;
+          &lt;UnitPrice&gt;decimal&lt;/UnitPrice&gt;
+          &lt;Quantity&gt;int&lt;/Quantity&gt;
+        &lt;/CheckoutPaymentItem&gt;
+        &lt;CheckoutPaymentItem&gt;
+          &lt;Description&gt;string&lt;/Description&gt;
+          &lt;SkuNumber&gt;string&lt;/SkuNumber&gt;
+          &lt;UnitPrice&gt;decimal&lt;/UnitPrice&gt;
+          &lt;Quantity&gt;int&lt;/Quantity&gt;
+        &lt;/CheckoutPaymentItem&gt;
+        ...
+      &lt;/items&gt;
+      &lt;variableQuantity&gt;boolean&lt;/variableQuantity&gt;
+    &lt;/GetCheckoutToken&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+</code></pre>
+<p></p>
+<p>Response:</p>
+<pre class="language-none"><code class="language-none">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;GetCheckoutTokenResponse xmlns=&quot;https://secure.sparrowone.com/Services/&quot;&gt;
+      &lt;GetCheckoutTokenResult&gt;
+        &lt;ResultCode&gt;int&lt;/ResultCode&gt;
+        &lt;Message&gt;string&lt;/Message&gt;
+        &lt;Token&gt;
+          &lt;PublicKey&gt;string&lt;/PublicKey&gt;
+          &lt;PrivateKey&gt;string&lt;/PrivateKey&gt;
+          &lt;ExpirationTime&gt;dateTime&lt;/ExpirationTime&gt;
+        &lt;/Token&gt;
+      &lt;/GetCheckoutTokenResult&gt;
+    &lt;/GetCheckoutTokenResponse&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+</code></pre>
+<p></p>
+<h4>GetCheckoutPaymentResult</h4>
+<p>Request:</p>
+<pre class="language-none"><code class="language-none">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;GetCheckoutPaymentResult xmlns=&quot;https://secure.sparrowone.com/Services/&quot;&gt;
+      &lt;privateKey&gt;string&lt;/privateKey&gt;
+    &lt;/GetCheckoutPaymentResult&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+</code></pre>
+<p></p>
+<p>Response:</p>
+<pre class="language-none"><code class="language-none">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;GetCheckoutPaymentResultResponse xmlns=&quot;https://secure.sparrowone.com/Services/&quot;&gt;
+      &lt;GetCheckoutPaymentResultResult&gt;
+        &lt;ResultCode&gt;int&lt;/ResultCode&gt;
+        &lt;Message&gt;string&lt;/Message&gt;
+        &lt;PaymentInfo&gt;
+          &lt;Amount&gt;decimal&lt;/Amount&gt;
+          &lt;Items&gt;
+            &lt;CheckoutPaymentItem&gt;
+              &lt;Description&gt;string&lt;/Description&gt;
+              &lt;SkuNumber&gt;string&lt;/SkuNumber&gt;
+              &lt;UnitPrice&gt;decimal&lt;/UnitPrice&gt;
+              &lt;Quantity&gt;int&lt;/Quantity&gt;
+            &lt;/CheckoutPaymentItem&gt;
+            &lt;CheckoutPaymentItem&gt;
+              &lt;Description&gt;string&lt;/Description&gt;
+              &lt;SkuNumber&gt;string&lt;/SkuNumber&gt;
+              &lt;UnitPrice&gt;decimal&lt;/UnitPrice&gt;
+              &lt;Quantity&gt;int&lt;/Quantity&gt;
+            &lt;/CheckoutPaymentItem&gt;
+            ...
+          &lt;/Items&gt;
+          &lt;FailedPaymentAttempts&gt;int&lt;/FailedPaymentAttempts&gt;
+          &lt;PaymentTransactionId&gt;long&lt;/PaymentTransactionId&gt;
+          &lt;PaymentDate&gt;dateTime&lt;/PaymentDate&gt;
+          &lt;PaymentStatus&gt;string&lt;/PaymentStatus&gt;
+          &lt;PaymentMessage&gt;string&lt;/PaymentMessage&gt;
+        &lt;/PaymentInfo&gt;
+      &lt;/GetCheckoutPaymentResultResult&gt;
+    &lt;/GetCheckoutPaymentResultResponse&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+</code></pre>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-redirect-architecture-process-workflow-integration-checkout-process-appendix-a-appendix-b" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Appendix B – Return Values</h3>
+<h4>ReturnCode</h4>
+<p>The following table describes possible values of ReturnCode field in all web
+method responses.</p>
+<table>
+<thead>
+<tr>
+<th><strong>RETURN CODE</strong></th>
+<th></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td></td>
+<td>Success</td>
+</tr>
+<tr>
+<td>9</td>
+<td></td>
+<td>Transaction Key parameter is missing</td>
+</tr>
+<tr>
+<td>10</td>
+<td></td>
+<td>Invalid Transaction Key specified</td>
+</tr>
+<tr>
+<td>11</td>
+<td></td>
+<td>Private Key parameter is missing</td>
+</tr>
+<tr>
+<td>12</td>
+<td></td>
+<td>Specified checkout token was not found (invalid private key)</td>
+</tr>
+<tr>
+<td>13</td>
+<td></td>
+<td>Checkout token has expired</td>
+</tr>
+<tr>
+<td>14</td>
+<td></td>
+<td>Invalid checkout amount: sum of prices for each product is not equal to the total payment amount</td>
+</tr>
+<tr>
+<td>15</td>
+<td></td>
+<td>Specified account cannot process transactions. Possible reason is that account is closed</td>
+</tr>
+<tr>
+<td>100</td>
+<td></td>
+<td>Unknown processing error, contact support for details</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<h4>PaymentStatus</h4>
+<p>The following table describes possible values of PaymentStatus subelement of
+PaymentInfo element in <strong>GetCheckoutPaymentResult</strong> method’s response.</p>
+<table>
+<thead>
+<tr>
+<th><strong>STATUS</strong></th>
+<th></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Successful</td>
+<td></td>
+<td>Payment was successful. Transaction has been created.</td>
+</tr>
+<tr>
+<td>Declined</td>
+<td></td>
+<td>Processor has declined the payment. PaymentMessage contains details. Transaction has been created.</td>
+</tr>
+<tr>
+<td>Error</td>
+<td></td>
+<td>There was an error processing the message, either at gateway or processor’s side. Transaction may or may not exist in the case of this payment status.</td>
+</tr>
+</tbody>
+</table>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
 <section id="documenter-checkout-api" class="method">
    <div class="method-area">
       <div class="method-copy">
@@ -17244,563 +17801,6 @@ with eWallet account.</p>
   &lt;/s:Body&gt;
 &lt;/s:Envelope&gt;
 </code></pre>
-
-         </div>
-      </div>
-      
-   </div>
-</section>           
-
-
-           
-              
-<section id="documenter-payment-redirect" class="method">
-   <div class="method-area">
-      <div class="method-copy">
-         <div class="method-copy-padding">
-            <h1>Payment Redirect</h1>
-<p>Custom white-label redirect page for uComm Global, Inc.  uComm’s redirect page
-will communicate with CardinalCommerce and associated banks to process 3DS
-cards.</p>
-
-         </div>
-      </div>
-      
-   </div>
-</section>           
-
-   
-<section id="documenter-payment-redirect-architecture" class="method">
-   <div class="method-area">
-      <div class="method-copy">
-         <div class="method-copy-padding">
-            <h3>Architecture</h3>
-<p>The architecture will remain the same way the current redirect exists today.</p>
-<p>Interaction with the service should be performed through the POST Http Request.</p>
-
-         </div>
-      </div>
-      
-   </div>
-</section>           
-
-
-   
-<section id="documenter-payment-redirect-architecture-process-workflow" class="method">
-   <div class="method-area">
-      <div class="method-copy">
-         <div class="method-copy-padding">
-            <h3>Process Workflow</h3>
-<p>Here is the URL for the method</p>
-<ol>
-<li>
-<p>Cardholder enters in payment information into the custom redirect page</p>
-</li>
-<li>
-<p>The data is sent as a lookup request to CardinalCommerce to valid
-enrollment.</p>
-<ol>
-<li>
-<p>If card is not enrolled:</p>
-<p>Cardinal will return an enrollment status of ‘N’ back with an ECI value.</p>
-<p>Redirect page will append the ECI value to the transaction and process
-the payment for the merchant.</p>
-</li>
-<li>
-<p>If card is enrolled:</p>
-<ul>
-<li>
-<p>Cardinal will return parameters which represent the URL for the
-issuing bank (ACS URL) and the Payer Authentication Request (PaReq).</p>
-</li>
-<li>
-<p>Request page will POST the form data to the ACS URL.  This form POST
-will include the PaReq payload, a TermURL and an MD value (if no MD,
-you can leave blank but the field still needs to be there).  Through
-the posting to the ACS URL, the cardholder will be redirected to the
-bank page to enter in their bank password.</p>
-</li>
-<li>
-<p>Once submitted, the ACS will post the cardholder and the encrypted
-data back to the TermURL (on the Sparrow server).</p>
-</li>
-<li>
-<p>The Sparrow server will then take the encrypted value which is the
-PaRes (Payer Authentication Response) and send that in the
-Authenticate Request message to CardinalCommerce to decrypt.</p>
-</li>
-<li>
-<p>CardinalCommerce will decrypt and send back the Authenticate
-Response which will include the PaResStatus, the Signature Status
-along with the ECI, CAVV and XID values.</p>
-</li>
-<li>
-<p>The redirect page will append the ECI, CAVV and XID values to the
-transaction and then process the payment for the merchant.</p>
-</li>
-</ul>
-<p>(Sample code will be provided that represents this process)</p>
-</li>
-</ol>
-</li>
-</ol>
-
-         </div>
-      </div>
-      
-   </div>
-</section>           
-
-
-   
-<section id="documenter-payment-redirect-architecture-process-workflow-integration" class="method">
-   <div class="method-area">
-      <div class="method-copy">
-         <div class="method-copy-padding">
-            <h3>Integration</h3>
-<h4>Setting up the Account</h4>
-<p>Before attempting to process checkout payments, the merchant account which will
-be receiving payments must be additionally setup.</p>
-<p>To do that, visit the Integration page available from the Administration menu,
-select the account you want to setup, and enter the URL of the page where
-customers will be redirected after processing the payment.</p>
-<p>The page available at the entered URL should have the functionality of checking
-the result of the payment. The details can be found below in Getting the Payment
-Result section. Note that it is critical to have this URL field filled or
-otherwise payments will not be processed via redirect method.</p>
-<p>To integrate an account:</p>
-<ol>
-<li>
-<p>Select the Merchant Account to integrate</p>
-</li>
-<li>
-<p>Enter the Return URL</p>
-</li>
-<li>
-<p>Check the “Allow user to enter quantity” checkbox if you would like to allow
-customers to enter custom quantity for the products they’re buying</p>
-</li>
-<li>
-<p>If you want to customize the look of the redirect page, you can upload your
-own CSS File</p>
-</li>
-<li>
-<p>Click Save</p>
-</li>
-</ol>
-
-         </div>
-      </div>
-      
-   </div>
-</section>           
-
-
-   
-<section id="documenter-payment-redirect-architecture-process-workflow-integration-checkout-process" class="method">
-   <div class="method-area">
-      <div class="method-copy">
-         <div class="method-copy-padding">
-            <h3>Checkout Process</h3>
-<h4>Getting the Token</h4>
-<p>First action to initiate the checkout process is getting the checkout token.
-This is achieved by calling <strong>GetCheckoutToken</strong> method of Checkout API web
-service. This method has the following parameters:</p>
-<table>
-<thead>
-<tr>
-<th><strong>FIELD</strong></th>
-<th></th>
-<th><strong>FORMAT</strong></th>
-<th><strong>DESCRIPTION</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>transactionKey</td>
-<td></td>
-<td>String</td>
-<td>Private key of the merchant account that will receive the payment</td>
-</tr>
-<tr>
-<td>amount</td>
-<td></td>
-<td>Decimal</td>
-<td>Total amount of the payment</td>
-</tr>
-<tr>
-<td>items</td>
-<td></td>
-<td>XML</td>
-<td>Products forming the payment. This is an optional parameter. See Appendix A for detailed description of items format</td>
-</tr>
-<tr>
-<td>variableQuantity</td>
-<td></td>
-<td>Boolean</td>
-<td>This is an optional flag signaling a redirect page if the customer is allowed to change the quantity of each product in the purchase. Changing the quantity will affect the total amount of the payment. The default value is false.</td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<p>The returned token consists of the following fields:</p>
-<table>
-<thead>
-<tr>
-<th><strong>FIELD</strong></th>
-<th></th>
-<th><strong>FORMAT</strong></th>
-<th><strong>DESCRIPTION</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Public key</td>
-<td></td>
-<td>String, 16..128 characters</td>
-<td>This is the public part of the token key which can be exposed to end users. Public key will be specified as an URL query parameter two times during the checkout process</td>
-</tr>
-<tr>
-<td>Private key</td>
-<td></td>
-<td>String, 16..128 characters</td>
-<td>This is the private part of the token key which must be kept secret. Private key will be used to retrieve the results of the payment</td>
-</tr>
-<tr>
-<td>Expiration Date</td>
-<td></td>
-<td>&lt;date&gt;T&lt;time&gt;</td>
-<td>This is the date and time of the moment when the checkout token will expire and all further actions with it will not be possible</td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<h4>Processing Payment</h4>
-<p>To process the payment, redirect the customer to the payment URL with <strong>public</strong>
-token key as a parameter. Here is an example of the resulting URL:</p>
-<p><a href="https://secure.5thdl.com/Payments/Payment.aspx?Token=214A3E3C8265F6EE">https://secure.sparrowone.com/Payments/Payment.aspx?Token=214A3E3C8265F6EE</a></p>
-<p>The Checkout Payment page will then ask the customer of his payment, billing and
-shipping information and allow him to process the payment. In the end, the
-customer will be redirected to the page set up in the merchant account settings,
-with <strong>public</strong> token key as a parameter.</p>
-<p><a href="https://secure.sparrowone.com/Payments/Payment.aspx?Token=eAaNOpIu7DH5h58E3qDNLewDTayu+4Fz">https://secure.sparrowone.com/Payments/Payment.aspx?Token=eAaNOpIu7DH5h58E3qDNLewDTayu+4Fz</a></p>
-<p></p>
-<h4>Getting the Payment Result</h4>
-<p>The results of the payment will not be provided to the merchant page during the
-redirect. To get the results, call the <strong>GetCheckoutPaymentResult</strong> method of
-the Checkout API. This method requires the <strong>private</strong> token key as a parameter.
-The fields returned by this method are the following:</p>
-<table>
-<thead>
-<tr>
-<th><strong>FIELD</strong></th>
-<th></th>
-<th><strong>FORMAT</strong></th>
-<th><strong>DESCRIPTION</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ResultCode</td>
-<td></td>
-<td>Integer</td>
-<td>Result code of the GetCheckoutPaymentResult operation. See Appendix B for all possible codes</td>
-</tr>
-<tr>
-<td>Message</td>
-<td></td>
-<td>String</td>
-<td>Message describing the result of this operation, i.e. “Success”. This is not the description of payment result</td>
-</tr>
-<tr>
-<td>PaymentInfo</td>
-<td></td>
-<td>XML</td>
-<td>A structure containing information about payment result. See the table below for field explanations</td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<p>PaymentInfo element contains the following fields (see full description in XML
-schema, examples can be found in Appendix A):</p>
-<table>
-<thead>
-<tr>
-<th><strong>FIELD</strong></th>
-<th></th>
-<th><strong>FORMAT</strong></th>
-<th><strong>DESCRIPTION</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Amount</td>
-<td></td>
-<td>Decimal</td>
-<td>Total payment amount (sum of prices for all products)</td>
-</tr>
-<tr>
-<td>FailedPaymentAttempts</td>
-<td></td>
-<td>Integer</td>
-<td>Amount of payment attempts made by customer which were declined by the processor</td>
-</tr>
-<tr>
-<td>PaymentStatus</td>
-<td></td>
-<td>String</td>
-<td>Status of the payment. See Appendix B for the list of possible values</td>
-</tr>
-<tr>
-<td>PaymentDate</td>
-<td></td>
-<td>&lt;date&gt;T&lt;time&gt;</td>
-<td>Date of the transaction, if applicable</td>
-</tr>
-<tr>
-<td>PaymentMessage</td>
-<td></td>
-<td>String</td>
-<td>Message returned by the processor</td>
-</tr>
-<tr>
-<td>PaymentTransactionId</td>
-<td></td>
-<td>64-bit integer</td>
-<td>The gateway’s ID of the transaction, if the transaction exists</td>
-</tr>
-<tr>
-<td>Items</td>
-<td></td>
-<td>XML</td>
-<td>A copy of product list provided to GetCheckoutToken  method</td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<p>If the method runs successfully (i.e. specified token exists, is not expired
-etc.), it returns the ResultCode of 0. Note that even if the method is
-successful, this does not mean that the payment was successful. Check the
-&lt;PaymentInfo&gt; element contents to get the result of the payment itself. Result
-codes different from zero mean that an error has happened, and &lt;PaymentInfo&gt;
-element of the response won’t contain any data. You can find the full list of
-result codes and their meanings in the Appendix B.</p>
-
-         </div>
-      </div>
-      
-   </div>
-</section>           
-
-
-   
-<section id="documenter-payment-redirect-architecture-process-workflow-integration-checkout-process-appendix-a" class="method">
-   <div class="method-area">
-      <div class="method-copy">
-         <div class="method-copy-padding">
-            <h3>Appendix A – Web Methods Description</h3>
-<p>This section contains request and response formats for both Checkout API
-methods. Full schema can be found
-at<a href="https://secure.sparrowone.com/Services/CheckoutApi.asmx?wsdl">https://secure.sparrowone.com/Services/CheckoutApi.asmx?wsdl</a></p>
-<h4>GetCheckoutToken</h4>
-<p>Request:</p>
-<pre class="language-none"><code class="language-none">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
-  &lt;soap:Body&gt;
-    &lt;GetCheckoutToken xmlns=&quot;https://secure.sparrowone.com/Services/&quot;&gt;
-      &lt;transactionKey&gt;string&lt;/transactionKey&gt;
-      &lt;amount&gt;decimal&lt;/amount&gt;
-      &lt;items&gt;
-        &lt;CheckoutPaymentItem&gt;
-          &lt;Description&gt;string&lt;/Description&gt;
-          &lt;SkuNumber&gt;string&lt;/SkuNumber&gt;
-          &lt;UnitPrice&gt;decimal&lt;/UnitPrice&gt;
-          &lt;Quantity&gt;int&lt;/Quantity&gt;
-        &lt;/CheckoutPaymentItem&gt;
-        &lt;CheckoutPaymentItem&gt;
-          &lt;Description&gt;string&lt;/Description&gt;
-          &lt;SkuNumber&gt;string&lt;/SkuNumber&gt;
-          &lt;UnitPrice&gt;decimal&lt;/UnitPrice&gt;
-          &lt;Quantity&gt;int&lt;/Quantity&gt;
-        &lt;/CheckoutPaymentItem&gt;
-        ...
-      &lt;/items&gt;
-      &lt;variableQuantity&gt;boolean&lt;/variableQuantity&gt;
-    &lt;/GetCheckoutToken&gt;
-  &lt;/soap:Body&gt;
-&lt;/soap:Envelope&gt;
-</code></pre>
-<p></p>
-<p>Response:</p>
-<pre class="language-none"><code class="language-none">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
-  &lt;soap:Body&gt;
-    &lt;GetCheckoutTokenResponse xmlns=&quot;https://secure.sparrowone.com/Services/&quot;&gt;
-      &lt;GetCheckoutTokenResult&gt;
-        &lt;ResultCode&gt;int&lt;/ResultCode&gt;
-        &lt;Message&gt;string&lt;/Message&gt;
-        &lt;Token&gt;
-          &lt;PublicKey&gt;string&lt;/PublicKey&gt;
-          &lt;PrivateKey&gt;string&lt;/PrivateKey&gt;
-          &lt;ExpirationTime&gt;dateTime&lt;/ExpirationTime&gt;
-        &lt;/Token&gt;
-      &lt;/GetCheckoutTokenResult&gt;
-    &lt;/GetCheckoutTokenResponse&gt;
-  &lt;/soap:Body&gt;
-&lt;/soap:Envelope&gt;
-</code></pre>
-<p></p>
-<h4>GetCheckoutPaymentResult</h4>
-<p>Request:</p>
-<pre class="language-none"><code class="language-none">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
-  &lt;soap:Body&gt;
-    &lt;GetCheckoutPaymentResult xmlns=&quot;https://secure.sparrowone.com/Services/&quot;&gt;
-      &lt;privateKey&gt;string&lt;/privateKey&gt;
-    &lt;/GetCheckoutPaymentResult&gt;
-  &lt;/soap:Body&gt;
-&lt;/soap:Envelope&gt;
-</code></pre>
-<p></p>
-<p>Response:</p>
-<pre class="language-none"><code class="language-none">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
-  &lt;soap:Body&gt;
-    &lt;GetCheckoutPaymentResultResponse xmlns=&quot;https://secure.sparrowone.com/Services/&quot;&gt;
-      &lt;GetCheckoutPaymentResultResult&gt;
-        &lt;ResultCode&gt;int&lt;/ResultCode&gt;
-        &lt;Message&gt;string&lt;/Message&gt;
-        &lt;PaymentInfo&gt;
-          &lt;Amount&gt;decimal&lt;/Amount&gt;
-          &lt;Items&gt;
-            &lt;CheckoutPaymentItem&gt;
-              &lt;Description&gt;string&lt;/Description&gt;
-              &lt;SkuNumber&gt;string&lt;/SkuNumber&gt;
-              &lt;UnitPrice&gt;decimal&lt;/UnitPrice&gt;
-              &lt;Quantity&gt;int&lt;/Quantity&gt;
-            &lt;/CheckoutPaymentItem&gt;
-            &lt;CheckoutPaymentItem&gt;
-              &lt;Description&gt;string&lt;/Description&gt;
-              &lt;SkuNumber&gt;string&lt;/SkuNumber&gt;
-              &lt;UnitPrice&gt;decimal&lt;/UnitPrice&gt;
-              &lt;Quantity&gt;int&lt;/Quantity&gt;
-            &lt;/CheckoutPaymentItem&gt;
-            ...
-          &lt;/Items&gt;
-          &lt;FailedPaymentAttempts&gt;int&lt;/FailedPaymentAttempts&gt;
-          &lt;PaymentTransactionId&gt;long&lt;/PaymentTransactionId&gt;
-          &lt;PaymentDate&gt;dateTime&lt;/PaymentDate&gt;
-          &lt;PaymentStatus&gt;string&lt;/PaymentStatus&gt;
-          &lt;PaymentMessage&gt;string&lt;/PaymentMessage&gt;
-        &lt;/PaymentInfo&gt;
-      &lt;/GetCheckoutPaymentResultResult&gt;
-    &lt;/GetCheckoutPaymentResultResponse&gt;
-  &lt;/soap:Body&gt;
-&lt;/soap:Envelope&gt;
-</code></pre>
-
-         </div>
-      </div>
-      
-   </div>
-</section>           
-
-
-   
-<section id="documenter-payment-redirect-architecture-process-workflow-integration-checkout-process-appendix-a-appendix-b" class="method">
-   <div class="method-area">
-      <div class="method-copy">
-         <div class="method-copy-padding">
-            <h3>Appendix B – Return Values</h3>
-<h4>ReturnCode</h4>
-<p>The following table describes possible values of ReturnCode field in all web
-method responses.</p>
-<table>
-<thead>
-<tr>
-<th><strong>RETURN CODE</strong></th>
-<th></th>
-<th><strong>DESCRIPTION</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td></td>
-<td>Success</td>
-</tr>
-<tr>
-<td>9</td>
-<td></td>
-<td>Transaction Key parameter is missing</td>
-</tr>
-<tr>
-<td>10</td>
-<td></td>
-<td>Invalid Transaction Key specified</td>
-</tr>
-<tr>
-<td>11</td>
-<td></td>
-<td>Private Key parameter is missing</td>
-</tr>
-<tr>
-<td>12</td>
-<td></td>
-<td>Specified checkout token was not found (invalid private key)</td>
-</tr>
-<tr>
-<td>13</td>
-<td></td>
-<td>Checkout token has expired</td>
-</tr>
-<tr>
-<td>14</td>
-<td></td>
-<td>Invalid checkout amount: sum of prices for each product is not equal to the total payment amount</td>
-</tr>
-<tr>
-<td>15</td>
-<td></td>
-<td>Specified account cannot process transactions. Possible reason is that account is closed</td>
-</tr>
-<tr>
-<td>100</td>
-<td></td>
-<td>Unknown processing error, contact support for details</td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<h4>PaymentStatus</h4>
-<p>The following table describes possible values of PaymentStatus subelement of
-PaymentInfo element in <strong>GetCheckoutPaymentResult</strong> method’s response.</p>
-<table>
-<thead>
-<tr>
-<th><strong>STATUS</strong></th>
-<th></th>
-<th><strong>DESCRIPTION</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Successful</td>
-<td></td>
-<td>Payment was successful. Transaction has been created.</td>
-</tr>
-<tr>
-<td>Declined</td>
-<td></td>
-<td>Processor has declined the payment. PaymentMessage contains details. Transaction has been created.</td>
-</tr>
-<tr>
-<td>Error</td>
-<td></td>
-<td>There was an error processing the message, either at gateway or processor’s side. Transaction may or may not exist in the case of this payment status.</td>
-</tr>
-</tbody>
-</table>
 
          </div>
       </div>
@@ -18721,6 +18721,59 @@ sample API key with your actual API key.</p>
                      </li>
                   
                      <li>
+                        <a  href="#documenter-payment-redirect">Payment Redirect</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-payment-redirect-payment-redirect-architecture">Architecture</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-redirect-payment-redirect-architecture-process-workflow">Process Workflow</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-redirect-payment-redirect-architecture-process-workflow-integration">Integration</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-redirect-payment-redirect-architecture-process-workflow-integration-checkout-process">Checkout Process</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-redirect-payment-redirect-architecture-process-workflow-integration-checkout-process-appendix-a">Appendix A</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-redirect-payment-redirect-architecture-process-workflow-integration-checkout-process-appendix-a-appendix-b">Appendix B</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
                         <a  href="#documenter-checkout-api">3DS Checkout API</a>
                         
 
@@ -18770,59 +18823,6 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-checkout-api-checkout-api-architecture-integration-checkout-process-appendix-a-appendix-b-appendix-c-appendix-d">Appendix D</a>
-          
-
-
-        </li>
-     
-  </ol>
-
-
-                     </li>
-                  
-                     <li>
-                        <a  href="#documenter-payment-redirect">Payment Redirect</a>
-                        
-
-  <ol>
-     
-        <li>
-          <a href="#documenter-payment-redirect-payment-redirect-architecture">Architecture</a>
-          
-
-
-        </li>
-     
-        <li>
-          <a href="#documenter-payment-redirect-payment-redirect-architecture-process-workflow">Process Workflow</a>
-          
-
-
-        </li>
-     
-        <li>
-          <a href="#documenter-payment-redirect-payment-redirect-architecture-process-workflow-integration">Integration</a>
-          
-
-
-        </li>
-     
-        <li>
-          <a href="#documenter-payment-redirect-payment-redirect-architecture-process-workflow-integration-checkout-process">Checkout Process</a>
-          
-
-
-        </li>
-     
-        <li>
-          <a href="#documenter-payment-redirect-payment-redirect-architecture-process-workflow-integration-checkout-process-appendix-a">Appendix A</a>
-          
-
-
-        </li>
-     
-        <li>
-          <a href="#documenter-payment-redirect-payment-redirect-architecture-process-workflow-integration-checkout-process-appendix-a-appendix-b">Appendix B</a>
           
 
 
