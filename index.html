@@ -904,6 +904,31 @@
                         </li>
                      
                         <li>
+                           <a  href="#documenter-payment-redirect">Payment Redirect</a>
+                           
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-payment-redirect-architecture">Architecture</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-redirect-architecture-process-workflow">Process Workflow</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                        </li>
+                     
+                        <li>
                            <a  href="#documenter-code-samples">Code Samples</a>
                            
 
@@ -17201,6 +17226,106 @@ with eWallet account.</p>
 
            
               
+<section id="documenter-payment-redirect" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h1>Payment Redirect</h1>
+<p>Custom white-label redirect page for uComm Global, Inc.  uComm’s redirect page
+will communicate with CardinalCommerce and associated banks to process 3DS
+cards.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+   
+<section id="documenter-payment-redirect-architecture" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Architecture</h3>
+<p>The architecture will remain the same way the current redirect exists today.</p>
+<p>Interaction with the service should be performed through the POST Http Request.</p>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+   
+<section id="documenter-payment-redirect-architecture-process-workflow" class="method">
+   <div class="method-area">
+      <div class="method-copy">
+         <div class="method-copy-padding">
+            <h3>Process Workflow</h3>
+<p>Here is the URL for the method</p>
+<ol>
+<li>
+<p>Cardholder enters in payment information into the custom redirect page</p>
+</li>
+<li>
+<p>The data is sent as a lookup request to CardinalCommerce to valid
+enrollment.</p>
+<ol>
+<li>
+<p>If card is not enrolled:</p>
+<p>Cardinal will return an enrollment status of ‘N’ back with an ECI value.</p>
+<p>Redirect page will append the ECI value to the transaction and process
+the payment for the merchant.</p>
+</li>
+<li>
+<p>If card is enrolled:</p>
+<ul>
+<li>
+<p>Cardinal will return parameters which represent the URL for the
+issuing bank (ACS URL) and the Payer Authentication Request (PaReq).</p>
+</li>
+<li>
+<p>Request page will POST the form data to the ACS URL.  This form POST
+will include the PaReq payload, a TermURL and an MD value (if no MD,
+you can leave blank but the field still needs to be there).  Through
+the posting to the ACS URL, the cardholder will be redirected to the
+bank page to enter in their bank password.</p>
+</li>
+<li>
+<p>Once submitted, the ACS will post the cardholder and the encrypted
+data back to the TermURL (on the Sparrow server).</p>
+</li>
+<li>
+<p>The Sparrow server will then take the encrypted value which is the
+PaRes (Payer Authentication Response) and send that in the
+Authenticate Request message to CardinalCommerce to decrypt.</p>
+</li>
+<li>
+<p>CardinalCommerce will decrypt and send back the Authenticate
+Response which will include the PaResStatus, the Signature Status
+along with the ECI, CAVV and XID values.</p>
+</li>
+<li>
+<p>The redirect page will append the ECI, CAVV and XID values to the
+transaction and then process the payment for the merchant.</p>
+</li>
+</ul>
+<p>(Sample code will be provided that represents this process)</p>
+</li>
+</ol>
+</li>
+</ol>
+
+         </div>
+      </div>
+      
+   </div>
+</section>           
+
+
+           
+              
 <section id="documenter-code-samples" class="method">
    <div class="method-area">
       <div class="method-copy">
@@ -18160,6 +18285,31 @@ sample API key with your actual API key.</p>
      
         <li>
           <a href="#documenter-checkout-api-checkout-api-architecture-integration-checkout-process-appendix-a-appendix-b-appendix-c-appendix-d">Appendix D</a>
+          
+
+
+        </li>
+     
+  </ol>
+
+
+                     </li>
+                  
+                     <li>
+                        <a  href="#documenter-payment-redirect">Payment Redirect</a>
+                        
+
+  <ol>
+     
+        <li>
+          <a href="#documenter-payment-redirect-payment-redirect-architecture">Architecture</a>
+          
+
+
+        </li>
+     
+        <li>
+          <a href="#documenter-payment-redirect-payment-redirect-architecture-process-workflow">Process Workflow</a>
           
 
 
