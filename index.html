@@ -8675,7 +8675,7 @@ consumer information is stored adhering to PCI Level 1 compliance.</p>
 <td>ACH account type</td>
 </tr>
 <tr>
-<td>achaccountsubtype</td>
+<td>achaccountsubtype_#</td>
 <td>business/personal</td>
 <td>ACH account sub type</td>
 </tr>
@@ -8699,17 +8699,10 @@ consumer information is stored adhering to PCI Level 1 compliance.</p>
 <p></p>
 <pre class="language-none"><code class="language-none">transtype=addcustomer&amp;mkey=KewO4GI%2B64I8Vg6xCCuqvAkuAkq9cbJH&amp;firstname=Samantha&amp;lastname=Simmons&amp;address1=1234+N+Wells+street&amp;city=Phoenix&amp;state=AZ&amp;zip=85254&amp;email@sam@test.com&amp;phone=4801234567&amp;paytype_1=creditcard&amp;cardnum_1=4111111111111111&amp;cardexp_1=0220
 </code></pre>
-
-         </div>
-      </div>
-      
-        <div class="method-example">
-           
-              <div class="code-curl code-div active-code">
-                 <div class="method-example-part">
-                   <p>Command Line:</p>
-<pre class="language-bash"><code class="language-bash">curl -d <span class="hljs-string">"transtype=addcustomer&amp;\
-mkey=<span class="hljs-variable">$M_KEY</span>&amp;\
+<p>$$language: curl$$</p>
+<p>Command Line:</p>
+<pre class="language-none"><code class="language-none">curl -d &quot;transtype=addcustomer&amp;\
+mkey=$M_KEY&amp;\
 firstname=John&amp;\
 lastname=Doe&amp;\
 note=Customer Note&amp;\
@@ -8769,22 +8762,24 @@ account_2=1234567890123&amp;\
 achaccounttype_1=&amp;\
 achaccounttype_2=personal&amp;\
 payno_1=1&amp;\
-payno_2=2"</span> \
+payno_2=2&quot; \
 https://secure.sparrowone.com/Payments/Services_api.aspx
 </code></pre>
 <p>Response:</p>
-<pre class="language-bash"><code class="language-bash">response=1&amp;
+<pre class="language-none"><code class="language-none">response=1&amp;
 textresponse=Customer+with+token+%27F6OE0IN0I5HSV6AJ%27+successfully+created&amp;
-<span class="hljs-built_in">type</span>=addcustomer&amp;
+type=addcustomer&amp;
 customertoken=F6OE0IN0I5HSV6AJ&amp;
 paymenttoken_1=9K7US80YUQ1LPN27&amp;
 paymenttoken_2=OZA3QU7CYG57D88R
 </code></pre>
 
-                 </div>
-              </div>
+         </div>
+      </div>
+      
+        <div class="method-example">
            
-              <div class="code-csharp code-div ">
+              <div class="code-csharp code-div active-code">
                  <div class="method-example-part">
                    <p>CODE:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> _sparrow.AddCustomer(
@@ -8805,25 +8800,20 @@ result.PaymentTokens[<span class="hljs-number">0</span>];    <span class="hljs-c
               <div class="code-ruby code-div ">
                  <div class="method-example-part">
                    <p>CODE:</p>
-<pre class="language-ruby"><code class="language-ruby">
-api.addcustomer({
+<pre class="language-ruby"><code class="language-ruby">api.addcustomer({
   <span class="hljs-symbol">firstname:</span> <span class="hljs-string">'John'</span>,
   <span class="hljs-symbol">lastname:</span> <span class="hljs-string">'Doe'</span>,
   <span class="hljs-symbol">paytype_1:</span> <span class="hljs-string">'starcard'</span>,
   <span class="hljs-symbol">cardnum_1:</span> <span class="hljs-string">'6019440000011111'</span>,
   <span class="hljs-symbol">CID:</span> <span class="hljs-string">'52347800001'</span>,
 })
-
 </code></pre>
 <p>RESULT:</p>
-<pre class="language-ruby"><code class="language-ruby">
-
-result.response <span class="hljs-comment"># =&gt; '1'</span>
+<pre class="language-ruby"><code class="language-ruby">result.response <span class="hljs-comment"># =&gt; '1'</span>
 result.textresponse <span class="hljs-comment"># =&gt; 'Customer with token 'LDX59BK4441R46J7' successfully created'</span>
 result.type <span class="hljs-comment"># =&gt; 'addcustomer'</span>
 result.customertoken <span class="hljs-comment"># =&gt; 'LDX59BK4441R46J7'</span>
 result.paymenttoken_1 <span class="hljs-comment"># =&gt; 'I5ZVHNONDI5YIGKG'</span>
-
 </code></pre>
 
                  </div>
@@ -8832,8 +8822,7 @@ result.paymenttoken_1 <span class="hljs-comment"># =&gt; 'I5ZVHNONDI5YIGKG'</spa
               <div class="code-python code-div ">
                  <div class="method-example-part">
                    <p>CODE:</p>
-<pre class="language-python"><code class="language-python">
-resp = sprw.customers.create(data=dict(
+<pre class="language-python"><code class="language-python">resp = sprw.customers.create(data=dict(
     firstname=<span class="hljs-string">"John"</span>,
     lastname=<span class="hljs-string">"Doe"</span>,
     note=<span class="hljs-string">"Customer Note"</span>,
@@ -8890,46 +8879,36 @@ resp = sprw.customers.create(data=dict(
     achaccounttype_2=<span class="hljs-string">"personal"</span>,
     payno_2=<span class="hljs-string">"2"</span>,
 ))
-
 </code></pre>
 <p>RESULT:</p>
-<pre class="language-python"><code class="language-python">
-{
+<pre class="language-python"><code class="language-python">{
     <span class="hljs-string">"customertoken"</span>: <span class="hljs-string">"UOLL9K0L2YU7N1I3"</span>,
     <span class="hljs-string">"paymenttoken_1"</span>: <span class="hljs-string">"65EQ73QMHFMVUS19"</span>,
     <span class="hljs-string">"response"</span>: <span class="hljs-string">"00"</span>,
     <span class="hljs-string">"textresponse"</span>: <span class="hljs-string">"Customer with token 'UOLL9K0L2YU7N1I3' successfully created"</span>,
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"addcustomer"</span>
 }
-
 </code></pre>
-
-                 </div>
-              </div>
-           
-              <div class="code-php code-div ">
-                 <div class="method-example-part">
-                   <p>CODE:</p>
-<pre class="language-php"><code class="language-php">$paramsAddCustomer = <span class="hljs-keyword">new</span> AddCustomerParams();
+<p>$$language: php$$ CODE:</p>
+<pre class="language-python"><code class="language-python">$paramsAddCustomer = new AddCustomerParams();
 $paramsAddCustomer-&gt;defaultContactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
 $paramsAddCustomer-&gt;defaultContactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
-$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> PaymentType();
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>] = new PaymentType();
 $paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;payType = PayType::CREDITCARD;
 $paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;firstName = <span class="hljs-string">"John"</span>;
 $paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;contactInfo-&gt;lastName = <span class="hljs-string">"Doe"</span>;
 $paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardNum = <span class="hljs-string">"4111111111111111"</span>;
-$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardExp = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-string">"2019-10-21"</span>);
+$paramsAddCustomer-&gt;paymentTypes[<span class="hljs-number">0</span>]-&gt;creditCard-&gt;cardExp = new DateTime(<span class="hljs-string">"2019-10-21"</span>);
 
-$resultAddCustomer = <span class="hljs-keyword">self</span>::$sparrow-&gt;AddCustomer($paramsAddCustomer)-&gt;wait();
+$resultAddCustomer = self::$sparrow-&gt;AddCustomer($paramsAddCustomer)-&gt;wait();
 </code></pre>
 <p>RESULT AddCustomer:</p>
-<pre class="language-php"><code class="language-php">$resultAddCustomer.isSuccess;    <span class="hljs-comment">// 1</span>
-$resultAddCustomer.response;    <span class="hljs-comment">// 1</span>
-$resultAddCustomer.textResponse;    <span class="hljs-comment">// Customer with token 'PE4WB9TIYLXCZXIV' successfully created</span>
-$resultAddCustomer.type;    <span class="hljs-comment">// addcustomer</span>
-$resultAddCustomer.customerToken;    <span class="hljs-comment">// PE4WB9TIYLXCZXIV</span>
-$resultAddCustomer.p;    <span class="hljs-comment">// PTGX8RBJ9GJ1MM9Z</span>
-
+<pre class="language-python"><code class="language-python">$resultAddCustomer.isSuccess;    // <span class="hljs-number">1</span>
+$resultAddCustomer.response;    // <span class="hljs-number">1</span>
+$resultAddCustomer.textResponse;    // Customer <span class="hljs-keyword">with</span> token <span class="hljs-string">'PE4WB9TIYLXCZXIV'</span> successfully created
+$resultAddCustomer.type;    // addcustomer
+$resultAddCustomer.customerToken;    // PE4WB9TIYLXCZXIV
+$resultAddCustomer.p;    // PTGX8RBJ9GJ1MM9Z
 </code></pre>
 
                  </div>
