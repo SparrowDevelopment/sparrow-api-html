@@ -1600,6 +1600,11 @@ resp = sprw.sale(<span class="hljs-number">10.0</span>, card)
 <td></td>
 <td>Optional for 3DS-aware payment</td>
 </tr>
+<tr>
+<td>capture_indicator</td>
+<td>partial / final</td>
+<td>Field allows to process partial shipments on the Moneris processor. Please request Sparrow Support to enable that feature on the required accounts. The default value is final (if capture request doesn’t contain capture_indicator, the gateway will process the capture request as final). After the payment transaction is finally captured (capture_indicator=final), no more capture requests are allowed. In order to be settled the payment transaction should be finally captured. Refunds is allowed only for finally captured transactions.</td>
+</tr>
 </tbody>
 </table>
 <pre class="language-none"><code class="language-none">transtype=sale&amp;mkey=your_merchant_account_mkey&amp;amount=57.85&amp;cardnum=4111111111111111&amp;cardexp=1010&amp;cvv=999&amp;skunumber_1=5558779&amp;description_1=menssweaterblue&amp;amount_1=50.00&amp;quantity_1=1&amp;tax=2.85&amp;shipamount=5.00&amp;firstname=John&amp;lastname=Smith&amp;address1=888+test+address&amp;city=Los+Angeles&amp;country=US&amp;state=CA&amp;phone=222-444-2938&amp;shipfirstname=John&amp;shiplastname=Smith&amp;shipaddress1=888+test+address&amp;shipcity=Los+Angeles&amp;shipstate=CA&amp;shipphone=2224442938
